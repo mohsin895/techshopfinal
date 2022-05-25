@@ -468,7 +468,7 @@ $low = $stockLowQty - $sellQuantity
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">Stock Low Product{{$lownumber}}</span>
+                                    <span class="menu-title">Stock Low Product({{$lownumber}})</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                             </a>

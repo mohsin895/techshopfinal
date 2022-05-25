@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2022 at 03:44 PM
+-- Generation Time: May 25, 2022 at 11:01 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -101,6 +101,8 @@ CREATE TABLE `blog_categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `cat_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `homa_page_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `serial_number` int(11) DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
@@ -112,10 +114,10 @@ CREATE TABLE `blog_categories` (
 -- Dumping data for table `blog_categories`
 --
 
-INSERT INTO `blog_categories` (`id`, `parent_id`, `cat_name`, `slug`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(2, 0, 'eewrt', 'eewrt', NULL, '1', '2022-03-26 03:40:43', '2022-03-26 03:40:43'),
-(3, 0, 'dfe', 'dfe', NULL, '1', '2022-03-26 03:41:37', '2022-03-26 03:41:37'),
-(4, 2, 'wewrew', 'wewrew', NULL, '1', '2022-03-26 03:57:14', '2022-03-26 04:10:10');
+INSERT INTO `blog_categories` (`id`, `parent_id`, `cat_name`, `homa_page_name`, `serial_number`, `slug`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(2, 0, 'eewrt', 'Own Development', 1, 'eewrt', NULL, '1', '2022-03-26 03:40:43', '2022-05-24 05:48:21'),
+(3, 0, 'dfe', 'lates', 2, 'dfe', NULL, '1', '2022-03-26 03:41:37', '2022-03-26 03:41:37'),
+(4, 2, 'wewrew', NULL, 3, 'wewrew', NULL, '1', '2022-03-26 03:57:14', '2022-03-26 04:10:10');
 
 -- --------------------------------------------------------
 
@@ -172,15 +174,15 @@ CREATE TABLE `blog_posts` (
 --
 
 INSERT INTO `blog_posts` (`id`, `user_id`, `cat_id`, `subcat_id`, `title`, `slug`, `description`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 2, 4, 'qwertyuio', 'qwertyuio', NULL, '7052.png', 'New', '2022-03-26 08:45:25', '2022-03-26 08:55:38'),
-(2, 2, 2, 4, 'wqewrt', 'wqewrt', NULL, '82654.jpg', 'New', '2022-04-02 08:38:05', '2022-04-02 08:38:05'),
-(3, 32, 2, 4, 'awe', 'awe', 'awedwrf', '1723.jpg', 'New', '2022-04-02 19:49:38', '2022-04-02 19:49:38'),
-(4, 32, 2, 4, 'ghjkl;', 'ghjkl', 'vhjkl;\'', '75808.jpg', 'published', '2022-04-24 02:10:54', '2022-04-24 02:10:54'),
-(5, 32, 2, 4, 'ghjkl;', 'ghjkl', 'vhjkl;\'', '83083.jpg', 'published', '2022-04-24 02:10:54', '2022-04-24 02:10:54'),
+(1, 2, 2, 4, 'qwertyuio', 'qwertyuio', '<p>adfdghjhktef</p>', '7052.png', 'published', '2022-03-26 08:45:25', '2022-05-23 01:33:46'),
+(2, 2, 2, 4, 'wqewrt', 'wqewrt', '<p>wertyuiop</p>', '82654.jpg', 'published', '2022-04-02 08:38:05', '2022-05-23 01:32:59'),
+(3, 32, 2, 4, 'awe', 'awe', '<p>awedwrf</p>', '1723.jpg', 'published', '2022-04-02 19:49:38', '2022-05-23 01:32:30'),
+(4, 32, 2, 4, 'mohsin sikder', 'mohsin-sikder', '<p>vhjkl;&#39; dfghyj5s63a</p>', '75808.jpg', 'published', '2022-04-24 02:10:54', '2022-05-23 01:59:49'),
+(5, 32, 2, 4, 'rahat', 'rahat', '<p>vhjkl;&#39; fsdetreyubncxzw2</p>', '83083.jpg', 'published', '2022-04-24 02:10:54', '2022-05-23 02:00:33'),
 (6, 2, 2, 4, 'adfrgthyjuk', 'adfrgthyjuk', '<p>wedrftgyhujikolp</p>', '3431.png', 'published', '2022-04-24 23:02:49', '2022-04-24 23:02:49'),
-(7, 32, NULL, NULL, 'asdfdghjkh', 'asdfdghjkh', 'asdfg<strong>awsedfghjgfh</strong> fghyj<del datetime=\"2022-04-25T05:23:24+00:00\">fgfh</del>\r\n\r\n<blockquote>', '78459.png', 'New', '2022-04-24 23:24:12', '2022-04-24 23:24:12'),
+(7, 32, 2, 4, 'asdfdghjkh', 'asdfdghjkh', 'asdfg<strong>awsedfghjgfh</strong> fghyj<del datetime=\"2022-04-25T05:23:24+00:00\">fgfh</del>\r\n\r\n<blockquote>', '78459.png', 'New', '2022-04-24 23:24:12', '2022-04-24 23:24:12'),
 (11, 2, 2, 4, 'Zasdfgrty', 'zasdfgrty', '<p>qewrtyui</p>', '73365.PNG', 'published', '2022-04-26 09:13:22', '2022-04-26 09:13:22'),
-(12, 32, NULL, NULL, 'qwerety', 'qwerety', '<p>werdtertg</p>', '5953.png', 'New', '2022-05-18 06:01:12', '2022-05-18 06:01:12');
+(12, 32, 2, 4, 'qweretyasdfgrthyujiop\'[]fghjklokpertyuiop', 'qweretyasdfgrthyujiopfghjklokpertyuiop', '<p>werdtertgghyjukilo;p&#39;[gy</p>', '5953.png', 'published', '2022-05-18 06:01:12', '2022-05-23 01:32:10');
 
 -- --------------------------------------------------------
 
@@ -279,6 +281,8 @@ CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `parent_id` int(11) DEFAULT 0,
   `cat_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `homa_page_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `serial_number` int(11) DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -291,18 +295,18 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `parent_id`, `cat_name`, `slug`, `description`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 0, 'Accessories', 'accessories', NULL, NULL, '0', '2022-03-30 08:37:17', '2022-05-14 23:49:44'),
-(2, 0, 'Basic Component', 'basic-component', NULL, NULL, '1', '2022-03-30 08:37:40', '2022-03-30 08:37:40'),
-(3, 0, 'Development Board', 'development-board', NULL, NULL, '1', '2022-03-30 08:38:04', '2022-03-30 08:38:04'),
-(4, 0, 'Display', 'display', NULL, NULL, '1', '2022-03-30 08:38:27', '2022-03-30 08:38:27'),
-(5, 0, 'General IC', 'general-ic', NULL, NULL, '1', '2022-03-30 08:38:48', '2022-03-30 08:38:48'),
-(6, 1, 'Connector', 'connector', NULL, NULL, '1', '2022-03-30 08:39:51', '2022-03-30 08:39:51'),
-(7, 1, 'Cable', 'cable', NULL, NULL, '1', '2022-03-30 08:40:17', '2022-03-30 08:40:17'),
-(8, 1, 'Computer Peripherals', 'computer-peripherals', NULL, NULL, '1', '2022-03-30 08:40:36', '2022-03-30 08:40:36'),
-(9, 2, 'Optocoupler', 'optocoupler', NULL, NULL, '1', '2022-03-30 08:41:05', '2022-03-30 08:41:05'),
-(11, 3, 'Arduino & Accessories', 'arduino-accessories', NULL, NULL, '1', '2022-03-30 08:42:00', '2022-03-30 08:42:00'),
-(12, 3, 'Raspberry Pi & Accessories', 'raspberry-pi-accessories', NULL, NULL, '1', '2022-03-30 08:43:17', '2022-03-30 08:43:17');
+INSERT INTO `categories` (`id`, `parent_id`, `cat_name`, `homa_page_name`, `serial_number`, `slug`, `description`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 0, 'Accessories', NULL, 2, 'accessories', NULL, NULL, '0', '2022-03-30 08:37:17', '2022-05-24 00:18:41'),
+(2, 0, 'Basic Component', 'Daily Uses Component', 1, 'basic-component', NULL, NULL, '1', '2022-03-30 08:37:40', '2022-05-24 01:28:06'),
+(3, 0, 'Development Board', 'Own Development', 13, 'development-board', NULL, NULL, '1', '2022-03-30 08:38:04', '2022-05-24 01:57:59'),
+(4, 0, 'Display', NULL, 15, 'display', NULL, NULL, '1', '2022-03-30 08:38:27', '2022-03-30 08:38:27'),
+(5, 0, 'General IC', NULL, 17, 'general-ic', NULL, NULL, '1', '2022-03-30 08:38:48', '2022-03-30 08:38:48'),
+(6, 1, 'Connector', NULL, NULL, 'connector', NULL, NULL, '1', '2022-03-30 08:39:51', '2022-03-30 08:39:51'),
+(7, 1, 'Cable', NULL, NULL, 'cable', NULL, NULL, '1', '2022-03-30 08:40:17', '2022-03-30 08:40:17'),
+(8, 1, 'Computer Peripherals', NULL, NULL, 'computer-peripherals', NULL, NULL, '1', '2022-03-30 08:40:36', '2022-03-30 08:40:36'),
+(9, 2, 'Optocoupler', NULL, NULL, 'optocoupler', NULL, NULL, '1', '2022-03-30 08:41:05', '2022-03-30 08:41:05'),
+(11, 3, 'Arduino & Accessories', NULL, NULL, 'arduino-accessories', NULL, NULL, '1', '2022-03-30 08:42:00', '2022-03-30 08:42:00'),
+(12, 3, 'Raspberry Pi & Accessories', NULL, NULL, 'raspberry-pi-accessories', NULL, NULL, '1', '2022-03-30 08:43:17', '2022-03-30 08:43:17');
 
 -- --------------------------------------------------------
 
@@ -398,7 +402,7 @@ CREATE TABLE `general_settings` (
 --
 
 INSERT INTO `general_settings` (`id`, `login_image`, `site_logo`, `blog_logo`, `dashboard_logo`, `favicon`, `blog_favicon`, `website_name`, `site_title`, `currency`, `commission`, `vat`, `quantity`, `email1`, `email2`, `address`, `mobile1`, `mobile2`, `bkash`, `rocket`, `nogod`, `flash_slider`, `meta_description`, `meta_keyword`, `meta_viewport`, `created_at`, `updated_at`, `facebook_page`, `facebook_group`, `twiter`, `instagram`, `youtube`, `linkdi`, `blog_about_us`, `privecy_policy`, `about_us`, `w_r`, `t_c`) VALUES
-(1, '25401.png', '72468.png', '79294.png', '84409.png', '485.png', '36240.png', 'Roboticsabc Shop', 'Roboticsabc shop', 'TK', '10', '7', 2, 'mohsinsikder895@gmail.com', 'mohsinsikder895@gmail.com', 'plashbari bazar', '01715486265', '01706125400', '01715486265', '01715486265', '01715486265', 1, 'erfegter', '\"fdsgfrgdtfhgf\"', 'rtgrgy', NULL, '2022-05-18 05:01:03', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.linkedin.com/in/mohsin-sikder/', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>', '<p><br></p>');
+(1, '25401.png', '72468.png', '79294.png', '84409.png', '485.png', '36240.png', 'Roboticsabc Shop', 'Roboticsabc shop', 'TK', '10', '7', 2, 'mohsinsikder895@gmail.com', 'mohsinsikder895@gmail.com', 'plashbari bazar', '01715486265', '01706125400', '01715486265', '01715486265', '01715486265', 2, 'erfegter', '\"fdsgfrgdtfhgf\"', 'rtgrgy', NULL, '2022-05-24 03:59:55', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.linkedin.com/in/mohsin-sikder/', '<p><strong>Bangladesh</strong>, is a country in&nbsp;<a href=\"https://en.wikipedia.org/wiki/South_Asia\">South Asia</a>. It is the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\">eighth-most populous country</a>&nbsp;in the world, with a population exceeding 163 million people in an area of either 148,460 square kilometres (57,320&nbsp;sq&nbsp;mi) or 147,570 square kilometres (56,980&nbsp;sq&nbsp;mi),<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bdarea-7\">[7]</a><a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bbs-15\">[15]</a>&nbsp;making it one of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population_density\">most densely populated countries</a>&nbsp;in the world. Bangladesh shares land borders with&nbsp;<a href=\"https://en.wikipedia.org/wiki/India\">India</a>&nbsp;to the west, north, and east, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Myanmar\">Myanmar</a>&nbsp;to the southeast; to the south it has a coastline along the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bay_of_Bengal\">Bay of Bengal</a>. It is narrowly separated from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nepal\">Nepal</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bhutan\">Bhutan</a>&nbsp;by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Siliguri_Corridor\">Siliguri Corridor</a>; and from&nbsp;<a href=\"https://en.wikipedia.org/wiki/China\">China</a>&nbsp;by 100&nbsp;km of the Indian state of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Sikkim\">Sikkim</a>&nbsp;in the north.<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-16\">[16]</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dhaka\">Dhaka</a>, the capital and&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Bangladesh\">largest city</a>, is the nation&#39;s economic, political, and cultural hub.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Chittagong\">Chittagong</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Port_of_Chittagong\">largest seaport</a>, is the second-largest city. The official language is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bengali_language\">Bengali</a>, one of the most eastern branches of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Indo-European_language_family\">Indo-European language family</a>.</p>', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -425,7 +429,9 @@ CREATE TABLE `gift_cards` (
 
 INSERT INTO `gift_cards` (`id`, `name`, `duration`, `purchase_price`, `giftcard_value`, `image`, `slug`, `status`, `created_at`, `updated_at`) VALUES
 (2, 'QSWQE', '30', '390', '500', '13182.png', 'jqury', '1', '2022-04-09 19:45:35', '2022-04-09 23:55:08'),
-(3, 'dfghjrtyuj', '30', '390', '500', '10914.jpg', 'dfghjrtyuj', '1', '2022-04-11 20:00:12', '2022-04-11 20:00:25');
+(3, 'dfghjrtyuj', '30', '390', '500', '10914.jpg', 'dfghjrtyuj', '1', '2022-04-11 20:00:12', '2022-04-11 20:00:25'),
+(4, 'Mohsin', '32', '1235', '123', '75578.jpg', 'mohsin', '1', '2022-05-22 01:58:49', '2022-05-22 01:58:59'),
+(5, 'Mohsin', '123', '1232', '500', '58674.png', 'mohsin', '1', '2022-05-22 02:06:06', '2022-05-22 02:06:15');
 
 -- --------------------------------------------------------
 
@@ -664,7 +670,7 @@ INSERT INTO `orders` (`id`, `user_id`, `order_id`, `user_email`, `name`, `addres
 (27, '32', 17514, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-26 18:00:00', '0', 'New', '2', '2022-04-27 19:47:39', '2022-04-28 01:39:59', NULL),
 (28, '32', 11176, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-28 08:21:45', '0', 'Cancelled', '2', '2022-04-28 02:21:45', '2022-04-28 03:27:38', NULL),
 (29, '32', 10425, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '209.63', 200, 9, 2, 0.63, NULL, 'new', '2022-04-28 08:25:15', '0', 'Cancelled', '2', '2022-04-28 02:25:15', '2022-04-28 03:26:39', NULL),
-(30, '32', 12170, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-28 08:49:53', '0', 'New', '2', '2022-04-28 02:49:53', '2022-04-28 02:49:53', NULL),
+(30, '32', 12170, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-28 08:49:53', '0', 'Cancelled', '2', '2022-04-28 02:49:53', '2022-05-21 21:20:47', NULL),
 (31, '32', 17962, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '4489.63', 200, 4009, 1200, 280.63, NULL, 'New', '2022-05-09 10:58:29', '0', 'New', NULL, '2022-05-09 04:58:29', '2022-05-09 04:58:29', NULL);
 
 -- --------------------------------------------------------
@@ -721,10 +727,10 @@ INSERT INTO `order_products` (`id`, `order_id`, `randomOrder_id`, `user_id`, `pr
 (24, 26, NULL, 32, 5, 'C&C-00008', 'IRFZ44N MOSFET', 1800, 2000.00, 1, NULL, NULL, '2022-04-27 02:55:14', '2022-04-27 02:55:14'),
 (25, 28, NULL, 32, 5, 'C&C-00008', 'IRFZ44N MOSFET', 1800, 2000.00, 1, NULL, NULL, '2022-04-27 03:09:36', '2022-04-27 03:09:36'),
 (26, 29, NULL, 32, 5, 'C&C-00008', 'IRFZ44N MOSFET', 1800, 2000.00, 1, NULL, NULL, '2022-04-27 03:13:28', '2022-04-27 03:13:28'),
-(27, 30, NULL, 32, 4, 'SWD-00005', 'IRFZ44N MOSFET12', 1500, 2000.00, 1, NULL, NULL, '2022-04-27 03:20:18', '2022-04-27 03:20:18'),
+(27, 30, NULL, 32, 4, 'SWD-00005', 'IRFZ44N MOSFET12', 1500, 2000.00, 95, NULL, NULL, '2022-04-27 03:20:18', '2022-04-27 03:20:18'),
 (41, 31, 17962, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, NULL, NULL, '2022-05-09 04:58:30', '2022-05-09 04:58:30'),
 (42, 31, 17962, 32, 5, 'C&C-00008', 'IRFZ44N MOSFET', 1800, 2000.00, 1, NULL, NULL, '2022-05-09 04:58:30', '2022-05-09 04:58:30'),
-(43, 31, 17962, 32, 7, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, NULL, NULL, '2022-05-09 04:58:30', '2022-05-09 04:58:30');
+(43, 31, 17962, 32, 11, 'SWD-00005', 'styles shirt', 1200, 2000.00, 149, NULL, NULL, '2022-05-09 04:58:30', '2022-05-09 04:58:30');
 
 -- --------------------------------------------------------
 
@@ -991,7 +997,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('YmqagqOMervrpIAbUZhbLfLPHWmatH6DYjVtbS4B', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YTo1OntzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0NDoiaHR0cDovL2xvY2FsaG9zdC90ZWNoc2hvcDEyMy90ZWNoc2hvcC9wdWJsaWMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoiSXZWZlpCRXgwcEg2N1VNWlg4c045a1B4TmxXS0IyZlhGWXJCaVlCNCI7czo4OiJyZWZlcmFsbCI7czowOiIiO3M6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6Nzc6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3AxMjMvdGVjaHNob3AvcHVibGljL3VzZXIvZ2lmdGNhcmQvZGV0YWlscy9kZmdoanJ0eXVqIjt9fQ==', 1652881337);
+('GZ0k09HA7PwwhRScNoX1T5ENckJYRBuo2KpBEtci', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YTo1OntzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHVTZ3lKMXpXLmgzZG5WSm1oZzN4b3VLSWhrS25EbkxQQ2s4M3RZdFdyTE45TnFrUnpvUU9tIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMDoiaHR0cDovL2xvY2FsaG9zdC90ZWNoc2hvcGZpbmFsIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6ImhHd3hvaFNUTHVacmRQTEhMSFh0RU85NmpEZ3NsdWxBTU1KWk1MVVUiO3M6ODoicmVmZXJhbGwiO3M6MDoiIjt9', 1653469071);
 
 -- --------------------------------------------------------
 
@@ -1214,7 +1220,7 @@ CREATE TABLE `wish_lists` (
 --
 
 INSERT INTO `wish_lists` (`id`, `user_id`, `product_id`, `user_email`, `session_id`, `created_at`, `updated_at`) VALUES
-(4, NULL, 5, 'mohsinsikder895@gmail.com', 'bHJ8CwaPsFWjVzJPsMdGURDn4QvR7O8J4aE8Q893', '2022-04-28 02:00:33', '2022-04-28 02:00:33');
+(8, NULL, 11, 'mohsinsikder895@gmail.com', 'ntiFaEnHNn8wgT2G56S6lDhjixqONV8ODiC4dona', '2022-05-19 13:04:58', '2022-05-19 13:04:58');
 
 -- --------------------------------------------------------
 
@@ -1269,7 +1275,8 @@ ALTER TABLE `banners`
 -- Indexes for table `blog_categories`
 --
 ALTER TABLE `blog_categories`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `serial_number` (`serial_number`);
 
 --
 -- Indexes for table `blog_comments`
@@ -1306,7 +1313,8 @@ ALTER TABLE `carts`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `cat_name` (`cat_name`);
+  ADD UNIQUE KEY `cat_name` (`cat_name`),
+  ADD UNIQUE KEY `serial_number` (`serial_number`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -1571,7 +1579,7 @@ ALTER TABLE `general_settings`
 -- AUTO_INCREMENT for table `gift_cards`
 --
 ALTER TABLE `gift_cards`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `gift_card_orders`
@@ -1697,7 +1705,7 @@ ALTER TABLE `user_messages`
 -- AUTO_INCREMENT for table `wish_lists`
 --
 ALTER TABLE `wish_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `withdraws`
