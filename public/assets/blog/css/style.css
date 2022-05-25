@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+a {
+    /* background: white; */
+}
+
+a:hover {
+    color: #4ba2d4;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #4ba2d4;
+}
+
+.social-top {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #4ba2d4;
+    height: 50px;
+}
+
+.closer {
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+.email {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.email-link {
+    color: black;
+}
+
+.email-link:hover {
+    color: white;
+}
+
+.closer>.social-icons {
+    position: absolute;
+    display: flex;
+    right: 0;
+    list-style-type: none;
+}
+
+.social-icons li {
+    color: #fff;
+    padding-left: 20px;
+}
+
+.navigation {
+    height: 60px;
+    color: #4ba2d4;
+    background-color: white;
+    box-shadow: -1px 10px 11px -4px rgba(0, 0, 0, 0.39);
+    -webkit-box-shadow: -1px 10px 11px -4px rgba(0, 0, 0, 0.39);
+    -moz-box-shadow: -1px 10px 11px -4px rgba(0, 0, 0, 0.39);
+}
+
+.logo {
+    width: 25%;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.logo-mobile {
+    width: 35%;
+}
+
+.closer .navigationlink {
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 40%;
+    list-style-type: none;
+}
+
+.closer .navigationlink li {
+    margin-left: 25px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.active {
+    color: orange;
+}
+
+.blog-button {
+    color: orange;
+    position: relative;
+    top: -20px;
+    border-style: solid;
+    border: 3px solid orange;
+    border-radius: 5px;
+    margin-left: 20px;
+    padding: 15px;
+    padding-right: 20px;
+    transition: 0.2s;
+}
+
+.navigationlink li:hover {
+    color: orange;
+    transition-duration: 0.2s;
+}
+
+.carseltext {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.items {
+    width: 100%;
+    height: 400px;
+    margin-top: 0%;
+}
+
+.centered-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 45px;
+}
+
+.hero-img {
+    filter: brightness(45%);
+    height: 50vh;
+    object-fit: cover;
+}
+
+.bontainer {
+    height: 400px;
+}
+
+.Headingtitle {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #4ba2d4
+}
+
+.divider {
+    margin-top: 10px;
+    height: 1px;
+    background-color: rgb(175, 175, 175);
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    padding: 20px;
+    color: white;
+    font-weight: 500;
+}
+
+.news-img {
+    filter: brightness(55%);
+    border-radius: 10px;
+}
+
+.popular-items {
+    height: 200px;
+}
+
+.card img {
+    height: 200px;
+}
+
+.carousel {
+    margin-top: 20px;
+}
+
+.about {
+    background-color: white;
+}
+
+.about-content {
+    padding: 20px;
+}
+
+.about-item {
+    padding: 20px;
+}
+
+.display-smallscreen {
+    display: none;
+}
+
+.footer-text {
+    font-size: 1rem;
+}
+
+.line-divider {
+    height: 20px;
+    background-color: black;
+}
+
+
+/* creaitng responsive navbar for mobile and desktop */
+
+@media only screen and (max-width: 990px) {
+    .display-largescreen {
+        display: none;
+    }
+    .display-smallscreen {
+        display: block;
+    }
+}

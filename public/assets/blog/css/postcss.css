@@ -1,0 +1,148 @@
+    .post-image {
+        width: 100%;
+        height: 70vh;
+        object-fit: cover;
+        object-position: 100% 10%;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+    
+    .post-title {
+        font-size: 30px;
+        font-weight: 600;
+        color: rgb(27, 35, 51);
+    }
+    
+    .post-heading {
+        padding-bottom: 20px;
+    }
+    
+    .watched-by {
+        display: flex;
+    }
+    
+    .watch-icon {
+        margin-right: 10px;
+    }
+    
+    .post-body {
+        font-size: 18px;
+    }
+    
+    .post-share ul {
+        display: flex;
+        list-style-type: none;
+    }
+    
+    .post-share li {
+        padding-right: 20px;
+    }
+    
+    .divider {
+        height: 2px;
+        margin: 20px;
+        margin-left: 0px;
+        background-color: bl;
+    }
+    
+    .author {
+        background-color: white;
+    }
+    
+    .author-details {
+        padding: 50px;
+    }
+    
+    .author-img img {
+        height: 75px;
+        width: 75px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: 100% 10%;
+    }
+    
+    .author-name {
+        font-weight: 600;
+        font-size: 22px;
+    }
+    
+    .author-details-body {
+        margin-left: 20px;
+    }
+    
+    .author-links {
+        color: #ADD8E6;
+    }
+    
+    .comment-section {
+        margin-top: 30px;
+    }
+    
+    .comments-box {
+        padding: 30px;
+        background-color: #f1f1f1;
+        border-top: 1px solid #dfdfdf;
+        /* border-bottom: 1px solid #dfdfdf; */
+    }
+    
+    .number-of-comments {
+        font-size: 30px;
+        font-weight: 620;
+    }
+    
+    .commentor-img img {
+        height: 73px;
+        width: 73px;
+        object-fit: cover;
+        object-position: 100% 10%;
+        border-radius: 50%;
+    }
+    
+    .commentor-name {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    
+    .comments-area {
+        padding: 20px;
+    }
+    
+    .reply-section-title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    
+    .comment {
+        height: 100px;
+    }
+    
+    .comment-section {
+        margin-bottom: 20px;
+    }
+    
+    .related-posts {
+        background-color: #f2f5f7;
+    }
+    
+    .related-posts-container {
+        padding: 20px;
+        padding-left: 0;
+    }
+    
+    .related-items {
+        position: relative;
+        margin-top: 20px;
+    }
+    
+    .related-img {
+        height: 400px;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        .author-details {
+            position: relative;
+            /* padding: 20px; */
+            margin: auto;
+            text-align: center;
+        }
+    }
