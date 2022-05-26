@@ -46,7 +46,7 @@ class GeneralSettingController extends Controller
             $setting->w_r = $data['w_r'];
             $setting->about_us = $data['about_us'];
             $setting->privecy_policy = $data['privecy_policy'];
-         
+            $setting->facebook_pixel = $data['facebook_pixel'];
             $setting->meta_viewport = $data['meta_viewport'];
             //login Image
             if ($request->hasFile('login_image')) {

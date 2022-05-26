@@ -43,24 +43,40 @@ $products = array(
 
 
 <div class="post d-flex flex-column-fluid" id="kt_post">
+
     <!--begin::Container-->
     <div id="kt_content_container" class="container-xxl">
+ 
         <!--begin::Row-->
         <div class="row gy-5 g-xl-8">
             <!--begin::Col-->
             <div class="col-xl-12">
+          
                 <!--begin::Mixed Widget 2-->
                 <div class="card card-xl-stretch">
                     <!--begin::Header-->
-
+                    
                     <!--end::Header-->
                     <!--begin::Body-->
                     <div class="card-body p-0">
                         <!--begin::Chart-->
-
+                      
                         <!--end::Chart-->
                         <!--begin::Stats-->
                         <div class="card-p mt-n20 position-relative">
+                        <div class="row g-0">
+                                <!--begin::Col-->
+                                <div class="col bg-light-warning px-12 py-8 rounded-2 me-7 mb-7">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen032.svg-->
+                                  
+                                    <!--end::Svg Icon-->
+                                    @include('error.message')
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                              
+                                <!--end::Col-->
+                            </div>
                             <!--begin::Row-->
                             <div class="row g-0">
                                 <!--begin::Col-->

@@ -61,13 +61,13 @@ $cartCount = Cart::cartCount();
 
                 <div class="float-right d-none d-lg-block d-xl-block d-xxl-block ">
                     <a href="{{route('cart')}}" class="icon-wrapper dropdown-toggle-cart js--cart-icon">
-                        <i class="fa fa-shopping-bag" aria-hidden="true" style="font-size: 30px;"></i>
-                        <div class="badge" style="color: white;font-size: 30px;">{{ $cartCount}}</div>
+                        <i class="fa fa-shopping-bag" aria-hidden="true" style="font-size: 25px;"></i>
+                        <div class="badge" style="color: #1c619b; font-size: 25px;">{{ $cartCount}}</div>
 
                     </a>
                     @if(empty(Auth::check()))
                     <a href="{{route('user.login')}}" class="">
-                        <span class=" d-md-inline-block" style="font-size: 30px;">Login</span></a>
+                        <span class=" d-md-inline-block" style="font-size: 25px;">Login</span></a>
                     <span class="mx-md-6"></span>
 
                     @else
@@ -80,10 +80,10 @@ $cartCount = Cart::cartCount();
 
                             <a href="" class="dropdown-toggle-user" data-toggle="dropdown">
                                 <span class="icon-wrapper">
-                                    <i class="fa-solid fa-user" style="font-size: 30px;"></i>
+                                    <i class="fa-solid fa-user" style="font-size: 25px;"></i>
                                 </span>
                                 <span><span> <i class="fa fa-solid fa-chevron-down"
-                                            style="font-size: 30px;"></i></span></span>
+                                            style="font-size: 25px;"></i></span></span>
                             </a>
 
                             <div class="dropdown-menu">

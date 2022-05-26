@@ -12,18 +12,18 @@
                         </h6>
                         <p>
                         <div class="site-logo">
-                        <a href="{{url('/')}}" class="text-black"><span class="text-primary"><img
-                                    src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}" alt="logo"
-                                    class="img-fluid"></a>
+                            <a href="{{url('/')}}" class="text-black"><span class="text-primary"><img
+                                        src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}" alt="logo"
+                                        class="img-fluid"></a>
 
 
 
 
-                    </div>
+                        </div>
                         </p>
 
-                      
-               
+
+
 
 
                         <!-- Facebook -->
@@ -36,15 +36,14 @@
 
                         <!-- Google -->
                         <a href="{{$gs->youtube}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
-                            class="text-white" role="button"><i class="fa-brands fa-youtube-square fa-2xl"
-                               ></i></a>
+                            class="text-white" role="button"><i class="fa-brands fa-youtube-square fa-2xl"></i></a>
 
                         <!-- Instagram -->
                         <a href="{{$gs->instagram}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
                             class="text-white" role="button"> <i class="fa-brands fa-instagram-square fa-2xl"></i></a>
                     </div>
                     <!-- Grid column -->
-               
+
                     <!-- Grid column -->
 
                     <hr class="w-100 clearfix d-md-none" />

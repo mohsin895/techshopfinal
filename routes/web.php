@@ -30,6 +30,14 @@ Route::group(['middleware'=>['admin']],function(){
         Route::get('/users', function () {
             // Route assigned name "admin.users"...
         })->name('users');
+
+        Route::get('/cache/clear', function() {
+            Artisan::call('cache:clear');
+            Artisan::call('config:clear');
+            Artisan::call('route:clear');
+            Artisan::call('view:clear');
+            return redirect()->route('admin.dashboard')->with('flash_message_success','System Cache Has Been Removed.');
+          })->name('admin-cache-clear');
     Route::get('/dashboard',[App\Http\Controllers\Admin\AdminController::class,'index'])->name('dashboard');
     Route::get('/logout',[App\Http\Controllers\Admin\AdminController::class,'logout'])->name('logout');
     //AdminAccount start 

@@ -1,3 +1,9 @@
+@extends('layout.blog.master')
+@section('details-css')
+<link rel="stylesheet" href="{{asset('public/assets/blog/css/postcss.css')}}">
+@endsection
+@section('content')
+
 <?php
 
 use App\Models\blogCategory;
@@ -8,39 +14,6 @@ $user= App\Models\User::find($post->user_id);
 
 //   echo "<pre>";print_r($category);die();
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="{{asset('public/assets/blog/css/swiper.css')}}">
-    <link rel="stylesheet" href="{{asset('public/assets/blog/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('public/assets/blog/css/postcss.css')}}">
-
-    <link rel="icon" href="{{asset('public/assets/images/setting/'.$gs->blog_favicon)}}" sizes="32x32" />
-
-<title>{{$gs->site_title}}</title>
-</head>
-
-<body>
-
-
-    <!-- Navbar Starts-->
-     @include('layout.blog.header')
-    <!-- Navbar Ends -->
 
 
     <!-- Posts starts here -->
@@ -254,27 +227,4 @@ $user= App\Models\User::find($post->user_id);
 
     </div> -->
 
-@include('layout.blog.footer')
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js ">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " >
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js ">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js "></script>
-    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-
-  
-
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js "></script>
-
-    <script src="{{asset('public/assets/blog/js/index.js')}} "></script>
-
-
-</body>
-
-</html>
+@endsection

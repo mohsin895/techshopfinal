@@ -226,7 +226,7 @@
                     {{$category->cat_name}}
                     @endif
                 </p>
-                <a href="{{route('front.home')}}" class="btn btn-see__more mr-0 text-uppercase">See More</a>
+                <a href="{{url('/',$cat->slug)}}" class="btn btn-see__more mr-0 text-uppercase">See More</a>
             </div>
         </div>
         <div class="product-list-item">

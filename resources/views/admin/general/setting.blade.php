@@ -924,6 +924,23 @@
                                             <!--end::Input-->
                                         </div>
                                     </div>
+                                    <!-- <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                        
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>Facebook Pixel Code</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Facebook Pixel Code."></i>
+                                            </label>
+                                          
+                                        </div>
+                                        <div class="col-md-9">
+                                           
+                                            <textarea name="facebook_pixel" id="" cols="30"
+                                                rows="10" class="ckeditor">{!! $gs->facebook_pixel !!}</textarea>
+
+                                        </div>
+                                    </div> -->
 
                                     <div class="row">
                                         <div class="col-md-9 offset-md-3">
