@@ -22358,7 +22358,7 @@ body ::placeholder {
 
 .main-content-section .sidebar-category .card-header {
     border-radius: .5rem .5rem 0 0;
-    background-color: #1c619b;
+    background-color: #C6247E;
     color: #fff;
     padding: 1.325em 1.5em;
     height: 58px;
@@ -30946,7 +30946,7 @@ body ::placeholder {
     height: 400px;
     }
     .menu-bar ul li{
-        width: 20px;
+        width: 100%;
         border-bottom: 1px solid #e6e6e6;
 
     }
@@ -30957,7 +30957,7 @@ body ::placeholder {
         width: 600px;
     }
     .menu-bar ul li{
-        width: 20px;
+        width: 100%;
         border-bottom: 1px solid #e6e6e6;
 
     }
@@ -30976,7 +30976,7 @@ body ::placeholder {
         height: 1200px;
     }
     .menu-bar ul li{
-        width: 20px;
+        width: 100%;
         border-bottom: 1px solid #e6e6e6;
 
     }
@@ -30992,7 +30992,7 @@ body ::placeholder {
         height: 1200px;
     }
     .menu-bar ul li{
-        width: 20px;
+        width: 100%;
         border-bottom: 1px solid #e6e6e6;
 
     }
@@ -31008,7 +31008,7 @@ body ::placeholder {
     }
 
     .menu-bar ul li{
-        width: 20px;
+        width: 100%;
         border-bottom: 1px solid #e6e6e6;
 
     }
@@ -31180,7 +31180,7 @@ body ::placeholder {
    
 
     .menu-bar ul li{
-        width: 260px;
+        width: 240px;
 
     }
     .main-content-section .sidebar-category .card-header{
@@ -31207,7 +31207,7 @@ body ::placeholder {
     }
 
     .menu-bar ul li{
-        width: 280px;
+        width: 260px;
 
     }
     .main-content-section .sidebar-category .card-header{
@@ -31265,7 +31265,7 @@ body ::placeholder {
     height: 400px;
     }
     .menu-bar ul li{
-        width: 340px;
+        width: 400px;
 
     }
     /* .menu-bar ul li i{

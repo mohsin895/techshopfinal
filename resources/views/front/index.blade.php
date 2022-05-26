@@ -16,7 +16,7 @@
             <div class="sidebar-category ml-0">
 
                 <div class="card">
-                    <div class="card-header ">
+                    <div class="card-header w-100">
                         <p class="sidebar-title text-uppercase"><img
                                 src="{{ asset('public/image/frontLogos/category-icon.png') }}" alt="icon"> <a
                                 href="category-list" class="text-white">Categories</a></p>
