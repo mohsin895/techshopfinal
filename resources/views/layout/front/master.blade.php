@@ -202,7 +202,7 @@
     @yield('content')
 
 
-    <footer class="footer-section text-center text-lg-start text-white" style="background-color: #45526e">
+    <footer class="footer-section text-center text-lg-start text-white" style="background-color: #91195b">
         <!-- Grid container -->
         <div class=" p-4 pb-0">
             <!-- Section: Links -->
