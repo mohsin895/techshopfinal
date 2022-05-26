@@ -11,8 +11,8 @@
                 <div class="col-12 col-md-6 col-lg-6 col-sm-12 justify-content-center">
                     <div class="details-image-section">
                         <div class="details-image js--image-details">
-                            <img  src="{{asset('public/assets/images/giftcard/'.$giftcard->image)}}"
-                                 alt="Soldering-Iron-Stand.jpg" />
+                            <img src="{{asset('public/assets/images/giftcard/'.$giftcard->image)}}"
+                                alt="Soldering-Iron-Stand.jpg" />
 
                         </div>
 
@@ -60,11 +60,13 @@
 
 
                                 <a class="btn btn-cart d-none"><img
-                                        src="{{ asset('public/image/frontLogos/cart-icon-hover.png')}}" alt="icon">Purchase
+                                        src="{{ asset('public/image/frontLogos/cart-icon-hover.png')}}"
+                                        alt="icon">Purchase
                                     Now</a>
 
                                 <button type="submit" class="btn btn-cart-login">
-                                    <img src="{{ asset('public/image/frontLogos/cart-icon-hover.png')}}" alt="icon">Purchase
+                                    <img src="{{ asset('public/image/frontLogos/cart-icon-hover.png')}}"
+                                        alt="icon">Purchase
                                     Now</button>
 
                                 <!-- <a class="btn btn-back-order d-none">Back
@@ -121,10 +123,10 @@
 
 
 
-</div>
+    </div>
 
 </div>
 
 
 
-        @endsection
+@endsection

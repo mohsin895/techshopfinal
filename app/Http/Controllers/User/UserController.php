@@ -103,11 +103,14 @@ class UserController extends Controller
               //   });
        
               //Send confirm emails
+           
        
+       
+              $subject=$gs->site_title;
                 $email =$data['email'];
                $messageData = ['email'=>$data['email'],'name'=>$data['name'],'code'=>base64_encode($data['email'])];
-                Mail::send('email.confirmation',$messageData,function($message) use($email){
-                  $message->to($email)->subject('Confirm your  Account');
+                Mail::send('email.confirmation',$messageData,function($message) use($email,$subject){
+                  $message->to($email)->subject($subject.' '.'Say Please Confirm your  Account');
                 });
        
          return redirect('/user/login')->with('flash_message_success','Please Confirm Your email to Active your account !! ');
@@ -137,7 +140,7 @@ class UserController extends Controller
                 'name'=>$userDetails->name];
 
                 Mail::send('user.email.welcome', $messageData, function($message) use($email) {
-                        $message->to($email)->subject('Confirm to Techshop');
+                        $message->to($email)->subject('Confirm to your Account');
                     }
 
                 );
@@ -194,6 +197,7 @@ public function referall()
 }
 
 public function forgotPassword(Request $request) {
+  
     if ($request->isMethod('post')) {
         $data=$request->all();
         // echo "<pre>";print_r($data);die;
@@ -211,14 +215,21 @@ public function forgotPassword(Request $request) {
 
         $email=$data['email'];
         $name=$userDetails->name;
+        $gs = GeneralSetting::first();
+       
+       
+          $subject=$gs->site_title;
+          // dd($subject);
+         
+      
         $messageData=[ 
           'email'=>$email,
         'name'=>$name,
         'password'=>$random_password
       ];
 
-        Mail::send('user.email.forgotpassword', $messageData, function($message) use($email) {
-                $message->to($email)->subject('New Password - for techshop user');
+        Mail::send('user.email.forgotpassword', $messageData, function($message) use($email, $subject) {
+                $message->to($email)->subject('New Password From'.' ' . $subject);
             }
 
         );

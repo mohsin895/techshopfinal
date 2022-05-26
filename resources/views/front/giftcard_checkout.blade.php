@@ -13,7 +13,7 @@
                     <button type="button" class="btn js--btn-shipping"><i class="fa fa-angle-up"></i></button>
                 </div>
                 <div class="card-body js--shipping-body">
-                <p class="body-title">Select your payment method:</p>
+                    <p class="body-title">Select your payment method:</p>
                     <div class="col-12 ml-0 ">
 
                         <div class="form-check form-check-inline">
@@ -31,23 +31,26 @@
                     </div>
                     &nbsp;&nbsp;
                     <p class="body-title">Send your payment to this number{
-                        <div class="col-12 ml-0 ">
+                    <div class="col-12 ml-0 ">
 
                         <div class="form-check form-check-inline">
-                            
-                            <label class="form-check-label" for="inlineRadio1" style="color:black">#Bkash Number::{{$gs->bkash}}</label>
+
+                            <label class="form-check-label" for="inlineRadio1" style="color:black">#Bkash
+                                Number::{{$gs->bkash}}</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            
-                            <label class="form-check-label" for="inlineRadio2" style="color:black">#Nagad Number: {{$gs->nogod}}</label>
+
+                            <label class="form-check-label" for="inlineRadio2" style="color:black">#Nagad Number:
+                                {{$gs->nogod}}</label>
                         </div>
                         <div class="form-check form-check-inline">
-         
-                            <label class="form-check-label" for="inlineRadio3" style="color:black">#Rocket Number:{{$gs->rocket}}</label>
+
+                            <label class="form-check-label" for="inlineRadio3" style="color:black">#Rocket
+                                Number:{{$gs->rocket}}</label>
                         </div>
                     </div>
-                        
-                    
+
+
                     }, then fillup the form below and click "Pay Now".</p>
                     &nbsp;&nbsp;
                     <p class="body-title">Fill out your information</p>

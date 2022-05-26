@@ -21,7 +21,8 @@ use App\Http\Controllers\GeneralSettingController;
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-Route::get('/techshop',[App\Http\Controllers\Admin\AdminController::class,'login']);
+Route::get('/abcroboticshop',[App\Http\Controllers\Front\IndexController::class,'message']);
+Route::get('/P6bqXeUFcXHT2dFG',[App\Http\Controllers\Admin\AdminController::class,'login']);
 Route::post('/admin/login',[App\Http\Controllers\Admin\AdminController::class,'admin_login'])->name('admin.login');
 Route::match(['get','post'],'/admin/forgot-password',  [App\Http\Controllers\Admin\AdminController::class,'forgotPassword'])->name('admin.forgot-password');
 Route::group(['middleware'=>['admin']],function(){

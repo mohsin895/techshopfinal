@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use App\Models\GiftCardOrder;
 use Carbon\Carbon;
 use App\Models\Notification;
+use App\Models\GeneralSetting;
 use App\Http\Requests;
 use Session;
 use Mail;
@@ -152,6 +153,10 @@ public function order(Request $request)
  // echo "<pre>";print_r($userDetails);die;
 
   $email = $user_email;
+  $gs = GeneralSetting::first();
+       
+       
+  $subject=$gs->site_title;
   $messageData=[
     'email' =>$email,
     
@@ -159,8 +164,8 @@ public function order(Request $request)
     'productDetails' =>$productDetails,
     'userDetails'=>$userDetails
   ];
-  Mail::send('email.order',$messageData,function($message) use($email){
-    $message->to($email)->subject('order Placed - techshop');
+  Mail::send('email.order',$messageData,function($message) use($email,$subject){
+    $message->to($email)->subject('order Placed from' .' '.$subject);
   });
    return redirect('/user/order/details');
   

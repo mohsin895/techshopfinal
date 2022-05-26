@@ -238,4 +238,10 @@ public function gift_card()
   
 }
 
+public function message()
+{
+  $data['product']= Product::take(6)->inRandomOrder()->get();
+ return view('nothing',$data);
+}
+
 }

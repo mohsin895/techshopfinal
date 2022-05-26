@@ -3,10 +3,10 @@
 @section('content')
 @include('layout.front.header')
 <section id="contact">
-        <div class="card">
+        <div class="card col-12 col-sm-12 col-md-12 col-lg-12">
             <h1 class="contact-title">Submit Your Message</h1>
             
-            <form action="{{route('user.contact.email')}}" method="post" class="contact-form">
+            <form action="{{route('user.contact.email')}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="name" class="form-label">Name</label>

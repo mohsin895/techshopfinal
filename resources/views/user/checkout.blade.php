@@ -17,34 +17,86 @@
                             <p class="body-title">Fill out your information</p>
                             <form action="{{route('user.checkout')}}" method="post">
                                 @csrf
-                                <div class="form-inline">
-                                    <input type="text" id="name" name="name" placeholder="Name"
-                                        value="{{Auth::user()->name}}" class="form-control form-control-sm form-control-md" />
-                                    <input type="email" name="email" placeholder="Email" value="{{Auth::user()->email}}"
-                                        class="form-control form-control-sm form-control-md" disabled />
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 col-lg-6">
+                                        <label for="inputEmail4">Name</label>
+                                        <input type="text" id="name" name="name" placeholder="Name"
+                                        value="{{Auth::user()->name}}" class="form-control ">
+                                    </div>
+                                    <div class="form-group col-md-6 col-lg-6">
+                                        <label for="inputPassword4">Email</label>
+                                        <input type="email" name="email" placeholder="Email" value="{{Auth::user()->email}}"
+                                        class="form-control " disabled >
+                                    </div>
                                 </div>
 
-                                <input id="discount_value" type="hidden" value="0" />
+                               
+                                <!-- <div class="form-inline">
+                                    <input type="text" id="name" name="name" placeholder="Name"
+                                        value="{{Auth::user()->name}}" class="form-control " />
+                                    <input type="email" name="email" placeholder="Email" value="{{Auth::user()->email}}"
+                                        class="form-control " disabled />
+                                </div> -->
 
-                                <div class="form-inline mt-4">
+                                <!-- <input id="discount_value" type="hidden" value="0" /> -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Mobile Number</label>
+                                        <input type="text" id="phone" name="phone" placeholder="Phone"
+                                        value="{{Auth::user()->phone}}" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Country</label>
+                                        <input type="text" id="country" name="country" value="Bangladesh"
+                                        class="form-control" >
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-inline mt-4">
                                     <input type="text" id="phone" name="phone" placeholder="Phone"
                                         value="{{Auth::user()->phone}}" class="form-control" />
                                     <input type="text" id="country" name="country" value="Bangladesh"
                                         class="form-control" />
+                                </div> -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">City</label>
+                                        <input type="text" id="city" name="city" placeholder="City"
+                                        value="{{Auth::user()->city}}" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Post Code</label>
+                                        <input type="text" id="postCode" name="postcode" placeholder="Post Code"
+                                        value="{{Auth::user()->postcode}}" class="form-control" required  >
+                                    </div>
                                 </div>
-                                <div class="form-inline mt-4">
+                                <!-- <div class="form-inline mt-4">
                                     <input type="text" id="city" name="city" placeholder="City"
                                         value="{{Auth::user()->city}}" class="form-control" required />
                                     <input type="text" id="postCode" name="postcode" placeholder="Post Code"
                                         value="{{Auth::user()->postcode}}" class="form-control" required />
+                                </div> -->
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 ">
+                                        <label for="inputEmail4">Address1</label>
+                                        <textarea rows="2" class="form-control" name="address1" placeholder="Address1"
+                                        id="address1" required>{{Auth::user()->address1}}</textarea>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Address2</label>
+                                        <textarea rows="2" class="form-control" name="address2" placeholder="Address2"
+                                        id="address2" required>{{Auth::user()->address2}}</textarea>
+                                    </div>
                                 </div>
 
-                                <div class="form-inline mt-4">
+                                <!-- <div class="form-inline mt-4">
                                     <textarea rows="2" class="form-control" name="address1" placeholder="Address1"
                                         id="address1" required>{{Auth::user()->address1}}</textarea>
                                     <textarea rows="2" class="form-control" name="address2" placeholder="Address2"
                                         id="address2" required>{{Auth::user()->address2}}</textarea>
-                                </div>
+                                </div> -->
 
                         </div>
                     </div>
@@ -167,4 +219,4 @@
 </div>
 
 
-    @endsection
+@endsection
