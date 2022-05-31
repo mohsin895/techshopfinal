@@ -55,7 +55,7 @@
                                                         <button type="button" class="btn btn-number">
                                                             @if($cart->quantity>1)
                                                             <a href="{{url('/cart/update-quantity/'.$cart->id.'/-1')}}">
-                                                                <img src="{{ asset('image/frontLogos/minus-icon.png')}}"
+                                                                <img src="{{ asset('public/image/frontLogos/minus-icon.png')}}"
                                                                     alt="icon"></a>
                                                             @endif
                                                         </button>

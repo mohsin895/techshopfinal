@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\CouponCode;
 use Auth;
 use Session;
 use DB;
@@ -34,8 +35,7 @@ class CartController extends Controller
 
 public function addtocart(Request $request)
 {
-Session::forget('CouponAmount');
-Session::forget('CouponCode');
+
 $data = $request->all();
 //   echo "<pre>"; print_r($data);die;
  if (empty(Auth::user()->email)) {
@@ -90,5 +90,42 @@ public function deleteCartProduct($id=null)
    
 DB::table('carts')->where('id',$id )->delete();
 return redirect('user/cart')->with('flash_message_success','Cart Item has delete successfully');
+}
+
+
+public function applyCoupon(Request $request)
+{
+  Session::forget('CouponAmount');
+  Session::forget('CouponCode');
+ 
+$data = $request->all();
+// echo "<pre>"; print_r($data);die;
+$couponCount =CouponCode::where('coupon_code',$data['coupon_code'])->count();
+if ($couponCount == 0) {
+return redirect()->back()->with('flash_message_error','Coupon is not valid');
+}else {
+$couponDetails =CouponCode::where('coupon_code',$data['coupon_code'])->first();
+if($couponDetails->status==0) {
+return redirect()->back()->with('flash_message_error','Coupon is not active');
+}
+$expiry_date = $couponDetails->expiry_date;
+ $currebt_date = date('Y-m-d');
+ if ($expiry_date<$currebt_date) {
+   return redirect()->back()->with('flash_message_error','Coupon is expired!!');
+ }
+//  dd($couponDetails);
+
+$code = $request->get('coupon_code', '');
+Session::put('couponCode',$code);
+$couponCode = Session::get('couponCode');
+// dd($couponCode);
+
+
+
+
+
+return redirect()->back()->with('flash_message_success','Coupon Code successfully Applied. You are availing discount!!');
+}
+
 }
 }

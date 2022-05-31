@@ -300,7 +300,7 @@
         </div>
 
         <div class="qa-list-wrapper">
-            <p class="subtitle border-bottom">Total 7 questions</p>
+            <p class="subtitle border-bottom"> questions</p>
             @foreach($productDetails['question'] as $row)
             @php
             $user = App\Models\User::find($row->user_id);

@@ -585,6 +585,40 @@
                                          
                                         </div>
                                     </div>
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                      
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>Best Selling Product(%)</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Best Selling Product."></i>
+                                            </label>
+                                      
+                                        </div>
+                                        <div class="col-md-9">
+                                       
+                                            <input type="number" class="form-control form-control-solid"
+                                                name="best_selling_product" value="{{$gs->best_selling_product}}"> 
+                                         
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                      
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>Less Selling Product(%)</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Less Selling Product."></i>
+                                            </label>
+                                      
+                                        </div>
+                                        <div class="col-md-9">
+                                       
+                                            <input type="number" class="form-control form-control-solid"
+                                                name="less_selling_product" value="{{$gs->less_selling_product}}"> 
+                                         
+                                        </div>
+                                    </div> -->
                                     <!--end::Input group-->
                                     <!--begin::Input group-->
                                     <div class="row fv-row mb-7">

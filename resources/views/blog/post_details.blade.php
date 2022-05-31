@@ -16,43 +16,34 @@ $user= App\Models\User::find($post->user_id);
 ?>
 
 
-    <!-- Posts starts here -->
+<!-- Posts starts here -->
 
 
 
-    <div class="container">
+<div class="container">
 
 
-        <!-- Post Image Starts -->
-        <img class="post-image" src="{{asset('public/assets/images/blog/'.$post->image)}}" alt="">
-        <!-- Post Image Starts -->
+    <!-- Post Image Starts -->
+    <img class="post-image" src="{{asset('public/assets/images/blog/'.$post->image)}}" alt="">
+    <!-- Post Image Starts -->
 
-        <div class="post-heading">
-            <div class="post-title">
-            {{ $post->title}}
-            </div>
+    
 
-            <div class="post-date">
-            {{ $post->created_at->toDayDateTimeString()}}
-            </div>
-            <!-- <div class="watched-by">
-                <div class="watch-icon"><i class="fa-solid fa-eye "></i></div>
+    <div class="card text-left" style="width: auto;">
+  <div class="card-body">
+    <h5 class="card-title"> {{ $post->title}}</h5>
+    <h5 class="card-title">{{ $post->created_at->toDayDateTimeString()}}</h5>
+    <p class="card text-bold" style="color:black">{!! $post->description !!}</p>
 
-                <div class="watch-number">814</div>
-            </div> -->
-
-        </div>
-
-        <div class="post-body">
-        {!! $post->description !!}
-        </div>
-        <!-- Posts body ends here -->
+  </div>
+</div>
+    <!-- Posts body ends here -->
 
 
-        <div class="divider"></div>
+    <div class="divider"></div>
 
-        <!-- Share starts -->
-        <!-- <div class="post-share">
+    <!-- Share starts -->
+    <!-- <div class="post-share">
             <p>Share with your friends</p>
             <ul>
                 <li><i class="fa-brands fa-facebook-square fa-3x"></i></li>
@@ -62,118 +53,119 @@ $user= App\Models\User::find($post->user_id);
                 <li><i class="fa-brands fa-instagram-square fa-3x"></i></li>
             </ul>
         </div> -->
-        <!-- Share ends-->
-        <div class="author">
-            <div class="author-details">
-                <div class="row">
-                    <div class="col-lg-1">
-                        <div class="author-img">
-                            <img src="{{asset('public/assets/images/admin/profile/'.$user->image)}}" alt="">
-                        </div>
+    <!-- Share ends-->
+    <div class="author">
+        <div class="author-details">
+            <div class="row">
+                <div class="col-lg-1">
+                    <div class="author-img">
+                        <img src="{{asset('public/assets/images/admin/profile/'.$user->image)}}" alt="">
                     </div>
-                    <div class="col">
-                        <div class="author-details-body">
-                            <div class="author-name">
-                                <p>
+                </div>
+                <div class="col">
+                    <div class="author-details-body">
+                        <div class="author-name">
+                            <p>
                                 {{$user->name}}
-                                </p>
-                            </div>
+                            </p>
+                        </div>
 
-                            <!-- <div class="author-description">
+                        <!-- <div class="author-description">
                                 <p>Engineer Techshop Bangladesh E-mail: nur@techshopbd.com</p>
                             </div> -->
 
-                            <div class="author-links">
-                                <i class=" fa-solid fa-globe fa-2xl"></i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="comment-section">
-            <div class="comments-box">
-                <p class="number-of-comments"> Comments</p>
-            </div>
-
-            @foreach($post_comment as $post)
-            <div class="comments-box">
-                <div class="comments-area">
-                    <div class="row">
-                        <div class="col-lg-1">
-                            <div class="commentor-img">
-                                <img src="" alt="" srcset="">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="commentor-name">
-                                <p>{{$post->name}}</p>
-                            </div>
-                            <div class="comment-body">
-                                <p>
-                                {{$post->comment}}
-                                </p>
-                            </div>
+                        <div class="author-links">
+                            <i class=" fa-solid fa-globe fa-2xl"></i>
                         </div>
                     </div>
-                </div>
-
-            </div>
-            @endforeach
-           
-            <div class="comments-box"></div>
-
-
-            <div class="reply-secton">
-                <div class="reply-section-title">
-                    <p>Leave a Reply</p>
-                </div>
-
-                <div class="reply-form">
-
-
-                    <form action="{{url('/blog/post/comment')}}" method="post">
-                        @csrf
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="inputEmail4">Name</label>
-                                <input type="text" name ="name"class="form-control" placeholder="Name">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputPassword4">Email</label>
-                                <input type="email" name="email" required class="form-control" id="inputEmail4" placeholder="Email">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputPassword4">Website</label>
-                                <input type="text" name="website" class="form-control" placeholder="Website">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="comment-reply">Comment</label>
-                            <input type="text" name="comment" class="form-control comment" id="comment-reply">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Comment</button>
-                    </form>
-
 
                 </div>
             </div>
         </div>
-
-
     </div>
 
-@php 
+
+    <div class="comment-section">
+        <div class="comments-box">
+            <p class="number-of-comments"> Comments</p>
+        </div>
+
+        @foreach($post_comment as $post)
+        <div class="comments-box">
+            <div class="comments-area">
+                <div class="row">
+                    <div class="col-lg-1">
+                        <div class="commentor-img">
+                            <img src="" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="commentor-name">
+                            <p>{{$post->name}}</p>
+                        </div>
+                        <div class="comment-body">
+                            <p>
+                                {{$post->comment}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @endforeach
+
+        <div class="comments-box"></div>
+
+
+        <div class="reply-secton">
+            <div class="reply-section-title">
+                <p>Leave a Reply</p>
+            </div>
+
+            <div class="reply-form">
+
+
+                <form action="{{url('/blog/post/comment')}}" method="post">
+                    @csrf
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail4">Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPassword4">Email</label>
+                            <input type="email" name="email" required class="form-control" id="inputEmail4"
+                                placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPassword4">Website</label>
+                            <input type="text" name="website" class="form-control" placeholder="Website">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment-reply">Comment</label>
+                        <input type="text" name="comment" class="form-control comment" id="comment-reply">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Comment</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@php
 
 @endphp
 
 <div class="container">
     <div class="Headingtitle">
-       Related Post
+        Related Post
     </div>
     <div class="divider"></div>
 </div>
@@ -188,7 +180,7 @@ $user= App\Models\User::find($post->user_id);
                         alt="Card image cap ">
                     <div class="card-body ">
                         <h5 class="card-title ">{{substr($row->title,0,20)}}</h5>
-                        <p class="card-text "{!! substr($row->description,0,20) !!}</p>
+                        <p class="card-text " {!! substr($row->description,0,20) !!}</p>
                         <a href="{{route('blog.post.details',$row->slug)}}" class="btn btn-primary btn-block ">Read
                             More</a>
                     </div>
@@ -205,7 +197,7 @@ $user= App\Models\User::find($post->user_id);
 
 </div>
 
-    <!-- <div class="related-posts">
+<!-- <div class="related-posts">
 
         <div class="container">
             <div class="related-posts-container">

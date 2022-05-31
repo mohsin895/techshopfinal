@@ -42,11 +42,13 @@ class GeneralSettingController extends Controller
             $setting->linkdi = $data['linkdi'];
             $setting->blog_about_us = $data['blog_about_us'];
             $setting->meta_description = $data['meta_description'];
+            $setting->best_selling_product = $data['best_selling_product'];
+            $setting->less_selling_product = $data['less_selling_product'];
             $setting->t_c = $data['t_c'];
             $setting->w_r = $data['w_r'];
             $setting->about_us = $data['about_us'];
             $setting->privecy_policy = $data['privecy_policy'];
-            $setting->facebook_pixel = $data['facebook_pixel'];
+         
             $setting->meta_viewport = $data['meta_viewport'];
             //login Image
             if ($request->hasFile('login_image')) {

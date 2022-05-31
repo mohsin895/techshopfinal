@@ -217,6 +217,10 @@
                                         data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
+                                            <a href="{{route('admin.product.view_details',$row->id)}}"
+                                                class="menu-link px-3">View Details</a>
+                                        </div>
+                                        <div class="menu-item px-3">
                                             <a href="{{route('admin.product.edit',$row->id)}}"
                                                 class="menu-link px-3">Edit</a>
                                         </div>

@@ -21,7 +21,7 @@ class ProductController extends Controller
         $data['table']="Show Product";
         $data['add']="Add Product";
         $data['add_title'] = "Add product";
-        $data['product'] = Product::where('flash_sale','!=',1)->orderBy('id','desc')->get();
+        $data['product'] = Product::orderBy('id','desc')->get();
         // dd($data['product']);
     return view('admin.product.index',$data);
     }
@@ -254,10 +254,85 @@ public function add()
     {
         $data['title']="Admin Dashboard";
         $data['table']="Show Top Selling Product";
+        $data['add']="Top Selling Product";
+        $data['add_title'] = "Top Selling product";
+        $data['product'] = Product::orderBy('id','desc')->get();
+        // dd($data['product'] );
+        return view('admin.product.top_selling',$data);
+    }
+
+    public function less_selling()
+    {
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Less Selling Product";
+        $data['add']="Less Selling Product";
+        $data['add_title'] = "Less Selling product";
+        $data['product'] = Product::orderBy('id','desc')->get();
+        // dd($data['product'] );
+        return view('admin.product.less_selling',$data);
+    }
+
+    public function never_selling()
+    {
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Top Selling Product";
         $data['add']="Add Product";
         $data['add_title'] = "Add product";
         $data['product'] = Product::orderBy('id','desc')->get();
-        return view('admin.product.top_selling',$data);
+        return view('admin.product.never_selling',$data);
+    }
+
+
+    public function last_month_selling()
+    {
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Last Month Selling Product";
+        $data['add']="Add Product";
+        $data['add_title'] = "Add product";
+        $data['product'] = Product::orderBy('id','desc')->get();
+        return view('admin.product.last_month_selling_product',$data);
+    }
+
+    public function last_month_not_selling()
+    {
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Last Month Selling Product";
+        $data['add']="Add Product";
+        $data['add_title'] = "Add product";
+        $data['product'] = Product::orderBy('id','desc')->get();
+        return view('admin.product.last_month_not_selling_product',$data);
+    }
+
+    public function last_year_selling()
+    {
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Last Year Selling Product";
+        $data['add']="Add Product";
+        $data['add_title'] = "Add product";
+        $data['product'] = Product::orderBy('id','desc')->get();
+        return view('admin.product.last_year_selling_product',$data);
+    }
+    public function last_year_not_selling()
+    {
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Last Year Selling Product";
+        $data['add']="Add Product";
+        $data['add_title'] = "Add product";
+        $data['product'] = Product::orderBy('id','desc')->get();
+        return view('admin.product.last_year_not_selling_product',$data);
+    }
+
+    public function view_deatils($id)
+    {
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Details Product";
+        $data['add']="Details Product";
+        $data['add_title'] = "Edit Category";
+        $data['category']= Category::where('parent_id',0)->get();
+        $data['subcategory']= Category::where('parent_id','!=',0)->get();
+        // dd($data['subcategory']);
+        $data['product'] = Product::find($id);
+        return view('admin.product.details',$data);
     }
 
 }

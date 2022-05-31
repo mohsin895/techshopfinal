@@ -70,7 +70,7 @@
                     </div>
                     <!--end::Card title-->
                     <!--begin::Card toolbar-->
-                    
+
                     <!--end::Card toolbar-->
                 </div>
                 <!--end::Card header-->
@@ -91,9 +91,11 @@
                                 </th> -->
                                 <th class="min-w-200px">Product</th>
                                 <th class="text-center min-w-100px">Model No</th>
-                                <th class="text-center min-w-70px">Qty</th>
-                                <th class="text-center min-w-70px">Sell Quantity</th>
-                             
+                                <th class="text-center min-w-70px">Total Qt</th>
+                                <th class="text-center min-w-70px">Total Sell Qt</th>
+                                <th class="text-center min-w-70px">Stock Quantity</th>
+                                <th class="text-center min-w-100px">Buying Price</th>
+                                <th class="text-center min-w-100px">Selling Price</th>
                                 <!-- <th class="text-center min-w-100px">Rating</th>
                                 <th class="text-center min-w-100px">Status</th> -->
                                 <th class="text-center min-w-70px">Actions</th>
@@ -105,11 +107,20 @@
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
                             @foreach($product as $row)
-                            @php 
+                            @php
+                            $totalQuantity = App\Models\Qty::where('product_id',$row->id)->sum('quantity');
                             $sellQuantity = App\Models\OrderProduct::where('product_id',$row->id)->sum('quantity');
+                            $sellQuantityr =round($sellQuantity);
+                         
                             $stockOutQuantity = App\Models\OrderProduct::where('product_id',$row->id)->sum('quantity');
+                            $bestSellingProduct = round(($gs->best_selling_product*$sellQuantity)/100);
+                        
+                       
                             @endphp
-                          
+                           
+
+                            @if($sellQuantityr = $bestSellingProduct)
+
                             <tr>
                                 <!--begin::Checkbox-->
                                 <!-- <td>
@@ -122,8 +133,7 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <!--begin::Thumbnail-->
-                                        <a href="{{route('admin.product.edit',$row->id)}}"
-                                            class="symbol symbol-50px">
+                                        <a href="{{route('admin.product.edit',$row->id)}}" class="symbol symbol-50px">
                                             <span class="symbol-label"
                                                 style="background-image:url({{asset('public/assets/images/product/'.$row->image)}});"></span>
                                         </a>
@@ -140,27 +150,46 @@
                                 <!--end::Category=-->
                                 <!--begin::SKU=-->
                                 <td class="text-center pe-0">
-                                    <span class="fw-bolder">{{$row->model_no}}</span>
+                                    <span class="fw-bolder">{{$row->model_no}} </span>
                                 </td>
                                 <!--center::SKU=-->
                                 <!--begin::Qty=-->
                                 <td class="text-center pe-0" data-order="45">
-
-                   {{$row->quantity}}
+                                    <span class="fw-bolder ms-3">
+                                        {{$totalQuantity}}
+                                    </span>
                                 </td>
                                 <td class="text-center pe-0">
                                     <span class="fw-bolder">{{$sellQuantity}}</span>
                                 </td>
-                              
+                                <td class="text-center pe-0">
+                                    <span class="fw-bolder">{{$totalQuantity - $sellQuantity }}</span>
+                                </td>
+                                <!--center::Qty=-->
+                                <!--begin::Price=-->
+                                <td class="text-center pe-0">
+                                    <span class="fw-bolder text-dark">
+                                        <input class=" form-control buying_price" style="width:100px;" type="text"
+                                            data-id="{{$row->id}}" value="{{$row->buying_price}}"></span>
+
+
+                                </td>
+                                <td class="text-center pe-0">
+                                    <span class="fw-bolder text-dark">
+                                        <input class=" form-control price" style="width:100px;" type="text"
+                                            data-id="{{$row->id}}" value="{{$row->price}}">
+                                    </span>
+
+                                </td>
                                 <!--end::Price=-->
                                 <!--begin::Rating-->
-                            
+
                                 <!--end::Rating-->
                                 <!--begin::Status=-->
                                 <!-- <td class="text-end pe-0" data-order="Inactive"> -->
-                                    <!--begin::Badges-->
-                                    <!-- <div class="badge badge-light-danger">Inactive</div> -->
-                                    <!--end::Badges-->
+                                <!--begin::Badges-->
+                                <!-- <div class="badge badge-light-danger">Inactive</div> -->
+                                <!--end::Badges-->
                                 <!-- </td> -->
                                 <!--end::Status=-->
                                 <!--begin::Action=-->
@@ -198,12 +227,15 @@
                                 </td>
                                 <!--end::Action=-->
                             </tr>
-                          
-                          @endforeach
-                          
-                            
-                
-                          
+                            @else
+
+                            @endif
+
+                            @endforeach
+
+
+
+
                             <!--end::Table row-->
                         </tbody>
                         <!--end::Table body-->

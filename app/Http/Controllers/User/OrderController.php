@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use App\Models\Notification;
 use App\Models\GeneralSetting;
 use App\Http\Requests;
+use App\Models\CouponCode;
 use Session;
 use Mail;
 use DB;
@@ -61,7 +62,9 @@ public function order(Request $request)
      
        $delivery = Session::get('delivery');
        $giftcard = Session::get('giftcard_amount');
-    
+       $couponCode = Session::get('couponCode');
+      //  dd( $couponCode);
+  
       // dd($delivery);
       $giftcardOrder = Order::where('user_id',Auth::user()->id)->sum('giftcard_amount');
       $dt = Carbon::now();
@@ -105,6 +108,22 @@ public function order(Request $request)
    }else{
     $order->giftcard_amount= '0';
    }
+
+   if(!empty($data['coupon_code'])){
+    $order->coupon_code= $data['coupon_code'];
+   }else{
+    $order->coupon_code= '0';
+   }
+   if(!empty($data['amount_type'])){
+    $order->amount_type= $data['amount_type'];
+   }else{
+    $order->amount_type= '0';
+   }
+   if(!empty($data['amount'])){
+    $order->amount= $data['amount'];
+   }else{
+    $order->amount= '0';
+   }
    
    $order->order_status = "New";
    $order->status = "New";
@@ -129,6 +148,7 @@ public function order(Request $request)
      $cartPro->product_name = $pro->product_name;
   
      $cartPro->price = $pro->price;
+     $cartPro->total_price = $pro->price * $pro->quantity;
      $cartPro->buying_price = $pro->buying_price;
      if(Auth::user()->referral_id ==$pro->referral_id){
       $cartPro->referral_id = 0;
@@ -171,7 +191,7 @@ public function order(Request $request)
   
      }
      
-        return view('user.checkout',compact('userCart','giftcardvalue','toatlbalancegiftcard','delivery','giftcard'));
+        return view('user.checkout',compact('userCart','giftcardvalue','toatlbalancegiftcard','delivery','giftcard','couponCode'));
     }
 
     public function order_details()

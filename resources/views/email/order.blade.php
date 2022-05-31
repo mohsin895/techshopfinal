@@ -54,6 +54,17 @@
             </tr>
 
             @endforeach
+            @if(!empty($productDetails['coupon_code']))
+            <tr>
+              <td colspan="3" align="right">Subtotal With Coupon Code(-):</td>
+              <td>{{$gs->currency}}&nbsp;&nbsp; {{$productDetails['subtotal']}}</td>
+            </tr>
+            @else
+            <tr>
+              <td colspan="3" align="right">Subtotal:</td>
+              <td>{{$gs->currency}}&nbsp;&nbsp; {{$productDetails['subtotal']}}</td>
+            </tr>
+            @endif
             <tr>
               <td colspan="3" align="right">Vat(%):</td>
               <td>{{$gs->currency}}&nbsp;&nbsp; {{$productDetails['vat']}}</td>

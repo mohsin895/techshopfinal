@@ -12,6 +12,7 @@ use App\Models\Question;
 use App\Models\Answer;
 use App\Models\UserMessage;
 use App\Models\Notification;
+Use \Carbon\Carbon;
 use Auth;
 use Mail;
 
@@ -152,6 +153,29 @@ public function message_answer(Request $request,$id)
       return back();
    }
 }
+
+public function today_birthday()
+   {
+      $todaybirthday = carbon::now()->toDateString();
+      // dd($todaybirthday);
+    $data['user'] = User::where('is_admin',NULL)->where('date_of_birth',$todaybirthday)->orderBy('id','DESC')->get();
+    
+    return view('admin.user.index',$data);
+   }
+
+   public function monthly_birthday()
+   {
+   
+      // dd($todaybirthday);
+    $data['user'] = User::where('is_admin',NULL)->whereMonth('date_of_birth', date('m'))
+    ->whereYear('date_of_birth', date('Y'))
+    ->get();
+//     $birth= User::whereMonth('date_of_birth', date('m'))
+// ->whereYear('date_of_birth', date('Y'))
+// ->get(['id','date_of_birth']);
+//     dd($birth);
+    return view('admin.user.index',$data);
+   }
 
 
 }

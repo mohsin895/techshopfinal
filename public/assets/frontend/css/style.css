@@ -31100,6 +31100,10 @@ body ::placeholder {
     .menu-bar ul li:hover .sub-menu-1{
         margin-left: 280px;
     }
+
+    .shippingcheckout{
+        height: 1500px;
+    }
 }
 
 @media (min-width:800px) {
@@ -31207,7 +31211,7 @@ body ::placeholder {
     }
 
     .menu-bar ul li{
-        width: 260px;
+        width: 280px;
 
     }
     .main-content-section .sidebar-category .card-header{

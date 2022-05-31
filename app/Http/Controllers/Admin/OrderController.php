@@ -202,7 +202,10 @@ class OrderController extends Controller
     public function invoice($id)
     {
         $data['order']= Order::with('orderProduct')->where('id',$id)->first();
-        //  dd($data['order']);
+        $data['birthday_user'] = User::where('id',$data['order']->user_id)->whereMonth('date_of_birth', date('m'))
+    ->whereYear('date_of_birth', date('Y'))
+    ->first();
+        //  dd($data['user']);
         return view('admin.order.invoice',$data);
     }
 }

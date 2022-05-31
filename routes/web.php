@@ -85,13 +85,20 @@ Route::get('/product/stok/out/updateQuantity/{id}/{p}',[App\Http\Controllers\Adm
 Route::get('/product/stok/low/updateQuantity/{id}/{p}',[App\Http\Controllers\Admin\ProductController::class,'updateQuantitylow']);
 Route::get('/product/stok/low',[App\Http\Controllers\Admin\ProductController::class,'stock_low'])->name('product.stock.low');
 Route::get('/product/stok/out',[App\Http\Controllers\Admin\ProductController::class,'stock_out'])->name('product.stock.out');
-Route::get('/product/top/selling',[App\Http\Controllers\Admin\ProductController::class,'top_selling'])->name('product.selling.product');
+Route::get('/product/top/selling',[App\Http\Controllers\Admin\ProductController::class,'top_selling'])->name('product.top.selling.product');
+Route::get('/product/less/selling',[App\Http\Controllers\Admin\ProductController::class,'less_selling'])->name('product.less.selling.product');
+Route::get('/product/never/selling',[App\Http\Controllers\Admin\ProductController::class,'never_selling'])->name('product.never.selling.product');
+Route::get('/product/last-month/selling',[App\Http\Controllers\Admin\ProductController::class,'last_month_selling'])->name('product.last-month.selling.product');
+Route::get('/product/last-month/not-selling',[App\Http\Controllers\Admin\ProductController::class,'last_month_not_selling'])->name('product.last-month.not-selling.product');
+Route::get('/product/last-year/selling',[App\Http\Controllers\Admin\ProductController::class,'last_year_selling'])->name('product.last-year.selling.product');
+Route::get('/product/last-year/not-selling',[App\Http\Controllers\Admin\ProductController::class,'last_year_not_selling'])->name('product.last-year.not-selling.product');
 Route::get('/product/add',[App\Http\Controllers\Admin\ProductController::class,'add'])->name('product.add');
 Route::get('/product/edit/{id}',[App\Http\Controllers\Admin\ProductController::class,'edit'])->name('product.edit');
 Route::post('/product/insert',[App\Http\Controllers\Admin\ProductController::class,'insert'])->name('product.insert');
 Route::post('/product/update/{id}',[App\Http\Controllers\Admin\ProductController::class,'update'])->name('product.update');
 Route::get('/delete-product/{id}',[App\Http\Controllers\Admin\ProductController::class,'delete'])->name('product.delete');
 Route::get('/get_subcategory',[App\Http\Controllers\Admin\ProductController::class,'get_subcat'])->name('get_subcategory');
+Route::get('/product/view-details/{id}',[App\Http\Controllers\Admin\ProductController::class,'view_deatils'])->name('product.view_details');
 
 Route::get('/product/update-status/{id}/{status}',[App\Http\Controllers\Admin\ProductController::class,'status']);
 Route::get('/product/updateBuyingPrice/{id}/{p}',[App\Http\Controllers\Admin\ProductController::class,'updateBuyingPrice']);
@@ -131,6 +138,17 @@ Route::get('/delete-banner/{id}',[App\Http\Controllers\Admin\BannerController::c
 
 Route::get('/banner/update-status/{id}/{status}',[App\Http\Controllers\Admin\BannerController::class,'status']);
 //Slider2COntroller End
+//COuponcodeController Start 
+Route::get('/couponcode',[App\Http\Controllers\Admin\CouponCodeController::class,'index'])->name('couponcode.index');
+Route::get('/couponcode/add',[App\Http\Controllers\Admin\CouponCodeController::class,'add'])->name('couponcode.add');
+Route::get('/couponcode/edit/{id}',[App\Http\Controllers\Admin\CouponCodeController::class,'edit'])->name('couponcode.edit');
+Route::post('/couponcode/insert',[App\Http\Controllers\Admin\CouponCodeController::class,'insert'])->name('couponcode.insert');
+Route::post('/couponcode/update/{id}',[App\Http\Controllers\Admin\CouponCodeController::class,'update'])->name('couponcode.update');
+Route::get('/delete-couponcode/{id}',[App\Http\Controllers\Admin\CouponCodeController::class,'delete'])->name('couponcode.delete');
+
+Route::get('/couponcode/update-status/{id}/{status}',[App\Http\Controllers\Admin\CouponCodeController::class,'status']);
+
+//CouponCodeCOntroller End
 
 //BlogCategoryCOntroller start 
 Route::get('/blog/category',[App\Http\Controllers\Admin\BlogCategoryController::class,'index'])->name('blog.category');
@@ -212,6 +230,8 @@ Route::post('/all_user/sendMail',[App\Http\Controllers\Admin\MailController::cla
 //MailCOntroller End
 //UserControll Start 
 Route::get('/user',[App\Http\Controllers\Admin\UserController::class,'index'])->name('user.index');
+Route::get('/user/today-birthday',[App\Http\Controllers\Admin\UserController::class,'today_birthday'])->name('user.today-birthday');
+Route::get('/user/monthly-birthday',[App\Http\Controllers\Admin\UserController::class,'monthly_birthday'])->name('user.monthly-birthday');
 Route::get('/user/product/Userquestion/update-status/{id}/{status}',[App\Http\Controllers\Admin\UserController::class,'ajax_question_status']);
 Route::get('/user/message',[App\Http\Controllers\Admin\UserController::class,'message'])->name('user.message');
 Route::get('/user/product/comment',[App\Http\Controllers\Admin\UserController::class,'product_comment'])->name('user.product.comment');
@@ -337,6 +357,7 @@ Route::get('autocomplete', [App\Http\Controllers\User\ExtraController::class, 'a
 
 Route::group(['middleware'=>['auth']],function(){
     Route::name('user.')->prefix('user')->group(function () {
+        Route::match(['get','post'],'/cart/apply-coupon', [App\Http\Controllers\User\CartController::class,'applyCoupon'])->name('cart.applyCoupon');
         Route::get('/logout', [App\Http\Controllers\User\UserController::class,'logout'])->name('logout');
         Route::match(['get','post'],'/order', [App\Http\Controllers\User\OrderController::class,'order'])->name('order');
         Route::match(['get','post'],'/checkout', [App\Http\Controllers\User\OrderController::class,'checkout'])->name('checkout');

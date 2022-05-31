@@ -10,6 +10,34 @@
                 <div class="col-12 col-md-8 col-lg-8 col-sm-12 mb-5">
                     <div class="card js--shipping-card">
                         <div class="card-header d-flex align-items-center">
+                            <p class="address-title">Apply Coupon Code</p>
+                            @include('error.message')
+                            <button type="button" class="btn js--btn-shipping"><i class="fa fa-angle-up"></i></button>
+                        </div>
+                        <div class="card-body js--shipping-body">
+
+                            <form action="{{route('user.cart.applyCoupon')}}" method="POST">
+                                @csrf
+
+                                <div class="d-flex">
+
+
+                                    <input type="text" name="coupon_code" class="form-control" value=""><button
+                                        type="submit" class="btn btn-warning">Apply
+                                    </button>
+                                </div>
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-8 col-lg-8 col-sm-12 mb-5">
+                    <div class="card js--shipping-card">
+                        <div class="card-header d-flex align-items-center">
                             <p class="address-title">Shipping Address</p>
                             <button type="button" class="btn js--btn-shipping"><i class="fa fa-angle-up"></i></button>
                         </div>
@@ -22,16 +50,16 @@
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputEmail4">Name</label>
                                         <input type="text" id="name" name="name" placeholder="Name"
-                                        value="{{Auth::user()->name}}" class="form-control ">
+                                            value="{{Auth::user()->name}}" class="form-control ">
                                     </div>
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputPassword4">Email</label>
-                                        <input type="email" name="email" placeholder="Email" value="{{Auth::user()->email}}"
-                                        class="form-control " disabled >
+                                        <input type="email" name="email" placeholder="Email"
+                                            value="{{Auth::user()->email}}" class="form-control " disabled>
                                     </div>
                                 </div>
 
-                               
+
                                 <!-- <div class="form-inline">
                                     <input type="text" id="name" name="name" placeholder="Name"
                                         value="{{Auth::user()->name}}" class="form-control " />
@@ -44,12 +72,12 @@
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Mobile Number</label>
                                         <input type="text" id="phone" name="phone" placeholder="Phone"
-                                        value="{{Auth::user()->phone}}" class="form-control">
+                                            value="{{Auth::user()->phone}}" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Country</label>
                                         <input type="text" id="country" name="country" value="Bangladesh"
-                                        class="form-control" >
+                                            class="form-control">
                                     </div>
                                 </div>
 
@@ -63,12 +91,12 @@
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">City</label>
                                         <input type="text" id="city" name="city" placeholder="City"
-                                        value="{{Auth::user()->city}}" class="form-control" required>
+                                            value="{{Auth::user()->city}}" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Post Code</label>
                                         <input type="text" id="postCode" name="postcode" placeholder="Post Code"
-                                        value="{{Auth::user()->postcode}}" class="form-control" required  >
+                                            value="{{Auth::user()->postcode}}" class="form-control" required>
                                     </div>
                                 </div>
                                 <!-- <div class="form-inline mt-4">
@@ -82,12 +110,12 @@
                                     <div class="form-group col-md-6 ">
                                         <label for="inputEmail4">Address1</label>
                                         <textarea rows="2" class="form-control" name="address1" placeholder="Address1"
-                                        id="address1" required>{{Auth::user()->address1}}</textarea>
+                                            id="address1" required>{{Auth::user()->address1}}</textarea>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Address2</label>
                                         <textarea rows="2" class="form-control" name="address2" placeholder="Address2"
-                                        id="address2" required>{{Auth::user()->address2}}</textarea>
+                                            id="address2" required>{{Auth::user()->address2}}</textarea>
                                     </div>
                                 </div>
 
@@ -101,15 +129,40 @@
                         </div>
                     </div>
                 </div>
+                @php
+                $coupon = App\Models\CouponCode::where('coupon_code',$couponCode)->first();
+
+
+                @endphp
+               
                 <div class="col-12  col-md-4 col-lg-4 col-sm-12 mb-10 ">
                     <div class="shipping-summary ">
                         <div class="card ">
+                        @if(!empty($coupon))
+                <input  type="hidden" name="coupon_code" value="{{$coupon->coupon_code}}">
+                <input  type="hidden" name="amount_type" value="{{$coupon->amount_type}}">
+                <input  type="hidden" name="amount" value="{{$coupon->amount}}">
+
+                @else
+
+                @endif
+
                             <?php $total_amount = 0;  ?>
                             @foreach($userCart as $cart)
 
                             <?php $total_amount =  $total_amount + ($cart->price*$cart->quantity); ?>
                             <?php $total_buying_amount = ($cart->buying_price*$cart->quantity); ?>
+                            @if(!empty($coupon))
+                            @if($coupon->amount_type=='fixed')
+                            <?php $total_buying_amount = ($cart->buying_price*$cart->quantity); ?>
+                            <?php $total_amount =  $total_amount - $coupon->amount ; ?>
+                            @elseif($coupon->amount_type=='percentage')
+                            <?php $total_amount =  $total_amount - ($total_amount*$coupon->amount)/100 ; ?>
+                            <?php $total_buying_amount = ($cart->buying_price*$cart->quantity); ?>
+                            @else
 
+                            @endif
+                            @endif
                             @endforeach
 
                             <div class="summary">
@@ -179,6 +232,7 @@
 
                                         <p class=" amount text-black" style="font-size:20px;font-weight:bold">
                                             @if($delivery =="flat")
+
                                             {{$gs->currency}}&nbsp;&nbsp;<?php echo ($total_amount+$sc->flat_rate + $vat) - $giftcard ; ?>
                                             <input class="form-control giftcard" id="" type="hidden" name="grand_total"
                                                 data-original="<?php echo $total_amount+$sc->flat_rate + $vat ; ?>"
@@ -191,9 +245,7 @@
 
                                             @endif
                                         </p>
-                                        <input class="form-control giftcard" id="" type="hidden" name="grand_total"
-                                            data-original="<?php echo $total_amount+$sc->flat_rate + $vat ; ?>"
-                                            value="<?php echo $total_amount+$sc->flat_rate + $vat ; ?>">
+
 
 
                                     </div>

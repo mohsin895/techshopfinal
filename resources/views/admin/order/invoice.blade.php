@@ -14,18 +14,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-   
-    <link rel="shortcut icon" href="{{asset('assets/images/setting/'.$gs->favicon)}}" />
+
+    <link rel="shortcut icon" href="{{asset('public/assets/images/setting/'.$gs->favicon)}}" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link href="{{asset('assets/admin')}}/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet"
+    <link href="{{asset('public/assets/admin')}}/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet"
         type="text/css" />
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
-    <link href="{{asset('assets/admin')}}/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="{{asset('assets/admin')}}/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('public/assets/admin')}}/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('public/assets/admin')}}/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
 </head>
 <!--end::Head-->
@@ -48,7 +48,7 @@
                 <div class="aside-logo flex-column-auto" id="kt_aside_logo">
                     <!--begin::Logo-->
                     <a href="{{route('admin.dashboard')}}">
-                        <img alt="Logo" src="{{asset('assets/images/setting/'.$gs->site_logo)}}" class="h-25px logo" />
+                        <img alt="Logo" src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}" class="h-25px logo" />
                     </a>
                     <!--end::Logo-->
                     <!--begin::Aside toggler-->
@@ -76,7 +76,7 @@
                 @include('layout.admin.left_sidebar')
                 <!--end::Aside menu-->
                 <!--begin::Footer-->
-               
+
                 <!--end::Footer-->
             </div>
             <!--end::Aside-->
@@ -161,26 +161,45 @@
 
                                         <div class="container">
                                             <div class="row">
-                                            <h4 class="fw-boldest text-gray-800 fs-2qx pe-5 pb-7 text-center">INVOICE</h4>
+                                                <h4 class="fw-boldest text-gray-800 fs-2qx pe-5 pb-7 text-center">
+                                                    INVOICE<br>
+                                                  
+                                                
+                                                </h4>
+
+                                                <h4 class="fw-boldest text-red-800 fs-2qx pe-5 pb-7 text-center " style="color: red;">
+                                                 
+                                                    @if($birthday_user->date_of_birth)
+                                          Happy Birthday &nbsp;{{$user->name}} !!
+                                                       @else
+
+                                                       @endif
+                                                
+                                                </h4>
+                                                   
                                                 <div class="col-6 col-lg-6 col-md-6 col-sm-4">
                                                     <h4 class="fw-boldest text-gray-800 fs-2qx pe-5 pb-7">
 
-                                                    {{$user->name}}</br>
-                                                    <span class="fs-6">({{$user->email}})</span>
-                                                    <br />
-                                                    </h4>
-                                                    
-                                                </div>
-                                                
-                                                <div class="col-6 col-lg-6 col-md-6 col-sm-4" style="text-align: right;">
-                                                
-                                                        <img alt="Logo"
-                                                            src="{{asset('assets/images/setting/'.$gs->site_logo)}}"
-                                                            class="w-50" style=""/></br>
-                                                            {{$gs->site_title}}, {{$gs->address}} <br>{{$gs->mobile1}}
-                                                  
 
-                                                    
+                                                        {{$user->name}}</br>
+                                                       
+                                                        
+                                                        <span class="fs-6">({{$user->email}})</span>
+                                                        <br />
+                                                    </h4>
+
+                                                </div>
+
+                                                <div class="col-6 col-lg-6 col-md-6 col-sm-4"
+                                                    style="text-align: right;">
+
+                                                    <img alt="Logo"
+                                                        src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}"
+                                                        class="w-50" style="" /></br>
+                                                    {{$gs->site_title}}, {{$gs->address}} <br>{{$gs->mobile1}}
+
+
+
                                                 </div>
 
                                                 <!-- Force next columns to break to new line at md breakpoint and up -->
@@ -194,8 +213,8 @@
                                         <!--end::Header-->
                                         <!--begin::Body-->
                                         <div class="container">
-										<span class="text-muted fs-5">Here are your order details. We
-                                                        thank you for your purchase.</span>
+                                            <span class="text-muted fs-5">Here are your order details. We
+                                                thank you for your purchase.</span>
                                             <div class="pb-6">
                                                 <!--begin::Wrapper-->
                                                 <div class="d-flex flex-column gap-7 gap-md-10">
@@ -204,7 +223,8 @@
                                                     <!--begin::Separator-->
                                                     <!--begin::Order details-->
                                                     <div class="row">
-                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-4"> <span class="text-muted">Order
+                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-4"> <span
+                                                                class="text-muted">Order
                                                                 ID</span>
                                                             <span class="fs-5">#{{$order->order_id}}</span>
                                                             </br><span class="text-muted">Mobile No</span>
@@ -218,7 +238,8 @@
 
 
                                                         </div>
-                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-4" style="text-align: right;"> <span
+                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-4"
+                                                            style="text-align: right;"> <span
                                                                 class="text-muted">Date</span>
                                                             <span
                                                                 class="fs-5">{{ $order->created_at->toDayDateTimeString()}}</span><br>
@@ -256,6 +277,7 @@
                                                                 @php
                                                                 $product = App\Models\Product::find($row->product_id);
 
+
                                                                 @endphp
                                                                 <tr>
                                                                     <!--begin::Product-->
@@ -263,7 +285,7 @@
                                                                         <div class="d-flex align-items-center">
                                                                             <!--begin::Thumbnail-->
                                                                             <img alt="Logo"
-                                                                                src="{{asset('assets/images/product/'.$product->image)}}"
+                                                                                src="{{asset('public/assets/images/product/'.$product->image)}}"
                                                                                 class="w-50" />
                                                                             <!-- <a href="#" class="symbol symbol-50px">
 																				<img alt="Logo" src="{{asset('assets/images/product/'.$product->image)}}" class="w-100" />
@@ -296,10 +318,19 @@
                                                                 <!--end::Products-->
                                                                 <!--begin::Subtotal-->
                                                                 <tr>
+                                                                    @if(!empty($order->coupon_code))
+                                                                    <td colspan="3" class="text-end">Subtotal With Coupon Code(-)</td>
+                                                                    <td class="text-end">
+                                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}
+                                                                    </td>
+                                                               
+                                                                    @else
                                                                     <td colspan="3" class="text-end">Subtotal</td>
                                                                     <td class="text-end">
                                                                         {{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}
                                                                     </td>
+
+                                                                    @endif
                                                                 </tr>
                                                                 <!--end::Subtotal-->
                                                                 <!--begin::VAT-->
@@ -312,7 +343,8 @@
                                                                 <!--end::VAT-->
                                                                 <!--begin::Shipping-->
                                                                 <tr>
-                                                                    <td colspan="3" class="text-end">Shipping Rate({{$order->delivery}})</td>
+                                                                    <td colspan="3" class="text-end">Shipping
+                                                                        Rate({{$order->delivery}})</td>
                                                                     <td class="text-end">
                                                                         {{$gs->currency}}&nbsp;&nbsp;{{$order->shipping}}
                                                                     </td>
@@ -387,19 +419,19 @@
     var hostUrl = "assets/";
     </script>
     <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script src="{{asset('assets/admin')}}/assets/plugins/global/plugins.bundle.js"></script>
-    <script src="{{asset('assets/admin')}}/assets/js/scripts.bundle.js"></script>
+    <script src="{{asset('public/assets/admin')}}/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="{{asset('public/assets/admin')}}/assets/js/scripts.bundle.js"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->
-    <script src="{{asset('assets/admin')}}/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="{{asset('public/assets/admin')}}/assets/plugins/custom/datatables/datatables.bundle.js"></script>
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="{{asset('assets/admin')}}/assets/js/widgets.bundle.js"></script>
-    <script src="{{asset('assets/admin')}}/assets/js/custom/widgets.js"></script>
-    <script src="{{asset('assets/admin')}}/assets/js/custom/apps/chat/chat.js"></script>
-    <script src="{{asset('assets/admin')}}/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-    <script src="{{asset('assets/admin')}}/assets/js/custom/utilities/modals/create-app.js"></script>
-    <script src="{{asset('assets/admin')}}/assets/js/custom/utilities/modals/users-search.js"></script>
+    <script src="{{asset('public/assets/admin')}}/assets/js/widgets.bundle.js"></script>
+    <script src="{{asset('public/assets/admin')}}/assets/js/custom/widgets.js"></script>
+    <script src="{{asset('public/assets/admin')}}/assets/js/custom/apps/chat/chat.js"></script>
+    <script src="{{asset('public/assets/admin')}}/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+    <script src="{{asset('public/assets/admin')}}/assets/js/custom/utilities/modals/create-app.js"></script>
+    <script src="{{asset('public/assets/admin')}}/assets/js/custom/utilities/modals/users-search.js"></script>
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
 </body>

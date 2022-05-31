@@ -1,5 +1,5 @@
 
-const site_url = "https://roboticsabcshop.autovisabooking.xyz/";
+const site_url = "http://localhost/techshopfinal/";
 
 
 $('body').on('change', '#orderNitificationStatus', function () {
