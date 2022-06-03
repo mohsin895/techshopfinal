@@ -31211,7 +31211,7 @@ body ::placeholder {
     }
 
     .menu-bar ul li{
-        width: 280px;
+        width: 300px;
 
     }
     .main-content-section .sidebar-category .card-header{
@@ -31239,7 +31239,7 @@ body ::placeholder {
     }
 
     .menu-bar ul li{
-        width: 320px;
+        width: 300px;
 
     }
     .main-content-section .sidebar-category .card-header{
@@ -31247,7 +31247,7 @@ body ::placeholder {
 
     }
     .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 300px;
+        margin-left: 280px;
     }
     /* .fon-margin{
         margin-left: 180px;

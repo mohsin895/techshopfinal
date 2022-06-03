@@ -183,7 +183,7 @@
     }
 
     .menu-bar ul li:hover .sub-menu-1 ul li {
-        width: 150px;
+        width: 250px;
         padding: 10px;
         border-bottom: 1px dotted #fff;
         background: transparent;

@@ -186,6 +186,10 @@
                                             <a href="{{route('admin.couponcode.edit',$row->id)}}"
                                                 class="menu-link px-3">Edit</a>
                                         </div>
+                                        <div class="menu-item px-3">
+                                            <a href="{{route('admin.couponcode.view_details',$row->id)}}"
+                                                class="menu-link px-3">View Details</a>
+                                        </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">

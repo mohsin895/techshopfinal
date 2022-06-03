@@ -5,8 +5,9 @@
 
 
 <section class="main-content-section">
-
-    <div class="row">
+<div class="content-section slider">
+            <div class="d-flex">
+    <div class="row" style="width:350% !important">
 
 
         <div class=" d-none  d-sm-none  d-lg-block col-lg-3 col-md-3 ">
@@ -17,8 +18,7 @@
 
                 <div class="card">
                     <div class="card-header w-100">
-                        <p class="sidebar-title text-uppercase"><img
-                                src="{{ asset('public/image/frontLogos/category-icon.png') }}" alt="icon"> <a
+                        <p class="sidebar-title text-uppercase"> <a
                                 href="category-list" class="text-white">Categories</a></p>
                     </div>
                     <div class="menu-bar manures">
@@ -74,7 +74,7 @@
 
         </div>
 
-        <div class="col-sm-12 col-md-8  col-lg-8">
+        <div class="col-12 col-sm-12 col-md-8  col-lg-8">
             <div id="js--home-carousel" class="carousel slide carousel-fade" data-ride="carousel">
                 <ol class="carousel-indicators">
                     @foreach($slider as $row)
@@ -86,10 +86,10 @@
                     @endforeach
                 </ol>
 
-                <div class="carousel-inner col-sm-12 col-md-12 col-lg-12">
+                <div class="carousel-inner">
                     @foreach($slider as $key => $row)
                     <div class="carousel-item @if($key ==0) active @endif" data-interval="5000" mr-3>
-                        <a href="#" target="_blank">
+                        <a href="#">
                             <img src="{{asset('public/assets/images/slider/'.$row->image)}}" class="d-block w-100"
                                 alt="about_us_banner" />
                         </a>
@@ -99,13 +99,13 @@
                 </div>
             </div>
             @if($gs->flash_slider==2)
-            <div class="top-small-banner mt-3 ml-3">
+            <div class="top-small-banner mt-3 ">
                 <div class="d-flex justify-content-between">
                     @foreach($banner as $row)
-                    <div class="small-banner-item m-0 mr-3">
-                        <a href="#" target="_blank">
+                    <div class="small-banner-item m-0" style="width:60%" >
+                        <a href="#">
                             <img src="{{asset('public/assets/images/banner/'.$row->image)}}" alt="small_banner_left"
-                                class="img-fluid" />
+                                class="img-fluid"  style="width:110%"/>
                         </a>
                     </div>
 
@@ -208,7 +208,8 @@
             @endif
         </div>
     </div>
-
+</div>
+</div>
 </section>
 
 <section class="product-list-wrapper col-md-12 col-lg-12 col-sm-12 ">
@@ -226,7 +227,7 @@
                     {{$category->cat_name}}
                     @endif
                 </p>
-                <a href="{{url('/',$cat->slug)}}" class="btn btn-see__more mr-0 text-uppercase">See More</a>
+                <a href="{{url('/',$category->slug)}}" class="btn btn-see__more mr-0 text-uppercase">See More</a>
             </div>
         </div>
         <div class="product-list-item">

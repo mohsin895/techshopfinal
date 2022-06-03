@@ -157,86 +157,89 @@ $withdraw = App\Models\Notification::where('withdraw_id','!=',null)->get();
 
                             </div>
                         </div>
-                        <a  href="{{route('admin.user.index') }}" >
-                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-                            class="menu-item menu-lg-down-accordion me-lg-1">
-                            <span class="menu-link py-3">
-                                <span class="menu-title">
-                                    <a id="notf_user" class="dropdown-toggle-1" href="{{route('admin.user.index') }}">new Register
-                                        <i class="far fa-user"></i>
-                                        <span data-href="{{ route('admin.user-notf-count') }}"
-                                            id="user-notf-count">{{ App\Models\Notification::countRegistration() }}</span>
-                                    </a>
+                        <a href="{{route('admin.user.index') }}">
+                            <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+                                class="menu-item menu-lg-down-accordion me-lg-1">
+                                <span class="menu-link py-3">
+                                    <span class="menu-title">
+                                        <a id="notf_user" class="dropdown-toggle-1"
+                                            href="{{route('admin.user.index') }}">new Register
+                                            <i class="far fa-user"></i>
+                                            <span data-href="{{ route('admin.user-notf-count') }}"
+                                                id="user-notf-count">{{ App\Models\Notification::countRegistration() }}</span>
+                                        </a>
+                                    </span>
+                                    <span class="menu-arrow d-lg-none"></span>
                                 </span>
-                                <span class="menu-arrow d-lg-none"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
-                                data-href="{{ route('admin.user-notf-show') }}" id="user-notf-show">
+                                <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
+                                    data-href="{{ route('admin.user-notf-show') }}" id="user-notf-show">
 
 
+                                </div>
                             </div>
-                        </div>
-</a>
-                        
-                        <a  href="{{route('admin.order.new') }}" >
-                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-                        class="menu-item menu-lg-down-accordion me-lg-1" >
-                            <span class="menu-link py-3">
-                                <span class="menu-title"><a id="notf_order" class="dropdown-toggle-1"
-                                        href="{{route('admin.order.new') }}">new Order
-                                        <i class="far fa-newspaper"></i>
-                                        <span data-href="{{ route('admin.order-notf-count') }}"
-                                            id="order-notf-count">{{ App\Models\Notification::countOrder() }}</span>
-                                    </a></span>
-                                <span class="menu-arrow d-lg-none"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
-                                data-href="{{ route('admin.order-notf-show') }}" id="order-notf-show">
+                        </a>
 
-
-                            </div>
-                        </div>
-                         </a>
-                         <a  href="{{route('admin.withdraw.index') }}" >
-                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-                            class="menu-item menu-lg-down-accordion me-lg-1">
-                            <span class="menu-link py-3">
-                                <span class="menu-title"> 
-                                    <a id="notf_withdraw" class="dropdown-toggle-1" href="{{route('admin.withdraw.index') }}"> withdraw message
-                                        <i class="far fa-envelope"></i>
-                                        <span data-href="{{ route('admin.withdraw-notf-count') }}"
-                                            id="withdraw-notf-count">{{ App\Models\Notification::countWithdraw() }}</span>
-                                    </a>
+                        <a href="{{route('admin.order.new') }}">
+                            <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+                                class="menu-item menu-lg-down-accordion me-lg-1">
+                                <span class="menu-link py-3">
+                                    <span class="menu-title"><a id="notf_order" class="dropdown-toggle-1"
+                                            href="{{route('admin.order.new') }}">new Order
+                                            <i class="far fa-newspaper"></i>
+                                            <span data-href="{{ route('admin.order-notf-count') }}"
+                                                id="order-notf-count">{{ App\Models\Notification::countOrder() }}</span>
+                                        </a></span>
+                                    <span class="menu-arrow d-lg-none"></span>
                                 </span>
-                                <span class="menu-arrow d-lg-none"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
-                                data-href="{{ route('admin.withdraw-notf-show') }}" id="withdraw-notf-show">
+                                <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
+                                    data-href="{{ route('admin.order-notf-show') }}" id="order-notf-show">
 
 
+                                </div>
                             </div>
-                        </div>
-</a>
-<a  href="{{route('admin.giftcard.index') }}" >
-                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-                            class="menu-item menu-lg-down-accordion me-lg-1">
-                            <span class="menu-link py-3">
-                                <span class="menu-title">
-                                    <a id="notf_giftcard" class="dropdown-toggle-1" href="{{route('admin.giftcard.index') }}">GiftCard Order
-                                        <i class="far fa-envelope"></i>
-                                        <span data-href="{{ route('admin.giftcard-notf-count') }}"
-                                            id="giftcard-notf-count">{{ App\Models\Notification::countGiftcard() }}</span>
-                                    </a>
+                        </a>
+                        <a href="{{route('admin.withdraw.index') }}">
+                            <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+                                class="menu-item menu-lg-down-accordion me-lg-1">
+                                <span class="menu-link py-3">
+                                    <span class="menu-title">
+                                        <a id="notf_withdraw" class="dropdown-toggle-1"
+                                            href="{{route('admin.withdraw.index') }}"> withdraw message
+                                            <i class="far fa-envelope"></i>
+                                            <span data-href="{{ route('admin.withdraw-notf-count') }}"
+                                                id="withdraw-notf-count">{{ App\Models\Notification::countWithdraw() }}</span>
+                                        </a>
+                                    </span>
+                                    <span class="menu-arrow d-lg-none"></span>
                                 </span>
-                                <span class="menu-arrow d-lg-none"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
-                                data-href="{{ route('admin.giftcard-notf-show') }}" id="giftcard-notf-show">
+                                <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
+                                    data-href="{{ route('admin.withdraw-notf-show') }}" id="withdraw-notf-show">
 
 
+                                </div>
                             </div>
-                        </div>
-</a>
+                        </a>
+                        <a href="{{route('admin.giftcard.index') }}">
+                            <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+                                class="menu-item menu-lg-down-accordion me-lg-1">
+                                <span class="menu-link py-3">
+                                    <span class="menu-title">
+                                        <a id="notf_giftcard" class="dropdown-toggle-1"
+                                            href="{{route('admin.giftcard.index') }}">GiftCard Order
+                                            <i class="far fa-envelope"></i>
+                                            <span data-href="{{ route('admin.giftcard-notf-count') }}"
+                                                id="giftcard-notf-count">{{ App\Models\Notification::countGiftcard() }}</span>
+                                        </a>
+                                    </span>
+                                    <span class="menu-arrow d-lg-none"></span>
+                                </span>
+                                <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
+                                    data-href="{{ route('admin.giftcard-notf-show') }}" id="giftcard-notf-show">
+
+
+                                </div>
+                            </div>
+                        </a>
 
                         <div class="menu-item menu-lg-down-accordion me-lg-1">
                             <span class="menu-link py-3">
@@ -328,6 +331,10 @@ $withdraw = App\Models\Notification::where('withdraw_id','!=',null)->get();
                             <a href="{{route('admin.setting')}}" class="menu-link px-5">Account
                                 Settings</a>
                         </div>
+
+                        <!-- <div class="menu-item px-5 my-1">
+                            <a href="{{route('admin.setting.emptyDatabase')}}" class="menu-link px-5">Empty Database</a>
+                        </div> -->
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">

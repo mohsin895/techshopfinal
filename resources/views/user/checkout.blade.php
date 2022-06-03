@@ -7,32 +7,7 @@
     <div class="content-section shippingorder shippingcheckout">
         <div class="address-section d-flex justify-content-between">
             <div class="row col-12 col-lg-12 col-md-12 col-sm-12">
-                <div class="col-12 col-md-8 col-lg-8 col-sm-12 mb-5">
-                    <div class="card js--shipping-card">
-                        <div class="card-header d-flex align-items-center">
-                            <p class="address-title">Apply Coupon Code</p>
-                            @include('error.message')
-                            <button type="button" class="btn js--btn-shipping"><i class="fa fa-angle-up"></i></button>
-                        </div>
-                        <div class="card-body js--shipping-body">
-
-                            <form action="{{route('user.cart.applyCoupon')}}" method="POST">
-                                @csrf
-
-                                <div class="d-flex">
-
-
-                                    <input type="text" name="coupon_code" class="form-control" value=""><button
-                                        type="submit" class="btn btn-warning">Apply
-                                    </button>
-                                </div>
-                            </form>
-
-
-
-                        </div>
-                    </div>
-                </div>
+            @include('error.message')
 
 
                 <div class="col-12 col-md-8 col-lg-8 col-sm-12 mb-5">
@@ -134,18 +109,18 @@
 
 
                 @endphp
-               
+
                 <div class="col-12  col-md-4 col-lg-4 col-sm-12 mb-10 ">
                     <div class="shipping-summary ">
                         <div class="card ">
-                        @if(!empty($coupon))
-                <input  type="hidden" name="coupon_code" value="{{$coupon->coupon_code}}">
-                <input  type="hidden" name="amount_type" value="{{$coupon->amount_type}}">
-                <input  type="hidden" name="amount" value="{{$coupon->amount}}">
+                            @if(!empty($coupon))
+                            <input type="hidden" name="coupon_code" value="{{$coupon->coupon_code}}">
+                            <input type="hidden" name="amount_type" value="{{$coupon->amount_type}}">
+                            <input type="hidden" name="amount" value="{{$coupon->amount}}">
 
-                @else
+                            @else
 
-                @endif
+                            @endif
 
                             <?php $total_amount = 0;  ?>
                             @foreach($userCart as $cart)
@@ -258,14 +233,38 @@
                                     <button type="submit" class="btn btn-confirm__order btn btn-success">
                                         <span>Confirm Order</span>
                                     </button>
+                                    </form>
+                                    <div class="card-body js--shipping-body">
+
+                                        <form action="{{route('user.cart.applyCoupon')}}" method="POST">
+                                            @csrf
+
+                                            <div class="d-flex">
+
+
+                                                <input type="text" name="coupon_code" class="form-control"
+                                                    value=""><button type="submit" class="btn btn-warning">Coupon
+                                                </button>
+                                            </div>
+                                        </form>
+
+
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
+
                 </div>
             </div>
 
-            </form>
+
+
+
         </div>
     </div>
 </div>

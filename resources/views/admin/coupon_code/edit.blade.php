@@ -46,7 +46,7 @@
             <form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row" method="post"
                 action="{{route('admin.couponcode.update',$couponcode->id)}}" enctype="multipart/form-data">
                 @csrf
-             
+
 
                 <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
                     <!--begin::General options-->
@@ -72,7 +72,8 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="text" name="coupon_code" class="form-control mb-2"
-                                                placeholder="Product Coupon Code" value="{{$couponcode->coupon_code}}" required />
+                                                placeholder="Product Coupon Code" value="{{$couponcode->coupon_code}}"
+                                                required />
                                             <!--end::Input-->
                                             <!--begin::Description-->
 
@@ -92,7 +93,8 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="text" name="amount" class="form-control mb-2"
-                                                placeholder="Product Coupon Amount" value="{{$couponcode->amount}}" required />
+                                                placeholder="Product Coupon Amount" value="{{$couponcode->amount}}"
+                                                required />
                                             <!--end::Input-->
                                             <!--begin::Description-->
 
@@ -113,8 +115,10 @@
 
                                             <option selected="selected">Select amount type</option>
 
-                                            <option value="percentage" @if($couponcode->amount_type=='percentage') selected  @endif>Percentage</option>
-                                            <option value="fixed" @if($couponcode->amount_type=='fixed') selected  @endif>Fixed</option>
+                                            <option value="percentage" @if($couponcode->amount_type=='percentage')
+                                                selected @endif>Percentage</option>
+                                            <option value="fixed" @if($couponcode->amount_type=='fixed') selected
+                                                @endif>Fixed</option>
 
 
                                         </select>
@@ -133,13 +137,32 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="date" name="expiry_date" class="form-control mb-2"
-                                                placeholder="Counpon Code Expired Date" value="{{$couponcode->expiry_date}}" required />
+                                                placeholder="Counpon Code Expired Date"
+                                                value="{{$couponcode->expiry_date}}" required />
                                             <!--end::Input-->
                                             <!--begin::Description-->
 
                                             <!--end::Description-->
                                         </div>
 
+                                    </div>
+
+                                    <div class="card-body pt-0">
+                                        <!--begin::Input group-->
+                                        <div class="mb-10 fv-row">
+                                            <!--begin::Label-->
+                                            <label class="required form-label">Coupon Code purpose</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <input type="text" name="purpose" class="form-control mb-2"
+                                                placeholder=" Coupon Code purpose" value="{{$couponcode->purpose}}" required />
+                                            <!--end::Input-->
+                                            <!--begin::Description-->
+
+                                            <!--end::Description-->
+                                        </div>
+
+                                        <!--end::Input group-->
                                     </div>
                                 </div>
 

@@ -117,8 +117,7 @@
                 <div class="card p-4 justify-content-center" style="background: #363C43">
                     <h2 class="text-center text-white forn-mweght-blod">Welcome back</h2>
                     <hr class="my-3">
-                    <p class="text-center text-light lead">Please login in useing your email and pssword.if you have not
-                        register yet.you can register free</p>
+                    <p class="text-center text-light lead">If you are already Sign up then go back to Sign In page.</p>
                     <a href="{{route('user.login')}}" class="btn btn-outline-light btn-lg align-self-center mt-4" >Sign
                         In</a>
 

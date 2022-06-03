@@ -226,6 +226,30 @@ $low = $stockLowQty - $sellQuantity
                 </div>
 
 
+                <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                    <a href="{{route('admin.report')}}">
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
+                                        <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
+                                        <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
+                                        <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
+                                        <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </span>
+                            <span class="menu-title">Product Reports</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                    </a>
+
+                </div>
+
+
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
@@ -571,12 +595,12 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <!-- <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.product.last-month.selling.product')}}">
                                 <span class="menu-link">
                                     <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                       
                                         <span class="svg-icon svg-icon-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -587,9 +611,9 @@ $low = $stockLowQty - $sellQuantity
                                                     fill="black" />
                                             </svg>
                                         </span>
-                                        <!--end::Svg Icon-->
+                                      
                                     </span>
-                                    <span class="menu-title">Last Month Sell Product({{$lastmonthselling}})</span>
+                                    <span class="menu-title">Last Month Selling Product({{$lastmonthselling}})</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                             </a>
@@ -601,7 +625,7 @@ $low = $stockLowQty - $sellQuantity
                             <a href="{{route('admin.product.last-month.not-selling.product')}}">
                                 <span class="menu-link">
                                     <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                      
                                         <span class="svg-icon svg-icon-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -612,7 +636,7 @@ $low = $stockLowQty - $sellQuantity
                                                     fill="black" />
                                             </svg>
                                         </span>
-                                        <!--end::Svg Icon-->
+                                      
                                     </span>
                                     <span class="menu-title">Last Month Not Selling
                                         Product({{$lastmonthnotselling}})</span>
@@ -627,7 +651,7 @@ $low = $stockLowQty - $sellQuantity
                             <a href="{{route('admin.product.last-year.selling.product')}}">
                                 <span class="menu-link">
                                     <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                       
                                         <span class="svg-icon svg-icon-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -638,7 +662,7 @@ $low = $stockLowQty - $sellQuantity
                                                     fill="black" />
                                             </svg>
                                         </span>
-                                        <!--end::Svg Icon-->
+                                     
                                     </span>
                                     <span class="menu-title">Last Year Selling Product({{$lastyearselling}})</span>
                                     <span class="menu-arrow"></span>
@@ -652,7 +676,7 @@ $low = $stockLowQty - $sellQuantity
                             <a href="{{route('admin.product.last-year.not-selling.product')}}">
                                 <span class="menu-link">
                                     <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                       
                                         <span class="svg-icon svg-icon-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -663,7 +687,7 @@ $low = $stockLowQty - $sellQuantity
                                                     fill="black" />
                                             </svg>
                                         </span>
-                                        <!--end::Svg Icon-->
+                                       
                                     </span>
                                     <span class="menu-title">Last Year Not Selling
                                         Product({{$lastyearnotselling}})</span>
@@ -673,37 +697,13 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
-                            <a href="{{route('admin.product.stock.low')}}">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
-                                                    fill="black" />
-                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-title">Stock Low Product({{$lownumber}})</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                            </a>
-                        </div>
-
-                    </div>
+                   
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.product.top.selling.product')}}">
                                 <span class="menu-link">
                                     <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                      
                                         <span class="svg-icon svg-icon-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -714,7 +714,7 @@ $low = $stockLowQty - $sellQuantity
                                                     fill="black" />
                                             </svg>
                                         </span>
-                                        <!--end::Svg Icon-->
+                            
                                     </span>
                                     <span class="menu-title">Best Selling Product({{$bestselling}})</span>
                                     <span class="menu-arrow"></span>
@@ -728,7 +728,7 @@ $low = $stockLowQty - $sellQuantity
                             <a href="{{route('admin.product.less.selling.product')}}">
                                 <span class="menu-link">
                                     <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                     
                                         <span class="svg-icon svg-icon-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -739,7 +739,7 @@ $low = $stockLowQty - $sellQuantity
                                                     fill="black" />
                                             </svg>
                                         </span>
-                                        <!--end::Svg Icon-->
+                                   
                                     </span>
                                     <span class="menu-title">Less Selling Product({{$lessselling}})</span>
                                     <span class="menu-arrow"></span>
@@ -753,7 +753,7 @@ $low = $stockLowQty - $sellQuantity
                             <a href="{{route('admin.product.never.selling.product')}}">
                                 <span class="menu-link">
                                     <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                      
                                         <span class="svg-icon svg-icon-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -764,9 +764,34 @@ $low = $stockLowQty - $sellQuantity
                                                     fill="black" />
                                             </svg>
                                         </span>
-                                        <!--end::Svg Icon-->
+                                    
                                     </span>
                                     <span class="menu-title">Never Selling Product({{$neversellingproduct}})</span>
+                                    <span class="menu-arrow"></span>
+                                </span>
+                            </a>
+                        </div>
+
+                    </div> -->
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a href="{{route('admin.product.stock.low')}}">
+                                <span class="menu-link">
+                                    <span class="menu-icon">
+                                     
+                                        <span class="svg-icon svg-icon-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
+                                                    fill="black" />
+                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
+                                                    fill="black" />
+                                            </svg>
+                                        </span>
+                                      
+                                    </span>
+                                    <span class="menu-title">Stock Low Product({{$lownumber}})</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                             </a>
@@ -1545,6 +1570,34 @@ $low = $stockLowQty - $sellQuantity
                                 </span>
                             </a>
                         </div>
+
+                    </div>
+                    @if($gs->database_show == 1)
+                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                        <div class="menu-item">
+                            <a href="{{route('admin.setting.emptyDatabase')}}">
+                                <span class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
+                                                    fill="black" />
+                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
+                                                    fill="black" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title"> Empty database </span>
+                                    <span class="menu-arrow"></span>
+                                </span>
+                            </a>
+                        </div>
+                        @else
+                        @endif
 
                     </div>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">

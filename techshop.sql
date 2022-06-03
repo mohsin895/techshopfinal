@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2022 at 10:36 AM
+-- Generation Time: Jun 02, 2022 at 12:44 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -315,6 +315,7 @@ CREATE TABLE `coupon_codes` (
   `amount` int(11) DEFAULT NULL,
   `amount_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `expiry_date` date DEFAULT NULL,
+  `purpose` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` enum('1','0') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -324,10 +325,10 @@ CREATE TABLE `coupon_codes` (
 -- Dumping data for table `coupon_codes`
 --
 
-INSERT INTO `coupon_codes` (`id`, `coupon_code`, `amount`, `amount_type`, `expiry_date`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'sd12', 10, 'percentage', '2022-06-09', '1', '2022-05-30 05:09:44', '2022-05-31 00:18:08'),
-(4, 'sd125', 1200, 'fixed', '2022-06-08', '1', '2022-05-30 05:34:58', '2022-05-30 23:24:35'),
-(5, 'sd123h', 20, 'fixed', '2022-05-25', '1', '2022-05-31 01:01:39', '2022-05-31 01:01:39');
+INSERT INTO `coupon_codes` (`id`, `coupon_code`, `amount`, `amount_type`, `expiry_date`, `purpose`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'sd12', 10, 'percentage', '2022-06-09', NULL, '1', '2022-05-30 05:09:44', '2022-05-31 00:18:08'),
+(4, 'sd125', 1200, 'fixed', '2022-06-08', NULL, '1', '2022-05-30 05:34:58', '2022-05-30 23:24:35'),
+(5, 'sd123h', 20, 'fixed', '2022-05-25', NULL, '1', '2022-05-31 01:01:39', '2022-05-31 01:01:39');
 
 -- --------------------------------------------------------
 
@@ -418,15 +419,16 @@ CREATE TABLE `general_settings` (
   `t_c` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `facebook_pixel` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `less_selling_product` int(11) DEFAULT NULL,
-  `best_selling_product` int(11) DEFAULT NULL
+  `best_selling_product` int(11) DEFAULT NULL,
+  `database_show` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `general_settings`
 --
 
-INSERT INTO `general_settings` (`id`, `login_image`, `site_logo`, `blog_logo`, `dashboard_logo`, `favicon`, `blog_favicon`, `website_name`, `site_title`, `currency`, `commission`, `vat`, `quantity`, `email1`, `email2`, `address`, `mobile1`, `mobile2`, `bkash`, `rocket`, `nogod`, `flash_slider`, `meta_description`, `meta_keyword`, `meta_viewport`, `created_at`, `updated_at`, `facebook_page`, `facebook_group`, `twiter`, `instagram`, `youtube`, `linkdi`, `blog_about_us`, `privecy_policy`, `about_us`, `w_r`, `t_c`, `facebook_pixel`, `less_selling_product`, `best_selling_product`) VALUES
-(1, '25401.png', '72468.png', '79294.png', '84409.png', '485.png', '36240.png', 'Roboticsabc Shop', 'Roboticsabc shop', 'TK', '10', '7', 2, 'mohsinsikder895@gmail.com', 'mohsinsikder895@gmail.com', 'plashbari bazar', '01715486265', '01706125400', '01715486265', '01715486265', '01715486265', 2, 'erfegter', '\"fdsgfrgdtfhgf\"', 'rtgrgy', NULL, '2022-05-29 22:37:13', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.linkedin.com/in/mohsin-sikder/', '<p><strong>Bangladesh</strong>, is a country in&nbsp;<a href=\"https://en.wikipedia.org/wiki/South_Asia\">South Asia</a>. It is the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\">eighth-most populous country</a>&nbsp;in the world, with a population exceeding 163 million people in an area of either 148,460 square kilometres (57,320&nbsp;sq&nbsp;mi) or 147,570 square kilometres (56,980&nbsp;sq&nbsp;mi),<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bdarea-7\">[7]</a><a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bbs-15\">[15]</a>&nbsp;making it one of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population_density\">most densely populated countries</a>&nbsp;in the world. Bangladesh shares land borders with&nbsp;<a href=\"https://en.wikipedia.org/wiki/India\">India</a>&nbsp;to the west, north, and east, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Myanmar\">Myanmar</a>&nbsp;to the southeast; to the south it has a coastline along the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bay_of_Bengal\">Bay of Bengal</a>. It is narrowly separated from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nepal\">Nepal</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bhutan\">Bhutan</a>&nbsp;by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Siliguri_Corridor\">Siliguri Corridor</a>; and from&nbsp;<a href=\"https://en.wikipedia.org/wiki/China\">China</a>&nbsp;by 100&nbsp;km of the Indian state of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Sikkim\">Sikkim</a>&nbsp;in the north.<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-16\">[16]</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dhaka\">Dhaka</a>, the capital and&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Bangladesh\">largest city</a>, is the nation&#39;s economic, political, and cultural hub.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Chittagong\">Chittagong</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Port_of_Chittagong\">largest seaport</a>, is the second-largest city. The official language is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bengali_language\">Bengali</a>, one of the most eastern branches of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Indo-European_language_family\">Indo-European language family</a>.</p>', NULL, NULL, NULL, NULL, NULL, 20, 10);
+INSERT INTO `general_settings` (`id`, `login_image`, `site_logo`, `blog_logo`, `dashboard_logo`, `favicon`, `blog_favicon`, `website_name`, `site_title`, `currency`, `commission`, `vat`, `quantity`, `email1`, `email2`, `address`, `mobile1`, `mobile2`, `bkash`, `rocket`, `nogod`, `flash_slider`, `meta_description`, `meta_keyword`, `meta_viewport`, `created_at`, `updated_at`, `facebook_page`, `facebook_group`, `twiter`, `instagram`, `youtube`, `linkdi`, `blog_about_us`, `privecy_policy`, `about_us`, `w_r`, `t_c`, `facebook_pixel`, `less_selling_product`, `best_selling_product`, `database_show`) VALUES
+(1, '25401.png', '72468.png', '79294.png', '84409.png', '485.png', '36240.png', 'Roboticsabc Shop', 'Roboticsabc shop', 'TK', '10', '7', 2, 'mohsinsikder895@gmail.com', 'mohsinsikder895@gmail.com', 'plashbari bazar', '01715486265', '01706125400', '01715486265', '01715486265', '01715486265', 1, 'erfegter', '\"fdsgfrgdtfhgf\"', 'rtgrgy', NULL, '2022-06-02 04:38:28', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.linkedin.com/in/mohsin-sikder/', '<p><strong>Bangladesh</strong>, is a country in&nbsp;<a href=\"https://en.wikipedia.org/wiki/South_Asia\">South Asia</a>. It is the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\">eighth-most populous country</a>&nbsp;in the world, with a population exceeding 163 million people in an area of either 148,460 square kilometres (57,320&nbsp;sq&nbsp;mi) or 147,570 square kilometres (56,980&nbsp;sq&nbsp;mi),<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bdarea-7\">[7]</a><a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bbs-15\">[15]</a>&nbsp;making it one of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population_density\">most densely populated countries</a>&nbsp;in the world. Bangladesh shares land borders with&nbsp;<a href=\"https://en.wikipedia.org/wiki/India\">India</a>&nbsp;to the west, north, and east, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Myanmar\">Myanmar</a>&nbsp;to the southeast; to the south it has a coastline along the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bay_of_Bengal\">Bay of Bengal</a>. It is narrowly separated from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nepal\">Nepal</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bhutan\">Bhutan</a>&nbsp;by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Siliguri_Corridor\">Siliguri Corridor</a>; and from&nbsp;<a href=\"https://en.wikipedia.org/wiki/China\">China</a>&nbsp;by 100&nbsp;km of the Indian state of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Sikkim\">Sikkim</a>&nbsp;in the north.<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-16\">[16]</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dhaka\">Dhaka</a>, the capital and&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Bangladesh\">largest city</a>, is the nation&#39;s economic, political, and cultural hub.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Chittagong\">Chittagong</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Port_of_Chittagong\">largest seaport</a>, is the second-largest city. The official language is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bengali_language\">Bengali</a>, one of the most eastern branches of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Indo-European_language_family\">Indo-European language family</a>.</p>', NULL, NULL, NULL, NULL, NULL, 20, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -628,7 +630,19 @@ INSERT INTO `notifications` (`id`, `user_id`, `order_id`, `withdraw_id`, `giftca
 (62, NULL, 14335, NULL, NULL, 0, '2022-05-30 03:00:06', '2022-05-30 03:00:06'),
 (63, NULL, 18806, NULL, NULL, 0, '2022-05-31 01:12:24', '2022-05-31 01:12:24'),
 (64, NULL, 15359, NULL, NULL, 0, '2022-05-31 02:06:39', '2022-05-31 02:06:39'),
-(65, NULL, 11018, NULL, NULL, 0, '2022-05-31 02:10:32', '2022-05-31 02:10:32');
+(65, NULL, 11018, NULL, NULL, 0, '2022-05-31 02:10:32', '2022-05-31 02:10:32'),
+(66, NULL, 18522, NULL, NULL, 0, '2022-05-31 23:02:06', '2022-05-31 23:02:06'),
+(67, NULL, 16988, NULL, NULL, 0, '2022-05-31 23:02:55', '2022-05-31 23:02:55'),
+(68, NULL, 13298, NULL, NULL, 0, '2022-05-31 23:07:41', '2022-05-31 23:07:41'),
+(69, NULL, 11964, NULL, NULL, 0, '2022-05-31 23:13:14', '2022-05-31 23:13:14'),
+(70, NULL, 15421, NULL, NULL, 0, '2022-05-31 23:14:32', '2022-05-31 23:14:32'),
+(71, NULL, 12880, NULL, NULL, 0, '2022-05-31 23:18:32', '2022-05-31 23:18:32'),
+(72, NULL, 12244, NULL, NULL, 0, '2022-05-31 23:20:48', '2022-05-31 23:20:48'),
+(73, NULL, 17595, NULL, NULL, 0, '2022-05-31 23:23:08', '2022-05-31 23:23:08'),
+(74, NULL, 16228, NULL, NULL, 0, '2022-05-31 23:24:55', '2022-05-31 23:24:55'),
+(75, NULL, 13140, NULL, NULL, 0, '2022-05-31 23:26:57', '2022-05-31 23:26:57'),
+(76, NULL, 12540, NULL, NULL, 0, '2022-05-31 23:29:09', '2022-05-31 23:29:09'),
+(77, NULL, 13949, NULL, NULL, 0, '2022-05-31 23:32:46', '2022-05-31 23:32:46');
 
 -- --------------------------------------------------------
 
@@ -707,7 +721,19 @@ INSERT INTO `orders` (`id`, `user_id`, `order_id`, `user_email`, `name`, `addres
 (32, '32', 14335, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '12671.92', 300, 11656, 1200, 815.92, NULL, 'New', '2022-05-30 09:00:06', '0', 'New', NULL, '2022-05-30 03:00:06', '2022-05-30 03:00:06', NULL, NULL, NULL, NULL),
 (33, '32', 18806, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2376.228', 300, 1940.4, 2000, 135.828, NULL, 'New', '2022-05-31 07:12:24', '0', 'New', NULL, '2022-05-31 01:12:24', '2022-05-31 01:12:24', NULL, '10', 'percentage', 'sd12'),
 (34, '32', 15359, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2226', 300, 1800, 1200, 126, NULL, 'New', '2022-05-31 08:06:39', '0', 'New', NULL, '2022-05-31 02:06:39', '2022-05-31 02:06:39', NULL, '10', 'percentage', 'sd12'),
-(35, '32', 11018, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '1322.92', 300, 956, 2000, 66.92, NULL, 'New', '2022-05-31 08:10:32', '0', 'New', NULL, '2022-05-31 02:10:32', '2022-05-31 02:10:32', NULL, '1200', 'fixed', 'sd125');
+(35, '32', 11018, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '1322.92', 300, 956, 2000, 66.92, NULL, 'New', '2022-05-31 08:10:32', '0', 'New', NULL, '2022-05-31 02:10:32', '2022-05-31 02:10:32', NULL, '1200', 'fixed', 'sd125'),
+(36, '32', 18522, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:02:06', '0', 'New', NULL, '2022-05-31 23:02:06', '2022-05-31 23:02:06', NULL, '0', '0', '0'),
+(37, '32', 16988, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:02:55', '0', 'New', NULL, '2022-05-31 23:02:55', '2022-05-31 23:02:55', NULL, '0', '0', '0'),
+(38, '32', 13298, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:07:41', '0', 'New', NULL, '2022-05-31 23:07:41', '2022-05-31 23:07:41', NULL, '0', '0', '0'),
+(39, '32', 11964, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:13:14', '0', 'New', NULL, '2022-05-31 23:13:14', '2022-05-31 23:13:14', NULL, '0', '0', '0'),
+(40, '32', 15421, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:14:32', '0', 'New', NULL, '2022-05-31 23:14:32', '2022-05-31 23:14:32', NULL, '0', '0', '0'),
+(41, '32', 12880, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:18:32', '0', 'New', NULL, '2022-05-31 23:18:32', '2022-05-31 23:18:32', NULL, '0', '0', '0'),
+(42, '32', 12244, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:20:48', '0', 'New', NULL, '2022-05-31 23:20:48', '2022-05-31 23:20:48', NULL, '0', '0', '0'),
+(43, '32', 17595, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:23:08', '0', 'New', NULL, '2022-05-31 23:23:08', '2022-05-31 23:23:08', NULL, '0', '0', '0'),
+(44, '32', 16228, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:24:55', '0', 'New', NULL, '2022-05-31 23:24:55', '2022-05-31 23:24:55', NULL, '0', '0', '0'),
+(45, '32', 13140, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:26:57', '0', 'New', NULL, '2022-05-31 23:26:57', '2022-05-31 23:26:57', NULL, '0', '0', '0'),
+(46, '32', 12540, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '4580', 300, 4000, 2400, 280, NULL, 'New', '2022-06-01 05:29:09', '0', 'New', NULL, '2022-05-31 23:29:09', '2022-05-31 23:29:09', NULL, '0', '0', '0'),
+(47, '32', 13949, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '4580', 300, 4000, 2400, 280, NULL, 'New', '2022-06-01 05:32:46', '0', 'New', NULL, '2022-05-31 23:32:46', '2022-05-31 23:32:46', NULL, '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -774,7 +800,29 @@ INSERT INTO `order_products` (`id`, `order_id`, `randomOrder_id`, `user_id`, `pr
 (48, 32, 14335, 32, 13, 'C&C&b-00035', 'pc computer', 1200, 1500.00, 1, 1500, NULL, '2022-05-30 03:00:06', '2022-05-30 03:00:06'),
 (49, 33, 18806, 32, 3, 'ARD-00005', 'SparkFun USB Host Shield', 2000, 2156.00, 1, 2156, NULL, '2022-05-31 01:12:24', '2022-05-31 01:12:24'),
 (50, 34, 15359, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 02:06:39', '2022-05-31 02:06:39'),
-(51, 35, 11018, 32, 3, 'ARD-00005', 'SparkFun USB Host Shield', 2000, 2156.00, 1, 2156, NULL, '2022-05-31 02:10:32', '2022-05-31 02:10:32');
+(51, 35, 11018, 32, 3, 'ARD-00005', 'SparkFun USB Host Shield', 2000, 2156.00, 1, 2156, NULL, '2022-05-31 02:10:32', '2022-05-31 02:10:32'),
+(52, 36, 18522, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:02:06', '2022-05-31 23:02:06'),
+(53, 36, 18522, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:02:06', '2022-05-31 23:02:06'),
+(54, 37, 16988, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:02:55', '2022-05-31 23:02:55'),
+(55, 37, 16988, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:02:55', '2022-05-31 23:02:55'),
+(56, 38, 13298, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:07:41', '2022-05-31 23:07:41'),
+(57, 38, 13298, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:07:41', '2022-05-31 23:07:41'),
+(58, 39, 11964, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:13:14', '2022-05-31 23:13:14'),
+(59, 39, 11964, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:13:14', '2022-05-31 23:13:14'),
+(60, 40, 15421, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:14:32', '2022-05-31 23:14:32'),
+(61, 40, 15421, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:14:32', '2022-05-31 23:14:32'),
+(62, 41, 12880, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:18:32', '2022-05-31 23:18:32'),
+(63, 41, 12880, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:18:32', '2022-05-31 23:18:32'),
+(64, 42, 12244, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:20:48', '2022-05-31 23:20:48'),
+(65, 42, 12244, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:20:48', '2022-05-31 23:20:48'),
+(66, 43, 17595, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:23:09', '2022-05-31 23:23:09'),
+(67, 43, 17595, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:23:09', '2022-05-31 23:23:09'),
+(68, 44, 16228, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:24:55', '2022-05-31 23:24:55'),
+(69, 44, 16228, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:24:55', '2022-05-31 23:24:55'),
+(70, 45, 13140, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-05-31 23:26:57', '2022-05-31 23:26:57'),
+(71, 45, 13140, 32, 8, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-05-31 23:26:57', '2022-05-31 23:26:57'),
+(72, 46, 12540, 32, 8, 'SWD-00005', 'styles shirt m', 1200, 2000.00, 2, 4000, NULL, '2022-05-31 23:29:09', '2022-05-31 23:29:09'),
+(73, 47, 13949, 32, 11, 'SWD-00005', 'styles shirt', 1200, 2000.00, 2, 4000, NULL, '2022-05-31 23:32:46', '2022-05-31 23:32:46');
 
 -- --------------------------------------------------------
 
@@ -884,28 +932,30 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `home_automotion` int(11) DEFAULT NULL,
   `feature_products` int(11) DEFAULT NULL,
-  `develop_owner` int(11) DEFAULT NULL
+  `develop_owner` int(11) DEFAULT NULL,
+  `order_qty` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `order_price` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `parent_id`, `subcat_id`, `product_name`, `buying_price`, `price`, `flash_sale_price`, `quantity`, `model_no`, `image`, `flash_sale`, `flash_sale_start_date`, `flash_sale_end_date`, `slug`, `description`, `summery`, `document`, `supplier`, `specification`, `status`, `created_at`, `updated_at`, `home_automotion`, `feature_products`, `develop_owner`) VALUES
-(1, 3, 12, 'Zif socket (40 pin)', '10000', 1000, NULL, 1000, 'C&C-00035', '30447.jpg', '0', NULL, NULL, 'zif-socket-40-pin', NULL, 'asdersftreg', '78i87i', NULL, NULL, '1', '2022-03-30 08:48:52', '2022-04-19 01:45:48', 1, 1, NULL),
-(2, 1, NULL, 'USB Connector B type', '100', 2000, NULL, 20, 'C&C-00008', '55663.jpg', '0', NULL, NULL, 'usb-connector-b-type', NULL, NULL, NULL, NULL, NULL, '1', '2022-03-30 08:50:30', '2022-04-28 02:09:48', 1, 1, NULL),
-(3, 3, NULL, 'SparkFun USB Host Shield', '2000', 2156, NULL, 100, 'ARD-00005', '41010.jpg', '0', NULL, NULL, 'sparkfun-usb-host-shield', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-03-30 08:53:11', '2022-04-27 02:18:38', 1, 1, NULL),
-(4, 2, NULL, 'IRFZ44N MOSFET12', '1500', 2000, NULL, 100, 'SWD-00005', '70591.jpg', '0', NULL, NULL, 'irfz44n-mosfet12', NULL, 'werwet', 'etrtyry', NULL, NULL, '1', '2022-03-30 09:09:27', '2022-04-27 02:18:21', 1, 1, NULL),
-(5, 2, 9, 'IRFZ44N MOSFET', '1800', 2000, NULL, 100, 'C&C-00008', '41210.jpg', '0', NULL, NULL, 'irfz44n-mosfet', NULL, NULL, 'werfet', 'SparkFun, USA', NULL, '1', '2022-04-06 10:21:30', '2022-04-27 02:18:03', 1, 1, NULL),
-(6, 2, NULL, 'food', '2', 9, NULL, 100, 'C&C-00008', '30997.jpg', '0', NULL, NULL, 'food', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-04-06 10:28:37', '2022-04-27 02:17:32', 1, 1, NULL),
-(7, 2, NULL, 'styles shirt', '1200', 2000, NULL, 100, 'SWD-00005', '79247.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:57:24', '2022-04-27 02:17:13', NULL, NULL, NULL),
-(8, 2, NULL, 'styles shirt', '1200', 2000, NULL, 200, 'SWD-00005', '17824.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:58:20', '2022-04-27 02:16:55', NULL, NULL, NULL),
-(9, 2, NULL, 'styles shirt', '1200', 2000, NULL, 100, 'SWD-00005', '83208.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:58:49', '2022-04-27 02:16:34', NULL, NULL, NULL),
-(10, 2, NULL, 'styles shirt', '1200', 2000, NULL, 500, 'SWD-00005', '98209.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:59:18', '2022-04-27 02:16:16', NULL, NULL, NULL),
-(11, 3, 12, 'styles shirt', '1200', 2000, NULL, 50, 'SWD-00005', '11579.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 02:02:33', '2022-04-27 02:13:49', NULL, NULL, NULL),
-(12, 2, 9, 'styles shirt', '1200', 2000, NULL, 92, 'SWD-00005', '19468.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 02:03:20', '2022-05-11 04:05:15', NULL, NULL, NULL),
-(13, 2, 9, 'pc computer', '1200', 1500, '1300', 12, 'C&C&b-00035', '62541.jpg', '1', '2022-05-10', '2022-05-21', 'pc-computer', NULL, '<p>wedrwegteg</p>', '<p>rtyuu</p>', 'SparkFun, USA', NULL, '1', '2022-05-11 03:24:20', '2022-05-11 03:24:20', NULL, NULL, NULL),
-(16, 2, 9, 'food sdfrg', '1100', 2000, '1800', 24, 'C&C-00008', '40885.jpg', '1', '2022-05-09', '2022-05-31', 'food-sdfrg', NULL, '<p>qwsqsw</p>', '<p>wedwqd</p>', 'Rahat', NULL, '1', '2022-05-11 03:51:56', '2022-05-11 04:03:15', NULL, NULL, NULL);
+INSERT INTO `products` (`id`, `parent_id`, `subcat_id`, `product_name`, `buying_price`, `price`, `flash_sale_price`, `quantity`, `model_no`, `image`, `flash_sale`, `flash_sale_start_date`, `flash_sale_end_date`, `slug`, `description`, `summery`, `document`, `supplier`, `specification`, `status`, `created_at`, `updated_at`, `home_automotion`, `feature_products`, `develop_owner`, `order_qty`, `order_price`) VALUES
+(1, 3, 12, 'Zif socket (40 pin)', '10000', 1000, NULL, 1000, 'C&C-00035', '30447.jpg', '0', NULL, NULL, 'zif-socket-40-pin', NULL, 'asdersftreg', '78i87i', NULL, NULL, '1', '2022-03-30 08:48:52', '2022-04-19 01:45:48', 1, 1, NULL, NULL, NULL),
+(2, 1, NULL, 'USB Connector B type', '100', 2000, NULL, 20, 'C&C-00008', '55663.jpg', '0', NULL, NULL, 'usb-connector-b-type', NULL, NULL, NULL, NULL, NULL, '1', '2022-03-30 08:50:30', '2022-04-28 02:09:48', 1, 1, NULL, NULL, NULL),
+(3, 3, NULL, 'SparkFun USB Host Shield', '2000', 2156, NULL, 100, 'ARD-00005', '41010.jpg', '0', NULL, NULL, 'sparkfun-usb-host-shield', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-03-30 08:53:11', '2022-04-27 02:18:38', 1, 1, NULL, NULL, NULL),
+(4, 2, NULL, 'IRFZ44N MOSFET12', '1500', 2000, NULL, 100, 'SWD-00005', '70591.jpg', '0', NULL, NULL, 'irfz44n-mosfet12', NULL, 'werwet', 'etrtyry', NULL, NULL, '1', '2022-03-30 09:09:27', '2022-04-27 02:18:21', 1, 1, NULL, NULL, NULL),
+(5, 2, 9, 'IRFZ44N MOSFET', '1800', 2000, NULL, 100, 'C&C-00008', '41210.jpg', '0', NULL, NULL, 'irfz44n-mosfet', NULL, NULL, 'werfet', 'SparkFun, USA', NULL, '1', '2022-04-06 10:21:30', '2022-04-27 02:18:03', 1, 1, NULL, NULL, NULL),
+(6, 2, NULL, 'food', '2', 9, NULL, 100, 'C&C-00008', '30997.jpg', '0', NULL, NULL, 'food', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-04-06 10:28:37', '2022-05-31 23:26:57', 1, 1, NULL, '1', NULL),
+(7, 2, NULL, 'styles shirt', '1200', 2000, NULL, 100, 'SWD-00005', '79247.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:57:24', '2022-04-27 02:17:13', NULL, NULL, NULL, NULL, NULL),
+(8, 2, NULL, 'styles shirt m', '1200', 2000, NULL, 200, 'SWD-00005', '17824.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:58:20', '2022-05-31 23:29:09', NULL, NULL, NULL, '3', NULL),
+(9, 2, NULL, 'styles shirt', '1200', 2000, NULL, 100, 'SWD-00005', '83208.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:58:49', '2022-04-27 02:16:34', NULL, NULL, NULL, NULL, NULL),
+(10, 2, NULL, 'styles shirt', '1200', 2000, NULL, 500, 'SWD-00005', '98209.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:59:18', '2022-04-27 02:16:16', NULL, NULL, NULL, NULL, NULL),
+(11, 3, 12, 'styles shirt', '1200', 2000, NULL, 50, 'SWD-00005', '11579.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 02:02:33', '2022-05-31 23:32:46', NULL, NULL, NULL, '2', '4000'),
+(12, 2, 9, 'styles shirt', '1200', 2000, NULL, 92, 'SWD-00005', '19468.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 02:03:20', '2022-05-11 04:05:15', NULL, NULL, NULL, NULL, NULL),
+(13, 2, 9, 'pc computer', '1200', 1500, '1300', 12, 'C&C&b-00035', '62541.jpg', '1', '2022-05-10', '2022-05-21', 'pc-computer', NULL, '<p>wedrwegteg</p>', '<p>rtyuu</p>', 'SparkFun, USA', NULL, '1', '2022-05-11 03:24:20', '2022-05-11 03:24:20', NULL, NULL, NULL, NULL, NULL),
+(16, 2, 9, 'food sdfrg', '1100', 2000, '1800', 24, 'C&C-00008', '40885.jpg', '1', '2022-05-09', '2022-05-31', 'food-sdfrg', NULL, '<p>qwsqsw</p>', '<p>wedwqd</p>', 'Rahat', NULL, '1', '2022-05-11 03:51:56', '2022-05-11 04:03:15', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1041,9 +1091,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('oyy0hHGdEa6d58dCGcSi9yb2JExr9hubsKSgTHwc', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YToxMDp7czo2OiJfdG9rZW4iO3M6NDA6IlgwdWFxTEtuWFhpakZ1RWRCMWV2d1p0UkFMU1FGT3d0VlpOT29sWWUiO3M6ODoicmVmZXJhbGwiO3M6MDoiIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0OToiaHR0cDovL2xvY2FsaG9zdC90ZWNoc2hvcGZpbmFsL3VzZXIvb3JkZXIvZGV0YWlscyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjMyO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkdVNneUoxelcuaDNkblZKbWhnM3hvdUtJaGtLbkRuTFBDazgzdFl0V3JMTjlOcWtSem9RT20iO3M6ODoiZGVsaXZlcnkiO3M6NzoiZXhwcmVzcyI7czoxNToiZ2lmdGNhcmRfYW1vdW50IjtOO3M6MTA6InNlc3Npb25faWQiO3M6NDA6ImJwcXJrUTVVMFVOdjVrQW1oMlM2SWtFY1VtSXZVblJQMHNpTGFmb04iO3M6MTA6ImNvdXBvbkNvZGUiO3M6NToic2QxMjUiO30=', 1653984636),
-('RSyKzrsiCObZzELdWBR6WGs69Cz6rBECyowfos4a', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YToxMDp7czo2OiJfdG9rZW4iO3M6NDA6IkZzbVhNaUQ5RDBiOHc0WUQ5VkNYaTNGODhsM2s5WEdoZ1JoSFpwSm4iO3M6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vbG9jYWxob3N0L3RlY2hzaG9wZmluYWwiO31zOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHVTZ3lKMXpXLmgzZG5WSm1oZzN4b3VLSWhrS25EbkxQQ2s4M3RZdFdyTE45TnFrUnpvUU9tIjtzOjg6InJlZmVyYWxsIjtzOjA6IiI7czo4OiJkZWxpdmVyeSI7czo3OiJleHByZXNzIjtzOjE1OiJnaWZ0Y2FyZF9hbW91bnQiO047czoxMDoiY291cG9uQ29kZSI7czo0OiJzZDEyIjtzOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MzI7fQ==', 1653979171),
-('YG8CL7JNuVRyBsHDWsNEE3G9ygbpC29CF37uUJhX', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YToxMDp7czo2OiJfdG9rZW4iO3M6NDA6Im11bWNvOXV3aDg0NTZCdGJUVGg3V1d2QXpzOFZudlZTOGYxU2lOZE0iO3M6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjYzOiJodHRwOi8vbG9jYWxob3N0L3RlY2hzaG9wZmluYWwvYWRtaW4vcHJvZHVjdC9sYXN0LW1vbnRoL3NlbGxpbmciO31zOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHVTZ3lKMXpXLmgzZG5WSm1oZzN4b3VLSWhrS25EbkxQQ2s4M3RZdFdyTE45TnFrUnpvUU9tIjtzOjg6InJlZmVyYWxsIjtzOjA6IiI7czo4OiJkZWxpdmVyeSI7czo3OiJleHByZXNzIjtzOjE1OiJnaWZ0Y2FyZF9hbW91bnQiO047czoxMDoiY291cG9uQ29kZSI7czo0OiJzZDEyIjtzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozMjtzOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1653986168);
+('szK4b9MOiEO0xOYmIIxT5fhJNUs323HF0hdHnXhZ', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiS3lrOGRDb3FsOGF4cktaeG1YM3FlU0FUV2ZLd0tXZ2JmMGZIQ0ZJUSI7czo4OiJyZWZlcmFsbCI7czowOiIiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQzOiJodHRwOi8vbG9jYWxob3N0L3RlY2hzaG9wZmluYWwvYWRtaW4vcmVwb3J0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MTA6InNlc3Npb25faWQiO3M6NDA6ImlmWWYxNTVab2U4SXhoc0U5ZlltQ21Zc1czUE5QWFFianBNM0NxTjUiO3M6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjMyO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkdVNneUoxelcuaDNkblZKbWhnM3hvdUtJaGtLbkRuTFBDazgzdFl0V3JMTjlOcWtSem9RT20iO30=', 1654166622);
 
 -- --------------------------------------------------------
 
@@ -1211,7 +1259,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `slug`, `date_of_birth`, `gender`, `referral_id`, `referred_by`, `referral`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `image`, `is_admin`, `is_banned`, `status`, `created_at`, `updated_at`, `city`, `country`, `postcode`, `address1`, `address2`, `commision`, `range_amount`) VALUES
 (2, 'admin', 'admin@gmail.com', '1715786', NULL, '$2y$10$YWg9UI2/3Y4NlYDuU.Vtce6uHMo0IatHDWImNVWkKKXSgl3AwYl5y', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, '358.jpg', 'admin', '0', '0', '2022-03-20 09:25:49', '2022-04-12 08:14:38', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
 (11, 'Rahat', 'rahat89512@gmail.com', '01715486265', NULL, '$2y$10$d70SICXdCrHQ/grYy9YohOe725PK0ssED.YOMqMYGHI79O/Wj9s3m', '62Mohsin Sikder', '2022-05-05', 'male', 'Mohsin Sikder2994', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '2022-04-19 08:14:49', '2022-04-19 08:14:49', NULL, NULL, NULL, NULL, NULL, 10, '100'),
-(32, 'Yeamin', 'mohsinsikder895@gmail.com', '01715486265', NULL, '$2y$10$uSgyJ1zW.h3dnVJmhg3xouKIhkKnDnLPCk83tYtWrLN9NqkRzoQOm', '99Mohsin', '2022-05-05', 'male', 'sikder99', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-03-28 20:48:27', '2022-05-31 02:10:32', 'saver ashulia', 'Bangladesh', '02128736', 'plashbari bazar', 'plashbari bazar', 10, '100'),
+(32, 'Yeamin', 'mohsinsikder895@gmail.com', '01715486265', NULL, '$2y$10$uSgyJ1zW.h3dnVJmhg3xouKIhkKnDnLPCk83tYtWrLN9NqkRzoQOm', '99Mohsin', '2022-05-05', 'male', 'sikder99', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-03-28 20:48:27', '2022-05-31 23:32:45', 'saver ashulia', 'Bangladesh', '02128736', 'plashbari bazar', 'plashbari bazar', 10, '100'),
 (47, 'Rahat', 'mohsinsikder999@gmail.com', '0171548696', NULL, '$2y$10$nAAE3gtnCD13PCmdt9BxP.l4bhcmKMjz6djrrazzDC.wdDqmZ7qfy', '82Mohsin Sikder', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-04-24 02:30:04', '2022-04-24 02:56:50', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
 (48, 'Mohsin Sikder', 'm@gmail.com', '01715486265', NULL, '$2y$10$Ir4viEulxO66GmHDJRFtJOdk4PrHET4WinPPZkeIJeM8dCMzUP2ly', '49Mohsin Sikder', '2022-05-29', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '2022-04-26 06:13:34', '2022-04-26 06:13:34', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
 (52, 'Sikder', 'mohsinsikder.cse@gmail.com', '01706125400', NULL, '$2y$10$gGnqDJvdOCDsEQkTqA22u.I0/qALPb7zwNvKpVWnApFlEephyPKWa', '56Sikder', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-04-26 19:22:34', '2022-05-25 04:31:19', NULL, NULL, NULL, NULL, NULL, 10, '100'),
@@ -1266,7 +1314,8 @@ CREATE TABLE `wish_lists` (
 --
 
 INSERT INTO `wish_lists` (`id`, `user_id`, `product_id`, `user_email`, `session_id`, `created_at`, `updated_at`) VALUES
-(8, NULL, 11, 'mohsinsikder895@gmail.com', 'ntiFaEnHNn8wgT2G56S6lDhjixqONV8ODiC4dona', '2022-05-19 13:04:58', '2022-05-19 13:04:58');
+(8, NULL, 11, 'mohsinsikder895@gmail.com', 'ntiFaEnHNn8wgT2G56S6lDhjixqONV8ODiC4dona', '2022-05-19 13:04:58', '2022-05-19 13:04:58'),
+(10, NULL, 16, 'mohsinsikder895@gmail.com', 'ifYf155Zoe8IxhsE9fYmCmYsW3PNPXQbjpM3CqN5', '2022-06-02 08:04:06', '2022-06-02 08:04:06');
 
 -- --------------------------------------------------------
 
@@ -1601,7 +1650,7 @@ ALTER TABLE `blog_sliders`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1655,19 +1704,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `order_products`
 --
 ALTER TABLE `order_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `order_statuses`
@@ -1763,7 +1812,7 @@ ALTER TABLE `user_messages`
 -- AUTO_INCREMENT for table `wish_lists`
 --
 ALTER TABLE `wish_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `withdraws`

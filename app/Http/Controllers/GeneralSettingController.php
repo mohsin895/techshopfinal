@@ -7,12 +7,33 @@ use App\Models\GeneralSetting;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\UserMessage;
+use DB;
 use File;
 use Mail;
 use Image;
 
 class GeneralSettingController extends Controller
 {
+
+
+    public function emptyDatabase()
+    {
+       
+        $tables = DB::select('SHOW TABLES');
+      
+    //    dd($tables);
+        $str = 'Tables_in_' . env('DB_DATABASE');
+        //  dd($str);
+        foreach ($tables as $table) {
+            if($table->$str != 'accounts' && $table->$str != 'general_settings' && $table->$str != 'migrations' && $table->$str != 'teams' && $table->$str != 'team_invitations' && $table->$str != 'users') {
+                DB::table($table->$str)->truncate();    
+            }
+        }
+        return redirect()->back()->with('flash_message_success', 'Database cleared successfully');
+    }
+
+
+
     public function general_setting(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -25,8 +46,8 @@ class GeneralSettingController extends Controller
             $setting->bkash = $data['bkash'];
             $setting->nogod = $data['nogod'];
             $setting->rocket = $data['rocket'];
-        
             $setting->address = $data['address'];
+            $setting->database_show = $data['database_show'];
             $setting->commission = $data['commission'];
             $setting->quantity = $data['quantity'];
             $setting->vat = $data['vat'];
@@ -43,7 +64,6 @@ class GeneralSettingController extends Controller
             $setting->blog_about_us = $data['blog_about_us'];
             $setting->meta_description = $data['meta_description'];
             $setting->best_selling_product = $data['best_selling_product'];
-            $setting->less_selling_product = $data['less_selling_product'];
             $setting->t_c = $data['t_c'];
             $setting->w_r = $data['w_r'];
             $setting->about_us = $data['about_us'];

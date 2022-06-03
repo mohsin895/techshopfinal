@@ -160,10 +160,18 @@ public function order(Request $request)
      $cartPro->quantity = $pro->quantity;
      $cartPro->save();
 
-
-   
-
    }
+   if($cartPro->save()){
+    foreach($cartProducts as $product){
+      $productDetails= DB::table('products')->where('id',$product->product_id)->first();
+      $orderProduct = Product::find($product->product_id);
+      $orderProduct->order_qty = $orderProduct->order_qty + $product->quantity;
+      $orderProduct->order_price = $orderProduct->order_price + $product->price * $product->quantity;
+      $orderProduct->save();
+      // dd($orderProduct);
+     
+    }
+       }
    DB::table('carts')->where('user_email',$user_email)->delete();
    $productDetails = Order::with('orders')->where('id',$order_id)->first();
   $productDetails = json_decode(json_encode($productDetails),true);

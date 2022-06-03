@@ -109,7 +109,9 @@
                             @foreach($product as $row)
                             @php
                             $totalQuantity = App\Models\Qty::where('product_id',$row->id)->sum('quantity');
-                            $sellQuantity = App\Models\OrderProduct::where('product_id',$row->id)->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->sum('quantity');
+                            $expireTreshold = Carbon\Carbon::now()->addDays(90);
+                            $sellQuantity = App\Models\OrderProduct::where('product_id',$row->id)->where('created_at','<' ,$expireTreshold)->sum('quantity');
+                        
                             $stockOutQuantity = App\Models\OrderProduct::where('product_id',$row->id)->sum('quantity');
                             @endphp
                             @if($sellQuantity != 0 )

@@ -141,6 +141,24 @@
                                         </div>
 
                                     </div>
+
+                                    <div class="card-body pt-0">
+                                        <!--begin::Input group-->
+                                        <div class="mb-10 fv-row">
+                                            <!--begin::Label-->
+                                            <label class="required form-label">Coupon Code purpose</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <input type="text" name="purpose" class="form-control mb-2"
+                                                placeholder="Coupon Code Purpose" value="" required />
+                                            <!--end::Input-->
+                                            <!--begin::Description-->
+
+                                            <!--end::Description-->
+                                        </div>
+
+                                        <!--end::Input group-->
+                                    </div>
                                 </div>
 
                                 <!--end::Card header-->

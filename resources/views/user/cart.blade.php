@@ -116,13 +116,13 @@
                                     <div class="d-flex">
                                         <p class="text">Total: </p>
                                         <p id="total" class="amount">{{$gs->currency}}&nbsp;&nbsp;
-                                            <?php echo $total_amount+$sc->flat_rate + $vat; ?></p>
+                                            <?php echo $total_amount + $vat; ?></p>
                                     </div>
                                     <hr class="hr-line" />
                                     <div class="d-flex">
                                         <p class="payable">Payable Total: </p>
                                         <p id="payable_total" class="total">{{$gs->currency}}&nbsp;&nbsp;
-                                            <?php echo $total_amount+$sc->flat_rate + $vat; ?></p>
+                                            <?php echo $total_amount + $vat; ?></p>
                                     </div>
                                 </div>
                             </div>

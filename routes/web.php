@@ -53,7 +53,7 @@ Route::group(['middleware'=>['admin']],function(){
     Route::match(['get','post'], '/general-setting',[GeneralSettingController::class,'general_setting'])->name('general.setting');
     Route::get('setting/mail_setting', [GeneralSettingController::class,'mailSetting'])->name('general.mail');
     Route::post('setting/mail_setting_store',[GeneralSettingController::class,'mailSettingStore'])->name('setting.mailStore');
-
+    Route::get('setting/empty-database', [GeneralSettingController::class,'emptyDatabase'])->name('setting.emptyDatabase');
     //General Setting COntroller End
 
     
@@ -145,6 +145,7 @@ Route::get('/couponcode/edit/{id}',[App\Http\Controllers\Admin\CouponCodeControl
 Route::post('/couponcode/insert',[App\Http\Controllers\Admin\CouponCodeController::class,'insert'])->name('couponcode.insert');
 Route::post('/couponcode/update/{id}',[App\Http\Controllers\Admin\CouponCodeController::class,'update'])->name('couponcode.update');
 Route::get('/delete-couponcode/{id}',[App\Http\Controllers\Admin\CouponCodeController::class,'delete'])->name('couponcode.delete');
+Route::get('/couponcode/view-details/{id}',[App\Http\Controllers\Admin\CouponCodeController::class,'view_deatils'])->name('couponcode.view_details');
 
 Route::get('/couponcode/update-status/{id}/{status}',[App\Http\Controllers\Admin\CouponCodeController::class,'status']);
 
@@ -312,6 +313,15 @@ Route::get('/order/last12MonthProfitData',[App\Http\Controllers\Admin\OrderChart
 
 
 //OrderChartController End
+
+//Report Controller Start 
+Route::match(['get','post'],'/report',[App\Http\Controllers\Admin\ReportController::class,'index'])->name('report');
+Route::match(['get','post'],'/report/search',[App\Http\Controllers\Admin\ReportController::class,'report'])->name('report.search');
+
+
+//Report Controller End
+
+
     });
 });
 

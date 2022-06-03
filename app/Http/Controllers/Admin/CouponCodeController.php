@@ -47,6 +47,7 @@ public function add()
        $data->amount = $request['amount'];
        $data->amount_type = $request['amount_type'];
       $data->expiry_date = $request['expiry_date'];
+      $data->purpose = $request['purpose'];
       $data->save();
 
        return redirect('/admin/couponcode')->with('flash_message_success','Coupon Code added successfully');
@@ -71,6 +72,7 @@ public function add()
       $data->amount = $request['amount'];
       $data->amount_type = $request['amount_type'];
       $data->expiry_date = $request['expiry_date'];
+      $data->purpose = $request['purpose'];
         $data->save(); 
         return redirect('/admin/couponcode')->with('flash_message_success','Coupon Code Update successfully');
     }
@@ -81,5 +83,16 @@ public function add()
   
     $data->delete();
     return back()->with('flash_message_success','Coupon Code has delete successfully');
+    }
+
+
+    public function view_deatils($id)
+    {
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Details Coupon Code";
+        $data['add']="Details Coupon Code";
+        // dd($data['subcategory']);
+        $data['coupon_code'] = CouponCode::find($id);
+        return view('admin.coupon_code.details',$data);
     }
 }

@@ -71,8 +71,7 @@
                 <div class="card p-4 justify-content-center" style="background: #363C43">
                     <h2 class="text-center text-white forn-mweght-blod">Welcome back</h2>
                     <hr class="my-3">
-                    <p class="text-center text-light lead">Please login in useing your email and pssword.if you have not
-                        register yet.you can register free</p>
+                    <p class="text-center text-light lead">Please complete the sign up process first,If you are not registered.Its free and take only 1 minute.</p>
                     <a href="{{route('user.registration')}}" class="btn btn-outline-light btn-lg align-self-center mt-4" >Sign
                         Up</a>
 

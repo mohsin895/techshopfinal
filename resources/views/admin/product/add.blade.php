@@ -399,7 +399,7 @@
                                         </div>
                                         <div class="mb-10 fv-row">
                                             <!--begin::Label-->
-                                            <label class="required form-label">Product Model</label>
+                                            <label class=" form-label">Product Model</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="text" name="model_no" class="form-control mb-2"

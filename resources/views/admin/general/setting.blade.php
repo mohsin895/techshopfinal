@@ -241,7 +241,7 @@
                                         <!--end::Card body-->
                                     </div>
 
-                                   
+
 
 
                                     <div class="card card-flush py-4">
@@ -356,7 +356,7 @@
                                             </div>
                                             <!--end::Image input-->
                                             <!--begin::Description-->
-                                            <div class="text-muted fs-7">Set the Blog Logo  image. Only *.png,
+                                            <div class="text-muted fs-7">Set the Blog Logo image. Only *.png,
                                                 *.jpg and *.jpeg
                                                 image files are accepted,size:width:32px,height:32px.</div>
                                             <!--end::Description-->
@@ -477,8 +477,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid"
-                                                name="currency" value="{{$gs->currency}}">
+                                            <input type="text" class="form-control form-control-solid" name="currency"
+                                                value="{{$gs->currency}}">
                                             <!--end::Input-->
                                         </div>
                                     </div>
@@ -494,8 +494,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid"
-                                                name="bkash" value="{{$gs->bkash}}">
+                                            <input type="text" class="form-control form-control-solid" name="bkash"
+                                                value="{{$gs->bkash}}">
                                             <!--end::Input-->
                                         </div>
                                     </div>
@@ -511,8 +511,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid"
-                                                name="rocket" value="{{$gs->rocket}}">
+                                            <input type="text" class="form-control form-control-solid" name="rocket"
+                                                value="{{$gs->rocket}}">
                                             <!--end::Input-->
                                         </div>
                                     </div>
@@ -528,8 +528,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid"
-                                                name="nogod" value="{{$gs->nogod}}">
+                                            <input type="text" class="form-control form-control-solid" name="nogod"
+                                                value="{{$gs->nogod}}">
                                             <!--end::Input-->
                                         </div>
                                     </div>
@@ -545,8 +545,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid"
-                                                name="commission" value="{{$gs->commission}}"> 
+                                            <input type="text" class="form-control form-control-solid" name="commission"
+                                                value="{{$gs->commission}}">
                                             <!--end::Input-->
                                         </div>
                                     </div>
@@ -563,43 +563,43 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <input type="text" class="form-control form-control-solid"
-                                                name="vat" value="{{$gs->vat}}"> 
+                                            <input type="text" class="form-control form-control-solid" name="vat"
+                                                value="{{$gs->vat}}">
                                             <!--end::Input-->
                                         </div>
                                     </div>
                                     <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
-                                      
+
                                             <label class="fs-6 fw-bold form-label mt-3">
                                                 <span>Low Count Product</span>
                                                 <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                                     title="Low Count Product."></i>
                                             </label>
-                                      
+
                                         </div>
                                         <div class="col-md-9">
-                                       
-                                            <input type="number" class="form-control form-control-solid"
-                                                name="quantity" value="{{$gs->quantity}}"> 
-                                         
+
+                                            <input type="number" class="form-control form-control-solid" name="quantity"
+                                                value="{{$gs->quantity}}">
+
                                         </div>
                                     </div>
                                     <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
-                                      
+
                                             <label class="fs-6 fw-bold form-label mt-3">
                                                 <span>Best Selling Product(%)</span>
                                                 <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                                     title="Best Selling Product."></i>
                                             </label>
-                                      
+
                                         </div>
                                         <div class="col-md-9">
-                                       
+
                                             <input type="number" class="form-control form-control-solid"
-                                                name="best_selling_product" value="{{$gs->best_selling_product}}"> 
-                                         
+                                                name="best_selling_product" value="{{$gs->best_selling_product}}">
+
                                         </div>
                                     </div>
                                     <!-- <div class="row fv-row mb-7">
@@ -642,7 +642,7 @@
                                         <div class="col-md-3 text-md-end">
                                             <!--begin::Label-->
                                             <label class="fs-6 fw-bold form-label mt-3">
-                                                <span>Landing Page Flash Sale/Slider</span>
+                                                <span>Landing Page Flash Sale/Banner</span>
                                                 <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                                     title="Landing Page Flash Sale/Slider."></i>
                                             </label>
@@ -650,33 +650,46 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
-                                data-placeholder="Status" data-kt-ecommerce-order-filter="status" name="flash_slider">
-															<option value="3" @if($gs->flash_slider==3) selected ;@endif >Nothing</option>
-															<option value="1" @if($gs->flash_slider==1) selected ;@endif>Flash Sale</option>
-															<option value="2"@if($gs->flash_slider==2) selected ;@endif>Slider</option>
-															
-														</select>
+                                            <select class="form-select form-select-solid" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Status"
+                                                data-kt-ecommerce-order-filter="status" name="flash_slider">
+                                                <option value="3" @if($gs->flash_slider==3) selected ;@endif >Nothing
+                                                </option>
+                                                <option value="1" @if($gs->flash_slider==1) selected ;@endif>Flash Sale
+                                                </option>
+                                                <option value="2" @if($gs->flash_slider==2) selected ;@endif>Banner
+                                                </option>
+
+                                            </select>
                                             <!--end::Input-->
                                         </div>
                                     </div>
-                                    <!-- <div class="row fv-row mb-7">
+                                    <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
-                                    
+                                            <!--begin::Label-->
                                             <label class="fs-6 fw-bold form-label mt-3">
-                                                <span>Company Email2</span>
+                                                <span> empty Database</span>
                                                 <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                                                    title="Set keywords for the store separated by a comma."></i>
+                                                    title="Landing Page Flash Sale/Slider."></i>
                                             </label>
-                                        
+                                            <!--end::Label-->
                                         </div>
                                         <div class="col-md-9">
-                                        
-                                            <input type="text" class="form-control form-control-solid" name="email2"
-                                                value="{{$gs->email2}}" data-kt-ecommerce-settings-type="tagify" />
-                                           
+                                            <!--begin::Input-->
+                                            <select class="form-select form-select-solid" data-control="select2"
+                                                data-hide-search="true" data-placeholder="database_show"
+                                                data-kt-ecommerce-order-filter="database_show" name="database_show">
+                                               
+                                                <option value="1" @if($gs->database_show==1) selected ;@endif>Show
+                                                </option>
+                                                <option value="2" @if($gs->database_show==2) selected ;@endif>Hide
+                                                </option>
+
+                                            </select>
+                                            <!--end::Input-->
                                         </div>
-                                    </div> -->
+                                    </div>
+                                   
                                     <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
                                             <!--begin::Label-->
@@ -689,8 +702,9 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <input type="link" class="form-control form-control-solid" name="facebook_page"
-                                                value="{{$gs->facebook_page}}" data-kt-ecommerce-settings-type="tagify" />
+                                            <input type="link" class="form-control form-control-solid"
+                                                name="facebook_page" value="{{$gs->facebook_page}}"
+                                                data-kt-ecommerce-settings-type="tagify" />
                                             <!--end::Input-->
                                         </div>
                                     </div>
@@ -706,8 +720,9 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <input type="url" class="form-control form-control-solid" name="facebook_group"
-                                                value="{{$gs->facebook_group}}" data-kt-ecommerce-settings-type="tagify" />
+                                            <input type="url" class="form-control form-control-solid"
+                                                name="facebook_group" value="{{$gs->facebook_group}}"
+                                                data-kt-ecommerce-settings-type="tagify" />
                                             <!--end::Input-->
                                         </div>
                                     </div>
@@ -849,7 +864,7 @@
                                             <!--end::Input-->
                                         </div>
                                     </div>
-                                  
+
                                     <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
                                             <!--begin::Label-->
@@ -880,8 +895,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <textarea name="blog_about_us" id="" cols="30"
-                                                rows="10" class="ckeditor">{!! $gs->blog_about_us !!}</textarea>
+                                            <textarea name="blog_about_us" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->blog_about_us !!}</textarea>
 
                                             <!--end::Input-->
                                         </div>
@@ -898,8 +913,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <textarea name="t_c" id="" cols="30"
-                                                rows="10" class="ckeditor">{!! $gs->t_c !!}</textarea>
+                                            <textarea name="t_c" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->t_c !!}</textarea>
 
                                             <!--end::Input-->
                                         </div>
@@ -916,8 +931,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <textarea name="w_r" id="" cols="30"
-                                                rows="10" class="ckeditor">{!! $gs->w_r !!}</textarea>
+                                            <textarea name="w_r" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->w_r !!}</textarea>
 
                                             <!--end::Input-->
                                         </div>
@@ -934,8 +949,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <textarea name="about_us" id="" cols="30"
-                                                rows="10" class="ckeditor">{!! $gs->about_us !!}</textarea>
+                                            <textarea name="about_us" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->about_us !!}</textarea>
 
                                             <!--end::Input-->
                                         </div>
@@ -952,8 +967,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <textarea name="privecy_policy" id="" cols="30"
-                                                rows="10" class="ckeditor">{!! $gs->privecy_policy !!}</textarea>
+                                            <textarea name="privecy_policy" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->privecy_policy !!}</textarea>
 
                                             <!--end::Input-->
                                         </div>
