@@ -31211,7 +31211,7 @@ body ::placeholder {
     }
 
     .menu-bar ul li{
-        width: 300px;
+        width: 260px;
 
     }
     .main-content-section .sidebar-category .card-header{
@@ -31219,7 +31219,7 @@ body ::placeholder {
 
     }
     .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 260px;
+        margin-left: 240px;
     }
     
 }
@@ -31239,7 +31239,7 @@ body ::placeholder {
     }
 
     .menu-bar ul li{
-        width: 300px;
+        width: 270px;
 
     }
     .main-content-section .sidebar-category .card-header{
@@ -31247,7 +31247,7 @@ body ::placeholder {
 
     }
     .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 280px;
+        margin-left: 250px;
     }
     /* .fon-margin{
         margin-left: 180px;
@@ -31284,3 +31284,46 @@ body ::placeholder {
         margin-left: 320px;
     }
 }
+
+@media (min-width:1600px) and (max-width:2000px){
+
+    .sidebar-category{
+        max-width:400px !important;
+ 
+     }
+     .category-slider{
+         max-width: 2225px !important;
+
+     }
+
+     .menu-bar ul li{
+        width: 280px;
+
+    }
+
+    .menu-bar ul li:hover .sub-menu-1{
+        margin-left: 260px;
+    }
+}
+
+@media (min-width:2000px) and (max-width:4000px){
+
+    .sidebar-category{
+        max-width:400px !important;
+ 
+     }
+     .category-slider{
+         max-width: 2225px !important;
+
+     }
+
+     .menu-bar ul li{
+        width: 360px;
+
+    }
+
+    .menu-bar ul li:hover .sub-menu-1{
+        margin-left: 340px;
+    }
+}
+

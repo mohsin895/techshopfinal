@@ -5,7 +5,7 @@
 <section id="browse" class="main-content-section">
 
 <div class="content-section slider">
-        <div class="d-flex">
+        <div class="d-flex category-slider">
             <div class="row" style="width:350% !important">
       
 
