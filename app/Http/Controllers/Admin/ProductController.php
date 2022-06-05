@@ -97,6 +97,7 @@ public function add()
         $data->price = $request['price']; 
         $data->quantity = $request['quantity']; 
         $data->description = $request['description']; 
+        $data->expired_date = $request['expired_date']; 
         $data->summery = $request['summery']; 
         $data->document = $request['document']; 
         $data->supplier = $request['supplier']; 
@@ -179,6 +180,7 @@ public function add()
         $data->price = $request['price']; 
         $data->quantity = $request['quantity']; 
         $data->description = $request['description']; 
+        $data->expired_date = $request['expired_date'];
         $data->summery = $request['summery']; 
         $data->document = $request['document']; 
         $data->supplier = $request['supplier']; 

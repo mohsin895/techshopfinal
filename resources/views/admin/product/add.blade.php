@@ -368,7 +368,7 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="text" name="buying_price" class="form-control mb-2"
-                                                placeholder="Enter Buying Price" value="" min="1" required/>
+                                                placeholder="Enter Buying Price" value="" min="1" required />
                                             <!--end::Input-->
                                             <!--begin::Description-->
 
@@ -380,7 +380,7 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="text" name="price" class="form-control mb-2"
-                                                placeholder="Enter Selling Price" value="" required/>
+                                                placeholder="Enter Selling Price" value="" required />
                                             <!--end::Input-->
                                             <!--begin::Description-->
 
@@ -392,7 +392,7 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="number" name="quantity" class="form-control mb-2"
-                                                placeholder="Quantity" value="" min="1"/>
+                                                placeholder="Quantity" value="" min="1" />
                                             <!--end::Input-->
                                             <!--begin::Description-->
 
@@ -403,88 +403,97 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="text" name="model_no" class="form-control mb-2"
-                                                placeholder="Product name" value="" />
+                                                placeholder="Product Models" value="" />
                                             <!--end::Input-->
                                             <!--begin::Description-->
 
                                         </div>
                                         <div class="mb-10 fv-row">
-                                            <!--begin::Label-->
+
                                             <label class="required form-label">Product Supplier</label>
-                                            <!--end::Label-->
-                                            <!--begin::Input-->
+
                                             <input type="text" name="supplier" class="form-control mb-2"
                                                 placeholder="Product name" value="" />
-                                            <!--end::Input-->
-                                            <!--begin::Description-->
 
-                                      
+
+
+                                        </div>
+                                        @if($gs->expired_date == 1)
+                                        <div class="mb-10 fv-row">
+
+                                            <label class="required form-label">Expired Date</label>
+
+                                            <input type="date" name="expired_date" class="form-control mb-2"
+                                                placeholder="Product Expired date" value="" />
+
+
+
+                                        </div>
+                                        @else
+
+                                        @endif
+                                        <div>
+
+                                            <label class="form-label">Summery</label>
+
+                                            <div class="">
+                                                <textarea name="summery" rows="4" cols="100"
+                                                    class="ckeditor"></textarea>
+
+
+                                            </div>
+
+                                        </div>
+                                        <div>
+
+                                            <label class="form-label">Document</label>
+
+                                            <div class="">
+                                                <textarea name="document" rows="4" cols="100"
+                                                    class="ckeditor"></textarea>
+
+
+                                            </div>
+
+
+
+
+                                        </div>
                                         <!--end::Input group-->
-                                        <!--begin::Input group-->
-
-
                                     </div>
-                                    <div>
-
-                                        <label class="form-label">Summery</label>
-
-                                        <div class="">
-                                            <textarea name="summery" rows="4" cols="100" class="ckeditor"></textarea>
-
-
-                                        </div>
-
-                                    </div>
-                                    <div>
-
-                                        <label class="form-label">Document</label>
-
-                                        <div class="">
-                                            <textarea name="document" rows="4" cols="100" class="ckeditor"></textarea>
-
-
-                                        </div>
-
-                                
-
-
+                                    <!--end::Card header-->
                                 </div>
-                                <!--end::Input group-->
+                                <!--end::General options-->
+                                <!--begin::Media-->
+
+                                <!--end::Media-->
+                                <!--begin::Pricing-->
+
+                                <!--end::Pricing-->
                             </div>
-                            <!--end::Card header-->
                         </div>
-                        <!--end::General options-->
-                        <!--begin::Media-->
 
-                        <!--end::Media-->
-                        <!--begin::Pricing-->
+                    </div>
+                    <!--end::Tab content-->
+                    <div class="d-flex justify-content-end">
+                        <!--begin::Button-->
+                        <a href="#" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <button type="submit" class="btn btn-primary">
+                            <span class="indicator-label">Save Changes</span>
 
-                        <!--end::Pricing-->
+                        </button>
+                        <!--end::Button-->
                     </div>
                 </div>
-
+                <!--end::Main column-->
+            </form>
+            <!--end::Form-->
         </div>
-        <!--end::Tab content-->
-        <div class="d-flex justify-content-end">
-            <!--begin::Button-->
-            <a href="#" id="kt_ecommerce_add_product_cancel"
-                class="btn btn-light me-5">Cancel</a>
-            <!--end::Button-->
-            <!--begin::Button-->
-            <button type="submit" class="btn btn-primary">
-                <span class="indicator-label">Save Changes</span>
-
-            </button>
-            <!--end::Button-->
-        </div>
+        <!--end::Container-->
     </div>
-    <!--end::Main column-->
-    </form>
-    <!--end::Form-->
-</div>
-<!--end::Container-->
-</div>
-<!--end::Post-->
+    <!--end::Post-->
 </div>
 
 <script type="text/javascript">

@@ -69,7 +69,7 @@
                                     <!--begin::Card body-->
                                     <div class="card-body pt-0">
                                         <!--begin::Select store template-->
-                                        <label for="kt_ecommerce_add_product_store_template" class="form-label">Select a
+                                        <label for="kt_ecommerce_add_product_store_template" class="form-label">
                                             Select Cateroy</label>
                                         <!--end::Select store template-->
                                         <!--begin::Select2-->

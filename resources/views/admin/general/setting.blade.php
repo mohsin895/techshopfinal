@@ -689,6 +689,31 @@
                                             <!--end::Input-->
                                         </div>
                                     </div>
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span> Expired date</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Landing Page Flash Sale/Slider."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
+                                            <select class="form-select form-select-solid" data-control="select2"
+                                                data-hide-search="true" data-placeholder="expired_date"
+                                                data-kt-ecommerce-order-filter="expired_date" name="expired_date">
+                                               
+                                                <option value="1" @if($gs->expired_date==1) selected ;@endif>Show
+                                                </option>
+                                                <option value="2" @if($gs->expired_date==2) selected ;@endif>Hide
+                                                </option>
+
+                                            </select>
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
                                    
                                     <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">

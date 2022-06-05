@@ -8,48 +8,7 @@
     <div class="content-section">
         <div class="address-section d-flex justify-content-between">
             <div class="row col-12 col-lg-12 col-md-12 col-sm-12">
-                <div class="col-12 col-md-6 col-lg-6 col-sm-12">
-                    <div class="card js--shipping-card">
-                        <div class="card-header d-flex align-items-center">
-                            <p class="address-title">Shipping Address</p>
-                            <button type="button" class="btn js--btn-shipping"><i class="fa fa-angle-up"></i></button>
-                        </div>
-                        <div class="card-body js--shipping-body">
-
-
-                            <!-- <div class="form-inline ">
-                                    <input type="text" id="name" name="name" placeholder="Name"
-                                        value="{{Auth::user()->name}}" class="form-control" />
-                                    <input type="email" name="email" placeholder="Email" value="{{Auth::user()->email}}"
-                                        class="form-control" disabled />
-                                </div>
-
-                                <input id="discount_value" type="hidden" value="0" />
-
-                                <div class="form-inline mt-4">
-                                    <input type="text" id="phone" name="phone" placeholder="Phone"
-                                        value="{{Auth::user()->phone}}" class="form-control" />
-                                    <input type="text" id="country" name="country" value="Bangladesh"
-                                        class="form-control" />
-                                </div>
-                                <div class="form-inline mt-4">
-                                    <input type="text" id="city" name="city" placeholder="City"
-                                        value="{{Auth::user()->city}}" class="form-control" />
-                                    <input type="text" id="postCode" name="postcode" placeholder="Post Code"
-                                        value="{{Auth::user()->postcode}}" class="form-control" />
-                                </div>
-
-                                <div class="form-inline mt-4">
-                                    <textarea rows="2" class="form-control" name="address1" placeholder="Address1"
-                                        id="address1">{{Auth::user()->address1}}</textarea>
-                                    <textarea rows="2" class="form-control" name="address2" placeholder="Address2"
-                                        id="address2">{{Auth::user()->address2}}</textarea>
-                                </div> -->
-
-
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="col-12 col-md-6 col-lg-6 col-sm-12 mt-2">
                     <form action="{{route('user.order')}}" method="post">
                         @csrf

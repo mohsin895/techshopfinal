@@ -4,7 +4,7 @@
 @include('layout.front.detail_header')
 
 
-<section id="my-profile">
+<section id="my-profile" class="profile">
     <div class="row justify-content-center h-120vh" id="register-form-box">
         @include('user.setting.sider_bar')
 

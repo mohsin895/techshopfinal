@@ -17,21 +17,14 @@ $cartCount = Cart::cartCount();
 
 <div class="top-bar">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <!-- <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span
-                        class="d-none d-md-inline-block">info@yourdomain.com</span></a>
-                <span class="mx-md-2 d-inline-block"></span>
-                <a href="#" class=""><span class="mr-2  icon-phone"></span> <span class="d-none d-md-inline-block">1+
-                        (234) 5678 9101</span></a> -->
+       
+            <div class="col- col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              
                 <span class="d-md-inline-block d-sm-inline-block text-center">
                     <div class="site-logo">
                         <a href="{{url('/')}}" class="text-black"><span class="text-primary"><img
                                     src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}" alt="logo"
                                     class="img-fluid"></a>
-
-
-
 
                     </div>
                 </span>
@@ -108,7 +101,7 @@ $cartCount = Cart::cartCount();
 
             </div>
 
-        </div>
+       
 
     </div>
 </div>

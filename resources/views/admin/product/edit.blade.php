@@ -303,6 +303,20 @@
                                         </div>
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
+                                        @if($gs->expired_date == 1)
+                                        <div class="mb-10 fv-row">
+
+                                            <label class="required form-label">Expired Date</label>
+
+                                            <input type="date" name="expired_date" class="form-control mb-2"
+                                                placeholder="Product Expired date" value="{{$product->expired_date}}" />
+
+
+
+                                        </div>
+                                        @else
+
+                                        @endif
                                 
                                         <div>
 

@@ -2,9 +2,9 @@
 
 @section('content')
 @include('layout.front.detail_header')
-<section id="my-order">
+<section id="my-order" >
     <div class="content-section">
-        <div class="d-flex">
+        <div class="d-flex profile">
             <div class="row col-lg-12">
 
                 @include('user.setting.sider_bar')

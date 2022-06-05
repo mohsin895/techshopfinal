@@ -48,6 +48,7 @@ class GeneralSettingController extends Controller
             $setting->rocket = $data['rocket'];
             $setting->address = $data['address'];
             $setting->database_show = $data['database_show'];
+            $setting->expired_date = $data['expired_date'];
             $setting->commission = $data['commission'];
             $setting->quantity = $data['quantity'];
             $setting->vat = $data['vat'];

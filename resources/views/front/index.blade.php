@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-8  col-lg-8">
-                    <div id="js--home-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div id="js--home-carousel" class="carousel slide carousel-fade" data-ride="carousel" style="margin-right:10px">
                         <ol class="carousel-indicators">
                             @foreach($slider as $row)
                             <!-- <li data-target="#js--home-carousel" data-slide-to="0" class="active"></li> -->
@@ -59,9 +59,9 @@
                             @endforeach
                         </ol>
 
-                        <div class="carousel-inner">
+                        <div class="carousel-inner mr-2">
                             @foreach($slider as $key => $row)
-                            <div class="carousel-item @if($key ==0) active @endif" data-interval="5000" mr-3>
+                            <div class="carousel-item @if($key ==0) active @endif" data-interval="5000">
                                 <a href="#">
                                     <img src="{{asset('public/assets/images/slider/'.$row->image)}}"
                                         class="d-block w-100" alt="about_us_banner" />
@@ -75,7 +75,7 @@
                     <div class="top-small-banner mt-3 ">
                         <div class="d-flex justify-content-between">
                             @foreach($banner as $row)
-                            <div class="small-banner-item m-0" style="width:60%">
+                            <div class="small-banner-item m-0 mr-2" style="width:60%">
                                 <a href="#">
                                     <img src="{{asset('public/assets/images/banner/'.$row->image)}}"
                                         alt="small_banner_left" class="img-fluid" style="width:110%" />

@@ -321,6 +321,33 @@ Route::match(['get','post'],'/report/search',[App\Http\Controllers\Admin\ReportC
 
 //Report Controller End
 
+//RoleController
+Route::get('/role',[App\Http\Controllers\Admin\RoleController::class,'index'])->name('role.index');
+Route::get('/role/add',[App\Http\Controllers\Admin\RoleController::class,'add'])->name('role.add');
+Route::get('/role/edit/{id}',[App\Http\Controllers\Admin\RoleController::class,'edit'])->name('role.edit');
+Route::post('/role/insert',[App\Http\Controllers\Admin\RoleController::class,'insert'])->name('role.insert');
+Route::post('/role/update/{id}',[App\Http\Controllers\Admin\RoleController::class,'update'])->name('role.update');
+Route::get('/delete-role/{id}',[App\Http\Controllers\Admin\RoleController::class,'delete'])->name('role.delete');
+
+Route::get('/role/update-status/{id}/{status}',[App\Http\Controllers\Admin\RoleController::class,'status']);
+
+//Permission
+Route::get('role/permission/{id}', [App\Http\Controllers\Admin\RoleController::class,'permission'])->name('role.permission');
+Route::post('role/set_permission', [App\Http\Controllers\Admin\RoleController::class,'setPermission'])->name('role.setPermission');
+
+//EMployee COntroller Start 
+
+Route::get('/employee',[App\Http\Controllers\Admin\EmployeeController::class,'index'])->name('employee.index');
+Route::get('/employee/add',[App\Http\Controllers\Admin\EmployeeController::class,'add'])->name('employee.add');
+Route::get('/employee/edit/{id}',[App\Http\Controllers\Admin\EmployeeController::class,'edit'])->name('employee.edit');
+Route::post('/employee/insert',[App\Http\Controllers\Admin\EmployeeController::class,'insert'])->name('employee.insert');
+Route::post('/employee/update/{id}',[App\Http\Controllers\Admin\EmployeeController::class,'update'])->name('employee.update');
+Route::get('/delete-employee/{id}',[App\Http\Controllers\Admin\EmployeeController::class,'delete'])->name('employee.delete');
+
+Route::get('/employee/update-status/{id}/{status}',[App\Http\Controllers\Admin\EmployeeController::class,'status']);
+
+//Employee COntroller end
+
 
     });
 });

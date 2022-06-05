@@ -2,7 +2,7 @@
 
 @section('content')
 @include('layout.front.detail_header')
-<section id="my-profile">
+<section id="my-profile" class="profile">
     <div class="content-section">
         <div class="d-flex">
             <div class="row col-lg-12">
