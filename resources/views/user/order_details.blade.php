@@ -8,9 +8,9 @@
         <div class="card">
          
             <div class="row col-12 col-md-12 col-xl-12 col-lg-12">
-                <div class="row col-12 col-md-06 col-xl-12 col-lg-12">
-                    <div class="order-info  col-12 col-lg-6 col-md-6 col-sm-12" style="margin-top: 10px;margin-bottom: 10px;">
-                        <img src="{{ asset('public/image/frontLogos/order_confirmation.png')}}" alt="confirmation_image"
+                    <div class="order-info  col-12 col-lg-6 col-md-6 col-sm-12 " >
+                        <div  style="margin: 25%;">
+                            <img src="{{ asset('public/image/frontLogos/order_confirmation.png')}}" alt="confirmation_image"
                             class="img-fluid">
 
                         <div>
@@ -22,8 +22,9 @@
                         <div>
                             <p class="desc">Our customer care will call you shortly</p>
                         </div>
+                        </div>
                     </div>
-                    <div class="cart-summary  col-12 col-lg-6 col-md-6 col-sm-12">
+                    <div class="cart-summary  col-12 col-lg-6 col-md-6 col-sm-12" style="margin-top: 2%; margin-bottom: 2%;">
                         <p class="title">Order Summary</p>
                         <div class="summary-info col-12 col-lg-12 col-md-12 col-sm-12">
                             <div class="d-flex text-wrapper">
@@ -61,7 +62,7 @@
                             <p class="delivery-date">Thanks for being with {{$gs->site_title}}</p>
                         </div>
                     </div>
-                </div>
+                
             </div>
           
         </div>

@@ -130,8 +130,8 @@
                     </div>
                     <div class="text-center">
 
-<a href="{{url('/')}}" class="btn btn-cart__next btn-warning">Back to Shopping</a>
-<a href="{{route('user.order')}}" class="btn btn-cart__next btn-success ml-2">Next Step</a>
+<a href="{{url('/')}}" class="btn btn-cart__next btn-warning m-1">Back to Shopping</a>
+<a href="{{route('user.order')}}" class="btn btn-cart__next btn-success m-1">Next Step</a>
 </div>
                 </div>
             </div>
