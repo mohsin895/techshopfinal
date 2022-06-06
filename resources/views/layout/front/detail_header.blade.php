@@ -80,7 +80,7 @@ $cartCount = Cart::cartCount();
 
                             <a href="" class="dropdown-toggle-user" data-toggle="dropdown">
                                 <span class="icon-wrapper">
-                                    <i class="fa-solid fa-user" style="font-size: 25px; font-style: normal;"></i>
+                                    <i class="fa fa-user" style="font-size: 25px;"></i>
                                 </span>
                                 <span><span> <i class="fa fa-solid fa-chevron-down"
                                             style="font-size: 25px;"></i></span></span>

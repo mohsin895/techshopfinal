@@ -7,8 +7,9 @@
     <div class="content-section">
         <div class="card">
          
-                <div class="row col-12 col-md-12 col-xl-12 col-lg-12">
-                    <div class="order-info  col-12 col-lg-6 col-md-6 col-sm-12">
+            <div class="row col-12 col-md-12 col-xl-12 col-lg-12">
+                <div class="row col-12 col-md-06 col-xl-12 col-lg-12">
+                    <div class="order-info  col-12 col-lg-6 col-md-6 col-sm-12" style="margin-top: 10px;margin-bottom: 10px;">
                         <img src="{{ asset('public/image/frontLogos/order_confirmation.png')}}" alt="confirmation_image"
                             class="img-fluid">
 
@@ -61,6 +62,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
           
         </div>
     </div>

@@ -4,11 +4,6 @@ $cartCount = Cart::cartCount();
 
  ?>
 
-<style>
-    .rotate{
-        transform: rotate(90deg);
-    }
-</style>
 <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -57,7 +52,7 @@ $cartCount = Cart::cartCount();
 
                 <div class="float-right d-none d-lg-block d-xl-block d-xxl-block ">
                     <a href="{{route('cart')}}" class="icon-wrapper dropdown-toggle-cart js--cart-icon text-center">
-                        <i class="fa fa-shopping-bag" aria-hidden="true" style="font-size: 23px;"></i>
+                        <i class="fa fa-shopping-bag" aria-hidden="true" style="font-size: 25px;"></i>
                         <div class="badge" style="color: #1c619b; font-size: 25px;">{{ $cartCount}}</div>
 
                     </a>
@@ -76,7 +71,7 @@ $cartCount = Cart::cartCount();
 
                             <a href="" class="dropdown-toggle-user" data-toggle="dropdown">
                                 <span class="icon-wrapper">
-                                    <i class="fa-solid fa-user" style="font-size: 25px; font-style: normal;"></i>
+                                    <i class="fa fa-user" style="font-size: 25px;"></i>
                                 </span>
                                 <span><span> <i class="fa fa-solid fa-chevron-down"
                                             style="font-size: 25px;"></i></span></span>
