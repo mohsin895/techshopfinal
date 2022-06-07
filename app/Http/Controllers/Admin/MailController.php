@@ -6,12 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
 use App\Models\User;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Mail;
+use Auth;
 
 class MailController extends Controller
 {
     public function userEmail(Request $request)
     {
+      $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('users_send_mail')) {
+            $permissions = Role::findByName($role->name)->permissions;
         if ($request->isMethod('post')) {
            $data = $request->all();
            $email = $data['email'];
@@ -29,11 +36,16 @@ class MailController extends Controller
           });
         }
         return back();
+      } else
+      return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
  
  
     public function all_user(Request $request)
     {
+      $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('send_email_all_users')) {
+            $permissions = Role::findByName($role->name)->permissions;
         if ($request->isMethod('post')) {
            $data = $request->all();
          
@@ -52,5 +64,8 @@ class MailController extends Controller
            });
         }
         return back();
+      } else
+      return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
+    
 }

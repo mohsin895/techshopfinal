@@ -103,6 +103,9 @@
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
                             @foreach($employee as $row)
+                            @php 
+                            $role = App\Models\Roles::find($row->role_id);
+                            @endphp
                             <tr>
                                 <!--begin::Checkbox-->
                                 <td>
@@ -131,9 +134,21 @@
                                 </td>
                                
                                 <td>{{ $row->email}}</td>
-                                <td>{{ $row->status}}</td>
-
-                                <td>{{ $row->role_id}}</td>
+                                <td>
+                                <div
+                                        class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
+                                        <label class="form-check-label badge badge-light-danger">Locked</label>
+                                        <input class="form-check-input" type="checkbox"
+                                            {{$row->status=='1'? 'checked':''}} id="employeeStatus"
+                                            data-id="{{$row->id}}" />
+                                        <label class="form-check-label badge badge-light-success">Active</label>
+                                    </div>
+                                </td>
+ @if(!empty($role))
+                                <td>{{ $role->name}}</td>
+                                @else
+                                <td></td>
+                                @endif
                                 <!--end::Category=-->
                                 <!--begin::Type=-->
                                 <!-- <td>

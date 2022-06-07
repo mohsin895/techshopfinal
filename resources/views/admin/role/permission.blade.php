@@ -190,7 +190,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("new_order_details", $all_permission))
@@ -202,10 +202,10 @@
                                                                 @endif
                                                                 <label for="new_order_details"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("new_order_invoice", $all_permission))
@@ -217,10 +217,10 @@
                                                                 @endif
                                                                 <label for="new_order_invoice"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("new_order_status", $all_permission))
@@ -232,7 +232,7 @@
                                                                 @endif
                                                                 <label for="new_order_status"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
 
                                                     </tr>
@@ -257,7 +257,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("processing_order_details",
@@ -272,10 +272,10 @@
                                                                 @endif
                                                                 <label for="processing_order_details"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("processing_order_invoice",
@@ -290,10 +290,10 @@
                                                                 @endif
                                                                 <label for="processing_order_invoice"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("processing_order_status",
@@ -308,7 +308,7 @@
                                                                 @endif
                                                                 <label for="processing_order_status"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
 
                                                     </tr>
@@ -334,7 +334,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("packaging_order_details",
@@ -349,10 +349,10 @@
                                                                 @endif
                                                                 <label for="packaging_order_details"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue checked"
+                                                            <!-- <div class="icheckbox_square-blue checked"
                                                                 aria-checked="false" aria-disabled="false">
 
                                                                 @if(in_array("packaging_order_invoice",
@@ -367,10 +367,10 @@
                                                                 @endif
                                                                 <label for="packaging_order_invoice"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("packaging_order_status", $all_permission))
@@ -384,7 +384,7 @@
                                                                 @endif
                                                                 <label for="packaging_order_status"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
 
                                                     </tr>
@@ -410,7 +410,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("waiting_order_details", $all_permission))
@@ -424,25 +424,25 @@
                                                                 @endif
                                                                 <label for="waiting_order_details"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue checked"
+                                                            <!-- <div class="icheckbox_square-blue checked"
                                                                 aria-checked="false" aria-disabled="false">
 
-                                                                @if(in_array("invoice", $all_permission))
-                                                                <input type="checkbox" value="1" id="invoice"
-                                                                    name="invoice" checked>
+                                                                @if(in_array("waiting_order_invoice", $all_permission))
+                                                                <input type="checkbox" value="1" id="waiting_order_invoice"
+                                                                    name="waiting_order_invoice" checked>
                                                                 @else
-                                                                <input type="checkbox" value="1" id="invoice"
-                                                                    name="invoice">
+                                                                <input type="checkbox" value="1" id="waiting_order_invoice"
+                                                                    name="waiting_order_invoice">
                                                                 @endif
-                                                                <label for="invoice"></label>
+                                                                <label for="waiting_order_invoice"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("waiting_order_status", $all_permission))
@@ -456,7 +456,7 @@
                                                                 @endif
                                                                 <label for="waiting_order_status"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
 
                                                     </tr>
@@ -482,7 +482,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("shipping_order_details", $all_permission))
@@ -496,10 +496,10 @@
                                                                 @endif
                                                                 <label for="shipping_order_details"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue checked"
+                                                            <!-- <div class="icheckbox_square-blue checked"
                                                                 aria-checked="false" aria-disabled="false">
 
                                                                 @if(in_array("shipping_order_invoice", $all_permission))
@@ -513,10 +513,10 @@
                                                                 @endif
                                                                 <label for="shipping_order_invoice"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("shipping_order_status", $all_permission))
@@ -530,7 +530,7 @@
                                                                 @endif
                                                                 <label for="shipping_order_status"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
 
                                                     </tr>
@@ -557,7 +557,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("deliverd_order_details", $all_permission))
@@ -571,10 +571,10 @@
                                                                 @endif
                                                                 <label for="deliverd_order_details"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue checked"
+                                                            <!-- <div class="icheckbox_square-blue checked"
                                                                 aria-checked="false" aria-disabled="false">
 
                                                                 @if(in_array("deliverd_order_invoice", $all_permission))
@@ -588,10 +588,10 @@
                                                                 @endif
                                                                 <label for="deliverd_order_invoice"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("deliverd_order_status", $all_permission))
@@ -605,7 +605,7 @@
                                                                 @endif
                                                                 <label for="deliverd_order_status"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
 
                                                     </tr>
@@ -630,7 +630,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("complete_order_details", $all_permission))
@@ -644,10 +644,10 @@
                                                                 @endif
                                                                 <label for="complete_order_details"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("complete_order_invoice", $all_permission))
@@ -661,10 +661,10 @@
                                                                 @endif
                                                                 <label for="complete_order_invoice"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("complete_order_status", $all_permission))
@@ -678,7 +678,7 @@
                                                                 @endif
                                                                 <label for="complete_order_status"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
 
                                                     </tr>
@@ -702,7 +702,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("canceled_order_details",
@@ -717,10 +717,10 @@
                                                                 @endif
                                                                 <label for="canceled_order_details"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("canceled_order_invoice", $all_permission))
@@ -734,10 +734,10 @@
                                                                 @endif
                                                                 <label for="canceled_order_invoice"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                            <!-- <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
                                                                 @if(in_array("canceled_order_status",
@@ -752,7 +752,7 @@
                                                                 @endif
                                                                 <label for="canceled_order_status"></label>
 
-                                                            </div>
+                                                            </div> -->
                                                         </td>
 
                                                     </tr>
@@ -1312,15 +1312,31 @@
                                                             <div class="icheckbox_square-blue" aria-checked="false"
                                                                 aria-disabled="false">
 
-                                                                @if(in_array("stock_low_products",
+                                                                @if(in_array("stock_out_products",
                                                                 $all_permission))
-                                                                <input type="checkbox" value="1" id="stock_low_products"
-                                                                    name="stock_low_products" checked>
+                                                                <input type="checkbox" value="1" id="stock_out_products"
+                                                                    name="stock_out_products" checked>
                                                                 @else
-                                                                <input type="checkbox" value="1" id="stock_low_products"
-                                                                    name="stock_low_products">
+                                                                <input type="checkbox" value="1" id="stock_out_products"
+                                                                    name="stock_out_products">
                                                                 @endif
-                                                                <label for="stock_low_products"></label>
+                                                                <label for="stock_out_products"></label>
+
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center"> Expired date Products
+                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                                aria-disabled="false">
+
+                                                                @if(in_array("expired_date_products",
+                                                                $all_permission))
+                                                                <input type="checkbox" value="1" id="expired_date_products"
+                                                                    name="expired_date_products" checked>
+                                                                @else
+                                                                <input type="checkbox" value="1" id="expired_date_products"
+                                                                    name="expired_date_products">
+                                                                @endif
+                                                                <label for="expired_date_products"></label>
 
                                                             </div>
                                                         </td>
@@ -2198,7 +2214,7 @@
 
                                                     <tr>
                                                         <td>Blog User Part</td>
-                                                        <td class="text-center"> Blog User Coment
+                                                        <td class="text-center"> Blog User Comment
                                                             <div class="icheckbox_square-blue checked"
                                                                 aria-checked="false" aria-disabled="false">
 

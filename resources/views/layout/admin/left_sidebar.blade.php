@@ -15,6 +15,9 @@ $gs = App\Models\GeneralSetting::first();
 
 $totalproduct= App\Models\Product::get();
 $flashsellingproduct= App\Models\Product::where('flash_sale',1)->count('id');
+$mytime = Carbon\Carbon::now();
+        $expireddate = $mytime->toDateString();
+$expireddateproduct= App\Models\Product::where('expired_date', '<', $expireddate)->count('id');
 
 @endphp
 
@@ -180,6 +183,30 @@ $low = $stockLowQty - $sellQuantity
             <!--begin::Menu-->
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
+                <?php
+            $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+            $dashboard_view_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'dashboard_view'],
+                    ['role_id', $role->id]
+                ])->first();
+                $analytice_view_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'analytice_view'],
+                    ['role_id', $role->id]
+                ])->first();
+
+                $products_reporst_view_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'products_reporst_view'],
+                    ['role_id', $role->id]
+                ])->first();
+
+            ?>
+                @if($dashboard_view_permission_active)
                 <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                     <a href="{{route('admin.dashboard')}}">
                         <span class="menu-link">
@@ -202,6 +229,8 @@ $low = $stockLowQty - $sellQuantity
                     </a>
 
                 </div>
+                @endif
+                @if($analytice_view_permission_active)
                 <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                     <a href="{{route('admin.order.chart')}}">
                         <span class="menu-link">
@@ -224,7 +253,8 @@ $low = $stockLowQty - $sellQuantity
                     </a>
 
                 </div>
-
+                @endif
+                @if($products_reporst_view_permission_active)
 
                 <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                     <a href="{{route('admin.report')}}">
@@ -248,7 +278,7 @@ $low = $stockLowQty - $sellQuantity
                     </a>
 
                 </div>
-
+                @endif
 
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -258,6 +288,70 @@ $low = $stockLowQty - $sellQuantity
 
                         <span class="menu-arrow"></span>
                     </span>
+                    <?php
+            $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+            $order_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'order_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                $new_order_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'new_order_index'],
+                    ['role_id', $role->id]
+                ])->first();
+
+                $processing_order_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'processing_order_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                
+                $packaging_order_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'packaging_order_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                
+                $waiting_order_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'waiting_order_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                
+                $shipping_order_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'shipping_order_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                
+                $deliverd_order_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'deliverd_order_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                $complete_order_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'complete_order_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                $canceled_order_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'canceled_order_index'],
+                    ['role_id', $role->id]
+                ])->first();
+
+            ?>
+                    @if($order_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.order.index')}}">
@@ -283,7 +377,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
-
+                    @endif
+                    @if($new_order_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.order.new')}}">
@@ -309,6 +404,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($processing_order_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.order.processing')}}">
@@ -334,6 +431,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($packaging_order_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.order.packaging')}}">
@@ -359,6 +458,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($waiting_order_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.order.pending')}}">
@@ -384,6 +485,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($shipping_order_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.order.shipping')}}">
@@ -409,6 +512,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($deliverd_order_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.order.delivered')}}">
@@ -434,6 +539,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($complete_order_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.order.complete')}}">
@@ -459,7 +566,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
-
+                    @endif
+                    @if($canceled_order_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.order.cancel')}}">
@@ -485,7 +593,7 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
-
+                    @endif
                 </div>
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -495,7 +603,59 @@ $low = $stockLowQty - $sellQuantity
 
                         <span class="menu-arrow"></span>
                     </span>
+                    <?php
+            $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+            $product_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'product_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                $category_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'category_index'],
+                    ['role_id', $role->id]
+                ])->first();
 
+                $subcategory_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'subcategory_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                
+                $flash_sale_product_index_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'flash_sale_product_index'],
+                    ['role_id', $role->id]
+                ])->first();
+                
+                $stock_low_products_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'stock_low_products'],
+                    ['role_id', $role->id]
+                ])->first();
+                
+                $stock_out_products_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'stock_out_products'],
+                    ['role_id', $role->id]
+                ])->first();
+                $expired_date_products_permission_active = DB::table('permissions')
+                ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                ->where([
+                    ['permissions.name', 'expired_date_products'],
+                    ['role_id', $role->id]
+                ])->first();
+                
+              
+
+            ?>
+                    @if($product_index_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -529,6 +689,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($subcategory_index_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -562,6 +724,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($product_index_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -595,190 +759,15 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
-                    <!-- <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
-                            <a href="{{route('admin.product.last-month.selling.product')}}">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                       
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
-                                                    fill="black" />
-                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                      
-                                    </span>
-                                    <span class="menu-title">Last Month Selling Product({{$lastmonthselling}})</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                            </a>
-                        </div>
+                    @endif
 
-                    </div>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
-                            <a href="{{route('admin.product.last-month.not-selling.product')}}">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                      
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
-                                                    fill="black" />
-                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                      
-                                    </span>
-                                    <span class="menu-title">Last Month Not Selling
-                                        Product({{$lastmonthnotselling}})</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                            </a>
-                        </div>
-
-                    </div>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
-                            <a href="{{route('admin.product.last-year.selling.product')}}">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                       
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
-                                                    fill="black" />
-                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                     
-                                    </span>
-                                    <span class="menu-title">Last Year Selling Product({{$lastyearselling}})</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                            </a>
-                        </div>
-
-                    </div>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
-                            <a href="{{route('admin.product.last-year.not-selling.product')}}">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                       
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
-                                                    fill="black" />
-                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                       
-                                    </span>
-                                    <span class="menu-title">Last Year Not Selling
-                                        Product({{$lastyearnotselling}})</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                            </a>
-                        </div>
-
-                    </div>
-                   
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
-                            <a href="{{route('admin.product.top.selling.product')}}">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                      
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
-                                                    fill="black" />
-                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                            
-                                    </span>
-                                    <span class="menu-title">Best Selling Product({{$bestselling}})</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                            </a>
-                        </div>
-
-                    </div>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
-                            <a href="{{route('admin.product.less.selling.product')}}">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                     
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
-                                                    fill="black" />
-                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                   
-                                    </span>
-                                    <span class="menu-title">Less Selling Product({{$lessselling}})</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                            </a>
-                        </div>
-
-                    </div>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
-                            <a href="{{route('admin.product.never.selling.product')}}">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                      
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
-                                                    fill="black" />
-                                                <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                    
-                                    </span>
-                                    <span class="menu-title">Never Selling Product({{$neversellingproduct}})</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                            </a>
-                        </div>
-
-                    </div> -->
+                    @if($stock_low_products_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.product.stock.low')}}">
                                 <span class="menu-link">
                                     <span class="menu-icon">
-                                     
+
                                         <span class="svg-icon svg-icon-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -789,7 +778,7 @@ $low = $stockLowQty - $sellQuantity
                                                     fill="black" />
                                             </svg>
                                         </span>
-                                      
+
                                     </span>
                                     <span class="menu-title">Stock Low Product({{$lownumber}})</span>
                                     <span class="menu-arrow"></span>
@@ -798,6 +787,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($stock_out_products_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.product.stock.out')}}">
@@ -823,6 +814,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($flash_sale_product_index_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -856,6 +849,43 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+
+                    @if($expired_date_products_permission_active)
+                    <div class="menu-sub menu-sub-accordion">
+                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <span class="menu-link">
+                                <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                    <span class="svg-icon svg-icon-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
+                                                fill="black" />
+                                            <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4" fill="black" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                                <span class="menu-title">Expired Date Product({{$expireddateproduct}})</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion">
+                                <div class="menu-item">
+                                    <a class="menu-link" href="{{route('admin.product.expired_date')}}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Add & View</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    @endif
 
 
 
@@ -868,6 +898,23 @@ $low = $stockLowQty - $sellQuantity
 
                         <span class="menu-arrow"></span>
                     </span>
+                    <?php
+                    $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+                    $giftcard_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'giftcard_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $giftcard_order_view_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'giftcard_order_view'],
+                    ['role_id', $role->id]
+                    ])->first();
+
+                    ?>
+                    @if($giftcard_index_permission_active)
 
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
@@ -894,6 +941,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($giftcard_order_view_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -927,6 +976,7 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
 
                 </div>
 
@@ -937,7 +987,36 @@ $low = $stockLowQty - $sellQuantity
 
                         <span class="menu-arrow"></span>
                     </span>
+                    <?php 
+                    $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+                    $users_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'users_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $today_birthday_users_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'today_birthday_users'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $this_month_birthday_user_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'this_month_birthday_user'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $users_message_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'users_message'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    
 
+                    ?>
+                    @if($users_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.user.index')}}">
@@ -963,6 +1042,9 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif 
+
+                    @if($today_birthday_users_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.user.today-birthday')}}">
@@ -988,6 +1070,9 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if( $this_month_birthday_user_permission_active)
+
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.user.monthly-birthday')}}">
@@ -1013,6 +1098,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($users_message_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.user.message')}}">
@@ -1038,6 +1125,7 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
 
 
                 </div>
@@ -1049,7 +1137,25 @@ $low = $stockLowQty - $sellQuantity
 
                         <span class="menu-arrow"></span>
                     </span>
+                    <?php 
+                    $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+                    $view_users_withdraw_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'view_users_withdraw'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $view_referral_details_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'view_referral_details'],
+                    ['role_id', $role->id]
+                    ])->first();
+                   
+                    
 
+                    ?>
+@if($view_users_withdraw_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.withdraw.index')}}">
@@ -1075,6 +1181,9 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif 
+
+                    @if($view_referral_details_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.referral.index')}}">
@@ -1100,6 +1209,7 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
 
 
                 </div>
@@ -1112,6 +1222,25 @@ $low = $stockLowQty - $sellQuantity
 
                         <span class="menu-arrow"></span>
                     </span>
+                    <?php 
+                    $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+                    $blog_user_post_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'blog_user_post_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $blog_user_post_coment_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'blog_user_post_coment'],
+                    ['role_id', $role->id]
+                    ])->first();
+                   
+                    
+
+                    ?>
+                    @if($blog_user_post_index_permission_active)
 
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
@@ -1138,6 +1267,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($blog_user_post_coment_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1171,6 +1302,7 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
 
                 </div>
 
@@ -1181,6 +1313,37 @@ $low = $stockLowQty - $sellQuantity
 
                         <span class="menu-arrow"></span>
                     </span>
+                    <?php 
+                    $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+                    $blog_post_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'blog_post_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $blog_category_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'blog_category_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $blog_subcategory_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'blog_subcategory_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $blog_slider_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'blog_slider_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                   
+                    
+
+                    ?>
+                    @if($blog_post_index_permission_active)
 
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -1215,6 +1378,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($blog_category_index_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1248,6 +1413,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif 
+                    @if($blog_subcategory_index_permission_active )
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1281,6 +1448,9 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif 
+                    @if($blog_slider_index_permission_active)
+                
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1314,9 +1484,31 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
 
 
                 </div>
+
+                <?php 
+                    $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+                    $admin_staff_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'admin_staff_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $role_permission_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'role_permission_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                   
+                   
+                    
+
+                    ?>
+                    @if($admin_staff_index_permission_active)
 
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
@@ -1326,8 +1518,8 @@ $low = $stockLowQty - $sellQuantity
                         <span class="menu-arrow"></span>
                     </span>
 
-                    
-                   
+
+
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1364,6 +1556,9 @@ $low = $stockLowQty - $sellQuantity
 
 
                 </div>
+                @endif 
+
+                @if($role_permission_index_permission_active)
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <span class="menu-link">
 
@@ -1372,8 +1567,8 @@ $low = $stockLowQty - $sellQuantity
                         <span class="menu-arrow"></span>
                     </span>
 
-                    
-                   
+
+
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1411,6 +1606,8 @@ $low = $stockLowQty - $sellQuantity
 
                 </div>
 
+                @endif
+
 
 
 
@@ -1422,7 +1619,26 @@ $low = $stockLowQty - $sellQuantity
 
                         <span class="menu-arrow"></span>
                     </span>
+                    <?php 
+                    $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+                    $view_product_question_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'view_product_question'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $view_products_answer_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'view_products_answer'],
+                    ['role_id', $role->id]
+                    ])->first();
+                   
+                   
+                    
 
+                    ?>
+@if($view_product_question_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1456,7 +1672,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
-
+@endif
+@if($view_products_answer_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.user.product.question.answer')}}">
@@ -1482,6 +1699,7 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
 
                 </div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -1491,6 +1709,63 @@ $low = $stockLowQty - $sellQuantity
 
                         <span class="menu-arrow"></span>
                     </span>
+
+                    <?php 
+                    $role = DB::table('roles')->find(Auth::guard('admin')->user()->role_id);
+                    $email_setting_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'email_setting_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $cache_clear_view_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'cache_clear_view'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $empty_database_view_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'empty_database_view'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $site_setup_view_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'site_setup_view'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $shipping_charge_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'shipping_charge_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $general_setting_frontend_banner_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'general_setting_frontend_banner_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $general_setting_frontend_slider_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'general_setting_frontend_slider_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $coupon_code_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'coupon_code_index'],
+                    ['role_id', $role->id]
+                    ])->first();
+                   
+                   
+                    
+
+                    ?>
+                    @if($site_setup_view_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.general.setting')}}">
@@ -1516,6 +1791,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif 
+                    @if($coupon_code_index_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1549,6 +1826,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif 
+                    @if($general_setting_frontend_slider_index_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1582,6 +1861,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif 
+                    @if($general_setting_frontend_banner_index_permission_active)
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
@@ -1615,6 +1896,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif 
+                    @if($email_setting_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.general.mail')}}">
@@ -1640,6 +1923,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($shipping_charge_index_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.delivery.rate')}}">
@@ -1665,6 +1950,8 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
+                    @if($empty_database_view_permission_active)
                     @if($gs->database_show == 1)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
@@ -1689,10 +1976,13 @@ $low = $stockLowQty - $sellQuantity
                                 </span>
                             </a>
                         </div>
-                        @else
-                        @endif
+                        
 
                     </div>
+                    @else
+                        @endif
+                        @endif 
+                        @if( $cache_clear_view_permission_active)
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
                             <a href="{{route('admin.admin-cache-clear')}}">
@@ -1718,6 +2008,7 @@ $low = $stockLowQty - $sellQuantity
                         </div>
 
                     </div>
+                    @endif
                 </div>
 
 

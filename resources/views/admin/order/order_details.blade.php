@@ -112,7 +112,7 @@
                                                     <!--end::Svg Icon-->Date Added
                                                 </div>
                                             </td>
-                                            <td class="fw-bolder text-end">03/03/2022</td>
+                                            <td class="fw-bolder text-end">{{ $order->created_at->format('d/m/Y')}}</td>
                                         </tr>
                                         <!--end::Date-->
                                         <!--begin::Payment method-->
@@ -137,8 +137,8 @@
                                                     <!--end::Svg Icon-->Payment Method
                                                 </div>
                                             </td>
-                                            <td class="fw-bolder text-end">Online
-                                                <img src="assets/media/svg/card-logos/visa.svg" class="w-50px ms-2" />
+                                            <td class="fw-bolder text-end">Cash on Delivery
+                                                
                                             </td>
                                         </tr>
                                         <!--end::Payment method-->
@@ -208,21 +208,14 @@
                                                     <!--end::Svg Icon-->Customer
                                                 </div>
                                             </td>
+                                            
                                             <td class="fw-bolder text-end">
                                                 <div class="d-flex align-items-center justify-content-end">
                                                     <!--begin:: Avatar -->
-                                                    <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
-                                                        <a
-                                                            href="../../demo1/dist/apps/ecommerce/customers/details.html">
-                                                            <div class="symbol-label">
-                                                                <img src="assets/media/avatars/300-23.jpg"
-                                                                    alt="Dan Wilson" class="w-100" />
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                   
                                                     <!--end::Avatar-->
                                                     <!--begin::Name-->
-                                                    <a href="../../demo1/dist/apps/ecommerce/customers/details.html"
+                                                    <a href="{{route('admin.user.details',$order->user_id)}}"
                                                         class="text-gray-600 text-hover-primary">{{$order_user->name}}</a>
                                                     <!--end::Name-->
                                                 </div>
@@ -249,7 +242,7 @@
                                                 </div>
                                             </td>
                                             <td class="fw-bolder text-end">
-                                                <a href="../../demo1/dist/apps/user-management/users/view.html"
+                                                <a href="{{route('admin.user.details',$order->user_id)}}"
                                                     class="text-gray-600 text-hover-primary">{{$order_user->email}}</a>
                                             </td>
                                         </tr>
@@ -381,18 +374,18 @@
                                                     <td>
                                                         <div class="d-flex align-items-center">
                                                             <!--begin::Thumbnail-->
-                                                            <a href="#"
+                                                            <a href="{{route('admin.product.view_details',$row->id)}}"
                                                                 class="symbol symbol-50px">
                                                                 <span class="symbol-label"
-                                                                    style="background-image:url({{asset('assets/images/product/'.$product->image)}});"></span>
+                                                                    style="background-image:url({{asset('public/assets/images/product/'.$product->image)}});"></span>
                                                             </a>
                                                             <!--end::Thumbnail-->
                                                             <!--begin::Title-->
                                                             <div class="ms-5">
-                                                                <a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html"
+                                                                <a href="{{route('admin.product.view_details',$row->id)}}"
                                                                     class="fw-bolder text-gray-600 text-hover-primary">{{$row->product_name}}
                                                                     1</a>
-                                                                <div class="fs-7 text-muted">Delivery Date: 03/03/2022
+                                                                <div class="fs-7 text-muted">Delivery Date: {{ $order->delivery_date->format('d/m/Y')}}
                                                                 </div>
                                                             </div>
                                                             <!--end::Title-->
@@ -415,29 +408,57 @@
                                                 @endforeach
                                                
                                                 <!--end::Products-->
-                                                <!--begin::Subtotal-->
-                                                <tr>
-                                                    <td colspan="4" class="text-end">Subtotal</td>
-                                                    <td class="text-end">{{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}</td>
-                                                </tr>
-                                                <!--end::Subtotal-->
-                                                <!--begin::VAT-->
-                                                <!-- <tr>
-                                                    <td colspan="4" class="text-end">VAT (0%)</td>
-                                                    <td class="text-end">${{$order->total_price}}</td>
-                                                </tr> -->
-                                                <!--end::VAT-->
-                                                <!--begin::Shipping-->
-                                                <tr>
-                                                    <td colspan="4" class="text-end">Shipping Rate</td>
-                                                    <td class="text-end">{{$gs->currency}}&nbsp;&nbsp;{{$order->shipping}}</td>
-                                                </tr>
-                                                <!--end::Shipping-->
-                                                <!--begin::Grand total-->
-                                                <tr>
-                                                    <td colspan="4" class="fs-3 text-dark text-end">Grand Total</td>
-                                                    <td class="text-dark fs-3 fw-boldest text-end">{{$gs->currency}}&nbsp;&nbsp;{{$order->grand_total}}</td>
-                                                </tr>
+ <!--begin::Subtotal-->
+ <tr>
+                                                                    @if(!empty($order->coupon_code))
+                                                                    <td colspan="3" class="text-end">Subtotal With
+                                                                        Coupon Code(-)</td>
+                                                                    <td class="text-end">
+                                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}
+                                                                    </td>
+
+                                                                    @else
+                                                                    <td colspan="3" class="text-end">Subtotal</td>
+                                                                    <td class="text-end">
+                                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}
+                                                                    </td>
+
+                                                                    @endif
+                                                                </tr>
+                                                                <!--end::Subtotal-->
+                                                                <!--begin::VAT-->
+                                                                <tr>
+                                                                    <td colspan="3" class="text-end">VAT ({{$gs->vat}}%)
+                                                                    </td>
+                                                                    <td class="text-end">{{$gs->currency}}&nbsp;&nbsp;
+                                                                        {{$order->vat}}</td>
+                                                                </tr>
+                                                                <!--end::VAT-->
+                                                                <!--begin::Shipping-->
+                                                                <tr>
+                                                                    <td colspan="3" class="text-end">Shipping
+                                                                        Rate({{$order->delivery}})</td>
+                                                                    <td class="text-end">
+                                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->shipping}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3" class="text-end">Giftcard</td>
+                                                                    <td class="text-end">
+                                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->giftcard_amount}}
+                                                                    </td>
+                                                                </tr>
+                                                                <!--end::Shipping-->
+                                                                <!--begin::Grand total-->
+                                                                <tr>
+                                                                    <td colspan="3"
+                                                                        class="fs-3 text-dark fw-bolder text-end">Grand
+                                                                        Total</td>
+                                                                    <td class="text-dark fs-3 fw-boldest text-end">
+                                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->grand_total - $order->giftcard_amount}}
+                                                                    </td>
+                                                                </tr>
+                                                                <!--end::Grand total-->
                                                 <!--end::Grand total-->
                                             </tbody>
                                             <!--end::Table head-->

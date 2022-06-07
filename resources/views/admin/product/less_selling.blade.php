@@ -119,7 +119,7 @@
                             @endphp
                            
 
-                            @if($sellQuantityr > $bestSellingProduct)
+                           
 
                             <tr>
                                 <!--begin::Checkbox-->
@@ -227,9 +227,7 @@
                                 </td>
                                 <!--end::Action=-->
                             </tr>
-                            @else
-
-                            @endif
+         
 
                             @endforeach
 

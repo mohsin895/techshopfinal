@@ -3,30 +3,48 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use Image;
+use Auth;
 
 class BannerController extends Controller
 {
     public function index()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_banner_index')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Banner";
         $data['add']="Add Banner";
         $data['add_title'] = "Add banner";
         $data['banner'] = Banner::get();
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     return view('admin.banner.index',$data);
     }
 public function add()
-{$data['title']="Admin Dashboard";
+{
+    $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_banner_create')) {
+            $permissions = Role::findByName($role->name)->permissions;
+    $data['title']="Admin Dashboard";
     $data['table']="Show Banner";
     $data['add']="Add Banner";
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
    return view('admin.banner.create',$data);
 }
 
     public function status($id, $status)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_banner_status')) {
+            $permissions = Role::findByName($role->name)->permissions;
 
         $data = Banner::find($id);
         $data->status = $status;
@@ -35,6 +53,8 @@ public function add()
         }else{
             echo "0";
         }
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function insert(Request $request)
@@ -62,11 +82,17 @@ public function add()
     }
 
     public function edit($id)
-    {   $data['title']="Admin Dashboard";
+    {  
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_banner_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
+        $data['title']="Admin Dashboard";
         $data['table']="Show Banner";
         $data['add']="Add Banner";
         $data['add_title'] = "Edit banner";
         $data['banner'] = Banner::find($id);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
        return view('admin.banner.edit',$data);
     }
 
@@ -97,11 +123,15 @@ public function add()
     }
 
     public function delete($id)
-    {
+    {$role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_banner_delete')) {
+            $permissions = Role::findByName($role->name)->permissions;
       $data = Banner::find($id);
       unlink("public/assets/images/banner/".$data->image);
     $data->delete();
     return back()->with('flash_message_success','banner has delete successfully');
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
 }

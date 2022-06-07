@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -11,11 +14,15 @@ use Illuminate\Support\Str;
 use App\Models\Gallery;
 use App\Models\GeneralSetting;
 use App\Models\Qty;
+use Auth;
 
 class ReportController extends Controller
 {
     public function index(Request $request)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('products_reporst_view')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Product Report";
         $data['add']="Product Report";
@@ -374,6 +381,8 @@ class ReportController extends Controller
  
         }
        return view('admin.report',$data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function report(Request $request)
@@ -385,5 +394,6 @@ class ReportController extends Controller
        }else{
 
        }
+
     }
 }

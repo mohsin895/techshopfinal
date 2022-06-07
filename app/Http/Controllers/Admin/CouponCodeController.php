@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\CouponCode;
+use Auth;
 
 class CouponCodeController extends Controller
 {
     public function index()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('coupon_code_index')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Coupon Code";
         $data['add']="Add Coupon Code";
@@ -17,18 +24,27 @@ class CouponCodeController extends Controller
         $data['couponcode'] = CouponCode::orderBy('id','desc')->get();
      
     return view('admin.coupon_code.index',$data);
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 public function add()
 {
-  
+    $role = Role::find(Auth::guard('admin')->user()->role_id);
+    if ($role->hasPermissionTo('coupon_code_create')) {
+        $permissions = Role::findByName($role->name)->permissions;
     $data['title']="Admin Dashboard";
     $data['table']="Show CouponCode";
     $data['add']="Add CouponCode";
    return view('admin.coupon_code.add',$data);
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
 }
 
     public function status($id, $status)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('coupon_code_status')) {
+            $permissions = Role::findByName($role->name)->permissions;
 
         $data = CouponCode::find($id);
         $data->status = $status;
@@ -37,6 +53,8 @@ public function add()
         }else{
             echo "0";
         }
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function insert(Request $request)
@@ -54,7 +72,11 @@ public function add()
     }
 
     public function edit($id)
-    {   $data['title']="Admin Dashboard";
+    { 
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('coupon_code_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
+        $data['title']="Admin Dashboard";
         $data['table']="Show CouponCode";
         $data['add']="Add CouponCode";
         $data['add_title'] = "Edit CouponCode";
@@ -63,6 +85,8 @@ public function add()
       
         
        return view('admin.coupon_code.edit',$data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function update(Request $request,$id)
@@ -79,20 +103,30 @@ public function add()
 
     public function delete($id)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('coupon_code_delete')) {
+            $permissions = Role::findByName($role->name)->permissions;
       $data = CouponCode::find($id);
   
     $data->delete();
     return back()->with('flash_message_success','Coupon Code has delete successfully');
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
 
     public function view_deatils($id)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('coupon_code_index')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Details Coupon Code";
         $data['add']="Details Coupon Code";
         // dd($data['subcategory']);
         $data['coupon_code'] = CouponCode::find($id);
         return view('admin.coupon_code.details',$data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 }

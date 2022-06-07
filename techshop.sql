@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2022 at 01:51 PM
+-- Generation Time: Jun 07, 2022 at 05:34 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -115,7 +115,7 @@ CREATE TABLE `blog_categories` (
 --
 
 INSERT INTO `blog_categories` (`id`, `parent_id`, `cat_name`, `homa_page_name`, `serial_number`, `slug`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(2, 0, 'eewrt', 'Own Development', 1, 'eewrt', NULL, '1', '2022-03-26 03:40:43', '2022-05-24 05:48:21'),
+(2, 0, 'eewrt', 'Own Development', 1, 'eewrt', NULL, '1', '2022-03-26 03:40:43', '2022-06-06 21:05:07'),
 (3, 0, 'dfe', 'lates', 2, 'dfe', NULL, '1', '2022-03-26 03:41:37', '2022-03-26 03:41:37'),
 (4, 2, 'wewrew', NULL, 3, 'wewrew', NULL, '1', '2022-03-26 03:57:14', '2022-03-26 04:10:10');
 
@@ -457,7 +457,7 @@ CREATE TABLE `gift_cards` (
 --
 
 INSERT INTO `gift_cards` (`id`, `name`, `duration`, `purchase_price`, `giftcard_value`, `image`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'QSWQE', '30', '390', '500', '13182.png', 'jqury', '1', '2022-04-09 19:45:35', '2022-04-09 23:55:08'),
+(2, 'QSWQE', '30', '390', '500', '13182.png', 'jqury', '1', '2022-04-09 19:45:35', '2022-06-06 21:20:02'),
 (3, 'dfghjrtyuj', '30', '390', '500', '10914.jpg', 'dfghjrtyuj', '1', '2022-04-11 20:00:12', '2022-04-11 20:00:25'),
 (4, 'Mohsin', '32', '1235', '123', '75578.jpg', 'mohsin', '1', '2022-05-22 01:58:49', '2022-05-22 01:58:59'),
 (5, 'Mohsin', '123', '1232', '500', '58674.png', 'mohsin', '1', '2022-05-22 02:06:06', '2022-05-22 02:06:15');
@@ -920,10 +920,163 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `permissions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'web',
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'order_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(2, 'order_details', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(3, 'order_invoice', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(4, 'order_status', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(5, 'new_order_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(6, 'new_order_details', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(7, 'new_order_invoice', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(8, 'new_order_status', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(9, 'processing_order_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(10, 'processing_order_details', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(11, 'processing_order_invoice', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(12, 'processing_order_status', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(13, 'packaging_order_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(14, 'packaging_order_details', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(15, 'packaging_order_invoice', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(16, 'packaging_order_status', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(17, 'waiting_order_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(18, 'waiting_order_details', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(19, 'waiting_order_invoice', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(20, 'waiting_order_status', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(21, 'shipping_order_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(22, 'shipping_order_details', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(23, 'shipping_order_invoice', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(24, 'shipping_order_status', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(25, 'deliverd_order_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(26, 'deliverd_order_details', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(27, 'deliverd_order_invoice', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(28, 'deliverd_order_status', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(29, 'complete_order_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(30, 'complete_order_details', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(31, 'complete_order_invoice', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(32, 'complete_order_status', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(33, 'canceled_order_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(34, 'canceled_order_details', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(35, 'canceled_order_invoice', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(36, 'canceled_order_status', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(37, 'product_index', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(38, 'product_create', 'web', '2022-06-05 15:34:35', '2022-06-05 15:34:35'),
+(39, 'product_edit', 'web', '2022-06-05 15:36:14', '2022-06-05 15:36:14'),
+(40, 'product_delete', 'web', '2022-06-05 15:36:14', '2022-06-05 15:36:14'),
+(41, 'product_status', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(42, 'category_index', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(43, 'category_create', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(44, 'category_edit', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(45, 'category_delete', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(46, 'category_status', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(47, 'subcategory_index', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(48, 'subcategory_create', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(49, 'subcategory_edit', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(50, 'subcategory_delete', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(51, 'subcategory_status', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(52, 'admin_staff_index', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(53, 'admin_staff_create', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(54, 'admin_staff_edit', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(55, 'admin_staff_delete', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(56, 'admin_staff_status', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(57, 'role_permission_index', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(58, 'role_permission_create', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(59, 'role_permission_edit', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(60, 'role_permission_delete', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(61, 'role_permission_status', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(62, 'flash_sale_product_index', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(63, 'flash_sale_products_create', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(64, 'flash_sale_products_edit', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(65, 'flash_sale_products_delete', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(66, 'flash_sale_products_status', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(67, 'stock_low_products', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(68, 'stock_out_products', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(69, 'giftcard_index', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(70, 'giftcard_create', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(71, 'giftcard_edit', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(72, 'giftcard_delete', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(73, 'giftcard_status', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(74, 'giftcard_order_view', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(75, 'giftcard_order_status', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(76, 'users_index', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(77, 'users_edit', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(78, 'users_delete', 'web', '2022-06-05 16:38:45', '2022-06-05 16:38:45'),
+(155, 'users_send_mail', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(156, 'users_view_details', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(157, 'today_birthday_users', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(158, 'this_month_birthday_user', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(159, 'users_message', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(160, 'send_email_all_users', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(161, 'view_users_withdraw', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(162, 'view_users_withdraw_details', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(163, 'view_withdraw', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(164, 'view_wihtdraw_status', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(165, 'view_referral_details', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(166, 'view_referral_users_details', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(167, 'blog_post_index', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(168, 'blog_post_create', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(169, 'bloog_post_edit', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(170, 'blog_post_delete', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(171, 'blog_post_status', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(172, 'blog_category_index', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(173, 'blog_category_create', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(174, 'blog_category_edit', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(175, 'blog_category_delete', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(176, 'blog_category_status', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(177, 'blog_subcategory_index', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(178, 'blog_subcategory_create', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(179, 'blog_subcategory_edit', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(180, 'blog_subcategory_delete', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(181, 'blog_subcategory_status', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(182, 'blog_slider_index', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(183, 'blog_slider_create', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(184, 'blog_slider_edit', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(185, 'blog_slider_delete', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(186, 'blog_slider_status', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(187, 'blog_user_post_index', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(188, 'blog_user_post_edit', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(189, 'blog_user_post_delete', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(190, 'blog_user_post_coment', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(191, 'blog_coment_reply', 'web', '2022-06-05 16:55:05', '2022-06-05 16:55:05'),
+(281, 'view_product_question', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(282, 'reply_product_question', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(283, 'product_question_status', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(284, 'view_products_answer', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(285, 'view_products_answer_status', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(286, 'coupon_code_index', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(287, 'coupon_code_create', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(288, 'coupon_code_edit', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(289, 'coupon_code_delete', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(290, 'coupon_code_status', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(291, 'general_setting_frontend_slider_index', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(292, 'general_setting_frontend_slider_create', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(293, 'general_setting_frontend_slider_edit', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(294, 'general_setting_frontend_slider_delete', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(295, 'general_setting_frontend_slider_status', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(296, 'general_setting_frontend_banner_index', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(297, 'general_setting_frontend_banner_create', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(298, 'general_setting_frontend_banner_edit', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(299, 'general_setting_frontend_banner_delete', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(300, 'general_setting_frontend_banner_status', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(301, 'shipping_charge_index', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(302, 'shipping_charge_edit', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(303, 'site_setup_view', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(304, 'site_setup_edit', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(305, 'email_setting_index', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(306, 'email_setting_edit', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(307, 'empty_database_view', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(308, 'cache_clear_view', 'web', '2022-06-05 17:39:51', '2022-06-05 17:39:51'),
+(309, 'dashboard_view', 'web', '2022-06-05 17:41:47', '2022-06-05 17:41:47'),
+(310, 'analytice_view', 'web', '2022-06-05 17:41:47', '2022-06-05 17:41:47'),
+(311, 'products_reporst_view', 'web', '2022-06-05 17:41:47', '2022-06-05 17:41:47'),
+(312, 'expired_date_products', 'web', '2022-06-06 10:48:11', '2022-06-06 10:48:11');
 
 -- --------------------------------------------------------
 
@@ -985,7 +1138,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `parent_id`, `subcat_id`, `product_name`, `buying_price`, `price`, `flash_sale_price`, `quantity`, `model_no`, `image`, `flash_sale`, `flash_sale_start_date`, `flash_sale_end_date`, `slug`, `description`, `summery`, `document`, `supplier`, `specification`, `status`, `created_at`, `updated_at`, `home_automotion`, `feature_products`, `develop_owner`, `order_qty`, `order_price`, `expired_date`) VALUES
-(1, 3, 12, 'Zif socket (40 pin)', '10000', 1000, NULL, 1000, 'C&C-00035', '30447.jpg', '0', NULL, NULL, 'zif-socket-40-pin', NULL, 'asdersftreg', '78i87i', NULL, NULL, '1', '2022-03-30 08:48:52', '2022-04-19 01:45:48', 1, 1, NULL, NULL, NULL, NULL),
+(1, 3, 12, 'Zif socket (40 pin)', '10000', 1000, NULL, 1000, 'C&C-00035', '30447.jpg', '0', NULL, NULL, 'zif-socket-40-pin', NULL, 'asdersftreg', '78i87i', NULL, NULL, '1', '2022-03-30 08:48:52', '2022-04-19 01:45:48', 1, 1, NULL, NULL, NULL, '2022-06-05'),
 (2, 1, NULL, 'USB Connector B type', '100', 2000, NULL, 20, 'C&C-00008', '55663.jpg', '0', NULL, NULL, 'usb-connector-b-type', NULL, NULL, NULL, NULL, NULL, '1', '2022-03-30 08:50:30', '2022-04-28 02:09:48', 1, 1, NULL, NULL, NULL, NULL),
 (3, 3, NULL, 'SparkFun USB Host Shield', '2000', 2156, NULL, 100, 'ARD-00005', '41010.jpg', '0', NULL, NULL, 'sparkfun-usb-host-shield', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-03-30 08:53:11', '2022-04-27 02:18:38', 1, 1, NULL, NULL, NULL, NULL),
 (4, 2, NULL, 'IRFZ44N MOSFET12', '1500', 2000, NULL, 100, 'SWD-00005', '70591.jpg', '0', NULL, NULL, 'irfz44n-mosfet12', NULL, 'werwet', 'etrtyry', NULL, NULL, '1', '2022-03-30 09:09:27', '2022-04-27 02:18:21', 1, 1, NULL, NULL, NULL, NULL),
@@ -1151,6 +1304,142 @@ CREATE TABLE `role_has_permissions` (
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(1, 3),
+(2, 1),
+(3, 1),
+(4, 1),
+(4, 3),
+(5, 1),
+(5, 3),
+(9, 1),
+(9, 3),
+(13, 1),
+(13, 3),
+(17, 1),
+(17, 3),
+(21, 1),
+(25, 1),
+(29, 1),
+(33, 1),
+(33, 3),
+(37, 1),
+(38, 1),
+(39, 1),
+(40, 1),
+(41, 1),
+(42, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1),
+(47, 1),
+(48, 1),
+(49, 1),
+(50, 1),
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1),
+(61, 1),
+(62, 1),
+(63, 1),
+(64, 1),
+(65, 1),
+(66, 1),
+(67, 1),
+(68, 1),
+(69, 1),
+(70, 1),
+(71, 1),
+(72, 1),
+(73, 1),
+(74, 1),
+(75, 1),
+(76, 1),
+(77, 1),
+(78, 1),
+(155, 1),
+(156, 1),
+(157, 1),
+(158, 1),
+(159, 1),
+(160, 1),
+(161, 1),
+(162, 1),
+(163, 1),
+(164, 1),
+(165, 1),
+(166, 1),
+(167, 1),
+(168, 1),
+(169, 1),
+(170, 1),
+(171, 1),
+(172, 1),
+(173, 1),
+(174, 1),
+(175, 1),
+(176, 1),
+(177, 1),
+(178, 1),
+(179, 1),
+(180, 1),
+(181, 1),
+(182, 1),
+(183, 1),
+(184, 1),
+(185, 1),
+(186, 1),
+(187, 1),
+(188, 1),
+(189, 1),
+(190, 1),
+(191, 1),
+(281, 1),
+(282, 1),
+(283, 1),
+(284, 1),
+(285, 1),
+(286, 1),
+(287, 1),
+(288, 1),
+(289, 1),
+(290, 1),
+(291, 1),
+(292, 1),
+(293, 1),
+(294, 1),
+(295, 1),
+(296, 1),
+(297, 1),
+(298, 1),
+(299, 1),
+(300, 1),
+(301, 1),
+(302, 1),
+(303, 1),
+(304, 1),
+(305, 1),
+(306, 1),
+(307, 1),
+(308, 1),
+(309, 1),
+(310, 1),
+(311, 1),
+(312, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -1171,7 +1460,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Y7DBRgqSQ4nW2JotdVAFRkCCxvstJ52bbmGYlRHq', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YToxMDp7czo2OiJfdG9rZW4iO3M6NDA6Ik9POUljekhwcXVTckRteGxnWlJITGxNMW5HaWFKemFIMUROdU92ZW4iO3M6ODoicmVmZXJhbGwiO3M6MDoiIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMDoiaHR0cDovL2xvY2FsaG9zdC90ZWNoc2hvcGZpbmFsIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MzI7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCR1U2d5SjF6Vy5oM2RuVkptaGczeG91S0loa0tuRG5MUENrODN0WXRXckxOOU5xa1J6b1FPbSI7czoxMDoic2Vzc2lvbl9pZCI7czo0MDoiS1k4Vmdmb0kxOUk2cTNOdkROY3R5QXViSkhmaWhNUmlaSm8xVWlVUiI7czo4OiJkZWxpdmVyeSI7czo3OiJleHByZXNzIjtzOjE1OiJnaWZ0Y2FyZF9hbW91bnQiO047czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1654429899);
+('4JHpr7WbBjZIvJ03qkRYXKWMTe7UZ0Z7ULL5LgwT', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTldWNm9PTjk5SU1jdHVPQkdRZmtJSTVxcGRPZ3RhZ2lsMnlTVHFJNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hZG1pbi9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjg6InJlZmVyYWxsIjtzOjA6IiI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1654572888);
 
 -- --------------------------------------------------------
 
@@ -1338,14 +1627,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `slug`, `date_of_birth`, `gender`, `referral_id`, `referred_by`, `referral`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `image`, `is_admin`, `role_id`, `is_banned`, `status`, `created_at`, `updated_at`, `city`, `country`, `postcode`, `address1`, `address2`, `commision`, `range_amount`) VALUES
-(2, 'admin', 'admin@gmail.com', '1715786', NULL, '$2y$10$YWg9UI2/3Y4NlYDuU.Vtce6uHMo0IatHDWImNVWkKKXSgl3AwYl5y', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, '358.jpg', 'admin', NULL, '0', '0', '2022-03-20 09:25:49', '2022-04-12 08:14:38', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
+(2, 'admin', 'admin@gmail.com', '1715786', NULL, '$2y$10$YWg9UI2/3Y4NlYDuU.Vtce6uHMo0IatHDWImNVWkKKXSgl3AwYl5y', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, '358.jpg', 'admin', 1, '0', '1', '2022-03-20 09:25:49', '2022-06-05 18:48:57', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
 (11, 'Rahat', 'rahat89512@gmail.com', '01715486265', NULL, '$2y$10$d70SICXdCrHQ/grYy9YohOe725PK0ssED.YOMqMYGHI79O/Wj9s3m', '62Mohsin Sikder', '2022-05-05', 'male', 'Mohsin Sikder2994', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '2022-04-19 08:14:49', '2022-04-19 08:14:49', NULL, NULL, NULL, NULL, NULL, 10, '100'),
 (32, 'Yeamin', 'mohsinsikder895@gmail.com', '01715486265', NULL, '$2y$10$uSgyJ1zW.h3dnVJmhg3xouKIhkKnDnLPCk83tYtWrLN9NqkRzoQOm', '99Mohsin', '2022-05-05', 'male', 'sikder99', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-03-28 20:48:27', '2022-05-31 23:32:45', 'saver ashulia', 'Bangladesh', '02128736', 'plashbari bazar', 'plashbari bazar', 10, '100'),
 (47, 'Rahat', 'mohsinsikder999@gmail.com', '0171548696', NULL, '$2y$10$nAAE3gtnCD13PCmdt9BxP.l4bhcmKMjz6djrrazzDC.wdDqmZ7qfy', '82Mohsin Sikder', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-04-24 02:30:04', '2022-04-24 02:56:50', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
 (48, 'Mohsin Sikder', 'm@gmail.com', '01715486265', NULL, '$2y$10$Ir4viEulxO66GmHDJRFtJOdk4PrHET4WinPPZkeIJeM8dCMzUP2ly', '49Mohsin Sikder', '2022-05-29', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '2022-04-26 06:13:34', '2022-04-26 06:13:34', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
 (52, 'Sikder', 'mohsinsikder.cse@gmail.com', '01706125400', NULL, '$2y$10$gGnqDJvdOCDsEQkTqA22u.I0/qALPb7zwNvKpVWnApFlEephyPKWa', '56Sikder', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-04-26 19:22:34', '2022-05-25 04:31:19', NULL, NULL, NULL, NULL, NULL, 10, '100'),
 (53, 'Mohsin', 'mohsinsikder895123@gmail.com', '01715486265', NULL, '$2y$10$BsQEPZfFaWPubWiWGAJnzOhUt0etDwu12Wjwx/9.2GIFi7O7oSmzm', '12Mohsin', '2022-05-26', 'male', 'Mohsin7788', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '2022-05-15 03:15:30', '2022-05-15 03:15:30', NULL, NULL, NULL, NULL, NULL, 10, '100'),
-(55, 'Mohsin Sikder', 'mohsinsikder89512@gmail.com', NULL, NULL, '$2y$10$juZuM2cGRuczbjMnrjrBNezMMXUFXSfNjNrKdF9ehB7G.FzbVKc8K', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin', 3, '0', '0', '2022-06-05 02:03:17', '2022-06-05 02:03:17', NULL, NULL, NULL, NULL, NULL, NULL, '100');
+(55, 'Mohsin Sikder', 'mohsinsikder89512@gmail.com', NULL, NULL, '$2y$10$EJxb9pcjgLpDDLbTzCFSM.2gx.a/VsQvb4CEzvl3v3GyJZ6OGHouu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'admin', 3, '0', '1', '2022-06-05 02:03:17', '2022-06-06 21:19:31', NULL, NULL, NULL, NULL, NULL, NULL, '100');
 
 -- --------------------------------------------------------
 
@@ -1844,7 +2133,7 @@ ALTER TABLE `order_statuses`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

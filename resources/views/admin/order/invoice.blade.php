@@ -20,11 +20,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link href="{{asset('public/assets/admin')}}/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{asset('public/assets/admin')}}/assets/plugins/custom/datatables/datatables.bundle.css"
+        rel="stylesheet" type="text/css" />
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
-    <link href="{{asset('public/assets/admin')}}/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('public/assets/admin')}}/assets/plugins/global/plugins.bundle.css" rel="stylesheet"
+        type="text/css" />
     <link href="{{asset('public/assets/admin')}}/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
 </head>
@@ -48,7 +49,8 @@
                 <div class="aside-logo flex-column-auto" id="kt_aside_logo">
                     <!--begin::Logo-->
                     <a href="{{route('admin.dashboard')}}">
-                        <img alt="Logo" src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}" class="h-25px logo" />
+                        <img alt="Logo" src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}"
+                            class="h-25px logo" />
                     </a>
                     <!--end::Logo-->
                     <!--begin::Aside toggler-->
@@ -163,27 +165,28 @@
                                             <div class="row">
                                                 <h4 class="fw-boldest text-gray-800 fs-2qx pe-5 pb-7 text-center">
                                                     INVOICE<br>
-                                                  
-                                                
+
+
                                                 </h4>
 
-                                                <h4 class="fw-boldest text-red-800 fs-2qx pe-5 pb-7 text-center " style="color: red;">
-                                                 
+                                                <h4 class="fw-boldest text-red-800 fs-2qx pe-5 pb-7 text-center "
+                                                    style="color: red;">
+
                                                     @if($birthday_user->date_of_birth)
-                                          Happy Birthday &nbsp;{{$user->name}} !!
-                                                       @else
+                                                    Happy Birthday &nbsp;{{$user->name}} !!
+                                                    @else
 
-                                                       @endif
-                                                
+                                                    @endif
+
                                                 </h4>
-                                                   
+
                                                 <div class="col-6 col-lg-6 col-md-6 col-sm-4">
                                                     <h4 class="fw-boldest text-gray-800 fs-2qx pe-5 pb-7">
 
 
                                                         {{$user->name}}</br>
-                                                       
-                                                        
+
+
                                                         <span class="fs-6">({{$user->email}})</span>
                                                         <br />
                                                     </h4>
@@ -296,7 +299,7 @@
                                                                                 <div class="fw-bolder">
                                                                                     {{$row->product_name}}</div>
                                                                                 <div class="fs-7 text-muted">Delivery
-                                                                                    Date: 03/03/2022</div>
+                                                                                    Date:{{ $row->delivery_date->format('d/m/Y')}}</div>
                                                                             </div>
                                                                             <!--end::Title-->
                                                                         </div>
@@ -319,11 +322,12 @@
                                                                 <!--begin::Subtotal-->
                                                                 <tr>
                                                                     @if(!empty($order->coupon_code))
-                                                                    <td colspan="3" class="text-end">Subtotal With Coupon Code(-)</td>
+                                                                    <td colspan="3" class="text-end">Subtotal With
+                                                                        Coupon Code(-)</td>
                                                                     <td class="text-end">
                                                                         {{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}
                                                                     </td>
-                                                               
+
                                                                     @else
                                                                     <td colspan="3" class="text-end">Subtotal</td>
                                                                     <td class="text-end">

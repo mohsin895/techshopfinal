@@ -7,6 +7,10 @@ use App\Models\GeneralSetting;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\UserMessage;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Auth;
 use DB;
 use File;
 use Mail;
@@ -18,6 +22,9 @@ class GeneralSettingController extends Controller
 
     public function emptyDatabase()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('empty_database_view')) {
+            $permissions = Role::findByName($role->name)->permissions;
        
         $tables = DB::select('SHOW TABLES');
       
@@ -25,17 +32,22 @@ class GeneralSettingController extends Controller
         $str = 'Tables_in_' . env('DB_DATABASE');
         //  dd($str);
         foreach ($tables as $table) {
-            if($table->$str != 'accounts' && $table->$str != 'general_settings' && $table->$str != 'migrations' && $table->$str != 'teams' && $table->$str != 'team_invitations' && $table->$str != 'users') {
+            if($table->$str != 'accounts' && $table->$str != 'general_settings' && $table->$str != 'migrations' && $table->$str != 'teams' && $table->$str != 'team_invitations' && $table->$str != 'users' && $table->$str != 'model_has_permissions' && $table->$str != 'model_has_roles' && $table->$str != 'permissions' && $table->$str != 'roles' && $table->$str != 'role_has_permissions') {
                 DB::table($table->$str)->truncate();    
             }
         }
         return redirect()->back()->with('flash_message_success', 'Database cleared successfully');
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
 
 
     public function general_setting(Request $request)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('site_setup_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
         if ($request->isMethod('post')) {
             $data = $request->all();
             // dd($data);
@@ -192,19 +204,28 @@ if ($request->hasFile('blog_logo')) {
         $data['title'] = "Admin Dashboard";
         $data['table'] = "General Setting";
         return view('admin.general.setting', $data, compact('gs'));
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
 
     public function mailSetting()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('email_setting_index')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title'] = "Admin Dashboard ";
         $data['table'] = "Email Configuration";
         return view('admin.general.mail_setting', $data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function mailSettingStore(Request $request)
     {
-
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('email_setting_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
 
         $data = $request->all();
     
@@ -215,10 +236,13 @@ if ($request->hasFile('blog_logo')) {
         //    return $searchArray;
 
         $replaceArray = array('MAIL_HOST=' . $data['mail_host'] . '' , 'MAIL_PORT=' . $data['port'] . ''  , 'MAIL_FROM_NAME="' . $data['mail_name'] . '"' , 'MAIL_FROM_EMAIL="' . $data['email_name'] . '"' , 'MAIL_USERNAME=' . $data['mail_username'] . '' , 'MAIL_PASSWORD=' . $data['password'] . '');
-        //  return $replaceArray;
+        return $replaceArray;
         file_put_contents($path, str_replace($searchArray, $replaceArray, file_get_contents($path)));
 
         return redirect()->back()->with('message', 'Data updated successfully');
+
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function t_c()

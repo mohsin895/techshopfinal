@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\Order;
 use App\Models\GeneralSetting;
 
@@ -16,6 +19,7 @@ class OrderChartController extends Controller
    
     public function index()
  {
+   
    $data['day1_orders'] = Order::whereMonth('created_at',Carbon::now()->month)
                          ->whereDay('created_at',Carbon::now()->day)->count();
                         

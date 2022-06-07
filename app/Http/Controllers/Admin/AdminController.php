@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Auth;
 use Session;
 use App\Models\User;
@@ -33,14 +36,14 @@ class AdminController extends Controller
             ]);
            
             $checkAdmin = User::where('email', $data['email'])->first();
-            if ($checkAdmin->is_admin == 'admin') {
+            if ($checkAdmin->is_admin == 'admin' && $checkAdmin->status == 1) {
               if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password']])) {
                 return redirect('admin/dashboard')->with('flash_message_success', 'Login Successfully !');
               } else {
                 return redirect()->back()->with('flash_message_error', 'Invalid Email or Password');
               }
             } else {
-              return redirect('techshop')->with('flash_message_error', 'Your are not permited !');
+              return redirect('/')->with('flash_message_error', 'Your are not permited !');
             }
 
           }

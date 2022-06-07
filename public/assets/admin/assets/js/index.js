@@ -1,6 +1,28 @@
 
 const site_url = "http://localhost/techshopfinal/";
 
+$('body').on('change', '#employeeStatus', function () {
+ 
+
+  var id = $(this).attr('data-id');
+  if (this.checked) {
+    var status = '1';
+  } else {
+    status = '0';
+  }
+  $('.loader__').show();
+  $.ajax({
+    url: site_url + "admin/employee/update-status/" + id + '/' + status,
+    method: 'get',
+    success: function (result) {
+      alertify.set('notifier', 'position', 'top-right');
+      alertify.success('Status Update Successfully ');
+      $('.loader__').hide();
+    }
+  });
+  
+  });
+
 
 $('body').on('change', '#orderNitificationStatus', function () {
  

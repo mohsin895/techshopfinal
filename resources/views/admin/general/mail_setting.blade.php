@@ -40,6 +40,7 @@
 
                 <!--end:::Tabs-->
                 <!--begin:::Tab content-->
+                @include('error.message')
                 <div class="tab-content" id="myTabContent">
                     <!--begin:::Tab pane-->
                     <div class="tab-pane fade show active" id="kt_ecommerce_settings_general" role="tabpanel">

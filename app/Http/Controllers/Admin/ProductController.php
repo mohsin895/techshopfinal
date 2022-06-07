@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -11,17 +14,24 @@ use Illuminate\Support\Str;
 use App\Models\Gallery;
 use App\Models\GeneralSetting;
 use App\Models\Qty;
+use Carbon\carbon;
+use Auth;
 use Image;
 
 class ProductController extends Controller
 {
   public function index()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('product_index')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Product";
         $data['add']="Add Product";
         $data['add_title'] = "Add product";
         $data['product'] = Product::orderBy('id','desc')->get();
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
         // dd($data['product']);
     return view('admin.product.index',$data);
     }
@@ -33,10 +43,16 @@ class ProductController extends Controller
         return response()->json($all_sucategory);
     }
 public function add()
-{ $data['title']="Admin Dashboard";
+{ $role = Role::find(Auth::guard('admin')->user()->role_id);
+    if ($role->hasPermissionTo('product_create')) {
+        $permissions = Role::findByName($role->name)->permissions;
+    
+    $data['title']="Admin Dashboard";
     $data['table']="Show product";
     $data['add']="Add product";
     $data['category']= Category::where('parent_id',0)->get();
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
    return view('admin.product.add',$data);
 }
 
@@ -158,7 +174,11 @@ public function add()
     }
 
     public function edit($id)
-    {    $data['title']="Admin Dashboard";
+    {   $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('product_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
+        
+        $data['title']="Admin Dashboard";
         $data['table']="Show Product";
         $data['add']="Add Product";
         $data['add_title'] = "Edit Category";
@@ -166,6 +186,8 @@ public function add()
         $data['subcategory']= Category::where('parent_id','!=',0)->get();
         // dd($data['subcategory']);
         $data['product'] = Product::find($id);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
        return view('admin.product.edit',$data);
     }
 
@@ -220,6 +242,9 @@ public function add()
 
     public function delete($id)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('product_delete')) {
+            $permissions = Role::findByName($role->name)->permissions;
       $data = Product::find($id);
       unlink("public/assets/images/product/".$data->image);
       $galleryImage = Gallery::where('product_id',$data->id)->get();
@@ -229,27 +254,40 @@ public function add()
 
     $data->delete();
     return back()->with('flash_message_success','product has delete successfully');
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function stock_low()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('stock_low_products')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Stock Low Product";
         $data['add']="Add Product";
         $data['add_title'] = "Add product";
         $gs = GeneralSetting::first();
         $data['product'] = Product::orderBy('id','desc')->get();
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
         return view('admin.product.low',$data);
     }
 
     public function stock_out()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('stock_out_products')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Stock Out Product";
         $data['add']="Add Product";
         $data['add_title'] = "Add product";
         $data['product'] = Product::orderBy('id','desc')->get();
+   
         return view('admin.product.out',$data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function top_selling()
@@ -263,15 +301,22 @@ public function add()
         return view('admin.product.top_selling',$data);
     }
 
-    public function less_selling()
+    public function expired_date()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('expired_date_products')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Less Selling Product";
         $data['add']="Less Selling Product";
         $data['add_title'] = "Less Selling product";
-        $data['product'] = Product::orderBy('id','desc')->get();
+        $mytime = Carbon::now();
+        $expireddate = $mytime->toDateString();
+        $data['product'] = Product::where('expired_date', '<', $expireddate)->orderBy('id','desc')->get();
         // dd($data['product'] );
         return view('admin.product.less_selling',$data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function never_selling()
@@ -326,6 +371,9 @@ public function add()
 
     public function view_deatils($id)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('product_index')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Details Product";
         $data['add']="Details Product";
@@ -334,6 +382,8 @@ public function add()
         $data['subcategory']= Category::where('parent_id','!=',0)->get();
         // dd($data['subcategory']);
         $data['product'] = Product::find($id);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
         return view('admin.product.details',$data);
     }
 

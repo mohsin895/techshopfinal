@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -12,17 +15,23 @@ use App\Models\Gallery;
 use App\Models\GeneralSetting;
 use App\Models\Qty;
 use Image;
+use Auth;
 
 class FlashSaleController extends Controller
 {
     public function index()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('flash_sale_product_index')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Flash Sale Product";
         $data['add']="Add Flash Sale Product";
         $data['add_title'] = "Add Flash Sale product";
         $data['product'] = Product::where('flash_sale',1)->orderBy('id','desc')->get();
     return view('admin.flash_sale_product.index',$data);
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function get_subcat(Request $request)
@@ -30,19 +39,28 @@ class FlashSaleController extends Controller
         $cat_id = $request->parent_id;
         $all_sucategory = Category::where('parent_id',$cat_id)->get();
         return response()->json($all_sucategory);
+        
     }
 public function add()
-{  $data['title']="Admin Dashboard";
+{ 
+    $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('flash_sale_product_create')) {
+            $permissions = Role::findByName($role->name)->permissions;
+    $data['title']="Admin Dashboard";
     $data['table']="Show Flash Sale Product";
     $data['add']="Add Flash Sale Product";
     $data['add_title'] = "Add Flash Sale product";
     $data['category']= Category::where('parent_id',0)->get();
    return view('admin.flash_sale_product.add',$data);
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
 }
 
     public function status($id, $status)
     {
-
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('flash_sale_product_status')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data = Product::find($id);
         $data->status = $status;
         if ($data->save()){
@@ -50,6 +68,9 @@ public function add()
         }else{
             echo "0";
         }
+
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function updateBuyingPrice($id,$price){
@@ -161,7 +182,12 @@ public function add()
     }
 
     public function edit($id)
-    {    $data['title']="Admin Dashboard";
+    { 
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('flash_sale_product_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
+        
+        $data['title']="Admin Dashboard";
         $data['table']="Show Flash Sale Product";
         $data['add']="Add Flash Sale Product";
         $data['add_title'] = "Add Flash Sale product";
@@ -170,6 +196,8 @@ public function add()
         // dd($data['subcategory']);
         $data['product'] = Product::find($id);
        return view('admin.flash_sale_product.edit',$data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function update(Request $request,$id)
@@ -226,6 +254,9 @@ public function add()
 
     public function delete($id)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('flash_sale_product_delete')) {
+            $permissions = Role::findByName($role->name)->permissions;
       $data = Product::find($id);
       unlink("public/assets/images/product/".$data->image);
       $galleryImage = Gallery::where('product_id',$data->id)->get();
@@ -235,6 +266,8 @@ public function add()
 
     $data->delete();
     return back()->with('flash_message_success','product has delete successfully');
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
   

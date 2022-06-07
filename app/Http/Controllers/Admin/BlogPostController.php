@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Str;
 use App\Models\BlogPost;
 use App\Models\blogCategory;
@@ -17,16 +20,27 @@ class BlogPostController extends Controller
 {
     public function index()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('blog_post_index')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Post";
         $data['add_title'] = "Add Post";
         $data['post'] = BlogPost::orderBy('id','DESC')->get();
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     return view('admin.blog.post.index',$data);
     }
 public function add()
-{  $data['title']="Admin Dashboard";
+{ 
+    $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('blog_post_create')) {
+            $permissions = Role::findByName($role->name)->permissions;
+    $data['title']="Admin Dashboard";
     $data['table']="Show Post";
     $data['category'] = blogCategory::where('parent_id',0)->get();
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
    return view('admin.blog.post.create',$data);
 }
 public function get_subcat(Request $request)
@@ -37,7 +51,9 @@ public function get_subcat(Request $request)
 }
     public function status($id, $status)
     {
-
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('blog_post_status')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data = Category::find($id);
         $data->status = $status;
         if ($data->save()){
@@ -45,6 +61,8 @@ public function get_subcat(Request $request)
         }else{
             echo "0";
         }
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function insert(Request $request)
@@ -94,13 +112,20 @@ public function get_subcat(Request $request)
     }
 
     public function edit($id)
-    {  $data['title']="Admin Dashboard";
+    {  
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('blog_post_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
+        
+        $data['title']="Admin Dashboard";
         $data['table']="Show Post";
         $data['add']="Add Post";
         $data['add_title'] = "Edit Post";
         $data['category'] = blogCategory::where('parent_id',0)->get();
         $data['subcategory'] = blogCategory::where('parent_id','!=',0)->get();
         $data['post'] = BlogPost::find($id);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
        return view('admin.blog.post.edit',$data);
     }
 
@@ -130,43 +155,59 @@ public function get_subcat(Request $request)
 
     public function delete($id)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('blog_post_delete')) {
+            $permissions = Role::findByName($role->name)->permissions;
       $data = BlogPost::find($id);
       unlink("public/assets/images/blog/".$data->image);
     
     $data->delete();
     return back()->with('flash_message_success','Post has delete successfully');
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
     public function comment(Request $request)
     {
+
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('blog_user_post_coment')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Post comment";
         $data['add_title'] = "Add Post";
         $data['post'] = BlogComment::orderBy('id','DESC')->get();
-
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
         return view('admin.blog.post.reply',$data);
     }
 
     public function post_rply(Request $request,$id)
     {
+
+        
         $data['title']="Admin Dashboard";
         $data['table']="Post comment";
         $data['add_title'] = "Add Post";
         $data['post_coment'] = BlogComment::find($id);
         $data['category'] = blogCategory::where('parent_id',0)->get();
         $data['subcategory'] = blogCategory::where('parent_id','!=',0)->get();
-
+   
         return view('admin.blog.post.comment_edit',$data);
     }
 
     public function post_rply_admin(Request $request,$id)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('blog_coment_reply')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $updateStatus = DB::table('blog_comments')->where('id',$id)->update(['status'=>$request['status']]);
        
         $post = new BlogPostCommentReply;
         $post->comment_id = $request->id;
         $post->comment = $request->comment;
         $post->save();
-
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
         return redirect('admin/blog/post/comment');
     }
 

@@ -4,31 +4,47 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\Slider;
+use Auth;
 use Image;
 
 class SliderController extends Controller
 {
     public function index()
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_slider_index')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data['title']="Admin Dashboard";
         $data['table']="Show Slider";
         $data['add']="Add Slider";
         $data['add_title'] = "Add slider";
         $data['slider'] = Slider::get();
     return view('admin.slider.index',$data);
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 public function add()
 {
+    $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_slider_create')) {
+            $permissions = Role::findByName($role->name)->permissions;
     $data['title']="Admin Dashboard";
         $data['table']="Show Slider";
         $data['add']="Add Slider";
    return view('admin.slider.create',$data);
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
 }
 
     public function status($id, $status)
     {
-
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_slider_status')) {
+            $permissions = Role::findByName($role->name)->permissions;
         $data = Slider::find($id);
         $data->status = $status;
         if ($data->save()){
@@ -36,6 +52,8 @@ public function add()
         }else{
             echo "0";
         }
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function insert(Request $request)
@@ -63,12 +81,18 @@ public function add()
     }
 
     public function edit($id)
-    {   $data['title']="Admin Dashboard";
+    {  
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_slider_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
+        $data['title']="Admin Dashboard";
         $data['table']="Show Slider";
         $data['add']="Add Slider";
         $data['add_title'] = "Edit slider";
         $data['slider'] = Slider::find($id);
        return view('admin.slider.edit',$data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function update(Request $request,$id)
@@ -99,10 +123,15 @@ public function add()
 
     public function delete($id)
     {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('general_setting_frontend_slider_delete')) {
+            $permissions = Role::findByName($role->name)->permissions;
       $data = Slider::find($id);
       unlink("public/assets/images/slider/".$data->image);
     $data->delete();
     return back()->with('flash_message_success','slider has delete successfully');
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
 }

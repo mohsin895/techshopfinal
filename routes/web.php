@@ -84,6 +84,7 @@ Route::get('/product',[App\Http\Controllers\Admin\ProductController::class,'inde
 Route::get('/product/stok/out/updateQuantity/{id}/{p}',[App\Http\Controllers\Admin\ProductController::class,'updateQuantityout']);
 Route::get('/product/stok/low/updateQuantity/{id}/{p}',[App\Http\Controllers\Admin\ProductController::class,'updateQuantitylow']);
 Route::get('/product/stok/low',[App\Http\Controllers\Admin\ProductController::class,'stock_low'])->name('product.stock.low');
+Route::get('/product/expired_date',[App\Http\Controllers\Admin\ProductController::class,'expired_date'])->name('product.expired_date');
 Route::get('/product/stok/out',[App\Http\Controllers\Admin\ProductController::class,'stock_out'])->name('product.stock.out');
 Route::get('/product/top/selling',[App\Http\Controllers\Admin\ProductController::class,'top_selling'])->name('product.top.selling.product');
 Route::get('/product/less/selling',[App\Http\Controllers\Admin\ProductController::class,'less_selling'])->name('product.less.selling.product');
