@@ -4,7 +4,6 @@ $cartCount = Cart::cartCount();
 
  ?>
 
-
 <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -72,7 +71,7 @@ $cartCount = Cart::cartCount();
 
                             <a href="" class="dropdown-toggle-user" data-toggle="dropdown">
                                 <span class="icon-wrapper">
-                                    <i class="fa-solid fa-user" style="font-size: 25px;"></i>
+                                    <i class="fa fa-user" style="font-size: 25px;"></i>
                                 </span>
                                 <span><span> <i class="fa fa-solid fa-chevron-down"
                                             style="font-size: 25px;"></i></span></span>
