@@ -31,9 +31,10 @@ class OrderController extends Controller
         $data['complete_order']= Order::where('status','Completed')->count('id');
         $data['cancel_order']= Order::where('status','Cancelled')->count('id');
         // dd($data['order']);
+   
+       return view('admin.order.index',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.order.index',$data);
     }
 
     public function order_details($order_id)
@@ -44,9 +45,10 @@ class OrderController extends Controller
         $data['order']= Order::with('orderProduct','orderStatus')->where('order_id',$order_id)->first();
         $data['order_user'] = User::where('id',$data['order']->user_id)->first();
     //    dd($data['order']);
-} else
-return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+
         return view('admin.order.order_details',$data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function order_status(Request $request,$id )
@@ -90,6 +92,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
        }
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+   
     }
     public function new_order()
     {
@@ -106,9 +109,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['complete_order']= Order::where('status','Completed')->count('id');
         $data['cancel_order']= Order::where('status','Cancelled')->count('id');
         //  dd($data['order']);
+   
+       return view('admin.order.cancel',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.order.cancel',$data);
     }
 
     public function processing_order()
@@ -127,9 +131,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['complete_order']= Order::where('status','Completed')->count('id');
         $data['cancel_order']= Order::where('status','Cancelled')->count('id');
         //  dd($data['order']);
+   
+       return view('admin.order.cancel',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.order.cancel',$data);
     }
 
     public function packaging_order()
@@ -147,9 +152,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['complete_order']= Order::where('status','Completed')->count('id');
         $data['cancel_order']= Order::where('status','Cancelled')->count('id');
         //  dd($data['order']);
+   
+       return view('admin.order.cancel',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.order.cancel',$data);
     }
 
    
@@ -168,9 +174,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['complete_order']= Order::where('status','Completed')->count('id');
         $data['cancel_order']= Order::where('status','Cancelled')->count('id');
         //  dd($data['order']);
+   
+       return view('admin.order.cancel',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.order.cancel',$data);
     }
 
     public function shipping_order()
@@ -188,9 +195,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['complete_order']= Order::where('status','Completed')->count('id');
         $data['cancel_order']= Order::where('status','Cancelled')->count('id');
         //  dd($data['order']);
+   
+       return view('admin.order.cancel',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.order.cancel',$data);
     }
 
     public function delivered_order()
@@ -209,10 +217,13 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['complete_order']= Order::where('status','Completed')->count('id');
         $data['cancel_order']= Order::where('status','Cancelled')->count('id');
         //  dd($data['order']);
+   
+       return view('admin.order.cancel',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.order.cancel',$data);
-    }public function complete_order()
+    }
+    
+    public function complete_order()
     {
         $role = Role::find(Auth::guard('admin')->user()->role_id);
         if ($role->hasPermissionTo('complete_order_index')) {
@@ -227,9 +238,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['complete_order']= Order::where('status','Completed')->count('id');
         $data['cancel_order']= Order::where('status','Cancelled')->count('id');
         //  dd($data['order']);
+   
+       return view('admin.order.cancel',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.order.cancel',$data);
     }
     
    
@@ -250,9 +262,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['cancel_order']= Order::where('status','Cancelled')->count('id');
         $data['order']= Order::with('orderProduct')->where('status','Cancelled')->orderBy('id','Desc')->get();
         //  dd($data['order']);
+   
+       return view('admin.order.cancel',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.order.cancel',$data);
     }
     
     
@@ -267,9 +280,8 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['birthday_user'] = User::where('id',$data['order']->user_id)->whereMonth('date_of_birth', date('m'))
     ->whereYear('date_of_birth', date('Y'))
     ->first();
-} else
-return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-        //  dd($data['user']);
         return view('admin.order.invoice',$data);
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 }

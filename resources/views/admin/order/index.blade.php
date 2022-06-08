@@ -68,15 +68,20 @@
     </div>
     <!--end::Toolbar-->
     <!--begin::Post-->
+   
     <div class="post d-flex flex-column-fluid" id="kt_post">
+  
         <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl">
             <!--begin::Products-->
             <div class="card card-flush">
+            @include('error.message')
                 <!--begin::Card header-->
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+                
                     <!--begin::Card title-->
                     <div class="card-title">
+                   
                         <!--begin::Search-->
                         <div class="d-flex align-items-center position-relative my-1">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -256,6 +261,8 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </a>
+
+                                    
                                     <!--begin::Menu-->
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                         data-kt-menu="true">

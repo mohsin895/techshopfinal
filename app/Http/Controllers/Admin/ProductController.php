@@ -30,10 +30,11 @@ class ProductController extends Controller
         $data['add']="Add Product";
         $data['add_title'] = "Add product";
         $data['product'] = Product::orderBy('id','desc')->get();
-    } else
-    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+   
         // dd($data['product']);
     return view('admin.product.index',$data);
+} else
+return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function get_subcat(Request $request)
@@ -51,9 +52,10 @@ public function add()
     $data['table']="Show product";
     $data['add']="Add product";
     $data['category']= Category::where('parent_id',0)->get();
+
+   return view('admin.product.add',$data);
 } else
 return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-   return view('admin.product.add',$data);
 }
 
     public function status($id, $status)
@@ -186,9 +188,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['subcategory']= Category::where('parent_id','!=',0)->get();
         // dd($data['subcategory']);
         $data['product'] = Product::find($id);
+    
+       return view('admin.product.edit',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-       return view('admin.product.edit',$data);
     }
 
     public function update(Request $request,$id)
@@ -269,9 +272,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['add_title'] = "Add product";
         $gs = GeneralSetting::first();
         $data['product'] = Product::orderBy('id','desc')->get();
+    
+        return view('admin.product.low',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-        return view('admin.product.low',$data);
     }
 
     public function stock_out()
@@ -319,12 +323,13 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
-    public function never_selling()
+    public function upcoming_expired()
     {
         $data['title']="Admin Dashboard";
-        $data['table']="Show Top Selling Product";
+        $data['table']="Up Comming Expired Product";
         $data['add']="Add Product";
         $data['add_title'] = "Add product";
+        
         $data['product'] = Product::orderBy('id','desc')->get();
         return view('admin.product.never_selling',$data);
     }
@@ -382,9 +387,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data['subcategory']= Category::where('parent_id','!=',0)->get();
         // dd($data['subcategory']);
         $data['product'] = Product::find($id);
+    
+        return view('admin.product.details',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-        return view('admin.product.details',$data);
     }
 
 }

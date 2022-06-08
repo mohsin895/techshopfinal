@@ -24,7 +24,7 @@ class EmployeeController extends Controller
         $data['table']="Employee";
         $data['add_title'] = "Add Employee";
         $data['lims_role_all'] = Roles::get();
-        $data['employee'] = User::where('is_admin','admin')->get();
+        $data['employee'] = User::where('is_admin','admin')->where('id','>','2')->get();
 
          } else
             return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');

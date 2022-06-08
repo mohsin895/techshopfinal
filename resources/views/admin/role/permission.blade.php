@@ -1340,6 +1340,22 @@
 
                                                             </div>
                                                         </td>
+                                                        <td class="text-center">Upcoming Expire date Products
+                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                                aria-disabled="false">
+
+                                                                @if(in_array("upcomming_expired_date_products",
+                                                                $all_permission))
+                                                                <input type="checkbox" value="1" id="upcomming_expired_date_products"
+                                                                    name="upcomming_expired_date_products" checked>
+                                                                @else
+                                                                <input type="checkbox" value="1" id="upcomming_expired_date_products"
+                                                                    name="upcomming_expired_date_products">
+                                                                @endif
+                                                                <label for="upcomming_expired_date_products"></label>
+
+                                                            </div>
+                                                        </td>
 
                                                     </tr>
 

@@ -171,9 +171,12 @@
 
                                                 <h4 class="fw-boldest text-red-800 fs-2qx pe-5 pb-7 text-center "
                                                     style="color: red;">
-
+                                                 @if(!empty($birthday_user))
                                                     @if($birthday_user->date_of_birth)
                                                     Happy Birthday &nbsp;{{$user->name}} !!
+                                                    @else
+
+                                                    @endif
                                                     @else
 
                                                     @endif
@@ -299,7 +302,7 @@
                                                                                 <div class="fw-bolder">
                                                                                     {{$row->product_name}}</div>
                                                                                 <div class="fs-7 text-muted">Delivery
-                                                                                    Date:{{ $row->delivery_date->format('d/m/Y')}}</div>
+                                                                                    Date:{{ $order->delivery_date->format('d/m/Y')}}</div>
                                                                             </div>
                                                                             <!--end::Title-->
                                                                         </div>
