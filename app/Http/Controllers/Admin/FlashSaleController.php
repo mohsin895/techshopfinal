@@ -44,7 +44,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
 public function add()
 { 
     $role = Role::find(Auth::guard('admin')->user()->role_id);
-        if ($role->hasPermissionTo('flash_sale_product_create')) {
+        if ($role->hasPermissionTo('flash_sale_products_create')) {
             $permissions = Role::findByName($role->name)->permissions;
     $data['title']="Admin Dashboard";
     $data['table']="Show Flash Sale Product";
@@ -59,7 +59,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
     public function status($id, $status)
     {
         $role = Role::find(Auth::guard('admin')->user()->role_id);
-        if ($role->hasPermissionTo('flash_sale_product_status')) {
+        if ($role->hasPermissionTo('flash_sale_products_status')) {
             $permissions = Role::findByName($role->name)->permissions;
         $data = Product::find($id);
         $data->status = $status;
@@ -184,7 +184,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
     public function edit($id)
     { 
         $role = Role::find(Auth::guard('admin')->user()->role_id);
-        if ($role->hasPermissionTo('flash_sale_product_edit')) {
+        if ($role->hasPermissionTo('flash_sale_products_edit')) {
             $permissions = Role::findByName($role->name)->permissions;
         
         $data['title']="Admin Dashboard";
@@ -255,7 +255,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
     public function delete($id)
     {
         $role = Role::find(Auth::guard('admin')->user()->role_id);
-        if ($role->hasPermissionTo('flash_sale_product_delete')) {
+        if ($role->hasPermissionTo('flash_sale_products_delete')) {
             $permissions = Role::findByName($role->name)->permissions;
       $data = Product::find($id);
       unlink("public/assets/images/product/".$data->image);

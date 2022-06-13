@@ -83,6 +83,7 @@ class GeneralSettingController extends Controller
             $setting->privecy_policy = $data['privecy_policy'];
          
             $setting->meta_viewport = $data['meta_viewport'];
+            $setting->upcoming_expired_date = $data['upcoming_expired_date'];
             //login Image
             if ($request->hasFile('login_image')) {
                 $imagePath = public_path('assets/images/setting/'.$setting->login_image);

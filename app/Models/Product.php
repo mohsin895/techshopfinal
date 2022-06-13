@@ -22,5 +22,10 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\Question','product_id');
     }
+
+    protected $casts = [
+        'expired_date' => 'datetime:Y-m-d',
+        
+    ];
     
 }

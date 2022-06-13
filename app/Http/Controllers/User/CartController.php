@@ -25,6 +25,8 @@ class CartController extends Controller
             $userCart = DB::table('carts')->where(['session_id'=>$session_id])->get();
             // dd($userCart);
           }
+          
+
             foreach ($userCart as $key => $product) {
              $productDetails = Product::where('id',$product->product_id)->first();
              $userCart[$key]->image = $productDetails->image;

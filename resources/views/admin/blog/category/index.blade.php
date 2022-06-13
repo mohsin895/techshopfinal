@@ -41,6 +41,7 @@
         <div id="kt_content_container" class="container-xxl">
             <!--begin::Category-->
             <div class="card card-flush">
+            @include('error.message')
                 <!--begin::Card header-->
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <!--begin::Card title-->

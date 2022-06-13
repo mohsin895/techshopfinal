@@ -34,6 +34,7 @@
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl">
+        @include('error.message')
             <!--begin::Content-->
             <div class="flex-lg-row-fluid ms-lg-15">
                 <!--begin:::Tabs-->

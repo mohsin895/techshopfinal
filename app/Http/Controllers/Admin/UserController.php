@@ -60,9 +60,10 @@ class UserController extends Controller
          $user->status = $data['status'];
          $user->save();
          return back();
-        } else
-        return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+        
       }
+    } else
+    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
       
    }
 
