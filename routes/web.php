@@ -248,6 +248,18 @@ Route::post('/user/edit/{id}',[App\Http\Controllers\Admin\UserController::class,
 Route::get('/delete-user/{id}',[App\Http\Controllers\Admin\UserController::class,'delete'])->name('user.delete');
 //UserController End
 
+//EventController Start 
+
+Route::get('/event',[App\Http\Controllers\Admin\EventController::class,'index'])->name('event.index');
+Route::get('/event/add',[App\Http\Controllers\Admin\EventController::class,'add'])->name('event.add');
+Route::get('/event/edit/{id}',[App\Http\Controllers\Admin\EventController::class,'edit'])->name('event.edit');
+Route::post('/event/insert',[App\Http\Controllers\Admin\EventController::class,'insert'])->name('event.insert');
+Route::post('/event/update/{id}',[App\Http\Controllers\Admin\EventController::class,'update'])->name('event.update');
+Route::get('/delete-event/{id}',[App\Http\Controllers\Admin\EventController::class,'delete'])->name('event.delete');
+
+Route::get('/event/update-status/{id}/{status}',[App\Http\Controllers\Admin\EventController::class,'status']);
+
+//EventController End
 //Delivery rate start
 //blogSubcategoryController Strat
 Route::match(['get','post'],'/delivery/rate',[App\Http\Controllers\Admin\DeliveryRateController::class,'index'])->name('delivery.rate');
@@ -313,6 +325,11 @@ Route::get('/order/last12MonthSellData',[App\Http\Controllers\Admin\OrderChartCo
 Route::get('/order/last12MonthProfitData',[App\Http\Controllers\Admin\OrderChartController::class,'last12MonthProfitData'])->name('last12MonthProfitData');
 
 
+
+Route::get('/event/last12MonthOrderData',[App\Http\Controllers\Admin\EventController::class,'last12MonthOrderData'])->name('event.last12MonthOrderData');
+Route::get('/event/last12MonthSellData',[App\Http\Controllers\Admin\EventController::class,'last12MonthSellData'])->name('event.last12MonthSellData');
+Route::get('/event/last12MonthProfitData',[App\Http\Controllers\Admin\EventController::class,'last12MonthProfitData'])->name('event.last12MonthProfitData');
+Route::get('/event/chart',[App\Http\Controllers\Admin\EventController::class,'event_chart'])->name('event.chart');
 //OrderChartController End
 
 //Report Controller Start 

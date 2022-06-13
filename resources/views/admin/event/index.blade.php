@@ -37,7 +37,6 @@
     <!--end::Toolbar-->
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
-   
         <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl">
         @include('error.message')
@@ -62,7 +61,7 @@
                             </span>
                             <!--end::Svg Icon-->
                             <input type="text" data-kt-ecommerce-category-filter="search"
-                                class="form-control form-control-solid w-250px ps-14" placeholder="Search role" />
+                                class="form-control form-control-solid w-250px ps-14" placeholder="Search Event" />
                         </div>
                         <!--end::Search-->
                     </div>
@@ -70,7 +69,7 @@
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar">
                         <!--begin::Add customer-->
-                        <a href="{{route('admin.role.add')}}" class="btn btn-primary">Add role</a>
+                        <a href="{{route('admin.event.add')}}" class="btn btn-primary">Add Event</a>
                         <!--end::Add customer-->
                     </div>
                     <!--end::Card toolbar-->
@@ -91,8 +90,10 @@
                                             value="1" />
                                     </div>
                                 </th>
-                                <th class="min-w-70px">Role Name</th>
-                               
+                                <th class="min-w-70px">Event Name</th>
+                                <th class="min-w-70px">Event Date</th>
+                                <th class="min-w-70px"> Event Purpose</th>
+                                <th class="min-w-70px"> Market Camping Cost</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -102,7 +103,7 @@
 
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
-                            @foreach($role as $row)
+                            @foreach($event as $row)
                             <tr>
                                 <!--begin::Checkbox-->
                                 <td>
@@ -119,17 +120,21 @@
                                         <!--end::Thumbnail-->
                                         <div class="ms-5">
                                             <!--begin::Title-->
-                                            <a href="{{route('admin.role.edit',$row->id)}}"
+                                            <a href="{{route('admin.event.edit',$row->id)}}"
                                                 class="text-gray-800 text-hover-primary fs-5 fw-bolder mb-1"
-                                                data-kt-ecommerce-category-filter="name">{{ $row->name}}</a>
+                                                data-kt-ecommerce-category-filter="category_name">{{ $row->event_name}}</a>
                                             <!--end::Title-->
                                             <!--begin::Description-->
-                                          
+                                        
                                             <!--end::Description-->
                                         </div>
                                     </div>
                                 </td>
-                              
+                                
+                                <td>{{ $row->event_date}}</td>
+
+                                <td>{{ $row->event_purpose}}</td>
+                                <td>{{ $row->event_cost}}</td>
                                 <!--end::Category=-->
                                 <!--begin::Type=-->
                                 <!-- <td>
@@ -160,17 +165,13 @@
                                         data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="{{route('admin.role.edit',$row->id)}}"
+                                            <a href="{{route('admin.event.edit',$row->id)}}"
                                                 class="menu-link px-3">Edit</a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="{{route('admin.role.permission',$row->id)}}"
-                                                class="menu-link px-3">Set Permission</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="javascript:void(0)" record="role" recordid="{{ $row->id }}"
+                                            <a href="javascript:void(0)" record="event" recordid="{{ $row->id }}"
                                                 class="menu-link px-3 confirmDelete">Delete</a>
                                         </div>
                                         <!--end::Menu item-->

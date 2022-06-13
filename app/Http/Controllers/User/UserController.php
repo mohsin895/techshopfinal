@@ -44,6 +44,12 @@ class UserController extends Controller
 
                 if (Auth::attempt(['email'=>$data['email'], 'password'=>$data['password']])) {
 
+                  $admin = User::find($user->id);
+
+            $admin->last_login = Carbon::now();
+          
+            $admin->save();
+
                     if (!empty(Session::get('session_id'))) {
                         $session_id = Session::get('session_id');
                            DB::table('carts')->where('session_id',$session_id)->update(['user_email'=>$data['email']]);
