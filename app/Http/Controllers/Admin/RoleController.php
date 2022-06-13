@@ -18,7 +18,7 @@ class RoleController extends Controller
         $data['title']="Admin Dashboard";
         $data['table']="Role";
         $data['add_title'] = "Add ROle";
-        $data['role'] = Roles::where('id','>' ,'2')->get();
+        $data['role'] = Roles::get();
         return view('admin.role.index',$data);
 
             }
@@ -1340,7 +1340,14 @@ if ($request->has('bloog_post_edit')) {
                     $role->givePermissionTo($permission);
                 }
             } else
-                $role->revokePermissionTo('expired_date_products');
+                $role->revokePermissionTo('upcomming_expired_date_products');
+                if ($request->has('upcomming_expired_date_products')) {
+                    $permission = Permission::firstOrCreate(['name' => 'upcomming_expired_date_products']);
+                    if (!$role->hasPermissionTo('upcomming_expired_date_products')) {
+                        $role->givePermissionTo($permission);
+                    }
+                } else
+                    $role->revokePermissionTo('upcomming_expired_date_products');
 
 
         return redirect('admin/role')->with('flash_message_success', 'Permission updated successfully');

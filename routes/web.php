@@ -88,7 +88,7 @@ Route::get('/product/expired_date',[App\Http\Controllers\Admin\ProductController
 Route::get('/product/stok/out',[App\Http\Controllers\Admin\ProductController::class,'stock_out'])->name('product.stock.out');
 Route::get('/product/top/selling',[App\Http\Controllers\Admin\ProductController::class,'top_selling'])->name('product.top.selling.product');
 Route::get('/product/less/selling',[App\Http\Controllers\Admin\ProductController::class,'less_selling'])->name('product.less.selling.product');
-Route::get('/product/never/selling',[App\Http\Controllers\Admin\ProductController::class,'never_selling'])->name('product.never.selling.product');
+Route::get('/product/upcoming_expired',[App\Http\Controllers\Admin\ProductController::class,'upcoming_expired'])->name('product.upcoming_expired');
 Route::get('/product/last-month/selling',[App\Http\Controllers\Admin\ProductController::class,'last_month_selling'])->name('product.last-month.selling.product');
 Route::get('/product/last-month/not-selling',[App\Http\Controllers\Admin\ProductController::class,'last_month_not_selling'])->name('product.last-month.not-selling.product');
 Route::get('/product/last-year/selling',[App\Http\Controllers\Admin\ProductController::class,'last_year_selling'])->name('product.last-year.selling.product');

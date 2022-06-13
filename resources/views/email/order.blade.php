@@ -1,15 +1,13 @@
-<!DOCTYPE html>
 <html >
-  <style>
-    .hp {
-    width: 100%;
-    /* border-top: 1px dotted #fbfbfb03; */
-}
-  </style>
-
+  
   <body >
-  <table width="700px" border="0" cellpading="0" cellspacing="0">
-    <img src="<?php echo $message->embed(public_path().'/assets/images/setting/'.$gs->site_logo); ?> " style="padding:0px; margin:0px">
+  <table width="700px">
+    <tr><td>&nbsp;</td><tr>
+      <tr><td><img  src="<?php echo $message->embed(public_path().'/assets/images/setting/'.$gs->site_logo); ?>"><td><tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>{{$userDetails['name']}} </td></tr>
+        <table width="700px" border="0" cellpading="0" cellspacing="0">
+    
       <tr>
       <td>  </td>
       </tr>
@@ -38,7 +36,7 @@
         <td>
           <table width="95%" cellpading="5" cellspacing="5" bgcolor="#f7f4f4">
             <tr bgcolor="#cccccc">
-              <td>Product Name</td>
+              <td>Product Name </td>
               <td>Product Model</td>
             
               <td>Quantity</td>
@@ -50,7 +48,7 @@
               <td>{{$product['model_no']}}</td>
             
               <td>{{$product['quantity']}}</td>
-              <td>{{$product['price']}}</td>
+              <td>{{$gs->currency}}&nbsp;&nbsp;{{$product['price']}}</td>
             </tr>
 
             @endforeach
@@ -161,6 +159,10 @@
     
 
       
+    </table>
+    
+
+    
     </table>
   </body>
 </html>

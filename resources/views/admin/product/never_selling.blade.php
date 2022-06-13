@@ -108,12 +108,27 @@
                             <!--begin::Table row-->
                             @foreach($product as $row)
                             @php
+                            if(!empty($row->expired_date)){
+                            $dyaTimenow = Carbon\Carbon::now()->toDateString();
+                            $dyaTimeexpired = $row->expired_date;
+                            $diff_in_days = $dyaTimeexpired->diffInDays($dyaTimenow);
+
+                            }else{
+
+                            }
+
+
+
+
+
+
                             $totalQuantity = App\Models\Qty::where('product_id',$row->id)->sum('quantity');
                             $sellQuantity = App\Models\OrderProduct::where('product_id',$row->id)->sum('quantity');
                             $stockOutQuantity = App\Models\OrderProduct::where('product_id',$row->id)->sum('quantity');
                             @endphp
-                            @if($sellQuantity == 0 )
+                            @if(!empty($row->expired_date))
 
+                            @if($diff_in_days <  $gs->upcoming_expired_date)
                             <tr>
                                 <!--begin::Checkbox-->
                                 <!-- <td>
@@ -223,6 +238,8 @@
                             @else
 
                             @endif
+                            @endif
+
 
                             @endforeach
 

@@ -12356,6 +12356,26 @@ pre code {
     }
 }
 
+
+@media (min-width:768px) and (max-width:992px) {
+    
+    .tab-fix-containership{
+        width: 500px;
+        margin: auto !important;
+    }
+    .tab-fix-container{
+        margin: auto !important;
+    }
+    .tab-card{
+        width: 500px !important;
+        margin-left: -80px !important;
+    }
+    .cntr{
+        margin: auto;
+    }
+    
+}
+
 .table {
     width: 100%;
     margin-bottom: 1rem;
@@ -12635,6 +12655,24 @@ pre code {
 .table-dark.table-hover tbody tr:hover {
     color: #fff;
     background-color: hsla(0, 0%, 100%, .075)
+}
+
+@media (max-width:739px) {
+    .phn-fix-cart{
+        width: 100%;
+    }
+
+    .phn-fix-table{
+        width: 350px;
+        overflow-x: clip;
+        -webkit-overflow-scrolling: touch;
+        display: block;
+    }
+    
+    .phn-fix-media{
+        width: 10px;
+        height: 10px;
+    }
 }
 
 @media (max-width:575.98px) {

@@ -4,14 +4,15 @@
 @include('layout.front.detail_header')
 
 <div id="shipping" class=" ">
-    <div class="content-section shippingorder shippingcheckout">
+    <div class="content-section shippingorder shippingcheckout tab-margin-fix">
         <div class="address-section d-flex justify-content-between">
             <div class="row col-12 col-lg-12 col-md-12 col-sm-12">
             @include('error.message')
 
 
-                <div class="col-12 col-md-8 col-lg-8 col-sm-12 mb-5">
-                    <div class="card js--shipping-card">
+                <div class="col-12 col-md-8 col-lg-8 col-sm-12 mb-5 cntr">
+                    <div class="">
+                    <div class="card js--shipping-card tab-fix-containership">
                         <div class="card-header d-flex align-items-center">
                             <p class="address-title">Shipping Address</p>
                             <button type="button" class="btn js--btn-shipping"><i class="fa fa-angle-up"></i></button>
@@ -103,6 +104,7 @@
 
                         </div>
                     </div>
+                    </div>
                 </div>
                 @php
                 $coupon = App\Models\CouponCode::where('coupon_code',$couponCode)->first();
@@ -110,9 +112,9 @@
 
                 @endphp
 
-                <div class="col-12  col-md-4 col-lg-4 col-sm-12 mb-10 ">
-                    <div class="shipping-summary ">
-                        <div class="card ">
+                <div class="cntr col-12  col-md-4 col-lg-4 col-sm-12 mb-10">
+                    <div class="shipping-summary cntr">
+                        <div class="card tab-card">
                             @if(!empty($coupon))
                             <input type="hidden" name="coupon_code" value="{{$coupon->coupon_code}}">
                             <input type="hidden" name="amount_type" value="{{$coupon->amount_type}}">
@@ -227,12 +229,13 @@
 
 
 
-
+                                    
                                     <hr class="hr-line" />
-                                    <a href="{{route('user.order')}}" class="btn btn-danger">Back To Review</a>
-                                    <button type="submit" class="btn btn-confirm__order btn btn-success">
+                                    <a href="{{route('user.order')}}" class="tab-btn btn btn-danger">Back To Review</a>
+                                    <button type="submit" class="tab-btn btn btn-confirm__order btn btn-success">
                                         <span>Confirm Order</span>
                                     </button>
+
                                     </form>
                                     <div class="card-body js--shipping-body">
 

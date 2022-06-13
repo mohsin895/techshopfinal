@@ -17,8 +17,14 @@ class AdminController extends Controller
 {
     public function index()
     {
+      $role = Role::find(Auth::guard('admin')->user()->role_id);
+      if ($role->hasPermissionTo('dashboard_view')) {
+          $permissions = Role::findByName($role->name)->permissions;
       
         return view('admin.dashboard');
+      } else
+      return view('admin.employee_dashboard');
+      return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function login()

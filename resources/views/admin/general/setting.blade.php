@@ -31,6 +31,7 @@
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
         <div id="kt_content_container" class="container-xxl">
+            @include('error.message')
             <!--begin::Content-->
             <div class="flex-lg-row-fluid ms-lg-15">
                 <!--begin:::Tabs-->
@@ -679,7 +680,7 @@
                                             <select class="form-select form-select-solid" data-control="select2"
                                                 data-hide-search="true" data-placeholder="database_show"
                                                 data-kt-ecommerce-order-filter="database_show" name="database_show">
-                                               
+
                                                 <option value="1" @if($gs->database_show==1) selected ;@endif>Show
                                                 </option>
                                                 <option value="2" @if($gs->database_show==2) selected ;@endif>Hide
@@ -704,7 +705,7 @@
                                             <select class="form-select form-select-solid" data-control="select2"
                                                 data-hide-search="true" data-placeholder="expired_date"
                                                 data-kt-ecommerce-order-filter="expired_date" name="expired_date">
-                                               
+
                                                 <option value="1" @if($gs->expired_date==1) selected ;@endif>Show
                                                 </option>
                                                 <option value="2" @if($gs->expired_date==2) selected ;@endif>Hide
@@ -714,7 +715,62 @@
                                             <!--end::Input-->
                                         </div>
                                     </div>
-                                   
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>Show Upcoming Expire date product</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Landing Page Flash Sale/Slider."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+
+                                            <!--begin::Input-->
+                                            <select class="form-select form-select-solid" data-control="select2"
+                                                data-hide-search="true" data-placeholder="upcoming_expired_date"
+                                                data-kt-ecommerce-order-filter="upcoming_expired_date"
+                                                name="upcoming_expired_date">
+                                                <option >Select Day</option>
+
+                                                <option value="1"@if($gs->upcoming_expired_date==1) selected ;@endif>1 Days</option>
+                                                <option value="2"@if($gs->upcoming_expired_date==2) selected ;@endif>2 Days</option>
+                                                <option value="3"@if($gs->upcoming_expired_date==3) selected ;@endif>3 Days</option>
+                                                <option value="4"@if($gs->upcoming_expired_date==4) selected ;@endif>4 Days</option>
+                                                <option value="5"@if($gs->upcoming_expired_date==5) selected ;@endif>5 Days</option>
+                                                <option value="6"@if($gs->upcoming_expired_date==6) selected ;@endif>6 Days</option>
+                                                <option value="7"@if($gs->upcoming_expired_date==7) selected ;@endif>7 Days</option>
+                                                <option value="8"@if($gs->upcoming_expired_date==8) selected ;@endif>8 Days</option>
+                                                <option value="9"@if($gs->upcoming_expired_date==9) selected ;@endif>9 Days</option>
+                                                <option value="10"@if($gs->upcoming_expired_date==10) selected ;@endif>10 Days</option>
+                                                <option value="11"@if($gs->upcoming_expired_date==11) selected ;@endif>11 Days</option>
+                                                <option value="12"@if($gs->upcoming_expired_date==12) selected ;@endif>12 Days</option>
+                                                <option value="13"@if($gs->upcoming_expired_date==13) selected ;@endif>13 Days</option>
+                                                <option value="14"@if($gs->upcoming_expired_date==14) selected ;@endif>14 Days</option>
+                                                <option value="15"@if($gs->upcoming_expired_date==15) selected ;@endif>15 Days</option>
+                                                <option value="16"@if($gs->upcoming_expired_date==16) selected ;@endif>16 Days</option>
+                                                <option value="17"@if($gs->upcoming_expired_date==17) selected ;@endif>17 Days</option>
+                                                <option value="18"@if($gs->upcoming_expired_date==18) selected ;@endif>18 Days</option>
+                                                <option value="19"@if($gs->upcoming_expired_date==19) selected ;@endif>19 Days</option>
+                                                <option value="20"@if($gs->upcoming_expired_date==20) selected ;@endif>20 Days</option>
+                                                <option value="21"@if($gs->upcoming_expired_date==21) selected ;@endif>21 Days</option>
+                                                <option value="22"@if($gs->upcoming_expired_date==22) selected ;@endif>22 Days</option>
+                                                <option value="23"@if($gs->upcoming_expired_date==23) selected ;@endif>23 Days</option>
+                                                <option value="24"@if($gs->upcoming_expired_date==24) selected ;@endif>24 Days</option>
+                                                <option value="25"@if($gs->upcoming_expired_date==25) selected ;@endif>25 Days</option>
+                                                <option value="26"@if($gs->upcoming_expired_date==26) selected ;@endif>26 Days</option>
+                                                <option value="27"@if($gs->upcoming_expired_date==27) selected ;@endif>27 Days</option>
+                                                <option value="28"@if($gs->upcoming_expired_date==28) selected ;@endif>28 Days</option>
+                                                <option value="29"@if($gs->upcoming_expired_date==29) selected ;@endif>29 Days</option>
+                                                <option value="30"@if($gs->upcoming_expired_date==30) selected ;@endif>30 Days</option>
+                                               
+
+                                            </select>
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
+
                                     <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
                                             <!--begin::Label-->
