@@ -200,7 +200,7 @@ $.ajax({
     url: "../order/last12MonthOrderData",
     dataType: "json",
     success: function (response) {
-
+      
         for (const IR of response) {
 
             const individualGraphDiv = document.createElement("div");

@@ -139,11 +139,13 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
  public function last12MonthOrderData ()
  {
   $individualReport = [];
-  $today = Carbon::now()->format('d');
+  $today_date = Carbon::now()->format('d');
 
   for ($i=11; $i>=0; $i--) {  
     
-      $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)->get();   // gets only the data from previous month
+      $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
+                      ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
+                      ->get();   // gets only the data from previous month
 
       $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at));
 
@@ -156,12 +158,15 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
       $orderArray = [];
       $dayesOfMonth = [];
-      $months = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month);
+      $months = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year);
+
       for ($j=0; $j < $DaysInMonth; $j++) { 
 
           array_push($dayesOfMonth, ($j+1));
-          $sub = DB::table( DB::raw("({$months->toSql()}) as sub"))->mergeBindings($months->getQuery())->whereDay('created_at', '=', ($j+1))->count(); 
-
+          $sub = DB::table( DB::raw("({$months->toSql()}) as sub"))
+                    ->mergeBindings($months->getQuery())
+                    ->whereDay('created_at', '=', ($j+1))
+                    ->count(); 
           if ($sub != 0) {
               array_push($orderArray, ($sub));
               $totalOrder+=($sub);
@@ -170,7 +175,6 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
               array_push($orderArray, 0);
           }
       }
-
       // array_push($individualReport, [
       //     'month' => [$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at)],
       //     'totalOrder' => $totalOrder,
@@ -184,7 +188,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
           'totalOrder' => $totalOrder,
           'dayesOfMonth' => $dayesOfMonth,
           'orderArray' => $orderArray,
-          'avgOrder' => $totalOrder/$today
+          'avgOrder' => $totalOrder/$today_date
       ]);
       } else {
         array_push($individualReport, [
@@ -209,7 +213,9 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
   for ($i=11; $i>=0; $i--) {  
     
-      $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)->get();   // gets only the data from previous month
+      $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
+                      ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
+                      ->get();   // gets only the data from previous month
 
       $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at));
 
@@ -222,7 +228,8 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
       $sellArray = [];
       $dayesOfMonth = [];
-      $months = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month);
+      $months = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year);
+
       for ($j=0; $j < $DaysInMonth; $j++) { 
 
           array_push($dayesOfMonth, ($j+1));
@@ -272,8 +279,9 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
   for ($i=11; $i>=0; $i--) {  
     
-      $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)->get();   // gets only the data from previous month
-
+      $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
+                      ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
+                      ->get();   // gets only the data from previous month
       $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at));
 
       //$numberofFriday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "fri");
@@ -285,13 +293,16 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
       $ProfitArray = [];
       $dayesOfMonth = [];
-      $months = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month);
-      for ($j=14; $j < $DaysInMonth; $j++) { 
+      $months = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year);
+
+      for ($j=0; $j < $DaysInMonth; $j++) { 
 
           array_push($dayesOfMonth, ($j+1));
 
           $subtotal = DB::table( DB::raw("({$months->toSql()}) as sub"))->mergeBindings($months->getQuery())->whereDay('created_at', '=', ($j+1))->where('status','Completed')->sum('subtotal'); 
+          
           $vat = DB::table( DB::raw("({$months->toSql()}) as sub"))->mergeBindings($months->getQuery())->whereDay('created_at', '=', ($j+1))->where('status','Completed')->sum('vat'); 
+          
           $total_buying_price = DB::table( DB::raw("({$months->toSql()}) as sub"))->mergeBindings($months->getQuery())->whereDay('created_at', '=', ($j+1))->where('status','Completed')->sum('total_buying_price'); 
           
           $Profit = $subtotal + $vat - $total_buying_price;
@@ -335,29 +346,29 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
  public function getMonth($time)
  {
-     $newtime = strtotime($time);
-   $time->day = date('m',$newtime);
-     return $time->day;
+    $newtime = strtotime($time);
+    $time->day = date('m',$newtime);
+    return $time->day;
  }
 
  public function getDay($time)
  {
-     $newtime = strtotime($time);
-   $time->day = date('w',$newtime);
-     return $time->day;
+    $newtime = strtotime($time);
+    $time->day = date('w',$newtime);
+    return $time->day;
  }
 
  public function getDate($time)
  {
-     $newtime = strtotime($time);
-   $time->day = date('d',$newtime);
-     return $time->day;
+    $newtime = strtotime($time);
+    $time->day = date('d',$newtime);
+    return $time->day;
  }
 
  public function getYear($time)
  {
-     $newtime = strtotime($time);
-   $time->day = date('y',$newtime);
-     return $time->day;
+    $newtime = strtotime($time);
+    $time->day = date('y',$newtime);
+    return $time->day;
  }
 }
