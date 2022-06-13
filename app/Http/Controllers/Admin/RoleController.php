@@ -54,6 +54,10 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
     public function insert(Request $request)
     {
         // dd($request->all());
+        $validated = $request->validate([
+            'name' => 'required|unique:roles',
+            
+        ]);
 
         if ($request->isMethod('post')) {
             $data = $request->all();
@@ -1340,7 +1344,7 @@ if ($request->has('bloog_post_edit')) {
                     $role->givePermissionTo($permission);
                 }
             } else
-                $role->revokePermissionTo('upcomming_expired_date_products');
+                $role->revokePermissionTo('expired_date_products');
                 if ($request->has('upcomming_expired_date_products')) {
                     $permission = Permission::firstOrCreate(['name' => 'upcomming_expired_date_products']);
                     if (!$role->hasPermissionTo('upcomming_expired_date_products')) {
@@ -1348,6 +1352,42 @@ if ($request->has('bloog_post_edit')) {
                     }
                 } else
                     $role->revokePermissionTo('upcomming_expired_date_products');
+
+        if ($request->has('event_index')) {
+            $permission = Permission::firstOrCreate(['name' => 'event_index']);
+            if (!$role->hasPermissionTo('event_index')) {
+                $role->givePermissionTo($permission);
+            }
+        } else
+            $role->revokePermissionTo('event_index');
+            if ($request->has('event_add')) {
+                $permission = Permission::firstOrCreate(['name' => 'event_add']);
+                if (!$role->hasPermissionTo('event_add')) {
+                    $role->givePermissionTo($permission);
+                }
+            } else
+        $role->revokePermissionTo('event_add');
+        if ($request->has('event_edit')) {
+            $permission = Permission::firstOrCreate(['name' => 'event_edit']);
+            if (!$role->hasPermissionTo('event_edit')) {
+                $role->givePermissionTo($permission);
+            }
+        } else
+            $role->revokePermissionTo('event_edit');
+            if ($request->has('event_delete')) {
+                $permission = Permission::firstOrCreate(['name' => 'event_delete']);
+                if (!$role->hasPermissionTo('event_delete')) {
+                    $role->givePermissionTo($permission);
+                }
+            } else
+                $role->revokePermissionTo('event_delete');
+                if ($request->has('anaylites_view')) {
+                    $permission = Permission::firstOrCreate(['name' => 'anaylites_view']);
+                    if (!$role->hasPermissionTo('anaylites_view')) {
+                        $role->givePermissionTo($permission);
+                    }
+                } else
+                    $role->revokePermissionTo('anaylites_view');
 
 
         return redirect('admin/role')->with('flash_message_success', 'Permission updated successfully');

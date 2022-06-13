@@ -2439,6 +2439,140 @@
 
                                     </div>
 
+                                    <div class="card-body">
+
+<div class="table-responsive">
+    <table class="table table-bordered permission-table">
+        <thead>
+            <tr>
+                <th colspan="6" class="text-center">Event</th>
+            </tr>
+            <tr>
+                <th rowspan="2" class="text-center">Module Name</th>
+
+            </tr>
+            <tr>
+                <th class="text-center">View</th>
+                <th class="text-center">add</th>
+                <th class="text-center"> edit</th>
+                <th class="text-center"> delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Event </td>
+                <td class="text-center">
+                    <div class="icheckbox_square-blue checked"
+                        aria-checked="false" aria-disabled="false">
+
+                        @if(in_array("event_index", $all_permission))
+                        <input type="checkbox" value="1"
+                            id="event_index"
+                            name="event_index" checked />
+                        @else
+                        <input type="checkbox" value="1"
+                            id="event_index"
+                            name="event_index" />
+                        @endif
+                        <label for="event_index"></label>
+
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="icheckbox_square-blue" aria-checked="false"
+                        aria-disabled="false">
+
+                        @if(in_array("event_add", $all_permission))
+                        <input type="checkbox" value="1"
+                            id="event_add"
+                            name="event_add" checked>
+                        @else
+                        <input type="checkbox" value="1"
+                            id="event_add"
+                            name="event_add">
+                        @endif
+                        <label for="event_add"></label>
+
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="icheckbox_square-blue" aria-checked="false"
+                        aria-disabled="false">
+
+                        @if(in_array("event_edit",
+                        $all_permission))
+                        <input type="checkbox" value="1"
+                            id="event_edit"
+                            name="event_edit" checked />
+                        @else
+                        <input type="checkbox" value="1"
+                            id="event_edit"
+                            name="event_edit" />
+                        @endif
+                        <label for="event_edit"></label>
+
+                    </div>
+                </td>
+                <td class="text-center">
+                <div class="icheckbox_square-blue" aria-checked="false"
+                        aria-disabled="false">
+
+                        @if(in_array("event_delete",
+                        $all_permission))
+                        <input type="checkbox" value="1"
+                            id="event_delete"
+                            name="event_delete" checked />
+                        @else
+                        <input type="checkbox" value="1"
+                            id="event_delete"
+                            name="event_delete" />
+                        @endif
+                        <label for="event_delete"></label>
+
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>Analytics </td>
+                <td class="text-center">
+                    <div class="icheckbox_square-blue checked"
+                        aria-checked="false" aria-disabled="false">
+
+                        @if(in_array("anaylites_view", $all_permission))
+                        <input type="checkbox" value="1"
+                            id="anaylites_view"
+                            name="anaylites_view" checked />
+                        @else
+                        <input type="checkbox" value="1"
+                            id="anaylites_view"
+                            name="anaylites_view" />
+                        @endif
+                        <label for="anaylites_view"></label>
+
+                    </div>
+                </td>
+                <td class="text-center">
+
+                </td>
+                <td class="text-center">
+                   
+                </td>
+                <td class="text-center">
+                   
+                   </td>
+
+
+            </tr>
+
+
+        </tbody>
+    </table>
+</div>
+
+</div>
+
 
                                     <div class="card-body">
                                         <input type="hidden" name="role_id" value="{{$lims_role_data->id}}" />
