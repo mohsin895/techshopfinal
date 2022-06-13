@@ -12657,6 +12657,24 @@ pre code {
     background-color: hsla(0, 0%, 100%, .075)
 }
 
+@media (max-width:739px) {
+    .phn-fix-cart{
+        width: 100%;
+    }
+
+    .phn-fix-table{
+        width: 350px;
+        overflow-x: clip;
+        -webkit-overflow-scrolling: touch;
+        display: block;
+    }
+    
+    .phn-fix-media{
+        width: 10px;
+        height: 10px;
+    }
+}
+
 @media (max-width:575.98px) {
     .table-responsive-sm {
         display: block;

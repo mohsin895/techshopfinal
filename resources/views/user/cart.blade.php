@@ -11,15 +11,15 @@
                 <div class="col-12 col-md-8 col-lg-8 col-sm-12">
                     <div class="cart-section">
                         <?php $total_amount = 0;  ?>
-                        <div class="cart-details card mb-5">
+                        <div class="cart-details card mb-5 phn-fix-cart">
                             <div class="header d-flex justify-content-between align-items-center w-100">
                                 <p class="ml-0">Shopping Cart</p>
                                 @include('error.message')
                                 <!-- <p id="big-total" class="mr-0">Total: {{$gs->currency}}&nbsp;&nbsp;
                                     <?php echo $total_amount; ?></p> -->
                             </div>
-                            <div class="card-body table-responsive">
-                                <table class="table">
+                            <div class="card-body phn-fix-table">
+                                <table class="table table-responsive">
                                     <tr>
                                         <th>Product</th>
                                         <th>Price</th>
@@ -36,7 +36,7 @@
                                         <td>
                                             <a href="{{url('/product/details',$product->slug)}}" target="_blank">
                                                 <div class="media">
-                                                    <img src="{{asset('public/assets/images/product/'.$product->image)}}"
+                                                    <img class="phn-fix-media"src="{{asset('public/assets/images/product/'.$product->image)}}"
                                                         alt="product" class="img-fluid">
                                                     <div class="media-body ml-3">
                                                         <p class="product-name">{{$cart->product_name}}</p>
