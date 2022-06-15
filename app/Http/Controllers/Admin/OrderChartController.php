@@ -144,7 +144,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
                       ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
                       ->get();   // gets only the data from previous month
 
-      $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at));
+      $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i)));
 
       //$numberofFriday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "fri");
       //$numberofSaturday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "sat");
@@ -173,7 +173,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
           }
       }
       // array_push($individualReport, [
-      //     'month' => [$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at)],
+      //     'month' => [$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i))],
       //     'totalOrder' => $totalOrder,
       //     'dayesOfMonth' => $dayesOfMonth,
       //     'orderArray' => $orderArray
@@ -181,7 +181,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
       if ($i == 0) {
         array_push($individualReport, [
-          'month' => [$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at)],
+          'month' => [$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i))],
           'totalOrder' => $totalOrder,
           'dayesOfMonth' => $dayesOfMonth,
           'orderArray' => $orderArray,
@@ -189,7 +189,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
       ]);
       } else {
         array_push($individualReport, [
-          'month' => [$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at)],
+          'month' => [$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i))],
           'totalOrder' => $totalOrder,
           'dayesOfMonth' => $dayesOfMonth,
           'orderArray' => $orderArray,
@@ -214,7 +214,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
                       ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
                       ->get();   // gets only the data from previous month
 
-      $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at));
+      $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i)));
 
       //$numberofFriday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "fri");
       //$numberofSaturday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "sat");
@@ -246,7 +246,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
       if ($i == 0) {
         array_push($individualReport, [
           'avgSell' => $totalSell/$today,
-          'month' => [$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at)],
+          'month' => [$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i))],
           'totalSell' => $totalSell,
           'dayesOfMonth' => $dayesOfMonth,
           'sellArray' => $sellArray
@@ -254,7 +254,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
       } else {
         array_push($individualReport, [
           'avgSell' => $totalSell/$DaysInMonth,
-          'month' => [$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at)],
+          'month' => [$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i))],
           'totalSell' => $totalSell,
           'dayesOfMonth' => $dayesOfMonth,
           'sellArray' => $sellArray
@@ -279,7 +279,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
       $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
                       ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
                       ->get();   // gets only the data from previous month
-      $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at));
+      $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i)));
 
       //$numberofFriday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "fri");
       //$numberofSaturday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "sat");
@@ -316,7 +316,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
       if ($i == 0) {
         array_push($individualReport, [
           'avgProfit' => $totalProfit/$today,
-          'month' => [$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at)],
+          'month' => [$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i))],
           'totalProfit' => $totalProfit,
           'dayesOfMonth' => $dayesOfMonth,
           'currency' => GeneralSetting::select('currency')->first(),
@@ -325,7 +325,7 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
       } else {
         array_push($individualReport, [
           'avgProfit' => $totalProfit/$DaysInMonth,
-          'month' => [$this->getMonth($Order[0]->created_at),$this->getYear($Order[0]->created_at)],
+          'month' => [$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i))],
           'totalProfit' => $totalProfit,
           'dayesOfMonth' => $dayesOfMonth,
           'currency' => GeneralSetting::select('currency')->first(),
