@@ -100,6 +100,8 @@ Route::post('/product/update/{id}',[App\Http\Controllers\Admin\ProductController
 Route::get('/delete-product/{id}',[App\Http\Controllers\Admin\ProductController::class,'delete'])->name('product.delete');
 Route::get('/get_subcategory',[App\Http\Controllers\Admin\ProductController::class,'get_subcat'])->name('get_subcategory');
 Route::get('/product/view-details/{id}',[App\Http\Controllers\Admin\ProductController::class,'view_deatils'])->name('product.view_details');
+Route::post('/product/update/qty/{id}',[App\Http\Controllers\Admin\ProductController::class,'update_qty'])->name('product.update.qty');
+
 
 Route::get('/product/update-status/{id}/{status}',[App\Http\Controllers\Admin\ProductController::class,'status']);
 Route::get('/product/updateBuyingPrice/{id}/{p}',[App\Http\Controllers\Admin\ProductController::class,'updateBuyingPrice']);

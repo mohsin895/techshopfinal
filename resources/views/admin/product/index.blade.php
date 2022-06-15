@@ -225,6 +225,10 @@
                                             <a href="{{route('admin.product.edit',$row->id)}}"
                                                 class="menu-link px-3">Edit</a>
                                         </div>
+
+                                        <div class="menu-item px-3">
+                                        <a href="#" class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_edit_qty{{$row->id}}">Edit Qty</a>
+                                        </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
@@ -237,6 +241,7 @@
                                 </td>
                                 <!--end::Action=-->
                             </tr>
+                            @include('admin.model.product.qty')
                            
                           @endforeach
                           

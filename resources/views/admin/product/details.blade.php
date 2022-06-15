@@ -191,11 +191,11 @@
                                     <!--begin::Details item-->
                                     <!--begin::Details item-->
                                     <div class="fw-bolder mt-5">Buying Price</div>
-                                    <div class="text-gray-600">{{$product->buying_price}}</div>
+                                    <div class="text-gray-600">{{$gs->currency}} &nbsp;&nbsp;{{$product->buying_price}}</div>
                                     <!--begin::Details item-->
                                     <!--begin::Details item-->
                                     <div class="fw-bolder mt-5">Selling Price</div>
-                                    <div class="text-gray-600">{{$product->price}}</div>
+                                    <div class="text-gray-600">{{$gs->currency}} &nbsp;&nbsp;{{$product->price}}</div>
                                     <!--begin::Details item-->
                                     <!--begin::Details item-->
                                     <!-- <div class="fw-bolder mt-5">Tax ID</div>

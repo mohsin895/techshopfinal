@@ -243,6 +243,34 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         return redirect('/admin/product')->with('flash_message_success','product Update successfully');
     }
 
+    public function update_qty(Request $request,$id)
+    {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('product_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
+        $product =Product::find($id);
+        if($product->id){
+            $product_id = $product->id;
+            // dd($product_id);
+            $qty_id=Qty::where('product_id',$product_id)->get();
+            // dd($qty_id);
+            foreach($qty_id as $key => $qty){
+                
+             $qty->quantity = $request['quantity'][$key];
+
+            $qty->save();
+            
+           
+          
+            }
+
+            return back()->with('flash_message_success','Product Quantity Update Successfulle');
+        } else
+        return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+        }
+        
+    }
+
     public function delete($id)
     {
         $role = Role::find(Auth::guard('admin')->user()->role_id);
