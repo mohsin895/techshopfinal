@@ -115,10 +115,12 @@
                 <div class="cntr col-12  col-md-4 col-lg-4 col-sm-12 mb-10">
                     <div class="shipping-summary cntr">
                         <div class="card tab-card">
+                        <input type="hidden" name="event_id" value="{{$event->id}}">
                             @if(!empty($coupon))
                             <input type="hidden" name="coupon_code" value="{{$coupon->coupon_code}}">
                             <input type="hidden" name="amount_type" value="{{$coupon->amount_type}}">
                             <input type="hidden" name="amount" value="{{$coupon->amount}}">
+                           
 
                             @else
 

@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Permission;
 use Auth;
 use Session;
 use App\Models\User;
+use App\Models\BrouseHistory;
 use Hash;
 use Image;
 
@@ -192,7 +193,6 @@ public function setting()
       }
     }
   }
-
 
 
 

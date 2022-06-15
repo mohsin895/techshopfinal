@@ -69,7 +69,7 @@
                             <label class="required fs-5 fw-bold mb-2">Subject</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid" name="subject"/>
+                            <input type="text" class="form-control form-control-solid" name="subject" required/>
                             <!--end::Input-->
                         </div>
                         <!--begin::Input group-->

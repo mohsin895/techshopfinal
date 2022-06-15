@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Exports\OrdersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\GeneralSetting;
 use App\Models\OrderProduct;
 use App\Models\Event;
 use App\Models\User;
+use PDF;
 
 use Illuminate\Support\Facades\DB;
 
@@ -138,16 +141,51 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
             $data['order_product'] = OrderProduct::whereBetween('created_at', [$fromdate, $todate])->get();
             $data['productall'] = Product::whereBetween('created_at', [$fromdate, $todate])->get();
             $data['event'] = Event::whereBetween('created_at', [$fromdate, $todate])->get();
+            
+          
           
           } else {
+           
             
           }
+          
+          
+
+          
    
       return view('admin.chart.event',$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
+
+    public function export(Request $request) 
+    {
+        return Excel::download(new OrdersExport, 'orders.xlsx');
+    }
    
+    public function createPDF(Request $request ) {
+
+
+        $from_date = $request->from;
+    	$to_date = $request->to;
+        if( $from_date || $to_date){
+            $data['order_product'] = Order::whereBetween('created_at',[$from_date,$to_date])->get();
+        }else{
+            $data['order_product'] = Order::get();
+        }
+
+
+    	
+        // retreive all records from db
+        
+     
+        // share data to view
+       
+       return view('admin.report.account_report', $data);
+        // download PDF file with download method
+     
+      }
+
     public function last12MonthOrderData ()
  {
   $individualReport = [];

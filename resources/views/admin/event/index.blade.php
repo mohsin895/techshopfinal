@@ -94,6 +94,7 @@
                                 <th class="min-w-70px">Event Date</th>
                                 <th class="min-w-70px"> Event Purpose</th>
                                 <th class="min-w-70px"> Market Camping Cost</th>
+                                <th class="min-w-70px"> Event Per Sale</th>
                                 <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -134,7 +135,8 @@
                                 <td>{{ $row->event_date}}</td>
 
                                 <td>{{ $row->event_purpose}}</td>
-                                <td>{{ $row->event_cost}}</td>
+                                <td>{{$gs->currency}}&nbsp;&nbsp;{{ $row->event_cost}}</td>
+                                <td>{{ $row->order_number}}</td>
                                 <!--end::Category=-->
                                 <!--begin::Type=-->
                                 <!-- <td>

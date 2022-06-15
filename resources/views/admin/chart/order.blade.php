@@ -56,25 +56,7 @@
       <!-- Swiper -->
       <div class="swiper mySwiper">
         <div class="swiper-wrapper monthOrderReport">
-          {{-- <div class="swiper-slide">
-            <div class="bx-1" style="float:right;"><h6 style="color: #002db3;">Total Working Hour &emsp;: <span>939</span> hrs <br> 
-                                                                                 Avg Working Hour &emsp;&nbsp;&nbsp;: <span>31.3</span> hrs</h6></div>
-            <canvas id="monthlyBar3" style="width:50%; padding: 15px;"></canvas>
-            <h5 class="text-center pt-3 monthWorkReportMY" style="color: #002db3;">November, 2021</h5>
-          </div>
-          <div class="swiper-slide">
-            <div class="bx-1" style="float:right;"><h6 style="color: #002db3;">Total Working Hour &emsp;: <span>1007</span> hrs <br> 
-              Avg Working Hour &emsp;&nbsp;&nbsp;: <span>33.6</span> hrs</h6></div>
-              
-            <canvas id="monthlyBar2" style="width:50%; padding: 15px;"></canvas>
-            <h5 class="text-center pt-3" style="color: #002db3;">December, 2021</h5>
-          </div>
-          <div class="swiper-slide">
-            <div class="bx-1" style="float:right;"><h6 style="color: #002db3;">Total Working Hour &emsp;: <span>784</span> hrs <br> 
-              Avg Working Hour &emsp;&nbsp;&nbsp;: <span>26.13</span> hrs</h6></div>
-            <canvas id="monthlyBar1" style="width:50%; padding: 15px;"></canvas>
-            <h5 class="text-center pt-3" style="color: #002db3;">January, 2022</h5>
-          </div> --}}
+         
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -93,25 +75,7 @@
   <!-- Swiper -->
   <div class="swiper mySwiper">
     <div class="swiper-wrapper monthSellReport">
-      {{-- <div class="swiper-slide">
-        <div class="bx-1" style="float:right;"><h6 style="color: #002db3;">Total Working Hour &emsp;: <span>939</span> hrs <br> 
-                                                                             Avg Working Hour &emsp;&nbsp;&nbsp;: <span>31.3</span> hrs</h6></div>
-        <canvas id="monthlyBar3" style="width:50%; padding: 15px;"></canvas>
-        <h5 class="text-center pt-3 monthWorkReportMY" style="color: #002db3;">November, 2021</h5>
-      </div>
-      <div class="swiper-slide">
-        <div class="bx-1" style="float:right;"><h6 style="color: #002db3;">Total Working Hour &emsp;: <span>1007</span> hrs <br> 
-          Avg Working Hour &emsp;&nbsp;&nbsp;: <span>33.6</span> hrs</h6></div>
-          
-        <canvas id="monthlyBar2" style="width:50%; padding: 15px;"></canvas>
-        <h5 class="text-center pt-3" style="color: #002db3;">December, 2021</h5>
-      </div>
-      <div class="swiper-slide">
-        <div class="bx-1" style="float:right;"><h6 style="color: #002db3;">Total Working Hour &emsp;: <span>784</span> hrs <br> 
-          Avg Working Hour &emsp;&nbsp;&nbsp;: <span>26.13</span> hrs</h6></div>
-        <canvas id="monthlyBar1" style="width:50%; padding: 15px;"></canvas>
-        <h5 class="text-center pt-3" style="color: #002db3;">January, 2022</h5>
-      </div> --}}
+     
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -129,25 +93,7 @@
 <!-- Swiper -->
 <div class="swiper mySwiper">
   <div class="swiper-wrapper monthProfitReport">
-    {{-- <div class="swiper-slide">
-      <div class="bx-1" style="float:right;"><h6 style="color: #002db3;">Total Working Hour &emsp;: <span>939</span> hrs <br> 
-                                                                           Avg Working Hour &emsp;&nbsp;&nbsp;: <span>31.3</span> hrs</h6></div>
-      <canvas id="monthlyBar3" style="width:50%; padding: 15px;"></canvas>
-      <h5 class="text-center pt-3 monthWorkReportMY" style="color: #002db3;">November, 2021</h5>
-    </div>
-    <div class="swiper-slide">
-      <div class="bx-1" style="float:right;"><h6 style="color: #002db3;">Total Working Hour &emsp;: <span>1007</span> hrs <br> 
-        Avg Working Hour &emsp;&nbsp;&nbsp;: <span>33.6</span> hrs</h6></div>
-        
-      <canvas id="monthlyBar2" style="width:50%; padding: 15px;"></canvas>
-      <h5 class="text-center pt-3" style="color: #002db3;">December, 2021</h5>
-    </div>
-    <div class="swiper-slide">
-      <div class="bx-1" style="float:right;"><h6 style="color: #002db3;">Total Working Hour &emsp;: <span>784</span> hrs <br> 
-        Avg Working Hour &emsp;&nbsp;&nbsp;: <span>26.13</span> hrs</h6></div>
-      <canvas id="monthlyBar1" style="width:50%; padding: 15px;"></canvas>
-      <h5 class="text-center pt-3" style="color: #002db3;">January, 2022</h5>
-    </div> --}}
+    
   </div>
   <div class="swiper-button-next"></div>
   <div class="swiper-button-prev"></div>
@@ -216,6 +162,7 @@ $.ajax({
             var xValues = IR.dayesOfMonth;
             var yValues = IR.orderArray;
             var barColors = "#4d4dff";
+            var eventcolors = "red";
 
             new Chart("monthlyBar"+(IR.month[0])+""+(IR.month[1])+"", {
                 type: "bar",
@@ -226,7 +173,11 @@ $.ajax({
                         data: yValues,
                         barThickness: 20,
                         maxBarThickness: 20,
-                    }]
+                    },
+                  
+                  
+                  
+                  ]
                 },
 
                 options:{

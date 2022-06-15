@@ -61,7 +61,7 @@
                             <label class="required fs-5 fw-bold mb-2">Subject</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid" placeholder="Enter Your Subject" name="subject" />
+                            <input type="text" class="form-control form-control-solid" placeholder="Enter Your Subject" name="subject" required/>
                             <!--end::Input-->
                         </div>
                         <!--begin::Input group-->

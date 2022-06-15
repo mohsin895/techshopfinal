@@ -251,6 +251,7 @@ Route::get('/delete-user/{id}',[App\Http\Controllers\Admin\UserController::class
 //EventController Start 
 
 Route::get('/event',[App\Http\Controllers\Admin\EventController::class,'index'])->name('event.index');
+Route::get('/event/test',[App\Http\Controllers\Admin\EventController::class,'test'])->name('event.test');
 Route::get('/event/add',[App\Http\Controllers\Admin\EventController::class,'add'])->name('event.add');
 Route::get('/event/edit/{id}',[App\Http\Controllers\Admin\EventController::class,'edit'])->name('event.edit');
 Route::post('/event/insert',[App\Http\Controllers\Admin\EventController::class,'insert'])->name('event.insert');
@@ -258,7 +259,8 @@ Route::post('/event/update/{id}',[App\Http\Controllers\Admin\EventController::cl
 Route::get('/delete-event/{id}',[App\Http\Controllers\Admin\EventController::class,'delete'])->name('event.delete');
 
 Route::get('/event/update-status/{id}/{status}',[App\Http\Controllers\Admin\EventController::class,'status']);
-
+Route::post('/employee/pdf', [App\Http\Controllers\Admin\EventController::class, 'createPDF'])->name('employee.download');
+Route::get('orders-export', [App\Http\Controllers\Admin\EventController::class, 'export'])->name('orders.export');
 //EventController End
 //Delivery rate start
 //blogSubcategoryController Strat

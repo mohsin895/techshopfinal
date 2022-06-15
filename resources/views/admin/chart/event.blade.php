@@ -217,21 +217,67 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1"><a
-                        href="{{route('admin.dashboard')}}" class="hr"> {{$title}}</a></h1>
+     
                 <!--end::Title-->
                 <!--begin::Separator-->
-                <span class="h-20px border-gray-300 border-start mx-4"></span>
+                
                 <!--end::Separator-->
                 <!--begin::Breadcrumb-->
+                <form method="post" action="{{route('admin.employee.download')}}">
+                        @csrf
                 <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                     <!--begin::Item-->
+                   
+                    
+                  
                     <li class="breadcrumb-item text-muted">
-                        <a href="#" class="text-muted text-hover-primary">{{$table}}</a>
+                    <input type="date" class="form-control" name="from"
+                                        value="{{ request()->input('from') }}" />
                     </li>
+
+                    <li class="breadcrumb-item text-muted">
+                    <input type="date" class="form-control" name="to"
+                                        value="{{ request()->input('to') }}" />
+                    </li>
+
+                    <li class="breadcrumb-item text-muted">
+                    <button type="submit" class="btn btn-success">Download Pdf</button>
+                    </li>
+
 
                     <!--end::Item-->
                 </ul>
+
+                
+                </form>
+
+                <form method="get" action="{{route('admin.orders.export')}}">
+                        @csrf
+                <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+                    <!--begin::Item-->
+                  
+                    
+                    <span class="h-20px border-gray-300 border-start mx-4"></span>
+                    <li class="breadcrumb-item text-muted">
+                    <input type="date" class="form-control" name="from"
+                                        value="{{ request()->input('from') }}" />
+                    </li>
+
+                    <li class="breadcrumb-item text-muted">
+                    <input type="date" class="form-control" name="to"
+                                        value="{{ request()->input('to') }}" />
+                    </li>
+
+                    <li class="breadcrumb-item text-muted">
+                    <button type="submit" class="btn btn-success">download excel</button>
+                    </li>
+
+
+                    <!--end::Item-->
+                </ul>
+
+                
+                </form>
                 <!--end::Breadcrumb-->
             </div>
             <!--end::Page title-->
@@ -286,7 +332,7 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                 <!--end::Card header-->
                 <!--begin::Card body-->
 
-                <form method="get" route="?">
+                <form method="get" route="? ">
 
                     <table class="table table-borderless">
                         <thead>
@@ -307,6 +353,7 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                                         value="{{ request()->input('to') }}" /></td>
 
                                 <td><button value="" class=" btn btn-secondary form-control">Search</button></td>
+                               
 
 
                             </tr>
@@ -324,7 +371,7 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                 <?php $total_revenue = 0; ?>
                 @if(!empty($order_product))
                 <!--begin::Table row-->
-                @foreach($order_product as $row)
+                @foreach($order_product  as $row)
                 @php
                 $product= App\Models\Product::find($row->product_id);
                 $productqty = App\Models\OrderProduct::where('product_id',$product->id)->sum('quantity');
@@ -363,6 +410,7 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
 
                                 <th class="min-w-70px">Event Name</th>
                                 <th class="min-w-70px">Event Date</th>
+                                <th class="min-w-70px">Event Per Order</th>
                                 <th class="min-w-70px">Event Cost</th>
 
                             </tr>
@@ -386,6 +434,7 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                                 </td>
 
                                 <td>{{ $row->event_date}}</td>
+                                <td>{{ $row->order_number}}</td>
 
                                 <td>{{$gs->currency}}&nbsp;&nbsp;{{$row->event_cost}}</td>
 
@@ -553,6 +602,8 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                             <!--end::Charts Widget 1-->
                         </div>
 
+                        
+
                     </div>
                     <!--end::Row-->
                     <!--begin::Row-->
@@ -706,7 +757,125 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
     }
 
   
-   
+    var initChartsWidget2 = function() {
+        var element = document.getElementById("kt_charts_widget_2_chart");
+
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
+        var baseColor = KTUtil.getCssVariableValue('--bs-danger');
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-primary');
+
+        if (!element) {
+            return;
+        }
+
+        var options = {
+            series: [{
+                name: 'Event Number',
+                data: [{{$event1}}, {{$event2}}, {{$event3}}, {{$event4}}, {{$event5}}, {{$event6}}, {{$event7}}, {{$event8}}, {{$event9}}, {{$event10}}, {{$event11}}, {{$event12}}, {{$event13}}, {{$event14}}, {{$event15}}, {{$event16}}, {{$event17}}, {{$event18}}, {{$event19}}, {{$event20}}, {{$event21}}, {{$event22}}]
+            }, {
+                name: 'Order Number',
+                data: [{{$order1}},{{$order2}},{{$order3}},{{$order4}},{{$order5}},{{$order6}},{{$order7}},{{$order8}},{{$order9}},{{$order10}},{{$order11}},{{$order12}},{{$order13}},{{$order14}},{{$order15}},{{$order16}},{{$order17}},{{$order18}},{{$order19}},{{$order20}},{{$order21}},{{$order22}}]
+            }],
+            chart: {
+                fontFamily: 'inherit',
+                type: 'bar',
+                height: height,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: ['30%'],
+                    borderRadius: 4
+                },
+            },
+            legend: {
+                show: false
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['{{$mytime11}}', '{{$mytime22}}', '{{$mytime23}}', '{{$mytime24}}', '{{$mytime25}}', '{{$mytime26}}','{{$mytime27}}','{{$mytime28}}','{{$mytime29}}','{{$mytime31}}','{{$mytime32}}','{{$mytime33}}','{{$mytime34}}','{{$mytime35}}','{{$mytime36}}','{{$mytime37}}','{{$mytime38}}','{{$mytime39}}','{{$mytime40}}','{{$mytime41}}','{{$mytime42}}','{{$mytime43}}'],
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            states: {
+                normal: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                hover: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                active: {
+                    allowMultipleDataPointsSelection: false,
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                }
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px'
+                },
+                y: {
+                    formatter: function (val) {
+                        return  val 
+                    }
+                }
+            },
+            colors: [baseColor, secondaryColor],
+            grid: {
+                borderColor: borderColor,
+                strokeDashArray: 4,
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(element, options);
+        chart.render();      
+    }
    
 
 

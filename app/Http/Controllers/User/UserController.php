@@ -47,7 +47,7 @@ class UserController extends Controller
                   $admin = User::find($user->id);
 
             $admin->last_login = Carbon::now();
-          
+            $admin->ip = \Request::getClientIp();
             $admin->save();
 
                     if (!empty(Session::get('session_id'))) {

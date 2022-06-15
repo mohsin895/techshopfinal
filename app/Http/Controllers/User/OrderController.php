@@ -17,6 +17,7 @@ use App\Models\Notification;
 use App\Models\GeneralSetting;
 use App\Http\Requests;
 use App\Models\CouponCode;
+use App\Models\Event;
 use Session;
 use Mail;
 use DB;
@@ -27,44 +28,61 @@ class OrderController extends Controller
 public function order(Request $request)
 {
 
-  $giftcardOrder = Order::where('user_id',Auth::user()->id)->sum('giftcard_amount');
-      $dt = Carbon::now();
-      $giftcardvalue = GiftCardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->where('status','Completed')->sum('giftcard_value');
-      // dd($giftcardvalue);
-      $toatlbalancegiftcard = $giftcardvalue - $giftcardOrder;
-    $user_id = Auth::user()->id;
-      $user_email = Auth::user()->email;
-    $userDetails = User::find($user_id);
-    $userCart = DB::table('carts')->where(['user_email'=>$user_email])->get();
-    foreach ($userCart as $key => $product) {
-      $productDetails = Product::where('id',$product->product_id)->first();
-      $userCart[$key]->image = $productDetails->image;
-     }
-     if ($request->isMethod('post')) {
-      $data = $request->all();
-      $delivery = $request->input('delivery');
-      Session::put('delivery',$delivery);
-      $delivery = Session::get('delivery');
-      $giftcard = $request->input('giftcard_amount');
-      Session::put('giftcard_amount',$giftcard);
-      $giftcard = Session::get('giftcard_amount');
-      // dd($giftcard);
+  $user_email = Auth::user()->email;
+  $userCartCount = DB::table('carts')->where(['user_email'=>$user_email])->count('id');
+  if($userCartCount > 0){
+    $giftcardOrder = Order::where('user_id',Auth::user()->id)->sum('giftcard_amount');
+    $dt = Carbon::now();
+    $giftcardvalue = GiftCardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->where('status','Completed')->sum('giftcard_value');
+    // dd($giftcardvalue);
+    $toatlbalancegiftcard = $giftcardvalue - $giftcardOrder;
+  $user_id = Auth::user()->id;
+    $user_email = Auth::user()->email;
+  $userDetails = User::find($user_id);
+  $userCart = DB::table('carts')->where(['user_email'=>$user_email])->get();
+  foreach ($userCart as $key => $product) {
+    $productDetails = Product::where('id',$product->product_id)->first();
+    $userCart[$key]->image = $productDetails->image;
+   }
+   if ($request->isMethod('post')) {
+    $data = $request->all();
+    $delivery = $request->input('delivery');
+    Session::put('delivery',$delivery);
+    $delivery = Session::get('delivery');
+    $giftcard = $request->input('giftcard_amount');
+    Session::put('giftcard_amount',$giftcard);
+    $giftcard = Session::get('giftcard_amount');
+    // dd($giftcard);
 
-      return redirect('/user/checkout');
-     };
-     
-  return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcard'));
+    return redirect('/user/checkout');
+   };
+   
+return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcard'));
+
+  }else{
+
+    $data['product']= Product::take(8)->inRandomOrder()->get();
+    $data['empty_cart']= Product::take(1)->inRandomOrder()->get();
+    $data['empty_cart1']= Product::take(1)->inRandomOrder()->get();
+    return view('user.empty_cart',$data);
+
+  }
+ 
 }
 
 
     public function checkout(Request $request)
     {
-     
+      $user_email = Auth::user()->email;
+      $userCartCount = DB::table('carts')->where(['user_email'=>$user_email])->count('id');
+  if($userCartCount > 0){
        $delivery = Session::get('delivery');
        $giftcard = Session::get('giftcard_amount');
        $couponCode = Session::get('couponCode');
-      //  dd( $couponCode);
-  
+       $todayDate=Carbon::now();
+       $todayDatestring = $todayDate->format("y-m-d");
+      //  dd($todayDatestring);
+       $event = Event::where('event_date', '<=',$todayDatestring)->first();
       // dd($delivery);
       $giftcardOrder = Order::where('user_id',Auth::user()->id)->sum('giftcard_amount');
       $dt = Carbon::now();
@@ -88,6 +106,7 @@ public function order(Request $request)
 
    $order = new Order;
    $order->user_id = $user_id;
+   $order->event_id = $data['event_id'];
    $order->user_email = $user_email;
    $order->order_id = rand(10000,19999);
    $order->name= $data['name'];
@@ -135,6 +154,13 @@ public function order(Request $request)
    $notification = new Notification;
    $notification->order_id = $order->order_id;
    $notification->save();
+
+
+   $orderevent = DB::getPdo()->lastInsertId();
+   $ordereventid=Event::where('id',$request->event_id)->first();
+   $eventid = Event::find($ordereventid->id);
+   $eventid->order_number = $eventid->order_number + 1;
+   $eventid->save();
    
    $cartProducts = DB::table('carts')->where(['user_email'=>$user_email])->get();
    foreach($cartProducts as $pro){
@@ -199,7 +225,15 @@ public function order(Request $request)
   
      }
      
-        return view('user.checkout',compact('userCart','giftcardvalue','toatlbalancegiftcard','delivery','giftcard','couponCode'));
+        return view('user.checkout',compact('event','userCart','giftcardvalue','toatlbalancegiftcard','delivery','giftcard','couponCode'));
+      }else{
+
+        $data['product']= Product::take(8)->inRandomOrder()->get();
+        $data['empty_cart']= Product::take(1)->inRandomOrder()->get();
+        $data['empty_cart1']= Product::take(1)->inRandomOrder()->get();
+        return view('user.empty_cart',$data);
+    
+      }
     }
 
     public function order_details()

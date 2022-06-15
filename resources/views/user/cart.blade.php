@@ -8,6 +8,7 @@
         <div class="cart-wrapper d-flex justify-content-between">
 
             <div class="row col-sm-12 col-md-12 col-lg-12">
+                
                 <div class="col-12 col-md-8 col-lg-8 col-sm-12">
                     <div class="cart-section">
                         <?php $total_amount = 0;  ?>
@@ -36,7 +37,8 @@
                                         <td>
                                             <a href="{{url('/product/details',$product->slug)}}" target="_blank">
                                                 <div class="media">
-                                                    <img class="phn-fix-media"src="{{asset('public/assets/images/product/'.$product->image)}}"
+                                                    <img class="phn-fix-media"
+                                                        src="{{asset('public/assets/images/product/'.$product->image)}}"
                                                         alt="product" class="img-fluid">
                                                     <div class="media-body ml-3">
                                                         <p class="product-name">{{$cart->product_name}}</p>
@@ -80,7 +82,8 @@
                                                 {{$cart->price*$cart->quantity}}</p>
                                         </td>
                                         <td id="remove-btn"><a href="{{route('cart.delete',$cart->id)}}"><img
-                                                    src="{{ asset('public/image/frontLogos/trash-icon.png')}}" alt="icon"></a>
+                                                    src="{{ asset('public/image/frontLogos/trash-icon.png')}}"
+                                                    alt="icon"></a>
                                         </td>
                                     </tr>
                                     <?php $total_amount =  $total_amount + ($cart->price*$cart->quantity); ?>
@@ -89,12 +92,12 @@
                                 </table>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
                 <div class="col-12 col-md-4 col-lg-4 col-sm-12 ">
 
-                
+
                     <div class="cart-summary mb-5">
                         <div class="card col-sm-12">
                             <div class="summary">
@@ -130,10 +133,11 @@
                     </div>
                     <div class="text-center">
 
-<a href="{{url('/')}}" class="btn btn-cart__next btn-warning m-1">Back to Shopping</a>
-<a href="{{route('user.order')}}" class="btn btn-cart__next btn-success m-1">Next Step</a>
-</div>
+                        <a href="{{url('/')}}" class="btn btn-cart__next btn-warning m-1">Back to Shopping</a>
+                        <a href="{{route('user.order')}}" class="btn btn-cart__next btn-success m-1">Next Step</a>
+                    </div>
                 </div>
+               
             </div>
 
         </div>

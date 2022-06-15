@@ -20,19 +20,31 @@ class CartController extends Controller
         if(Auth::check()) {
             $user_email = Auth::user()->email;
             $userCart = DB::table('carts')->where(['user_email'=>$user_email])->get();
+            $userCartCount = DB::table('carts')->where(['user_email'=>$user_email])->count('id');
           }else{
             $session_id = Session::get('session_id');
             $userCart = DB::table('carts')->where(['session_id'=>$session_id])->get();
+            $userCartCount = DB::table('carts')->where(['session_id'=>$session_id])->count('id');
             // dd($userCart);
           }
-          
 
+          if($userCartCount > 0){
             foreach ($userCart as $key => $product) {
-             $productDetails = Product::where('id',$product->product_id)->first();
-             $userCart[$key]->image = $productDetails->image;
-            }
-            // echo "<pre>"; print_r($userCart);die;
-       return view('user.cart',compact('userCart'));
+              $productDetails = Product::where('id',$product->product_id)->first();
+              $userCart[$key]->image = $productDetails->image;
+             }
+             // echo "<pre>"; print_r($userCart);die;
+            return view('user.cart',compact('userCart'));
+
+          }else{
+            $data['product']= Product::take(8)->inRandomOrder()->get();
+            $data['empty_cart']= Product::take(1)->inRandomOrder()->get();
+            $data['empty_cart1']= Product::take(1)->inRandomOrder()->get();
+            return view('user.empty_cart',$data);
+
+          }
+
+            
     }
 
 public function addtocart(Request $request)

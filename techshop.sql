@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2022 at 07:23 AM
+-- Generation Time: Jun 14, 2022 at 01:20 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -342,6 +342,8 @@ CREATE TABLE `events` (
   `event_purpose` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `event_cost` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `event_date` date DEFAULT NULL,
+  `event_start_date` datetime DEFAULT NULL,
+  `order_number` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -350,8 +352,9 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `event_name`, `event_purpose`, `event_cost`, `event_date`, `created_at`, `updated_at`) VALUES
-(2, 'zasdawfsesf', 'mohsin', '123567', '2022-06-10', '2022-06-09 00:01:10', '2022-06-09 00:45:57');
+INSERT INTO `events` (`id`, `event_name`, `event_purpose`, `event_cost`, `event_date`, `event_start_date`, `order_number`, `created_at`, `updated_at`) VALUES
+(2, 'zasdawfsesf', 'mohsin', '123567', '2022-06-12', NULL, 2, '2022-06-09 00:01:10', '2022-06-14 09:24:55'),
+(4, 'qwertyuilo', 'wdsfgth', '123567', '2022-06-01', NULL, 1, '2022-06-13 09:43:00', '2022-06-14 08:47:05');
 
 -- --------------------------------------------------------
 
@@ -702,7 +705,26 @@ INSERT INTO `notifications` (`id`, `user_id`, `order_id`, `withdraw_id`, `giftca
 (83, NULL, 13446, NULL, NULL, 0, '2022-06-08 01:10:28', '2022-06-08 01:10:28'),
 (84, NULL, 15137, NULL, NULL, 0, '2022-06-08 01:29:10', '2022-06-08 01:29:10'),
 (85, NULL, 17703, NULL, NULL, 0, '2022-06-08 01:32:31', '2022-06-08 01:32:31'),
-(86, NULL, 11124, NULL, NULL, 0, '2022-06-08 01:36:06', '2022-06-08 01:36:06');
+(86, NULL, 11124, NULL, NULL, 0, '2022-06-08 01:36:06', '2022-06-08 01:36:06'),
+(87, NULL, 10850, NULL, NULL, 0, '2022-06-13 10:00:21', '2022-06-13 10:00:21'),
+(88, NULL, 11129, NULL, NULL, 0, '2022-06-14 04:27:49', '2022-06-14 04:27:49'),
+(89, NULL, 17832, NULL, NULL, 0, '2022-06-14 08:31:33', '2022-06-14 08:31:33'),
+(90, NULL, 12699, NULL, NULL, 0, '2022-06-14 08:39:10', '2022-06-14 08:39:10'),
+(91, NULL, 18562, NULL, NULL, 0, '2022-06-14 08:40:44', '2022-06-14 08:40:44'),
+(92, NULL, 14518, NULL, NULL, 0, '2022-06-14 08:41:22', '2022-06-14 08:41:22'),
+(93, NULL, 19315, NULL, NULL, 0, '2022-06-14 08:42:03', '2022-06-14 08:42:03'),
+(94, NULL, 16744, NULL, NULL, 0, '2022-06-14 08:42:25', '2022-06-14 08:42:25'),
+(95, NULL, 15810, NULL, NULL, 0, '2022-06-14 08:44:26', '2022-06-14 08:44:26'),
+(96, NULL, 19746, NULL, NULL, 0, '2022-06-14 08:45:42', '2022-06-14 08:45:42'),
+(97, NULL, 19942, NULL, NULL, 0, '2022-06-14 08:46:13', '2022-06-14 08:46:13'),
+(98, NULL, 10557, NULL, NULL, 0, '2022-06-14 08:47:04', '2022-06-14 08:47:04'),
+(99, NULL, 11709, NULL, NULL, 0, '2022-06-14 08:47:28', '2022-06-14 08:47:28'),
+(100, NULL, 10350, NULL, NULL, 0, '2022-06-14 09:13:33', '2022-06-14 09:13:33'),
+(101, NULL, 13249, NULL, NULL, 0, '2022-06-14 09:19:10', '2022-06-14 09:19:10'),
+(102, NULL, 11527, NULL, NULL, 0, '2022-06-14 09:20:53', '2022-06-14 09:20:53'),
+(103, NULL, 12078, NULL, NULL, 0, '2022-06-14 09:22:13', '2022-06-14 09:22:13'),
+(104, NULL, 13671, NULL, NULL, 0, '2022-06-14 09:24:02', '2022-06-14 09:24:02'),
+(105, NULL, 16472, NULL, NULL, 0, '2022-06-14 09:24:55', '2022-06-14 09:24:55');
 
 -- --------------------------------------------------------
 
@@ -714,6 +736,7 @@ CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `order_id` int(11) DEFAULT NULL,
+  `event_id` int(11) DEFAULT NULL,
   `user_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address1` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -731,6 +754,7 @@ CREATE TABLE `orders` (
   `payable` int(11) DEFAULT NULL,
   `order_status` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `delivery_date` timestamp NULL DEFAULT current_timestamp(),
+  `order_date` date NOT NULL DEFAULT current_timestamp(),
   `giftcard_amount` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `payment_method` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -746,63 +770,82 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `order_id`, `user_email`, `name`, `address1`, `address2`, `city`, `postcode`, `country`, `phone`, `delivery`, `grand_total`, `shipping`, `subtotal`, `total_buying_price`, `vat`, `payable`, `order_status`, `delivery_date`, `giftcard_amount`, `status`, `payment_method`, `created_at`, `updated_at`, `referral_id`, `amount`, `amount_type`, `coupon_code`) VALUES
-(1, '32', 17127, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2200', 200, 2000, 1800, NULL, NULL, 'new', '2022-04-26 18:00:00', '0', 'Cancelled', '2', '2021-12-18 21:46:55', '2022-04-28 01:02:28', NULL, NULL, NULL, NULL),
-(2, '44', 13641, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '1200', 200, 1000, 800, NULL, NULL, 'new', '2022-04-18 17:24:49', '0', 'New', '2', '2021-11-18 22:01:31', '2022-04-18 22:01:31', NULL, NULL, NULL, NULL),
-(3, '44', 17881, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2200', 200, 2000, 1800, NULL, NULL, 'new', '2022-04-19 18:00:00', '0', 'Pending', '2', '2021-10-18 22:03:07', '2022-04-19 02:28:03', NULL, NULL, NULL, NULL),
-(4, '32', 18405, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '1200', 200, 1000, 800, NULL, NULL, 'new', '2022-04-28 18:00:00', '0', 'Completed', '2', '2021-09-19 09:19:01', '2022-04-28 01:02:05', NULL, NULL, NULL, NULL),
-(5, '32', 17696, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-19 18:00:00', '0', 'Delivered', '2', '2021-08-19 17:51:25', '2022-04-28 01:07:06', NULL, NULL, NULL, NULL),
-(6, '32', 17894, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2506.92', 200, 2156, 2000, 150.92, NULL, 'new', '2022-04-26 18:00:00', '0', 'Shipping', '2', '2021-07-23 17:53:01', '2022-04-28 01:01:16', NULL, NULL, NULL, NULL),
-(7, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-04 17:23:08', NULL, NULL, NULL, '2022-04-15 13:20:01', '2021-04-14 13:20:01', NULL, NULL, NULL, NULL),
-(8, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-18 17:23:12', NULL, NULL, NULL, '2022-05-15 13:20:01', '2021-05-14 13:20:01', NULL, NULL, NULL, NULL),
-(9, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-11 17:23:15', NULL, NULL, NULL, '2022-06-18 13:20:01', '2021-06-14 13:20:01', NULL, NULL, NULL, NULL),
-(10, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-04 17:23:18', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-07-14 13:20:01', NULL, NULL, NULL, NULL),
-(11, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-12 17:23:25', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-08-14 13:20:01', NULL, NULL, NULL, NULL),
-(12, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-05 17:23:28', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-09-14 13:20:01', NULL, NULL, NULL, NULL),
-(13, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-04 17:23:30', NULL, 'Completed', NULL, '2022-06-15 13:20:01', '2021-10-14 13:20:01', NULL, NULL, NULL, NULL),
-(14, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-19 17:23:36', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-11-14 13:20:01', NULL, NULL, NULL, NULL),
-(15, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-11 17:24:23', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-12-14 13:20:01', NULL, NULL, NULL, NULL),
-(16, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-17 17:24:19', NULL, 'Completed', NULL, '2022-01-15 13:20:01', '2022-01-14 13:20:01', NULL, NULL, NULL, NULL),
-(17, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-11 17:24:15', NULL, NULL, NULL, '2022-02-15 13:20:01', '2022-02-14 13:20:01', NULL, NULL, NULL, NULL),
-(18, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-18 17:24:12', NULL, NULL, NULL, '2022-03-15 13:20:01', '2022-03-14 13:20:01', NULL, NULL, NULL, NULL),
-(19, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-04 17:24:10', NULL, NULL, NULL, '2022-04-15 13:20:01', '2022-04-14 13:20:01', NULL, NULL, NULL, NULL),
-(20, '11', 1789, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-25 17:24:06', NULL, NULL, NULL, '2022-03-15 13:20:01', '2021-03-14 13:20:01', NULL, NULL, NULL, NULL),
-(21, '12', 1123, 'rahem@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '01234567890', 'flat', '2000', 200, 1800, 1750, 150, NULL, NULL, '2022-04-11 17:23:39', NULL, NULL, NULL, '2022-01-05 13:55:20', '2022-01-05 13:55:20', NULL, NULL, NULL, NULL),
-(22, '12', 1123, 'rahem@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '01234567890', 'flat', '2000', 200, 1800, 1750, 150, NULL, NULL, '2022-04-04 17:23:42', NULL, NULL, NULL, '2022-01-05 13:55:20', '2022-01-05 13:55:20', NULL, NULL, NULL, NULL),
-(23, '12', 1123, 'rahem@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '01234567890', 'flat', '2000', 200, 1800, 1750, 150, NULL, NULL, '2022-04-04 17:23:45', NULL, NULL, NULL, '2022-06-05 13:55:20', '2021-12-05 13:55:20', NULL, NULL, NULL, NULL),
-(24, '48', 11055, 'rahem@gmail.com', 'rahim', 'dhaka', NULL, 'dhaka', '1214', 'Bangladesh', '01836999981', 'flat', '248.15', 200, 45, 500, 3.15, NULL, 'new', '2022-04-26 18:00:00', '0', 'Processing', '2', '2022-04-26 12:44:06', '2022-04-28 01:54:18', NULL, NULL, NULL, NULL),
-(25, '48', 17651, 'rahem@gmail.com', 'rahim', 'dhaka', NULL, 'dhaka', '1214', 'Bangladesh', '01836999981', 'flat', '2340', 200, 2000, 1600, 140, NULL, 'new', '2022-04-28 18:00:00', '0', 'Packaging', '2', '2022-04-26 12:46:45', '2022-04-28 01:00:36', NULL, NULL, NULL, NULL),
-(26, '32', 12309, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-28 18:00:00', '0', 'Delivered', '2', '2022-04-27 19:44:12', '2022-04-28 01:38:32', NULL, NULL, NULL, NULL),
-(27, '32', 17514, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-26 18:00:00', '0', 'New', '2', '2022-04-27 19:47:39', '2022-04-28 01:39:59', NULL, NULL, NULL, NULL),
-(28, '32', 11176, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-28 08:21:45', '0', 'Cancelled', '2', '2022-04-28 02:21:45', '2022-04-28 03:27:38', NULL, NULL, NULL, NULL),
-(29, '32', 10425, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '209.63', 200, 9, 2, 0.63, NULL, 'new', '2022-04-28 08:25:15', '0', 'Cancelled', '2', '2022-04-28 02:25:15', '2022-04-28 03:26:39', NULL, NULL, NULL, NULL),
-(30, '32', 12170, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-28 08:49:53', '0', 'Cancelled', '2', '2022-04-28 02:49:53', '2022-05-21 21:20:47', NULL, NULL, NULL, NULL),
-(31, '32', 17962, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '4489.63', 200, 4009, 1200, 280.63, NULL, 'New', '2022-05-09 10:58:29', '0', 'New', NULL, '2022-05-09 04:58:29', '2022-05-09 04:58:29', NULL, NULL, NULL, NULL),
-(32, '32', 14335, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '12671.92', 300, 11656, 1200, 815.92, NULL, 'New', '2022-05-30 09:00:06', '0', 'New', NULL, '2022-05-30 03:00:06', '2022-05-30 03:00:06', NULL, NULL, NULL, NULL),
-(33, '32', 18806, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2376.228', 300, 1940.4, 2000, 135.828, NULL, 'New', '2022-05-31 07:12:24', '0', 'New', NULL, '2022-05-31 01:12:24', '2022-05-31 01:12:24', NULL, '10', 'percentage', 'sd12'),
-(34, '32', 15359, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2226', 300, 1800, 1200, 126, NULL, 'New', '2022-05-31 08:06:39', '0', 'New', NULL, '2022-05-31 02:06:39', '2022-05-31 02:06:39', NULL, '10', 'percentage', 'sd12'),
-(35, '32', 11018, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '1322.92', 300, 956, 2000, 66.92, NULL, 'New', '2022-05-31 08:10:32', '0', 'New', NULL, '2022-05-31 02:10:32', '2022-05-31 02:10:32', NULL, '1200', 'fixed', 'sd125'),
-(36, '32', 18522, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:02:06', '0', 'New', NULL, '2022-05-31 23:02:06', '2022-05-31 23:02:06', NULL, '0', '0', '0'),
-(37, '32', 16988, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:02:55', '0', 'New', NULL, '2022-05-31 23:02:55', '2022-05-31 23:02:55', NULL, '0', '0', '0'),
-(38, '32', 13298, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:07:41', '0', 'New', NULL, '2022-05-31 23:07:41', '2022-05-31 23:07:41', NULL, '0', '0', '0'),
-(39, '32', 11964, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:13:14', '0', 'New', NULL, '2022-05-31 23:13:14', '2022-05-31 23:13:14', NULL, '0', '0', '0'),
-(40, '32', 15421, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:14:32', '0', 'New', NULL, '2022-05-31 23:14:32', '2022-05-31 23:14:32', NULL, '0', '0', '0'),
-(41, '32', 12880, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:18:32', '0', 'New', NULL, '2022-05-31 23:18:32', '2022-05-31 23:18:32', NULL, '0', '0', '0'),
-(42, '32', 12244, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:20:48', '0', 'New', NULL, '2022-05-31 23:20:48', '2022-05-31 23:20:48', NULL, '0', '0', '0'),
-(43, '32', 17595, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:23:08', '0', 'New', NULL, '2022-05-31 23:23:08', '2022-05-31 23:23:08', NULL, '0', '0', '0'),
-(44, '32', 16228, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:24:55', '0', 'New', NULL, '2022-05-31 23:24:55', '2022-05-31 23:24:55', NULL, '0', '0', '0'),
-(45, '32', 13140, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:26:57', '0', 'New', NULL, '2022-05-31 23:26:57', '2022-05-31 23:26:57', NULL, '0', '0', '0'),
-(46, '32', 12540, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '4580', 300, 4000, 2400, 280, NULL, 'New', '2022-06-01 05:29:09', '0', 'New', NULL, '2022-05-31 23:29:09', '2022-05-31 23:29:09', NULL, '0', '0', '0'),
-(47, '32', 13949, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '4580', 300, 4000, 2400, 280, NULL, 'New', '2022-06-01 05:32:46', '0', 'Cancelled', NULL, '2022-05-31 23:32:46', '2022-06-05 00:27:52', NULL, '0', '0', '0'),
-(48, '32', 12231, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 2, 140.63, NULL, 'New', '2022-06-08 06:57:38', '0', 'New', NULL, '2022-06-08 00:57:38', '2022-06-08 00:57:38', NULL, '0', '0', '0'),
-(49, '32', 18217, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 2, 140.63, NULL, 'New', '2022-06-08 06:57:38', '0', 'New', NULL, '2022-06-08 00:57:38', '2022-06-08 00:57:38', NULL, '0', '0', '0'),
-(50, '32', 10402, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-08 07:00:32', '0', 'New', NULL, '2022-06-08 01:00:32', '2022-06-08 01:00:32', NULL, '0', '0', '0'),
-(51, '32', 15280, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-08 07:00:32', '0', 'New', NULL, '2022-06-08 01:00:32', '2022-06-08 01:00:32', NULL, '0', '0', '0'),
-(52, '32', 18966, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-08 07:10:04', '0', 'New', NULL, '2022-06-08 01:10:04', '2022-06-08 01:10:04', NULL, '0', '0', '0'),
-(53, '32', 13446, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-08 07:10:28', '0', 'New', NULL, '2022-06-08 01:10:28', '2022-06-08 01:10:28', NULL, '0', '0', '0'),
-(54, '32', 15137, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2440', 300, 2000, 1200, 140, NULL, 'New', '2022-06-08 07:29:10', '0', 'New', NULL, '2022-06-08 01:29:10', '2022-06-08 01:29:10', NULL, '0', '0', '0'),
-(55, '32', 17703, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-08 07:32:31', '0', 'New', NULL, '2022-06-08 01:32:31', '2022-06-08 01:32:31', NULL, '0', '0', '0'),
-(56, '32', 11124, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-08 07:36:06', '0', 'New', NULL, '2021-06-29 01:36:06', '2022-06-08 01:36:06', NULL, '0', '0', '0');
+INSERT INTO `orders` (`id`, `user_id`, `order_id`, `event_id`, `user_email`, `name`, `address1`, `address2`, `city`, `postcode`, `country`, `phone`, `delivery`, `grand_total`, `shipping`, `subtotal`, `total_buying_price`, `vat`, `payable`, `order_status`, `delivery_date`, `order_date`, `giftcard_amount`, `status`, `payment_method`, `created_at`, `updated_at`, `referral_id`, `amount`, `amount_type`, `coupon_code`) VALUES
+(1, '32', 17127, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2200', 200, 2000, 1800, NULL, NULL, 'new', '2022-04-26 18:00:00', '2022-06-10', '0', 'Cancelled', '2', '2021-12-18 21:46:55', '2022-04-28 01:02:28', NULL, NULL, NULL, NULL),
+(2, '44', 13641, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '1200', 200, 1000, 800, NULL, NULL, 'new', '2022-04-18 17:24:49', '2022-06-11', '0', 'New', '2', '2021-11-18 22:01:31', '2022-04-18 22:01:31', NULL, NULL, NULL, NULL),
+(3, '44', 17881, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2200', 200, 2000, 1800, NULL, NULL, 'new', '2022-04-19 18:00:00', '2022-06-11', '0', 'Pending', '2', '2021-10-18 22:03:07', '2022-04-19 02:28:03', NULL, NULL, NULL, NULL),
+(4, '32', 18405, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '1200', 200, 1000, 800, NULL, NULL, 'new', '2022-04-28 18:00:00', '2022-06-11', '0', 'Completed', '2', '2021-09-19 09:19:01', '2022-04-28 01:02:05', NULL, NULL, NULL, NULL),
+(5, '32', 17696, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-19 18:00:00', '2022-05-28', '0', 'Delivered', '2', '2021-08-19 17:51:25', '2022-04-28 01:07:06', NULL, NULL, NULL, NULL),
+(6, '32', 17894, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2506.92', 200, 2156, 2000, 150.92, NULL, 'new', '2022-04-26 18:00:00', '2022-05-29', '0', 'Shipping', '2', '2021-07-23 17:53:01', '2022-04-28 01:01:16', NULL, NULL, NULL, NULL),
+(7, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-04 17:23:08', '2022-06-07', NULL, NULL, NULL, '2022-04-15 13:20:01', '2021-04-14 13:20:01', NULL, NULL, NULL, NULL),
+(8, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-18 17:23:12', '2022-06-02', NULL, NULL, NULL, '2022-05-15 13:20:01', '2021-05-14 13:20:01', NULL, NULL, NULL, NULL),
+(9, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-11 17:23:15', '2022-06-02', NULL, NULL, NULL, '2021-06-18 13:20:01', '2021-06-14 13:20:01', NULL, NULL, NULL, NULL),
+(10, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-04 17:23:18', '2022-06-07', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-07-14 13:20:01', NULL, NULL, NULL, NULL),
+(11, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-12 17:23:25', '2022-06-02', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-08-14 13:20:01', NULL, NULL, NULL, NULL),
+(12, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-05 17:23:28', '2022-05-30', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-09-14 13:20:01', NULL, NULL, NULL, NULL),
+(13, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-04 17:23:30', '2022-05-26', NULL, 'Completed', NULL, '2022-06-15 13:20:01', '2021-10-14 13:20:01', NULL, NULL, NULL, NULL),
+(14, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-19 17:23:36', '2022-06-06', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-11-14 13:20:01', NULL, NULL, NULL, NULL),
+(15, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-11 17:24:23', '2022-05-31', NULL, NULL, NULL, '2022-06-15 13:20:01', '2021-12-14 13:20:01', NULL, NULL, NULL, NULL),
+(16, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-17 17:24:19', '2022-06-08', NULL, 'Completed', NULL, '2022-01-15 13:20:01', '2022-01-14 13:20:01', NULL, NULL, NULL, NULL),
+(17, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-02 17:24:15', '2022-06-13', NULL, NULL, NULL, '2022-02-15 13:20:01', '2022-02-14 13:20:01', NULL, NULL, NULL, NULL),
+(18, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-18 17:24:12', '2022-06-07', NULL, NULL, NULL, '2022-03-15 13:20:01', '2022-03-14 13:20:01', NULL, NULL, NULL, NULL),
+(19, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-04 17:24:10', '2022-06-07', NULL, NULL, NULL, '2022-04-15 13:20:01', '2022-04-14 13:20:01', NULL, NULL, NULL, NULL),
+(20, '11', 1789, NULL, 'rahim@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '09876543211', 'flat', '2000', 200, 1800, 1750, 50, NULL, NULL, '2022-04-25 17:24:06', '2022-06-08', NULL, NULL, NULL, '2022-03-15 13:20:01', '2021-03-14 13:20:01', NULL, NULL, NULL, NULL),
+(21, '12', 1123, NULL, 'rahem@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '01234567890', 'flat', '2000', 200, 1800, 1750, 150, NULL, NULL, '2022-04-11 17:23:39', '2022-06-09', NULL, NULL, NULL, '2022-01-05 13:55:20', '2022-01-05 13:55:20', NULL, NULL, NULL, NULL),
+(22, '12', 1123, NULL, 'rahem@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '01234567890', 'flat', '2000', 200, 1800, 1750, 150, NULL, NULL, '2022-04-04 17:23:42', '2022-06-10', NULL, NULL, NULL, '2022-01-05 13:55:20', '2022-06-12 13:55:20', NULL, NULL, NULL, NULL),
+(23, '12', 1123, NULL, 'rahem@gmail.com', 'rahem', 'dhaka', NULL, NULL, '1214', 'bangladesh', '01234567890', 'flat', '2000', 200, 1800, 1750, 150, NULL, NULL, '2022-04-04 17:23:45', '2022-06-10', NULL, NULL, NULL, '2022-06-05 13:55:20', '2021-12-05 13:55:20', NULL, NULL, NULL, NULL),
+(24, '48', 11055, NULL, 'rahem@gmail.com', 'rahim', 'dhaka', NULL, 'dhaka', '1214', 'Bangladesh', '01836999981', 'flat', '248.15', 200, 45, 500, 3.15, NULL, 'new', '2022-04-26 18:00:00', '2022-06-07', '0', 'Processing', '2', '2022-04-26 12:44:06', '2022-04-28 01:54:18', NULL, NULL, NULL, NULL),
+(25, '48', 17651, NULL, 'rahem@gmail.com', 'rahim', 'dhaka', NULL, 'dhaka', '1214', 'Bangladesh', '01836999981', 'flat', '2340', 200, 2000, 1600, 140, NULL, 'new', '2022-04-28 18:00:00', '2022-06-07', '0', 'Packaging', '2', '2022-04-26 12:46:45', '2022-04-28 01:00:36', NULL, NULL, NULL, NULL),
+(26, '32', 12309, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-28 18:00:00', '2022-06-05', '0', 'Delivered', '2', '2022-04-27 19:44:12', '2022-04-28 01:38:32', NULL, NULL, NULL, NULL),
+(27, '32', 17514, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-26 18:00:00', '2022-06-05', '0', 'New', '2', '2022-04-27 19:47:39', '2022-04-28 01:39:59', NULL, NULL, NULL, NULL),
+(28, '32', 11176, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-28 08:21:45', '2022-06-05', '0', 'Cancelled', '2', '2022-04-28 02:21:45', '2022-04-28 03:27:38', NULL, NULL, NULL, NULL),
+(29, '32', 10425, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '209.63', 200, 9, 2, 0.63, NULL, 'new', '2022-04-28 08:25:15', '2022-06-05', '0', 'Cancelled', '2', '2022-04-28 02:25:15', '2022-04-28 03:26:39', NULL, NULL, NULL, NULL),
+(30, '32', 12170, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '2340', 200, 2000, 1800, 140, NULL, 'new', '2022-04-28 08:49:53', '2022-06-03', '0', 'Cancelled', '2', '2022-04-28 02:49:53', '2022-05-21 21:20:47', NULL, NULL, NULL, NULL),
+(31, '32', 17962, NULL, 'mohsinsikder895@gmail.com', 'Mohsin Sikder', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'flat', '4489.63', 200, 4009, 1200, 280.63, NULL, 'New', '2022-05-09 10:58:29', '2022-06-02', '0', 'New', NULL, '2022-05-09 04:58:29', '2022-05-09 04:58:29', NULL, NULL, NULL, NULL),
+(32, '32', 14335, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '12671.92', 300, 11656, 1200, 815.92, NULL, 'New', '2022-05-30 09:00:06', '2022-06-01', '0', 'New', NULL, '2022-05-30 03:00:06', '2022-05-30 03:00:06', NULL, NULL, NULL, NULL),
+(33, '32', 18806, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2376.228', 300, 1940.4, 2000, 135.828, NULL, 'New', '2022-05-31 07:12:24', '2022-06-02', '0', 'New', NULL, '2022-05-31 01:12:24', '2022-05-31 01:12:24', NULL, '10', 'percentage', 'sd12'),
+(34, '32', 15359, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2226', 300, 1800, 1200, 126, NULL, 'New', '2022-05-31 08:06:39', '2022-06-03', '0', 'New', NULL, '2022-05-31 02:06:39', '2022-05-31 02:06:39', NULL, '10', 'percentage', 'sd12'),
+(35, '32', 11018, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '1322.92', 300, 956, 2000, 66.92, NULL, 'New', '2022-05-31 08:10:32', '2022-06-04', '0', 'New', NULL, '2022-05-31 02:10:32', '2022-05-31 02:10:32', NULL, '1200', 'fixed', 'sd125'),
+(36, '32', 18522, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:02:06', '2022-06-05', '0', 'New', NULL, '2022-05-31 23:02:06', '2022-05-31 23:02:06', NULL, '0', '0', '0'),
+(37, '32', 16988, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:02:55', '2022-06-02', '0', 'New', NULL, '2022-05-31 23:02:55', '2022-05-31 23:02:55', NULL, '0', '0', '0'),
+(38, '32', 13298, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:07:41', '2022-06-03', '0', 'New', NULL, '2022-05-31 23:07:41', '2022-05-31 23:07:41', NULL, '0', '0', '0'),
+(39, '32', 11964, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:13:14', '2022-06-03', '0', 'New', NULL, '2022-05-31 23:13:14', '2022-05-31 23:13:14', NULL, '0', '0', '0'),
+(40, '32', 15421, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:14:32', '2022-06-03', '0', 'New', NULL, '2022-05-31 23:14:32', '2022-05-31 23:14:32', NULL, '0', '0', '0'),
+(41, '32', 12880, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:18:32', '2022-05-25', '0', 'New', NULL, '2022-05-31 23:18:32', '2022-05-31 23:18:32', NULL, '0', '0', '0'),
+(42, '32', 12244, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:20:48', '2022-06-12', '0', 'New', NULL, '2022-05-31 23:20:48', '2022-05-31 23:20:48', NULL, '0', '0', '0'),
+(43, '32', 17595, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:23:08', '2022-05-31', '0', 'New', NULL, '2022-05-31 23:23:08', '2022-05-31 23:23:08', NULL, '0', '0', '0'),
+(44, '32', 16228, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:24:55', '2022-05-22', '0', 'New', NULL, '2022-05-31 23:24:55', '2022-05-31 23:24:55', NULL, '0', '0', '0'),
+(45, '32', 13140, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 1200, 140.63, NULL, 'New', '2022-06-01 05:26:57', '2022-05-23', '0', 'New', NULL, '2022-05-31 23:26:57', '2022-05-31 23:26:57', NULL, '0', '0', '0'),
+(46, '32', 12540, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '4580', 300, 4000, 2400, 280, NULL, 'New', '2022-06-01 05:29:09', '2022-06-07', '0', 'New', NULL, '2022-05-31 23:29:09', '2022-05-31 23:29:09', NULL, '0', '0', '0'),
+(47, '32', 13949, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '4580', 300, 4000, 2400, 280, NULL, 'New', '2022-06-01 05:32:46', '2022-06-09', '0', 'Cancelled', NULL, '2022-05-31 23:32:46', '2022-06-05 00:27:52', NULL, '0', '0', '0'),
+(48, '32', 12231, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 2, 140.63, NULL, 'New', '2022-06-08 06:57:38', '2022-05-24', '0', 'New', NULL, '2022-06-08 00:57:38', '2022-06-08 00:57:38', NULL, '0', '0', '0'),
+(49, '32', 18217, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2449.63', 300, 2009, 2, 140.63, NULL, 'New', '2022-06-08 06:57:38', '2022-05-25', '0', 'New', NULL, '2022-06-08 00:57:38', '2022-06-08 00:57:38', NULL, '0', '0', '0'),
+(50, '32', 10402, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-08 07:00:32', '2022-05-31', '0', 'New', NULL, '2022-06-08 01:00:32', '2022-06-08 01:00:32', NULL, '0', '0', '0'),
+(51, '32', 15280, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-08 07:00:32', '2022-06-08', '0', 'New', NULL, '2022-06-08 01:00:32', '2022-06-08 01:00:32', NULL, '0', '0', '0'),
+(52, '32', 18966, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-08 07:10:04', '2022-05-26', '0', 'New', NULL, '2022-06-08 01:10:04', '2022-06-08 01:10:04', NULL, '0', '0', '0'),
+(53, '32', 13446, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-08 07:10:28', '2022-05-26', '0', 'New', NULL, '2022-06-08 01:10:28', '2022-06-08 01:10:28', NULL, '0', '0', '0'),
+(54, '32', 15137, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2440', 300, 2000, 1200, 140, NULL, 'New', '2022-06-08 07:29:10', '2022-06-07', '0', 'New', NULL, '2022-06-08 01:29:10', '2022-06-08 01:29:10', NULL, '0', '0', '0'),
+(55, '32', 17703, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-08 07:32:31', '2022-05-24', '0', 'New', NULL, '2022-06-08 01:32:31', '2022-06-08 01:32:31', NULL, '0', '0', '0'),
+(56, '32', 11124, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-08 07:36:06', '2022-05-27', '0', 'New', NULL, '2021-06-29 01:36:06', '2022-06-08 01:36:06', NULL, '0', '0', '0'),
+(57, '32', 10850, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2440', 300, 2000, 1200, 140, NULL, 'New', '2022-06-13 10:00:21', '2022-06-11', '0', 'New', NULL, '2022-06-13 10:00:21', '2022-06-13 10:00:21', NULL, '0', '0', '0'),
+(58, '32', 11129, NULL, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2440', 300, 2000, 1800, 140, NULL, 'New', '2022-06-14 04:27:49', '2022-06-14', '0', 'New', NULL, '2022-06-14 04:27:49', '2022-06-14 04:27:49', NULL, '0', '0', '0'),
+(59, '32', 17832, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-14 08:31:33', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:31:33', '2022-06-14 08:31:33', NULL, '0', '0', '0'),
+(60, '32', 12699, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:39:10', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:39:10', '2022-06-14 08:39:10', NULL, '0', '0', '0'),
+(61, '32', 18562, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:40:44', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:40:44', '2022-06-14 08:40:44', NULL, '0', '0', '0'),
+(62, '32', 14518, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:41:22', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:41:22', '2022-06-14 08:41:22', NULL, '0', '0', '0'),
+(63, '32', 19315, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:42:03', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:42:03', '2022-06-14 08:42:03', NULL, '0', '0', '0'),
+(64, '32', 16744, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:42:25', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:42:25', '2022-06-14 08:42:25', NULL, '0', '0', '0'),
+(65, '32', 15810, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:44:26', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:44:26', '2022-06-14 08:44:26', NULL, '0', '0', '0'),
+(66, '32', 19746, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:45:42', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:45:42', '2022-06-14 08:45:42', NULL, '0', '0', '0'),
+(67, '32', 19942, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:46:13', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:46:13', '2022-06-14 08:46:13', NULL, '0', '0', '0'),
+(68, '32', 10557, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:47:04', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:47:04', '2022-06-14 08:47:04', NULL, '0', '0', '0'),
+(69, '32', 11709, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2606.92', 300, 2156, 2000, 150.92, NULL, 'New', '2022-06-14 08:47:28', '2022-06-14', '0', 'New', NULL, '2022-06-14 08:47:28', '2022-06-14 08:47:28', NULL, '0', '0', '0'),
+(70, '32', 10350, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2440', 300, 2000, 1200, 140, NULL, 'New', '2022-06-14 09:13:33', '2022-06-14', '0', 'New', NULL, '2022-06-14 09:13:33', '2022-06-14 09:13:33', NULL, '0', '0', '0'),
+(71, '32', 13249, 4, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2440', 300, 2000, 1200, 140, NULL, 'New', '2022-06-14 09:19:10', '2022-06-14', '0', 'New', NULL, '2022-06-14 09:19:10', '2022-06-14 09:19:10', NULL, '0', '0', '0'),
+(72, '32', 11527, 2, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-14 09:20:53', '2022-06-14', '0', 'New', NULL, '2022-06-14 09:20:53', '2022-06-14 09:20:53', NULL, '0', '0', '0'),
+(73, '32', 12078, 2, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-14 09:22:13', '2022-06-14', '0', 'New', NULL, '2022-06-14 09:22:13', '2022-06-14 09:22:13', NULL, '0', '0', '0'),
+(74, '32', 13671, 2, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '2440', 300, 2000, 1200, 140, NULL, 'New', '2022-06-14 09:24:02', '2022-06-14', '0', 'New', NULL, '2022-06-14 09:24:02', '2022-06-14 09:24:02', NULL, '0', '0', '0'),
+(75, '32', 16472, 2, 'mohsinsikder895@gmail.com', 'Yeamin', 'plashbari bazar', 'plashbari bazar', 'saver ashulia', '02128736', 'Bangladesh', '01715486265', 'express', '309.63', 300, 9, 2, 0.63, NULL, 'New', '2022-06-14 09:24:55', '2022-06-14', '0', 'New', NULL, '2022-06-14 09:24:55', '2022-06-14 09:24:55', NULL, '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -901,7 +944,17 @@ INSERT INTO `order_products` (`id`, `order_id`, `randomOrder_id`, `user_id`, `pr
 (80, 52, 18966, 32, 3, 'ARD-00005', 'SparkFun USB Host Shield', 2000, 2156.00, 1, 2156, NULL, '2022-06-08 01:10:05', '2022-06-08 01:10:05'),
 (81, 54, 15137, 32, 18, 'C&C-00035', 'styles', 1200, 2000.00, 1, 2000, NULL, '2022-06-08 01:29:10', '2022-06-08 01:29:10'),
 (82, 55, 17703, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-06-08 01:32:31', '2022-06-08 01:32:31'),
-(83, 56, 11124, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-06-08 01:36:06', '2022-06-08 01:36:06');
+(83, 56, 11124, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-06-08 01:36:06', '2022-06-08 01:36:06'),
+(84, 57, 10850, 32, 11, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-06-13 10:00:21', '2022-06-13 10:00:21'),
+(85, 58, 11129, 32, 5, 'C&C-00008', 'IRFZ44N MOSFET', 1800, 2000.00, 1, 2000, NULL, '2022-06-14 04:27:49', '2022-06-14 04:27:49'),
+(86, 59, 17832, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-06-14 08:31:33', '2022-06-14 08:31:33'),
+(87, 69, 11709, 32, 3, 'ARD-00005', 'SparkFun USB Host Shield', 2000, 2156.00, 1, 2156, NULL, '2022-06-14 08:47:28', '2022-06-14 08:47:28'),
+(88, 70, 10350, 32, 7, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-06-14 09:13:33', '2022-06-14 09:13:33'),
+(89, 71, 13249, 32, 7, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-06-14 09:19:10', '2022-06-14 09:19:10'),
+(90, 72, 11527, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-06-14 09:20:53', '2022-06-14 09:20:53'),
+(91, 73, 12078, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-06-14 09:22:13', '2022-06-14 09:22:13'),
+(92, 74, 13671, 32, 7, 'SWD-00005', 'styles shirt', 1200, 2000.00, 1, 2000, NULL, '2022-06-14 09:24:02', '2022-06-14 09:24:02'),
+(93, 75, 16472, 32, 6, 'C&C-00008', 'food', 2, 9.00, 1, 9, NULL, '2022-06-14 09:24:55', '2022-06-14 09:24:55');
 
 -- --------------------------------------------------------
 
@@ -1197,15 +1250,15 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `parent_id`, `subcat_id`, `product_name`, `buying_price`, `price`, `flash_sale_price`, `quantity`, `model_no`, `image`, `flash_sale`, `flash_sale_start_date`, `flash_sale_end_date`, `slug`, `description`, `summery`, `document`, `supplier`, `specification`, `status`, `created_at`, `updated_at`, `home_automotion`, `feature_products`, `develop_owner`, `order_qty`, `order_price`, `expired_date`) VALUES
 (1, 3, 12, 'Zif socket (40 pin)', '10000', 1000, NULL, 1000, 'C&C-00035', '30447.jpg', '0', NULL, NULL, 'zif-socket-40-pin', NULL, 'asdersftreg', '78i87i', NULL, NULL, '1', '2022-03-30 08:48:52', '2022-04-19 01:45:48', 1, 1, NULL, NULL, NULL, '2022-06-27'),
 (2, 1, NULL, 'USB Connector B type', '100', 2000, NULL, 20, 'C&C-00008', '55663.jpg', '0', NULL, NULL, 'usb-connector-b-type', NULL, NULL, NULL, NULL, NULL, '1', '2022-03-30 08:50:30', '2022-04-28 02:09:48', 1, 1, NULL, NULL, NULL, NULL),
-(3, 3, NULL, 'SparkFun USB Host Shield', '2000', 2156, NULL, 100, 'ARD-00005', '41010.jpg', '0', NULL, NULL, 'sparkfun-usb-host-shield', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-03-30 08:53:11', '2022-06-08 01:10:05', 1, 1, NULL, '1', '2156', NULL),
+(3, 3, NULL, 'SparkFun USB Host Shield', '2000', 2156, NULL, 100, 'ARD-00005', '41010.jpg', '0', NULL, NULL, 'sparkfun-usb-host-shield', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-03-30 08:53:11', '2022-06-14 08:47:28', 1, 1, NULL, '2', '4312', NULL),
 (4, 2, NULL, 'IRFZ44N MOSFET12', '1500', 2000, NULL, 100, 'SWD-00005', '70591.jpg', '0', NULL, NULL, 'irfz44n-mosfet12', NULL, 'werwet', 'etrtyry', NULL, NULL, '1', '2022-03-30 09:09:27', '2022-04-27 02:18:21', 1, 1, NULL, NULL, NULL, NULL),
-(5, 2, 9, 'IRFZ44N MOSFET', '1800', 2000, NULL, 100, 'C&C-00008', '41210.jpg', '0', NULL, NULL, 'irfz44n-mosfet', NULL, NULL, 'werfet', 'SparkFun, USA', NULL, '1', '2022-04-06 10:21:30', '2022-04-27 02:18:03', 1, 1, NULL, NULL, NULL, NULL),
-(6, 2, NULL, 'food', '2', 9, NULL, 100, 'C&C-00008', '30997.jpg', '0', NULL, NULL, 'food', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-04-06 10:28:37', '2022-06-08 01:36:06', 1, 1, NULL, '7', '54', NULL),
-(7, 2, NULL, 'styles shirt', '1200', 2000, NULL, 100, 'SWD-00005', '79247.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:57:24', '2022-06-08 00:57:39', NULL, NULL, NULL, '2', '4000', NULL),
+(5, 2, 9, 'IRFZ44N MOSFET', '1800', 2000, NULL, 100, 'C&C-00008', '41210.jpg', '0', NULL, NULL, 'irfz44n-mosfet', NULL, NULL, 'werfet', 'SparkFun, USA', NULL, '1', '2022-04-06 10:21:30', '2022-06-14 04:27:49', 1, 1, NULL, '1', '2000', NULL),
+(6, 2, NULL, 'food', '2', 9, NULL, 100, 'C&C-00008', '30997.jpg', '0', NULL, NULL, 'food', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-04-06 10:28:37', '2022-06-14 09:24:55', 1, 1, NULL, '11', '90', NULL),
+(7, 2, NULL, 'styles shirt', '1200', 2000, NULL, 100, 'SWD-00005', '79247.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:57:24', '2022-06-14 09:24:02', NULL, NULL, NULL, '5', '10000', NULL),
 (8, 2, NULL, 'styles shirt m', '1200', 2000, NULL, 200, 'SWD-00005', '17824.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:58:20', '2022-05-31 23:29:09', NULL, NULL, NULL, '3', NULL, NULL),
 (9, 2, NULL, 'styles shirt', '1200', 2000, NULL, 100, 'SWD-00005', '83208.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:58:49', '2022-04-27 02:16:34', NULL, NULL, NULL, NULL, NULL, NULL),
 (10, 2, NULL, 'styles shirt', '1200', 2000, NULL, 500, 'SWD-00005', '98209.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:59:18', '2022-04-27 02:16:16', NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 3, 12, 'styles shirt', '1200', 2000, NULL, 50, 'SWD-00005', '11579.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 02:02:33', '2022-05-31 23:32:46', NULL, NULL, NULL, '2', '4000', NULL),
+(11, 3, 12, 'styles shirt', '1200', 2000, NULL, 50, 'SWD-00005', '11579.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 02:02:33', '2022-06-13 10:00:21', NULL, NULL, NULL, '3', '6000', NULL),
 (12, 2, 9, 'styles shirt', '1200', 2000, NULL, 92, 'SWD-00005', '19468.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 02:03:20', '2022-05-11 04:05:15', NULL, NULL, NULL, NULL, NULL, NULL),
 (13, 2, 9, 'pc computer', '1200', 1500, '1300', 12, 'C&C&b-00035', '62541.jpg', '1', '2022-05-10', '2022-05-21', 'pc-computer', NULL, '<p>wedrwegteg</p>', '<p>rtyuu</p>', 'SparkFun, USA', NULL, '1', '2022-05-11 03:24:20', '2022-05-11 03:24:20', NULL, NULL, NULL, NULL, NULL, NULL),
 (16, 2, 9, 'food sdfrg', '1100', 2000, '1800', 24, 'C&C-00008', '40885.jpg', '1', '2022-05-09', '2022-05-31', 'food-sdfrg', NULL, '<p>qwsqsw</p>', '<p>wedwqd</p>', 'Rahat', NULL, '1', '2022-05-11 03:51:56', '2022-05-11 04:03:15', NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1523,7 +1576,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('BNA4lMqJt6cvONUvX2Di9jJMRBESw5heL6TI3nAR', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTWpsUEQ4RXRFdlJPVGIyV2ZKQ1hmbUVrUE5idGJKak5tdk9qbExHMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hZG1pbi9yb2xlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO30=', 1655097816);
+('4OUIgyNwjS6BP8XJcu3YAQ3ogPN3opxbptVYHCYI', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36', 'YToxMTp7czo2OiJfdG9rZW4iO3M6NDA6IjRieW5ERHZhZWNRTjNmYlR3NTdlbkNNS3dhS2c5M01qRzZxMXEzWTIiO3M6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6ODoicmVmZXJhbGwiO3M6MDoiIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo3ODoiaHR0cDovL2xvY2FsaG9zdC90ZWNoc2hvcGZpbmFsL2FkbWluL2V2ZW50L2NoYXJ0P2Zyb209MjAyMi0wNS0zMCZ0bz0yMDIyLTA2LTIzIjt9czoxMDoic2Vzc2lvbl9pZCI7czo0MDoiSFRhMFdJNzFxSk1yTThLOHlsdWZzQXlOQVZ6NTJIcWpFNjlJaW5WWiI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czo0MToiaHR0cDovL2xvY2FsaG9zdC90ZWNoc2hvcGZpbmFsL3VzZXIvb3JkZXIiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozMjtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHVTZ3lKMXpXLmgzZG5WSm1oZzN4b3VLSWhrS25EbkxQQ2s4M3RZdFdyTE45TnFrUnpvUU9tIjtzOjg6ImRlbGl2ZXJ5IjtzOjc6ImV4cHJlc3MiO3M6MTU6ImdpZnRjYXJkX2Ftb3VudCI7TjtzOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1655205549);
 
 -- --------------------------------------------------------
 
@@ -1693,7 +1746,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `slug`, `date_of_birth`, `gender`, `referral_id`, `referred_by`, `referral`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `image`, `is_admin`, `last_login`, `role_id`, `is_banned`, `status`, `created_at`, `updated_at`, `city`, `country`, `postcode`, `address1`, `address2`, `commision`, `range_amount`) VALUES
 (2, 'admin', 'admin@gmail.com', '1715786', NULL, '$2y$10$YWg9UI2/3Y4NlYDuU.Vtce6uHMo0IatHDWImNVWkKKXSgl3AwYl5y', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, '358.jpg', 'admin', NULL, 1, '0', '1', '2022-03-20 09:25:49', '2022-06-05 18:48:57', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
 (11, 'Rahat', 'rahat89512@gmail.com', '01715486265', NULL, '$2y$10$d70SICXdCrHQ/grYy9YohOe725PK0ssED.YOMqMYGHI79O/Wj9s3m', '62Mohsin Sikder', '2022-05-05', 'male', 'Mohsin Sikder2994', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '2022-04-19 08:14:49', '2022-04-19 08:14:49', NULL, NULL, NULL, NULL, NULL, 10, '100'),
-(32, 'Yeamin', 'mohsinsikder895@gmail.com', '01715486265', NULL, '$2y$10$uSgyJ1zW.h3dnVJmhg3xouKIhkKnDnLPCk83tYtWrLN9NqkRzoQOm', '99Mohsin', '2022-05-05', 'male', 'sikder99', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-12 18:03:04', NULL, '0', '1', '2022-03-28 20:48:27', '2022-06-12 12:03:04', 'saver ashulia', 'Bangladesh', '02128736', 'plashbari bazar', 'plashbari bazar', 10, '100'),
+(32, 'Yeamin', 'mohsinsikder895@gmail.com', '01715486265', NULL, '$2y$10$uSgyJ1zW.h3dnVJmhg3xouKIhkKnDnLPCk83tYtWrLN9NqkRzoQOm', '99Mohsin', '2022-05-05', 'male', 'sikder99', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-14 14:28:39', NULL, '0', '1', '2022-03-28 20:48:27', '2022-06-14 09:24:55', 'saver ashulia', 'Bangladesh', '02128736', 'plashbari bazar', 'plashbari bazar', 10, '100'),
 (47, 'Rahat', 'mohsinsikder999@gmail.com', '0171548696', NULL, '$2y$10$nAAE3gtnCD13PCmdt9BxP.l4bhcmKMjz6djrrazzDC.wdDqmZ7qfy', '82Mohsin Sikder', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-04-24 02:30:04', '2022-04-24 02:56:50', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
 (48, 'Mohsin Sikder', 'm@gmail.com', '01715486265', NULL, '$2y$10$Ir4viEulxO66GmHDJRFtJOdk4PrHET4WinPPZkeIJeM8dCMzUP2ly', '49Mohsin Sikder', '2022-05-29', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '2022-04-26 06:13:34', '2022-04-26 06:13:34', NULL, NULL, NULL, NULL, NULL, NULL, '100'),
 (52, 'Sikder', 'mohsinsikder.cse@gmail.com', '01706125400', NULL, '$2y$10$gGnqDJvdOCDsEQkTqA22u.I0/qALPb7zwNvKpVWnApFlEephyPKWa', '56Sikder', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-04-26 19:22:34', '2022-05-25 04:31:19', NULL, NULL, NULL, NULL, NULL, 10, '100'),
@@ -2125,7 +2178,7 @@ ALTER TABLE `blog_sliders`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -2143,7 +2196,7 @@ ALTER TABLE `coupon_codes`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -2185,19 +2238,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `order_products`
 --
 ALTER TABLE `order_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `order_statuses`
