@@ -150,10 +150,9 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
           }
           
           
-
-          
+               
    
-      return view('admin.chart.event',$data);
+      return view('admin.chart.event' ,$data);
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }

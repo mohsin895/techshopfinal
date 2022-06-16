@@ -114,7 +114,7 @@ public function get_subcat(Request $request)
     public function edit($id)
     {  
         $role = Role::find(Auth::guard('admin')->user()->role_id);
-        if ($role->hasPermissionTo('blog_post_edit')) {
+        if ($role->hasPermissionTo('bloog_post_edit')) {
             $permissions = Role::findByName($role->name)->permissions;
         
         $data['title']="Admin Dashboard";

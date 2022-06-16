@@ -38,8 +38,7 @@ class IndexController extends Controller
      
         $data['ardino']= Product::where('subcat_id' ,6)->take(6)->get();
         $data['raspi']= Product::where('subcat_id' ,6)->take(6)->get();
-        $data['home_automotion']= Product::where('home_automotion' ,1)->take(6)->get();
-        $data['feature_product']= Product::where('feature_products' ,1)->take(6)->get();
+       
         $data['giftcard']= GiftCard::where('status' ,1)->take(6)->get();
      
         //  dd($data['ardino']);
