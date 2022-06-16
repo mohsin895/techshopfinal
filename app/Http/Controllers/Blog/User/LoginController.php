@@ -48,7 +48,7 @@ class LoginController extends Controller
             }
               
             }else{
-              return redirect()->back()->with('flash_message_error', 'Your email can not exists in your database');
+              return redirect()->back()->with('flash_message_error', 'Your are not registered or Try to Sign In with correct email and password');
             }
 
 

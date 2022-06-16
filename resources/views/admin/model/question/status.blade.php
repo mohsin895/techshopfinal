@@ -49,8 +49,8 @@
                                     data-hide-search="true" data-placeholder="Status"
                                     data-kt-ecommerce-order-filter="status" name="status">
                                   
-                                    <option value="1" @if($row->status=='1') selected=""; @endif>Active</option>
-                                    <option value="0"@if($row->status=='0') selected; @endif>Locked</option>
+                                    <option value="1" @if($row->status== '1') selected="" @endif>Active</option>
+                                    <option value="0" @if($row->status== '0') selected="" @endif>Locked</option>
                                 </select>
 									<!--end::Select-->
 								</div>

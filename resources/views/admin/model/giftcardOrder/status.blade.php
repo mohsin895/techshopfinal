@@ -10,7 +10,7 @@
                 <!--begin::Modal header-->
                 <div class="modal-header" id="kt_modal_new_address_header">
                     <!--begin::Modal title-->
-                    <h2>Update Order Status</h2>
+                    <h2>Update  Gift Card Order Status</h2>
                     <!--end::Modal title-->
                     <!--begin::Close-->
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -38,8 +38,7 @@
                         data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
                         <input type="hidden" class="form-control form-control-solid" name="order_id"
                             value="{{$row->id}}" />
-                        <input type="text" class="form-control form-control-solid" value="{{$row->order_id}}"
-                            readonly />
+                       
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
                             <label class="d-flex align-items-center fs-5 fw-bold mb-2">
@@ -50,13 +49,12 @@
                             <!--end::Label-->
                             <!--begin::Select-->
                             <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
-                                data-placeholder="Status"  name="status">
+                                data-placeholder="Status"  name="status" required>
                                 <option></option>
-                                <option value="all">All</option>
-                                <option value="New">New</option>
-                                <option value="Cancelled">Cancelled</option>
-                                <option value="Completed">Completed</option>
-                                <option value="Pending">Pending</option>
+                                <option value="New"   @if($row->status== 'New') selected="" @endif>New</option>
+                                <option value="Cancelled"   @if($row->status== 'Cancelled') selected="" @endif>Cancelled</option>
+                                <option value="Completed"   @if($row->status== 'Completed') selected="" @endif>Completed</option>
+                                <option value="Pending"   @if($row->status== 'Pending') selected="" @endif>Pending</option>
 
                             </select>
                             <!--end::Select-->
@@ -71,7 +69,7 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control form-control-solid" placeholder=""
-                                    name="order_date" value="{{$row->created_at}}" />
+                                    name="order_date" value="{{$row->created_at}}" required readonly/>
                                 <!--end::Input-->
                             </div>
                             <!--end::Col-->

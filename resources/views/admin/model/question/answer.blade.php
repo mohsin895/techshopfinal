@@ -60,7 +60,7 @@
 									</label>
 									<!--end::Label-->
 									<!--begin::Select-->
-									<textarea name="answer" rows="4" class="form-control answer-text"></textarea>
+									<textarea name="answer" rows="4" class="form-control answer-text" required></textarea>
 									<!--end::Select-->
 								</div>
 							
