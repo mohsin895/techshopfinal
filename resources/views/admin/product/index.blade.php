@@ -106,6 +106,7 @@
                                             value="1" />
                                     </div>
                                 </th> -->
+                                <th class="text-center min-w-70px">No.</th>
                                 <th class="min-w-200px">Product</th>
                                 <th class="text-center min-w-100px">Model No</th>
                                 <th class="text-center min-w-70px">Total Qt</th>
@@ -123,6 +124,9 @@
                         <!--begin::Table body-->
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
+                            @php
+                                $i=1;
+                            @endphp
                             @foreach($product as $row)
                             @php 
                             $sellQuantity = App\Models\OrderProduct::where('product_id',$row->id)->sum('quantity');
@@ -137,6 +141,9 @@
                                 </td> -->
                                 <!--end::Checkbox-->
                                 <!--begin::Category=-->
+                                <td class="text-center">
+                                    <span class="fw-bolder">{{$i++}}</span>
+                                </td>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <!--begin::Thumbnail-->

@@ -389,6 +389,9 @@
                         <!-- Instagram -->
                         <a href="{{$gs->instagram}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
                             class="text-white" role="button"> <i class="fa fa-instagram"></i></a>
+                        <!-- Twitter -->
+                        <a href="{{$gs->twiter}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
+                            class="text-white" role="button"> <i class="fa fa-twitter"></i></a>
                     </div>
                     <!-- Grid column -->
                

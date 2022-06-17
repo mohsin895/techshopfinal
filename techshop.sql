@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2022 at 01:30 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Jun 17, 2022 at 06:26 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -310,14 +310,17 @@ INSERT INTO `categories` (`id`, `parent_id`, `cat_name`, `homa_page_name`, `seri
 (1, 0, 'Accessories', NULL, 2, 'accessories', NULL, NULL, '0', '2022-03-30 08:37:17', '2022-05-24 00:18:41'),
 (2, 0, 'Basic Component', 'Daily Uses Component', 1, 'basic-component', NULL, NULL, '1', '2022-03-30 08:37:40', '2022-05-24 01:28:06'),
 (3, 0, 'Development Board', 'Own Development', 13, 'development-board', NULL, NULL, '1', '2022-03-30 08:38:04', '2022-05-24 01:57:59'),
-(4, 0, 'Display', NULL, 15, 'display', NULL, NULL, '1', '2022-03-30 08:38:27', '2022-03-30 08:38:27'),
-(5, 0, 'General IC', NULL, 17, 'general-ic', NULL, NULL, '1', '2022-03-30 08:38:48', '2022-03-30 08:38:48'),
+(4, 0, 'Display', NULL, 15, 'display', NULL, NULL, '0', '2022-03-30 08:38:27', '2022-06-17 15:42:05'),
+(5, 0, 'General IC', NULL, 17, 'general-ic', NULL, NULL, '0', '2022-03-30 08:38:48', '2022-06-17 15:42:06'),
 (6, 1, 'Connector', NULL, NULL, 'connector', NULL, NULL, '1', '2022-03-30 08:39:51', '2022-03-30 08:39:51'),
 (7, 1, 'Cable', NULL, NULL, 'cable', NULL, NULL, '1', '2022-03-30 08:40:17', '2022-03-30 08:40:17'),
 (8, 1, 'Computer Peripherals', NULL, NULL, 'computer-peripherals', NULL, NULL, '1', '2022-03-30 08:40:36', '2022-03-30 08:40:36'),
 (9, 2, 'Optocoupler', NULL, NULL, 'optocoupler', NULL, NULL, '1', '2022-03-30 08:41:05', '2022-03-30 08:41:05'),
 (11, 3, 'Arduino & Accessories', NULL, NULL, 'arduino-accessories', NULL, NULL, '1', '2022-03-30 08:42:00', '2022-03-30 08:42:00'),
-(12, 3, 'Raspberry Pi & Accessories', NULL, NULL, 'raspberry-pi-accessories', NULL, NULL, '1', '2022-03-30 08:43:17', '2022-03-30 08:43:17');
+(12, 3, 'Raspberry Pi & Accessories', NULL, NULL, 'raspberry-pi-accessories', NULL, NULL, '1', '2022-03-30 08:43:17', '2022-03-30 08:43:17'),
+(13, 0, 'Motor', 'Motor', 5, 'motor', NULL, NULL, '1', '2022-06-17 15:12:35', '2022-06-17 15:12:35'),
+(15, 13, 'DC Motor', NULL, NULL, 'dc-motor', NULL, NULL, '1', '2022-06-17 15:13:36', '2022-06-17 15:13:36'),
+(17, 13, 'Motors', NULL, NULL, 'motors', NULL, NULL, '1', '2022-06-17 15:18:23', '2022-06-17 15:18:23');
 
 -- --------------------------------------------------------
 
@@ -412,7 +415,9 @@ INSERT INTO `galleries` (`id`, `product_id`, `galery`, `created_at`, `updated_at
 (3, 6, '594181648457566.jpg', '2022-03-28 02:52:46', '2022-03-28 02:52:46'),
 (4, 6, '111251648457566.jpg', '2022-03-28 02:52:46', '2022-03-28 02:52:46'),
 (5, 6, '132621648457566.jpg', '2022-03-28 02:52:46', '2022-03-28 02:52:46'),
-(6, 5, '460361649262090.png', '2022-04-06 10:21:30', '2022-04-06 10:21:30');
+(6, 5, '460361649262090.png', '2022-04-06 10:21:30', '2022-04-06 10:21:30'),
+(7, 20, '125161655477659.jpg', '2022-06-17 14:54:19', '2022-06-17 14:54:19'),
+(8, 20, '744271655477659.jpg', '2022-06-17 14:54:19', '2022-06-17 14:54:19');
 
 -- --------------------------------------------------------
 
@@ -454,6 +459,8 @@ CREATE TABLE `general_settings` (
   `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `linkdi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discord` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tiktok` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `blog_about_us` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `privecy_policy` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `about_us` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -471,8 +478,8 @@ CREATE TABLE `general_settings` (
 -- Dumping data for table `general_settings`
 --
 
-INSERT INTO `general_settings` (`id`, `login_image`, `site_logo`, `blog_logo`, `dashboard_logo`, `favicon`, `blog_favicon`, `website_name`, `site_title`, `currency`, `commission`, `vat`, `quantity`, `email1`, `email2`, `address`, `mobile1`, `mobile2`, `bkash`, `rocket`, `nogod`, `flash_slider`, `meta_description`, `meta_keyword`, `meta_viewport`, `created_at`, `updated_at`, `facebook_page`, `facebook_group`, `twiter`, `instagram`, `youtube`, `linkdi`, `blog_about_us`, `privecy_policy`, `about_us`, `w_r`, `t_c`, `facebook_pixel`, `less_selling_product`, `best_selling_product`, `database_show`, `expired_date`, `upcoming_expired_date`) VALUES
-(1, '25401.png', '72468.png', '79294.png', '84409.png', '485.png', '36240.png', 'Roboticsabc Shop', 'Roboticsabc shop', 'TK', '10', '7', 2, 'mohsinsikder895@gmail.com', 'mohsinsikder895@gmail.com', 'plashbari bazar', '01715486265', '01706125400', '01715486265', '01715486265', '01715486265', 2, 'erfegter', '\"fdsgfrgdtfhgf\"', 'rtgrgy', NULL, '2022-06-08 00:38:37', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.linkedin.com/in/mohsin-sikder/', '<p><strong>Bangladesh</strong>, is a country in&nbsp;<a href=\"https://en.wikipedia.org/wiki/South_Asia\">South Asia</a>. It is the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\">eighth-most populous country</a>&nbsp;in the world, with a population exceeding 163 million people in an area of either 148,460 square kilometres (57,320&nbsp;sq&nbsp;mi) or 147,570 square kilometres (56,980&nbsp;sq&nbsp;mi),<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bdarea-7\">[7]</a><a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bbs-15\">[15]</a>&nbsp;making it one of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population_density\">most densely populated countries</a>&nbsp;in the world. Bangladesh shares land borders with&nbsp;<a href=\"https://en.wikipedia.org/wiki/India\">India</a>&nbsp;to the west, north, and east, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Myanmar\">Myanmar</a>&nbsp;to the southeast; to the south it has a coastline along the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bay_of_Bengal\">Bay of Bengal</a>. It is narrowly separated from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nepal\">Nepal</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bhutan\">Bhutan</a>&nbsp;by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Siliguri_Corridor\">Siliguri Corridor</a>; and from&nbsp;<a href=\"https://en.wikipedia.org/wiki/China\">China</a>&nbsp;by 100&nbsp;km of the Indian state of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Sikkim\">Sikkim</a>&nbsp;in the north.<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-16\">[16]</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dhaka\">Dhaka</a>, the capital and&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Bangladesh\">largest city</a>, is the nation&#39;s economic, political, and cultural hub.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Chittagong\">Chittagong</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Port_of_Chittagong\">largest seaport</a>, is the second-largest city. The official language is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bengali_language\">Bengali</a>, one of the most eastern branches of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Indo-European_language_family\">Indo-European language family</a>.</p>', NULL, NULL, NULL, NULL, NULL, 20, 10, 1, 1, 11);
+INSERT INTO `general_settings` (`id`, `login_image`, `site_logo`, `blog_logo`, `dashboard_logo`, `favicon`, `blog_favicon`, `website_name`, `site_title`, `currency`, `commission`, `vat`, `quantity`, `email1`, `email2`, `address`, `mobile1`, `mobile2`, `bkash`, `rocket`, `nogod`, `flash_slider`, `meta_description`, `meta_keyword`, `meta_viewport`, `created_at`, `updated_at`, `facebook_page`, `facebook_group`, `twiter`, `instagram`, `youtube`, `linkdi`, `discord`, `tiktok`, `blog_about_us`, `privecy_policy`, `about_us`, `w_r`, `t_c`, `facebook_pixel`, `less_selling_product`, `best_selling_product`, `database_show`, `expired_date`, `upcoming_expired_date`) VALUES
+(1, '25401.png', '56420.png', '79294.png', '84409.png', '485.png', '36240.png', 'Roboticsabc Shop', 'Roboticsabc shop', 'TK', '10', '7', 2, 'mohsinsikder895@gmail.com', 'mohsinsikder895@gmail.com', 'plashbari bazar', '01715486265', '01706125400', '01715486265', '01715486265', '01715486265', 2, 'erfegter', '\"fdsgfrgdtfhgf\"', 'rtgrgy', NULL, '2022-06-08 00:38:37', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.linkedin.com/in/mohsin-sikder/', 'https://discord.com/', 'https://www.tiktok.com/', '<p><strong>Bangladesh</strong>, is a country in&nbsp;<a href=\"https://en.wikipedia.org/wiki/South_Asia\">South Asia</a>. It is the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\">eighth-most populous country</a>&nbsp;in the world, with a population exceeding 163 million people in an area of either 148,460 square kilometres (57,320&nbsp;sq&nbsp;mi) or 147,570 square kilometres (56,980&nbsp;sq&nbsp;mi),<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bdarea-7\">[7]</a><a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bbs-15\">[15]</a>&nbsp;making it one of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population_density\">most densely populated countries</a>&nbsp;in the world. Bangladesh shares land borders with&nbsp;<a href=\"https://en.wikipedia.org/wiki/India\">India</a>&nbsp;to the west, north, and east, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Myanmar\">Myanmar</a>&nbsp;to the southeast; to the south it has a coastline along the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bay_of_Bengal\">Bay of Bengal</a>. It is narrowly separated from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nepal\">Nepal</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bhutan\">Bhutan</a>&nbsp;by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Siliguri_Corridor\">Siliguri Corridor</a>; and from&nbsp;<a href=\"https://en.wikipedia.org/wiki/China\">China</a>&nbsp;by 100&nbsp;km of the Indian state of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Sikkim\">Sikkim</a>&nbsp;in the north.<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-16\">[16]</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dhaka\">Dhaka</a>, the capital and&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Bangladesh\">largest city</a>, is the nation&#39;s economic, political, and cultural hub.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Chittagong\">Chittagong</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Port_of_Chittagong\">largest seaport</a>, is the second-largest city. The official language is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bengali_language\">Bengali</a>, one of the most eastern branches of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Indo-European_language_family\">Indo-European language family</a>.</p>', NULL, NULL, NULL, NULL, NULL, 20, 10, 1, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -1245,7 +1252,7 @@ CREATE TABLE `products` (
   `flash_sale_end_date` date DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `summery` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `summery` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `document` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `supplier` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `specification` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1270,17 +1277,19 @@ INSERT INTO `products` (`id`, `parent_id`, `subcat_id`, `product_name`, `buying_
 (3, 3, NULL, 'SparkFun USB Host Shield', '2000', 2156, NULL, 100, 'ARD-00005', '41010.jpg', '0', NULL, NULL, 'sparkfun-usb-host-shield', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-03-30 08:53:11', '2022-06-14 08:47:28', 1, 1, NULL, '2', '4312', NULL),
 (4, 2, NULL, 'IRFZ44N MOSFET12', '1500', 2000, NULL, 100, 'SWD-00005', '70591.jpg', '0', NULL, NULL, 'irfz44n-mosfet12', NULL, 'werwet', 'etrtyry', NULL, NULL, '1', '2022-03-30 09:09:27', '2022-04-27 02:18:21', 1, 1, NULL, NULL, NULL, NULL),
 (5, 2, 9, 'IRFZ44N MOSFET', '1800', 2000, NULL, 100, 'C&C-00008', '41210.jpg', '0', NULL, NULL, 'irfz44n-mosfet', NULL, NULL, 'werfet', 'SparkFun, USA', NULL, '1', '2022-04-06 10:21:30', '2022-06-14 04:27:49', 1, 1, NULL, '1', '2000', NULL),
-(6, 2, NULL, 'food', '2', 9, NULL, 100, 'C&C-00008', '30997.jpg', '0', NULL, NULL, 'food', NULL, NULL, NULL, 'SparkFun, USA', NULL, '1', '2022-04-06 10:28:37', '2022-06-14 09:24:55', 1, 1, NULL, '11', '90', NULL),
-(7, 2, NULL, 'styles shirt', '1200', 2000, NULL, 100, 'SWD-00005', '79247.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:57:24', '2022-06-14 09:24:02', NULL, NULL, NULL, '5', '10000', NULL),
-(8, 2, NULL, 'styles shirt m', '1200', 2000, NULL, 200, 'SWD-00005', '17824.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:58:20', '2022-05-31 23:29:09', NULL, NULL, NULL, '3', NULL, NULL),
-(9, 2, NULL, 'styles shirt', '1200', 2000, NULL, 100, 'SWD-00005', '83208.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:58:49', '2022-04-27 02:16:34', NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 2, NULL, 'styles shirt', '1200', 2000, NULL, 500, 'SWD-00005', '98209.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:59:18', '2022-04-27 02:16:16', NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 3, 12, 'styles shirt', '1200', 2000, NULL, 50, 'SWD-00005', '11579.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 02:02:33', '2022-06-13 10:00:21', NULL, NULL, NULL, '3', '6000', NULL),
-(12, 2, 9, 'styles shirt', '1200', 2000, NULL, 92, 'SWD-00005', '19468.jpg', '0', NULL, NULL, 'styles-shirt', NULL, '<p>aSDWEFR</p>', '<p>QWERGT</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 02:03:20', '2022-05-11 04:05:15', NULL, NULL, NULL, NULL, NULL, NULL),
-(13, 2, 9, 'pc computer', '1200', 1500, '1300', 12, 'C&C&b-00035', '62541.jpg', '1', '2022-05-10', '2022-05-21', 'pc-computer', NULL, '<p>wedrwegteg</p>', '<p>rtyuu</p>', 'SparkFun, USA', NULL, '1', '2022-05-11 03:24:20', '2022-05-11 03:24:20', NULL, NULL, NULL, NULL, NULL, NULL),
-(16, 2, 9, 'food sdfrg', '1100', 2000, '1800', 24, 'C&C-00008', '40885.jpg', '1', '2022-05-09', '2022-05-31', 'food-sdfrg', NULL, '<p>qwsqsw</p>', '<p>wedwqd</p>', 'Rahat', NULL, '1', '2022-05-11 03:51:56', '2022-05-11 04:03:15', NULL, NULL, NULL, NULL, NULL, NULL),
-(17, 2, 9, 'styles', '1200', 2000, NULL, 12, 'C&C-00035', '65959.jpg', '0', NULL, NULL, 'styles', NULL, '<p>adwer</p>', '<p>qwe3wrt</p>', 'SparkFun, USA', NULL, '1', '2022-06-05 00:52:54', '2022-06-05 00:52:54', NULL, NULL, NULL, NULL, NULL, NULL),
-(18, 2, 9, 'styles', '1200', 2000, NULL, 12, 'C&C-00035', '4761.jpg', '0', NULL, NULL, 'styles', NULL, '<p>adwer</p>', '<p>qwe3wrt</p>', 'SparkFun, USA', NULL, '1', '2022-06-05 00:52:54', '2022-06-08 01:29:10', NULL, NULL, NULL, '1', '2000', '2022-06-05');
+(6, 2, 9, 'Seven Segment Display', '2', 9, NULL, 208, 'C&C-00008', '30997.jpg', '0', NULL, NULL, 'seven-segment-display', NULL, '<p>Seven Segment Display</p>', '<p>Seven Segment Display</p>', 'SparkFun, USA', NULL, '1', '2022-04-06 10:28:37', '2022-06-17 14:46:28', 1, 1, NULL, '11', '90', NULL),
+(7, 2, 9, 'Capacitor', '1', 5, NULL, 100, 'SWD-00005', '79247.jpg', '0', NULL, NULL, 'capacitor', NULL, '<p>Capacitor</p>', '<p>Capacitor</p>', 'SparkFun, USA', NULL, '1', '2022-04-27 01:57:24', '2022-06-17 14:40:09', NULL, NULL, NULL, '5', '10000', '2022-06-30'),
+(19, 3, 11, 'Arduino Nano', '600', 650, NULL, 100, 'ARD-00089', '28986.jpg', '0', NULL, NULL, 'arduino-nano', NULL, '<p><strong>We are committed to providing quality products to our honorable customers and never compromise with quality.</strong></p>', NULL, 'China', NULL, '1', '2022-06-17 14:52:05', '2022-06-17 14:52:05', NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 3, 11, 'Arduino Uno R3 SMD', '700', 800, NULL, 100, 'ARD-00119', '35460.jpg', '0', NULL, NULL, 'arduino-uno-r3-smd', NULL, '<p>Difference with standard Arduino Uno board-<br />\r\n1. Uses Atmega328p SMD instead of the DIP Atmega328 of the standard one.<br />\r\n2. Uses CH340 instead of Atmega16U2 of the standard one.&nbsp;</p>', NULL, 'China', NULL, '1', '2022-06-17 14:54:19', '2022-06-17 14:54:19', NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 3, 11, 'Arduino Mega 2560', '1500', 2000, NULL, 100, 'ARD-00047', '14836.jpg', '0', NULL, NULL, 'arduino-mega-2560', NULL, '<h2>&nbsp;</h2>\r\n\r\n<ul>\r\n</ul>', '<h2><strong>Technical Specifications:</strong></h2>\r\n\r\n<ul>\r\n	<li>Microcontroller: ATmega2560</li>\r\n	<li>Clock: 16MHz</li>\r\n	<li>Flash Memory: 256KB</li>\r\n	<li>SRAM: 8KB</li>\r\n	<li>EEPROM: 4KB</li>\r\n	<li>Operating Voltage: 5V</li>\r\n	<li>Input Voltage: 7-12V DC</li>\r\n	<li>&nbsp;I/O Pins: 54 (of which 15 provide PWM output)&nbsp;</li>\r\n	<li>ADC: 16&nbsp;&nbsp;</li>\r\n	<li>LED_BUILTIN: 13&nbsp;&nbsp;</li>\r\n	<li>Length: 101.52mm&nbsp;</li>\r\n	<li>Width: 53.3mm</li>\r\n	<li>Weight: 37g</li>\r\n</ul>', 'China', NULL, '1', '2022-06-17 14:58:01', '2022-06-17 14:58:01', NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 3, 12, 'Raspberry Pi Pico', '1200', 1600, NULL, 100, 'DEV-00126', '67747.jpg', '0', NULL, NULL, 'raspberry-pi-pico', NULL, NULL, '<h2><strong>Raspberry Pi Pico microcontroller: specifications, features</strong></h2>\r\n\r\n<p>- RP2040 microcontroller chip designed by Raspberry Pi in the United Kingdom<br />\r\n- Dual-core Arm Cortex M0+ processor, flexible clock running up to 133 MHz<br />\r\n- 264KB of SRAM, and 2MB of on-board Flash memory<br />\r\n- Castellated module allows soldering direct to carrier boards<br />\r\n- USB 1.1 with device and host support<br />\r\n- Low-power sleep and dormant modes<br />\r\n- Drag-and-drop programming using mass storage over USB<br />\r\n- 26 &times; multi-function GPIO pins<br />\r\n- 2 &times; SPI, 2 &times; I2C, 2 &times; UART, 3 &times; 12-bit ADC, 16 &times; controllable PWM channels<br />\r\n- Accurate clock and timer on-chip<br />\r\n- Temperature sensor<br />\r\n- Accelerated floating-point libraries on-chip<br />\r\n- 8 &times; Programmable I/O (PIO) state machines for custom peripheral support</p>', NULL, NULL, '1', '2022-06-17 15:01:06', '2022-06-17 15:01:06', NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 3, 12, 'Raspberry Pi 4 Model B 8GB', '15000', 18000, NULL, 100, 'DEV-00120', '3887.jpg', '0', NULL, NULL, 'raspberry-pi-4-model-b-8gb', NULL, NULL, '<h2><strong>Is this Raspberry Pi 4 can be used as a desktop computer?</strong></h2>\r\n\r\n<p>The answer is simply YES. By using this Raspberry Pi 4, you will feel like a high-performance pc experience with a low budget. Simply connect the mouse and keyboard to any of the four USB ports. Now it&rsquo;s simple and ready to go with the cheapest single board computer which is the Raspberry Pi 4.</p>\r\n\r\n<p>If you want, you can <a href=\"https://techshopbd.com/detail/3484\">purchase a case for your Raspberry Pi 4</a> with a better look and safe use.</p>', 'China', NULL, '1', '2022-06-17 15:07:41', '2022-06-17 15:07:41', NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 13, 15, 'DC Motor 6V', '60', 70, NULL, 100, 'ROB-00012', '54137.jpg', '0', NULL, NULL, 'dc-motor-6v', NULL, '<p>Diameter of the motor: 23.5mm<br />\r\nheight: 30mm<br />\r\nshaft diameter: 1.8mm<br />\r\nshaft length: 9.5mm<br />\r\nstart the voltage 0.8V<br />\r\nRated voltage: 6V,<br />\r\nnon-charging current: 25mA,<br />\r\nspeed: 2980 RPM</p>', NULL, 'China', NULL, '1', '2022-06-17 15:15:06', '2022-06-17 15:15:06', NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 13, 17, 'Servo Motor MG995', '400', 450, NULL, 100, 'ROB-00330', '33125.jpg', '0', NULL, NULL, 'servo-motor-mg995', NULL, NULL, '<p>This high-speed standard servo can rotate approximately 120 degrees (60 in each direction).</p>\r\n\r\n<p>Specification&nbsp;:</p>\r\n\r\n<p>-Dimensions: 1.57&quot; x 0.79&quot; x 1.44&quot; (40 x 20 x 36.5mm)<br />\r\n-Weight: 1.78oz / 48g (Servo Net Weight Only) Operating Speed (4.8V no load) : 0.17sec / 60 degrees<br />\r\n-Operating Speed (6.0V no load) : 0.13sec / 60 degrees<br />\r\n-Stall Torque (4.8V): (13kg/cm) (180oz/in.)<br />\r\n-Stall Torque (6.0V): (15kg/cm) (208oz/in.)<br />\r\n-Temperature Range: -30 to +60 Degree C<br />\r\n-Dead Band Width: 4usec</p>\r\n\r\n<p>-Operation Voltage: 3.5 - 8.4Volts</p>\r\n\r\n<p>-PWM Period:20ms (50 Hz)</p>', 'China', NULL, '1', '2022-06-17 15:19:01', '2022-06-17 15:19:01', NULL, NULL, NULL, NULL, NULL, NULL),
+(26, 13, 15, 'DC Gear Motor (12V,300RPM)', '250', 290, NULL, 98, 'ROB-00359', '46108.jpg', '0', NULL, NULL, 'dc-gear-motor-12v300rpm', NULL, '<p>Brushed DC Gear motor for small wheel</p>', NULL, 'China', NULL, '1', '2022-06-17 15:22:32', '2022-06-17 15:22:32', NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 13, 15, 'DC Motor 9V', '60', 70, NULL, 100, 'ROB-00013', '70431.jpg', '0', NULL, NULL, 'dc-motor-9v', NULL, '<h1>DC Motor 9V</h1>\r\n\r\n<p>Model No: ROB-00013</p>', NULL, 'China', NULL, '1', '2022-06-17 15:25:15', '2022-06-17 15:25:15', NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 2, 9, '4N35 Optocoupler', '15', 25, NULL, 100, 'SWD-00044', '59555.jpg', '0', NULL, NULL, '4n35-optocoupler', NULL, NULL, '<p>The 4N35 consists of a gallium arsenide infrared emitting diode optically coupled to a monolithic silicon phototransistor detector.</p>\r\n\r\n<p><strong>APPLICATIONS</strong></p>\r\n\r\n<ul>\r\n	<li>Power supply regulators</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li>Digital logic inputs</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li>Microprocessor inputs</li>\r\n</ul>', 'China', NULL, '1', '2022-06-17 15:27:08', '2022-06-17 15:27:08', NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 2, 9, 'PC817 Optocoupler', '1', 5, NULL, 100, 'SWD-00043', '5436.jpg', '0', NULL, NULL, 'pc817-optocoupler', NULL, NULL, '<p>These are High Density Mounting Type Photocouplers used in Computer terminals,System appliances, measuring instruments,Registers, copiers, automatic vending machines,Electric home appliances, such as fan heaters etc.</p>\r\n\r\n<p><strong>Features</strong></p>\r\n\r\n<ul>\r\n	<li>Current transfer ratio (CTR:MIN.50% at IF=5mA Vce=5V)</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li>High isolation voltage between input and output (Viso:5300Vrms).</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li>Compact dual-in-line package.</li>\r\n</ul>', 'China', NULL, '1', '2022-06-17 15:28:25', '2022-06-17 15:28:25', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1324,7 +1333,21 @@ INSERT INTO `qties` (`id`, `product_id`, `quantity`, `created_at`, `updated_at`)
 (21, 16, 200, '2022-05-11 04:03:15', '2022-06-15 09:23:25'),
 (22, 12, 82, '2022-05-11 04:05:15', '2022-06-15 09:32:08'),
 (23, 17, 120, '2022-06-05 00:52:54', '2022-06-15 09:27:58'),
-(24, 18, 12, '2022-06-05 00:52:54', '2022-06-05 00:52:54');
+(24, 18, 12, '2022-06-05 00:52:54', '2022-06-05 00:52:54'),
+(25, 7, 100, '2022-06-17 14:40:09', '2022-06-17 14:40:09'),
+(26, 6, 104, '2022-06-17 14:45:10', '2022-06-17 14:45:10'),
+(27, 6, 208, '2022-06-17 14:46:28', '2022-06-17 14:46:28'),
+(28, 19, 100, '2022-06-17 14:52:05', '2022-06-17 14:52:05'),
+(29, 20, 100, '2022-06-17 14:54:19', '2022-06-17 14:54:19'),
+(30, 21, 100, '2022-06-17 14:58:01', '2022-06-17 14:58:01'),
+(31, 22, 100, '2022-06-17 15:01:06', '2022-06-17 15:01:06'),
+(32, 23, 100, '2022-06-17 15:07:41', '2022-06-17 15:07:41'),
+(33, 24, 100, '2022-06-17 15:15:06', '2022-06-17 15:15:06'),
+(34, 25, 100, '2022-06-17 15:19:01', '2022-06-17 15:19:01'),
+(35, 26, 98, '2022-06-17 15:22:32', '2022-06-17 15:22:32'),
+(36, 27, 100, '2022-06-17 15:25:15', '2022-06-17 15:25:15'),
+(37, 28, 100, '2022-06-17 15:27:08', '2022-06-17 15:27:08'),
+(38, 29, 100, '2022-06-17 15:28:25', '2022-06-17 15:28:25');
 
 -- --------------------------------------------------------
 
@@ -1593,7 +1616,16 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('0M2EudCjJRm6hr3NOy2uoJqVrfYfrdAUiUwhf74Z', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiT2Z1RU9Vd0treWxxNmxuZkFZbWNINmw1aWhrZ0NpYkpFeUduMkRvdiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hZG1pbi9vcmRlci9jaGFydCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjMyO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkdVNneUoxelcuaDNkblZKbWhnM3hvdUtJaGtLbkRuTFBDazgzdFl0V3JMTjlOcWtSem9RT20iO3M6ODoicmVmZXJhbGwiO3M6MDoiIjtzOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1655292609);
+('0732jaWyFiJjxxU7NuD8FY20IuSmOuIivg7VVdrJ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoic0R3eW5lNlpnckZWaWNIR25keVNPSnZpdmlaeElsWXRrSUNja0FvVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hYmNyb2JvdGljc2hvcCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1655479796),
+('f1joo9EhUXFR2pn7v1oMnCTRuiZRefMLgbaMx2Ah', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRGNQVGhaQnQwb05EUEZaa2x6NTNaWjJ1VGRuR3czU3Z2ZUZHbGl4QyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hYmNyb2JvdGljc2hvcCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1655481670),
+('ggo0FPsIdDYPr2vCi2qdjkLb24BTHwxZvtepqomm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiR1pmMjVuOGgxcVBjQ1Mxd3N6djczWW50RU92RHBZRzRuQU02OURwbyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hZG1pbi9jYXRlZ29yeSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1655480375),
+('lD3DtGfRpHJGzwu9tKLGNCheXAg8nLCGczfmbnf0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicHFmQnFreWhRT2VsQnFzV0ZZb09iazZoWWFvb01VYTdrUng5QlF6MCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hYmNyb2JvdGljc2hvcCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1655480375),
+('mEKMV6oayPwy0mQH6e18Ky21nV74A9q38mySXN1g', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoic3ZwTzF6N1RYUWtDcWp6bXQ4dVoydkE3TEx3dUNud2RlRUFSNWVmZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTI6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hZG1pbi9nZW5lcmFsLXNldHRpbmciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1655481670),
+('QmCxrKUqhKsmZrr0odCowg1lOwzXMmQPsqiofey5', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiV0pGMEZ1blZGdXlJOVhUOWdHWjFmOWdSTERRMmhsTEZZVDhWeUNySiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hZG1pbi9wcm9kdWN0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1655479796),
+('SzWB2TGztuNZVSQTMsCYGuqe63bM5QQilNNO0Q5G', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZnNIR2U3c2pEZXRjcU0zazR4M01XQnRsd0hEQnkwTmJMRmwxS1gzaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9QNmJxWGVVRmNYSFQyZEZHIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1655476281),
+('VD130CQjXi8Ti48jkGsR9Ehcg1oyxl380yGBxgPx', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoicEIyTkxFeHB5bHBPbTVPeFFCZWhEOE5zS0NabGIxaWRyOUFVbmJFYSI7czo4OiJyZWZlcmFsbCI7czowOiIiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vbG9jYWxob3N0L3RlY2hzaG9wZmluYWwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1655480292),
+('Z6yZnUAXTOnCLNAgDQgjsLrKhPq2o1eJs7ho8f6K', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTGt2T1l4Nlp2ZndrOGtDbW91TnNseDNrRXB2Q2o1SzFseWRGWHA4UCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hZG1pbi9ldmVudC9jaGFydCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1655476068),
+('zKdKcAHPuPywS4zUlLqYrUhpfNK9qQ9WYqT4DQ4H', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:101.0) Gecko/20100101 Firefox/101.0', 'YTo1OntzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMDoiaHR0cDovL2xvY2FsaG9zdC90ZWNoc2hvcGZpbmFsIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6InJIa3BuN3RPUGVTSGRIbkdGN3llbGd0b2o0SW1OSDdKUmVpbGs5QUgiO3M6ODoicmVmZXJhbGwiO3M6MDoiIjtzOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1655483165);
 
 -- --------------------------------------------------------
 
@@ -2214,7 +2246,7 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `coupon_codes`
@@ -2238,7 +2270,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `general_settings`
@@ -2304,13 +2336,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `qties`
 --
 ALTER TABLE `qties`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `questions`

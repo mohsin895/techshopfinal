@@ -118,7 +118,7 @@ class GeneralSettingController extends Controller
                     $filename = rand(111, 99999) . '.' . $extension;
                     $large_image_path = 'assets/images/setting/' . $filename;
 
-                    Image::make($image_tmp)->resize(70, 50)->save($large_image_path);
+                    Image::make($image_tmp)->resize(50, 50)->save($large_image_path);
                     $setting->site_logo = $filename;
                 }
             }
