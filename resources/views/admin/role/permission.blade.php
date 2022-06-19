@@ -2313,7 +2313,7 @@
                                             <table class="table table-bordered permission-table">
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="6" class="text-center">Products Question and
+                                                        <th colspan="6" class="text-center">Products Review & Rating, Question and
                                                             Answers Part</th>
                                                     </tr>
                                                     <tr>
@@ -2427,6 +2427,34 @@
                                                                 <label for="view_products_answer_status"></label>
 
                                                             </div>
+                                                        </td>
+
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Review & Rating </td>
+                                                        <td class="text-center">
+                                                            <div class="icheckbox_square-blue checked"
+                                                                aria-checked="false" aria-disabled="false">
+
+                                                                @if(in_array("show_review_rating", $all_permission))
+                                                                <input type="checkbox" value="1"
+                                                                    id="show_review_rating"
+                                                                    name="show_review_rating" checked />
+                                                                @else
+                                                                <input type="checkbox" value="1"
+                                                                    id="show_review_rating"
+                                                                    name="show_review_rating" />
+                                                                @endif
+                                                                <label for="show_review_rating"></label>
+
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+
+                                                        </td>
+                                                        <td class="text-center">
+                                                           
                                                         </td>
 
 

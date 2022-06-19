@@ -10,7 +10,7 @@
     <link rel="icon" href="{{asset('public/assets/images/setting/'.$gs->favicon)}}" type='image/x-icon' />
     <title>{{$gs->site_title}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 
@@ -376,11 +376,13 @@
                         <!-- Facebook -->
                         <a href="{{$gs->facebook_page}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
                             class="text-white" role="button"><i class="fa fa-facebook-square"></i></a>
-
+                            <a href="{{$gs->facebook_group}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
+                            class="text-white" role="button"><i class="fa fa-users" aria-hidden="true"></i></a>
                         <!-- Twitter -->
-                        <a href="{{$gs->linkdi}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
+                        <a href="{{$gs->discord}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
+                            class="text-white" role="button"><i class='fab fa-discord'></i></a>
+                            <a href="{{$gs->linkdi}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
                             class="text-white" role="button"><i class="fa fa-linkedin-square"></i></a>
-
                         <!-- Google -->
                         <a href="{{$gs->youtube}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
                             class="text-white" role="button"><i class="fa fa-youtube-square"

@@ -172,7 +172,7 @@
                                             <!--begin::Description-->
                                             <div class="text-muted fs-7">Set the site Logo image. Only *.png,
                                                 *.jpg and *.jpeg
-                                                image files are accepted, size:width:70px,height:50px.</div>
+                                                image files are accepted, size:width:75px,height:75px.</div>
                                             <!--end::Description-->
                                         </div>
 
@@ -234,7 +234,7 @@
                                             <!--begin::Description-->
                                             <div class="text-muted fs-7">Set the Dashboard Logo image. Only *.png,
                                                 *.jpg and *.jpeg
-                                                image files are accepted,size:width:269px,height:56px.</div>
+                                                image files are accepted,size:width:75px,height:75px.</div>
                                             <!--end::Description-->
                                         </div>
 
@@ -298,7 +298,7 @@
                                             <!--begin::Description-->
                                             <div class="text-muted fs-7">Set the Fav icon image. Only *.png,
                                                 *.jpg and *.jpeg
-                                                image files are accepted,size:width:257px,height:65px.</div>
+                                                image files are accepted,size:width:75px,height:75px.</div>
                                             <!--end::Description-->
                                         </div>
 
@@ -766,6 +766,24 @@
                                             <!--begin::Input-->
                                             <input type="url" class="form-control form-control-solid"
                                                 name="facebook_group" value="{{$gs->facebook_group}}"
+                                                data-kt-ecommerce-settings-type="tagify" />
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>Discord</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Discord."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
+                                            <input type="url" class="form-control form-control-solid"
+                                                name="discord" value="{{$gs->discord}}"
                                                 data-kt-ecommerce-settings-type="tagify" />
                                             <!--end::Input-->
                                         </div>

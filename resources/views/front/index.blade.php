@@ -219,13 +219,13 @@
                                 <img src="{{asset('public/assets/images/product/'.$row->image)}}"
                                     alt="Arduino-Uno-Price-in-BD.jpg" class="img-fluid">
 
-                                <p class="product-name">{{$row->product_name}}</p>
+                                <p class="product-name" style="fnt-size:16px">{{$row->product_name}}</p>
                                 <!-- <input type="text" name="referral" id="referral" value="{{$referral}}"> -->
 
                                 <p class="model">Model No: <span>{{$row->model_no}}</span></p>
                                 <p class="supply">Supplier: <span>{{$row->supplier}}</span></p>
                                 <div class="price d-flex align-items-center justify-content-between">
-                                    <p class="sell-price mx-0">TK. {{$row->price}}</p>
+                                    <p class="sell-price mx-0" style="fnt-size:16px">TK. {{$row->price}}</p>
 
                                 </div>
                             </div>

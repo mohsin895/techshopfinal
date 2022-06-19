@@ -231,12 +231,12 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                     
                   
                     <li class="breadcrumb-item text-muted">
-                    <input type="date" class="form-control" name="from"
+                    <input type="date"  name="from"
                                         value="{{ request()->input('from') }}" />
                     </li>
 
                     <li class="breadcrumb-item text-muted">
-                    <input type="date" class="form-control" name="to"
+                    <input type="date"  name="to"
                                         value="{{ request()->input('to') }}" />
                     </li>
 
@@ -259,12 +259,12 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                     
                     <span class="h-20px border-gray-300 border-start mx-4"></span>
                     <li class="breadcrumb-item text-muted">
-                    <input type="date" class="form-control" name="from"
+                    <input type="date"  name="from"
                                         value="{{ request()->input('from') }}" />
                     </li>
 
                     <li class="breadcrumb-item text-muted">
-                    <input type="date" class="form-control" name="to"
+                    <input type="date"  name="to"
                                         value="{{ request()->input('to') }}" />
                     </li>
 
@@ -372,16 +372,37 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                 @if(!empty($order_product))
                 <!--begin::Table row-->
                 @foreach($order_product  as $row)
+               
+              
+               
+               
                 @php
+                       
                 $product= App\Models\Product::find($row->product_id);
+                if(!empty($product)){
+                
+            
                 $productqty = App\Models\OrderProduct::where('product_id',$product->id)->sum('quantity');
+                }else{
+                }
+                
+              
+                
 
                 @endphp
+                @if(!empty($product))
+               
+              
 
                 <?php $total_amount =  $total_amount + (($product->price*$productqty) - ($product->buying_price*$productqty)); ?>
                 <?php $total_qty =  $total_qty + $productqty; ?>
 
                 <?php $total_revenue =  $total_revenue + (($product->price*$productqty)); ?>
+                @else 
+                
+                
+                @endif
+                
                 @endforeach
                 @else
 
@@ -525,12 +546,18 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                             @if(!empty($order_product))
                             <!--begin::Table row-->
                             @foreach($order_product as $row)
+                           
                             @php
-                            $product= App\Models\OrderProduct::find($row->product_id);
+                            if(!empty($row)) {                           $product= App\Models\OrderProduct::find($row->product_id);
                             $productqty =
                             App\Models\OrderProduct::where('product_id',$product->id)->sum('quantity');
+                            }else {
+                            
+                            }
+                           
 
                             @endphp
+                           
                             <tr>
 
                                 <td>

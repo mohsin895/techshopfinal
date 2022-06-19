@@ -215,7 +215,6 @@
                     aria-labelledby="doc-tab">
 
 
-                    mohsin sikder
 
                     {!! $productDetails->document !!}
 
@@ -304,9 +303,9 @@
             @foreach($productDetails['question'] as $row)
             @php
             $user = App\Models\User::find($row->user_id);
-            $answer = App\Models\Answer::where('question_id',$row->id)->get();
+            $answer = App\Models\Answer::where('question_id',$row->id)->where('status',1)->get();
             @endphp
-            <div class="qa-list js--qa-section d-none">
+            <div class="qa-list js--qa-section ">
                 <div class="question-item">
                     <p class="question d-flex">
                         <span class="ml-0 mr-0">Q: </span>
@@ -550,24 +549,47 @@
             </div>
         </div>
 
+        <div class="qa-list-wrapper">
+            <p class="subtitle border-bottom"> Review</p>
+            @foreach($productDetails['review'] as $row)
+            @php
+            $user = App\Models\User::find($row->user_id);
+           
+            @endphp
+            <div class="qa-list js--qa-section ">
+                <div class="question-item">
 
+
+                <p class="question d-flex">
+                        <span class="ml-0 mr-0">Review: </span>
+                        <span class="ml-2">
+                            <span>{{$row->review_details}}</span>
+                            <span class="ques-by">Review By by </span><span>{{$user->name}}</span>
+                            <span class="ques-by">{{$row->created_at->toDayDateTimeString()}}</span>
+                        </span>
+                    </p>
+                   
+
+                   
+                </div>
+              
+
+                
+            </div>
+            @endforeach
+           
+
+            <div class="btn-view-more border-bottom d-none">
+                <button type="button" class="btn js--qa-view-more">View More</button>
+            </div>
+        </div>
+    </div>
 
     </div>
     <div class="review-list-wrapper">
 
 
-
-
-
-
-
-
-
-
-        <div class="btn-view-more border-top d-none pb-0">
-            <button type="button" class="btn js--review-view-more">View More</button>
-        </div>
-    </div>
+  
 </div>
 </div>
 <!--<section class="recently-view-section">-->

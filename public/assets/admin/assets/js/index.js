@@ -264,6 +264,27 @@ $('body').on('change', '#QuestionStatus', function () {
   
   });
 
+  $('body').on('change', '#ReviewStatus', function () {
+
+    var id = $(this).attr('data-id');
+    if (this.checked) {
+      var status = '1';
+    } else {
+      status = '0';
+    }
+    $('.loader__').show();
+    $.ajax({
+      url: "Userreview/update-status/" + id + '/' + status,
+      method: 'get',
+      success: function (result) {
+        alertify.set('notifier', 'position', 'top-right');
+        alertify.success('Status Update Successfully ');
+        $('.loader__').hide();
+      }
+    });
+    
+    });
+
 $(document).on("click", ".confirmDelete", function () {
     var record = $(this).attr("record");
     var recordid = $(this).attr("recordid");

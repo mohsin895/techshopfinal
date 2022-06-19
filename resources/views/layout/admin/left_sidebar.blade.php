@@ -1770,7 +1770,7 @@ $expireddateproduct= App\Models\Product::where('expired_date', '<', $expireddate
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
 
-                                <span class="menu-section text-muted text-uppercase fs-8 ls-1">Product Question &
+                                <span class="menu-section text-muted text-uppercase fs-8 ls-1">Product Review & Raint, Question &
                                     Answer</span>
 
                                 <span class="menu-arrow"></span>
@@ -1787,6 +1787,12 @@ $expireddateproduct= App\Models\Product::where('expired_date', '<', $expireddate
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                     ['permissions.name', 'view_products_answer'],
+                    ['role_id', $role->id]
+                    ])->first();
+                    $show_review_rating_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'show_review_rating'],
                     ['role_id', $role->id]
                     ])->first();
                    
@@ -1850,6 +1856,33 @@ $expireddateproduct= App\Models\Product::where('expired_date', '<', $expireddate
                                                 <!--end::Svg Icon-->
                                             </span>
                                             <span class="menu-title"> Answer</span>
+                                            <span class="menu-arrow"></span>
+                                        </span>
+                                    </a>
+                                </div>
+
+                            </div>
+                            @endif
+                            @if($show_review_rating_permission_active)
+                            <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                <div class="menu-item">
+                                    <a href="{{route('admin.user.product.review_rating')}}">
+                                        <span class="menu-link">
+                                            <span class="menu-icon">
+                                                <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                                <span class="svg-icon svg-icon-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <path
+                                                            d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
+                                                            fill="black" />
+                                                        <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
+                                                            fill="black" />
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                            <span class="menu-title"> Review & Rating</span>
                                             <span class="menu-arrow"></span>
                                         </span>
                                     </a>

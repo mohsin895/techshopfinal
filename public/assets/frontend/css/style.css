@@ -24803,19 +24803,19 @@ body ::placeholder {
 #details .review-section .submit-review .review-info .d-flex .total-rating {
     font-size: 3.125rem;
     font-family: raleway-regular;
-    margin-right: -4em;
+    /* margin-right: -4em; */
     margin-left: .325em
 }
 
 @media (min-width:960px) {
     #details .review-section .submit-review .review-info .d-flex .total-rating {
-        margin-right: -2.5em
+        
     }
 }
 
 @media (min-width:1600px) {
     #details .review-section .submit-review .review-info .d-flex .total-rating {
-        margin-right: -4em
+       
     }
 }
 

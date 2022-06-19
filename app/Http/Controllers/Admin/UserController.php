@@ -15,6 +15,7 @@ use App\Models\Question;
 use App\Models\Answer;
 use App\Models\UserMessage;
 use App\Models\Notification;
+use App\Models\ReviwRating;
 Use \Carbon\Carbon;
 use Auth;
 use Mail;
@@ -120,6 +121,18 @@ public function ajax_question_status($id, $status)
 {
 
     $data = Question::find($id);
+    $data->status = $status;
+    if ($data->save()){
+        echo "1";
+    }else{
+        echo "0";
+    }
+}
+
+public function ajax_review_status($id, $status)
+{
+
+    $data = ReviwRating::find($id);
     $data->status = $status;
     if ($data->save()){
         echo "1";
@@ -240,5 +253,16 @@ public function today_birthday()
   return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
    }
 
+   public function review_rating()
+   {
+    $role = Role::find(Auth::guard('admin')->user()->role_id);
+    if ($role->hasPermissionTo('show_review_rating')) {
+        $permissions = Role::findByName($role->name)->permissions;
+    $data['review_rating'] = ReviwRating::orderBy('id','DESC')->get();
+    // dd($data['review_rating']);
+    return view('admin.user.review_rating',$data);
+   }else
+   return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+    }
 
 }

@@ -90,19 +90,20 @@ class IndexController extends Controller
       $referral = Session::get('referall');
      
 
-        $productDetails = Product::with('gallery','question')->where('slug',$slug)->first();
+        $productDetails = Product::with('gallery','question','review')->where('slug',$slug)->first();
+        // dd($productDetails);
         $data['orderProduct']= OrderProduct::where('product_id',$productDetails->id)->sum('quantity');
         //  dd($data['orderProduct']);
         $data['productCategory'] = Category::where('id',$productDetails->parent_id)->first();
         $data['relatedProducts'] = Product::where('parent_id',$data['productCategory'] ->id)->get();
-        $data['ratingCount'] = ReviwRating::where('product_id',$productDetails->id)->count('id');
-        $data['reviewCount'] = ReviwRating::where('product_id',$productDetails->id)->count('id');
-        $data['progress'] = ReviwRating::where('product_id',$productDetails->id)->sum('rating_star');
-        $data['progress1'] = ReviwRating::where('product_id',$productDetails->id)->where('rating_star',1)->count('id');
-        $data['progress2'] = ReviwRating::where('product_id',$productDetails->id)->where('rating_star',2)->count('id');
-        $data['progress3'] = ReviwRating::where('product_id',$productDetails->id)->where('rating_star',3)->count('id');
-        $data['progress4'] = ReviwRating::where('product_id',$productDetails->id)->where('rating_star',4)->count('id');
-        $data['progress5'] = ReviwRating::where('product_id',$productDetails->id)->where('rating_star',5)->count('id');
+        $data['ratingCount'] = ReviwRating::where('product_id',$productDetails->id)->where('status',1)->count('id');
+        $data['reviewCount'] = ReviwRating::where('product_id',$productDetails->id)->where('status',1)->count('id');
+        $data['progress'] = ReviwRating::where('product_id',$productDetails->id)->where('status',1)->sum('rating_star');
+        $data['progress1'] = ReviwRating::where('product_id',$productDetails->id)->where('status',1)->where('rating_star',1)->count('id');
+        $data['progress2'] = ReviwRating::where('product_id',$productDetails->id)->where('status',1)->where('rating_star',2)->count('id');
+        $data['progress3'] = ReviwRating::where('product_id',$productDetails->id)->where('status',1)->where('rating_star',3)->count('id');
+        $data['progress4'] = ReviwRating::where('product_id',$productDetails->id)->where('status',1)->where('rating_star',4)->count('id');
+        $data['progress5'] = ReviwRating::where('product_id',$productDetails->id)->where('status',1)->where('rating_star',5)->count('id');
         // dd($progress);
     // dd($reviewCount);
       return view('front.details',$data,compact('productDetails','referral'));

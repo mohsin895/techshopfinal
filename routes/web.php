@@ -239,6 +239,9 @@ Route::get('/user/monthly-birthday',[App\Http\Controllers\Admin\UserController::
 Route::get('/user/product/Userquestion/update-status/{id}/{status}',[App\Http\Controllers\Admin\UserController::class,'ajax_question_status']);
 Route::get('/user/message',[App\Http\Controllers\Admin\UserController::class,'message'])->name('user.message');
 Route::get('/user/product/comment',[App\Http\Controllers\Admin\UserController::class,'product_comment'])->name('user.product.comment');
+Route::get('/user/product/review_rating',[App\Http\Controllers\Admin\UserController::class,'review_rating'])->name('user.product.review_rating');
+
+Route::get('/user/product/Userreview/update-status/{id}/{status}',[App\Http\Controllers\Admin\UserController::class,'ajax_review_status']);
 Route::get('/user/product/question/answer',[App\Http\Controllers\Admin\UserController::class,'product_question_answer'])->name('user.product.question.answer');
 Route::post('/user/comment/answer/{id}',[App\Http\Controllers\Admin\UserController::class,'message_answer'])->name('user.comment.answer');
 Route::post('/user/product/question/status/{id}',[App\Http\Controllers\Admin\UserController::class,'question_status'])->name('user.question.status');

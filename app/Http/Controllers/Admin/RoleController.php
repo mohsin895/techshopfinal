@@ -1388,6 +1388,13 @@ if ($request->has('bloog_post_edit')) {
                     }
                 } else
                     $role->revokePermissionTo('anaylites_view');
+                    if ($request->has('show_review_rating')) {
+                        $permission = Permission::firstOrCreate(['name' => 'show_review_rating']);
+                        if (!$role->hasPermissionTo('show_review_rating')) {
+                            $role->givePermissionTo($permission);
+                        }
+                    } else
+                        $role->revokePermissionTo('show_review_rating');
 
 
         return redirect('admin/role')->with('flash_message_success', 'Permission updated successfully');

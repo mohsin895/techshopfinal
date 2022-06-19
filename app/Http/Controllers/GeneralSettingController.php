@@ -81,12 +81,13 @@ class GeneralSettingController extends Controller
             $setting->w_r = $data['w_r'];
             $setting->about_us = $data['about_us'];
             $setting->privecy_policy = $data['privecy_policy'];
+            $setting->discord = $data['discord'];
          
             $setting->meta_viewport = $data['meta_viewport'];
             $setting->upcoming_expired_date = $data['upcoming_expired_date'];
             //login Image
             if ($request->hasFile('login_image')) {
-                $imagePath = public_path('assets/images/setting/'.$setting->login_image);
+                $imagePath = public_path('public/assets/images/setting/'.$setting->login_image);
                 // dd($imagePath);
                 if(File::exists($imagePath)){
                     unlink($imagePath);
@@ -95,7 +96,7 @@ class GeneralSettingController extends Controller
                 if ($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
                     $filename = rand(111, 99999) . '.' . $extension;
-                    $large_image_path = 'assets/images/setting/' . $filename;
+                    $large_image_path = 'public/assets/images/setting/' . $filename;
                     if(File::exists($large_image_path)){
                         unlink($large_image_path);
                     }
@@ -107,7 +108,7 @@ class GeneralSettingController extends Controller
 
             //logo
             if ($request->hasFile('site_logo')) {
-                $imagePath = public_path('assets/images/setting/'.$setting->site_logo);
+                $imagePath = public_path('public/assets/images/setting/'.$setting->site_logo);
                 // dd($imagePath);
                 if(File::exists($imagePath)){
                     unlink($imagePath);
@@ -116,16 +117,16 @@ class GeneralSettingController extends Controller
                 if ($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
                     $filename = rand(111, 99999) . '.' . $extension;
-                    $large_image_path = 'assets/images/setting/' . $filename;
+                    $large_image_path = 'public/assets/images/setting/' . $filename;
 
-                    Image::make($image_tmp)->resize(50, 50)->save($large_image_path);
+                    Image::make($image_tmp)->resize(75, 75)->save($large_image_path);
                     $setting->site_logo = $filename;
                 }
             }
 
 //dahsboard Logo
 if ($request->hasFile('dashboard_logo')) {
-    $imagePath = public_path('assets/images/setting/'.$setting->dashboard_logo);
+    $imagePath = public_path('public/assets/images/setting/'.$setting->dashboard_logo);
                 // dd($imagePath);
                 if(File::exists($imagePath)){
                     unlink($imagePath);
@@ -134,16 +135,16 @@ if ($request->hasFile('dashboard_logo')) {
     if ($image_tmp->isValid()) {
         $extension = $image_tmp->getClientOriginalExtension();
         $filename = rand(111, 99999) . '.' . $extension;
-        $large_image_path = 'assets/images/setting/' . $filename;
+        $large_image_path = 'public/assets/images/setting/' . $filename;
 
-        Image::make($image_tmp)->resize(269, 56)->save($large_image_path);
+        Image::make($image_tmp)->resize(75,75)->save($large_image_path);
         $setting->dashboard_logo = $filename;
     }
 }
 
 //Blog Logo
 if ($request->hasFile('blog_logo')) {
-    $imagePath = public_path('assets/images/setting/'.$setting->blog_logo);
+    $imagePath = public_path('public/assets/images/setting/'.$setting->blog_logo);
                 // dd($imagePath);
                 if(File::exists($imagePath)){
                     unlink($imagePath);
@@ -152,9 +153,9 @@ if ($request->hasFile('blog_logo')) {
     if ($image_tmp->isValid()) {
         $extension = $image_tmp->getClientOriginalExtension();
         $filename = rand(111, 99999) . '.' . $extension;
-        $large_image_path = 'assets/images/setting/' . $filename;
+        $large_image_path = 'public/assets/images/setting/' . $filename;
 
-        Image::make($image_tmp)->resize(257, 65)->save($large_image_path);
+        Image::make($image_tmp)->resize(75,75)->save($large_image_path);
         $setting->blog_logo = $filename;
     }
 }
@@ -162,7 +163,7 @@ if ($request->hasFile('blog_logo')) {
 
 
             if ($request->hasFile('favicon')) {
-                $imagePath = public_path('assets/images/setting/'.$setting->favicon);
+                $imagePath = public_path('public/assets/images/setting/'.$setting->favicon);
                 // dd($imagePath);
                 if(File::exists($imagePath)){
                     unlink($imagePath);
@@ -171,7 +172,7 @@ if ($request->hasFile('blog_logo')) {
                 if ($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
                     $filename = rand(111, 99999) . '.' . $extension;
-                    $large_image_path = 'assets/images/setting/' . $filename;
+                    $large_image_path = 'public/assets/images/setting/' . $filename;
 
                     Image::make($image_tmp)->resize(32, 32)->save($large_image_path);
                     $setting->favicon = $filename;
@@ -182,7 +183,7 @@ if ($request->hasFile('blog_logo')) {
 
 
             if ($request->hasFile('blog_favicon')) {
-                $imagePath = public_path('assets/images/setting/'.$setting->blog_favicon);
+                $imagePath = public_path('public/assets/images/setting/'.$setting->blog_favicon);
                 // dd($imagePath);
                 if(File::exists($imagePath)){
                     unlink($imagePath);
@@ -191,7 +192,7 @@ if ($request->hasFile('blog_logo')) {
                 if ($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
                     $filename = rand(111, 99999) . '.' . $extension;
-                    $large_image_path = 'assets/images/setting/' . $filename;
+                    $large_image_path = 'public/assets/images/setting/' . $filename;
 
                     Image::make($image_tmp)->resize(32, 32)->save($large_image_path);
                     $setting->blog_favicon = $filename;
