@@ -238,7 +238,7 @@ if ($request->hasFile('blog_logo')) {
         //    return $searchArray;
 
         $replaceArray = array('MAIL_HOST=' . $data['mail_host'] . '' , 'MAIL_PORT=' . $data['port'] . ''  , 'MAIL_FROM_NAME="' . $data['mail_name'] . '"' , 'MAIL_FROM_EMAIL="' . $data['email_name'] . '"' , 'MAIL_USERNAME=' . $data['mail_username'] . '' , 'MAIL_PASSWORD=' . $data['password'] . '');
-        return $replaceArray;
+        // return $replaceArray;
         file_put_contents($path, str_replace($searchArray, $replaceArray, file_get_contents($path)));
 
         return redirect()->back()->with('message', 'Data updated successfully');

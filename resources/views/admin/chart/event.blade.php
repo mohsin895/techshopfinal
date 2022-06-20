@@ -300,7 +300,7 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                     <thead>
                         <tr>
                             <th scope="col" style="font-size:30px">Average Order Per Customer</th>
-                            <th scope="col" style="font-size:30px"><?=$customer ? $order/$customer : 0 ?></th>
+                            <th scope="col" style="font-size:30px"><?= number_format((float)$customer ? $order/$customer : 0 , 2, '.', '') ;?></th>
 
                         </tr>
                     </thead>

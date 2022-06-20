@@ -10,12 +10,13 @@
     <link rel="icon" href="{{asset('public/assets/images/setting/'.$gs->favicon)}}" type='image/x-icon' />
     <title>{{$gs->site_title}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+       
 
     <link rel="stylesheet" href="{{ asset('public/assets/frontend/extra/fonts/icomoon/style.css')}}">
 
@@ -381,6 +382,10 @@
                         <!-- Twitter -->
                         <a href="{{$gs->discord}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
                             class="text-white" role="button"><i class='fab fa-discord'></i></a>
+                            
+                            
+                            
+                            
                             <a href="{{$gs->linkdi}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
                             class="text-white" role="button"><i class="fa fa-linkedin-square"></i></a>
                         <!-- Google -->
@@ -528,6 +533,7 @@
 
     <script src="{{ asset('public/assets/frontend/js/index.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    
 
 
     <script>
