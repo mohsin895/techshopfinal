@@ -42,7 +42,7 @@
         <td>Thanks & Regrads</td>
       </tr>
       <tr>
-        <td>{{$gs->title}}</td>
+        <td>{{$gs->site_title}}</td>
       </tr>
     </table>
   </body>
