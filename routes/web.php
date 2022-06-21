@@ -334,6 +334,7 @@ Route::get('/order/last12MonthProfitData',[App\Http\Controllers\Admin\OrderChart
 
 
 Route::get('/event/last12MonthOrderData',[App\Http\Controllers\Admin\EventController::class,'last12MonthOrderData'])->name('event.last12MonthOrderData');
+Route::get('/event/last12MonthEventOrderData',[App\Http\Controllers\Admin\EventController::class,'last12MonthEventOrderData'])->name('event.last12MonthEventOrderData');
 Route::get('/event/last12MonthSellData',[App\Http\Controllers\Admin\EventController::class,'last12MonthSellData'])->name('event.last12MonthSellData');
 Route::get('/event/last12MonthProfitData',[App\Http\Controllers\Admin\EventController::class,'last12MonthProfitData'])->name('event.last12MonthProfitData');
 Route::get('/event/chart',[App\Http\Controllers\Admin\EventController::class,'event_chart'])->name('event.chart');
