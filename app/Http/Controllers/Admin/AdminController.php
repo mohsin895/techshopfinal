@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\BrouseHistory;
 use Hash;
 use Image;
+use Mail;
 
 class AdminController extends Controller
 {
@@ -119,7 +120,7 @@ public function setting()
       $userDetails = User::where('email', $data['email'])->first();
 
       $random_password = random_int(1000, 9999);
-      $new_password = bcrypt($random_password);
+      $new_password = Hash::make($random_password);
       User::where('email', $data['email'])->update(['password' => $new_password]);
 
       $email = $data['email'];
@@ -133,7 +134,7 @@ public function setting()
         $message->to($email)->subject('New Password - techshop');
       });
 
-      return redirect('techshop')->with('flash_message_success', 'Please check your email for new password!!');
+      return redirect('P6bqXeUFcXHT2dFG')->with('flash_message_success', 'Please check your email for new password!!');
     }
 
     return view('admin.forget_password');
