@@ -723,7 +723,7 @@ $.ajax({
                         fill: false,
                         showLine:false,
                         backgroundColor: 'red',
-                        radius: 5
+                        radius: 4
                     }, {
                         type: 'line',
                         label: 'User',
@@ -731,14 +731,14 @@ $.ajax({
                         fill: false,
                         borderColor: '#DAD6FE',
                         backgroundColor: '#6958FE',
-                        radius: 5
+                        radius: 4
                     }, {
                         type: 'bar',
                         label: 'Order',
                         data: IR.orderArray,
                         borderColor: 'rgb(255, 99, 132)',
                         backgroundColor: '#98F7AB',
-                        barThickness: 20
+                        barThickness: 15
                     }]
                 }
                 
