@@ -163,14 +163,16 @@
 
                                         <div class="container">
                                             <div class="row">
-                                                <h4 class="fw-boldest text-gray-800 fs-2qx pe-5 pb-7 text-center">
-                                                    INVOICE<br>
-
-
+                                                <h4 class="fw-boldest text-gray-800 fs-2qx pe-5 pb-0 text-center">
+                                                    INVOICE </br>
+                                                    
+                                                <span class="fs-2"> <span
+                                                    class="text-muted">Order
+                                                    ID</span> #{{$order->order_id}}</span>
                                                 </h4>
 
-                                                <h4 class="fw-boldest text-red-800 fs-2qx pe-5 pb-7 text-center "
-                                                    style="color: red;">
+                                                {{-- <h4 class="fw-boldest text-red-800 fs-2qx pe-5 pb-7 text-center "
+                                                    style="color: red;"> --}}
                                                  @if(!empty($birthday_user))
                                                     @if($birthday_user->date_of_birth)
                                                     Happy Birthday &nbsp;{{$user->name}} !!
@@ -183,30 +185,32 @@
 
                                                 </h4>
 
-                                                <div class="col-6 col-lg-6 col-md-6 col-sm-4">
-                                                    <h4 class="fw-boldest text-gray-800 fs-2qx pe-5 pb-7">
+                                                <div class="col-6 col-lg-6 col-md-6 col-sm-6"
+                                                    style="text-align: left;">
+
+                                                    <img alt="Logo"
+                                                        src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}"
+                                                        class="w-30" style="" /></br>
+                                                    {{$gs->site_title}},<br> {{$gs->address}} <br>{{$gs->mobile1}}<br><br><br>
 
 
-                                                        {{$user->name}}</br>
+
+                                                </div>
+
+                                                <div class="col-6 col-lg-6 col-md-6 col-sm-6" style="text-align: right;">
+                                                    <h4 class="fw-boldest text-gray-800 fs-1.5qx pe-3 pb-7">
 
 
-                                                        <span class="fs-6">({{$user->email}})</span>
-                                                        <br />
+                                                        <h2>{{$user->name}}</h2>
+
+
+                                                        <div><span class="fs-6">Email: {{$user->email}}</span></div>
+                                                        <span class="fs-6">Phone: {{$user->phone}}</span>
                                                     </h4>
 
                                                 </div>
 
-                                                <div class="col-6 col-lg-6 col-md-6 col-sm-4"
-                                                    style="text-align: right;">
-
-                                                    <img alt="Logo"
-                                                        src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}"
-                                                        class="w-50" style="" /></br>
-                                                    {{$gs->site_title}}, {{$gs->address}} <br>{{$gs->mobile1}}
-
-
-
-                                                </div>
+                                                
 
                                                 <!-- Force next columns to break to new line at md breakpoint and up -->
                                                 <div class="w-100 d-none d-md-block"></div>
@@ -219,9 +223,9 @@
                                         <!--end::Header-->
                                         <!--begin::Body-->
                                         <div class="container">
-                                            <span class="text-muted fs-5">Here are your order details. We
-                                                thank you for your purchase.</span>
-                                            <div class="pb-6">
+                                            {{-- <span class="text-muted fs-5">Here are your order details. We
+                                                thank you for your purchase.</span> --}}
+                                            <div class="">
                                                 <!--begin::Wrapper-->
                                                 <div class="d-flex flex-column gap-7 gap-md-10">
 
@@ -229,13 +233,10 @@
                                                     <!--begin::Separator-->
                                                     <!--begin::Order details-->
                                                     <div class="row">
-                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-4"> <span
-                                                                class="text-muted">Order
-                                                                ID</span>
-                                                            <span class="fs-5">#{{$order->order_id}}</span>
-                                                            </br><span class="text-muted">Mobile No</span>
-                                                            <span class="fs-5">{{$order->phone}}</span>
-                                                            </br>
+                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                            {{-- </br><span class="text-muted">Mobile No</span>
+                                                            <span class="fs-5">{{$order->phone}}</span> --}}
+                                                            
                                                             <span class="text-muted">Billing Address</span></br>
                                                             <span class="fs-6">{{$user->address1}},
                                                                 <br />{{$user->postcode}},
@@ -244,11 +245,10 @@
 
 
                                                         </div>
-                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-4"
-                                                            style="text-align: right;"> <span
-                                                                class="text-muted">Date</span>
-                                                            <span
-                                                                class="fs-5">{{ $order->created_at->toDayDateTimeString()}}</span><br>
+                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-6"
+                                                            style="text-align: right;">
+                                                            {{-- <span
+                                                                class="fs-5">{{ $order->created_at->toDayDateTimeString()}}</span><br> --}}
                                                             <span class="text-muted">Shipping Address</span></br>
                                                             <span class="fs-6">{{$user->address2}},
                                                                 <br />{{$user->postcode}},
@@ -266,7 +266,7 @@
                                                 <!--begin:Order summary-->
                                                 <div class="d-flex justify-content-between flex-column">
                                                     <!--begin::Table-->
-                                                    <div class="table-responsive border-bottom mb-9">
+                                                    <div class="table-responsive border-bottom mb-0">
                                                         <table
                                                             class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
                                                             <thead>
@@ -277,7 +277,7 @@
                                                                     <th class="min-w-100px text-end pb-2">Total</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody class="fw-bold text-gray-600">
+                                                            <tbody class="fw-bold text-gray-600 pb-0">
                                                                 <!--begin::Products-->
                                                                 @foreach($order['orderProduct'] as $row)
                                                                 @php
@@ -287,12 +287,12 @@
                                                                 @endphp
                                                                 <tr>
                                                                     <!--begin::Product-->
-                                                                    <td>
+                                                                    <td class="pb-0 pt-0">
                                                                         <div class="d-flex align-items-center">
                                                                             <!--begin::Thumbnail-->
                                                                             <img alt="Logo"
                                                                                 src="{{asset('public/assets/images/product/'.$product->image)}}"
-                                                                                class="w-50" />
+                                                                                class="w-55px" />
                                                                             <!-- <a href="#" class="symbol symbol-50px">
 																				<img alt="Logo" src="{{asset('assets/images/product/'.$product->image)}}" class="w-100" />
 																				</a> -->
@@ -301,21 +301,21 @@
                                                                             <div class="ms-5">
                                                                                 <div class="fw-bolder">
                                                                                     {{$row->product_name}}</div>
-                                                                                <div class="fs-7 text-muted">Delivery
-                                                                                    Date:{{ $order->delivery_date->format('d/m/Y')}}</div>
+                                                                                {{-- <div class="fs-7 text-muted">Delivery
+                                                                                    Date:{{ $order->delivery_date->format('d/m/Y')}}</div> --}}
                                                                             </div>
                                                                             <!--end::Title-->
                                                                         </div>
                                                                     </td>
                                                                     <!--end::Product-->
                                                                     <!--begin::SKU-->
-                                                                    <td class="text-end">{{$row->model_no}}</td>
+                                                                    <td class="text-end pb-0 pt-0">{{$row->model_no}}</td>
                                                                     <!--end::SKU-->
                                                                     <!--begin::Quantity-->
-                                                                    <td class="text-end">{{$row->quantity}}</td>
+                                                                    <td class="text-end pb-0 pt-0">{{$row->quantity}}</td>
                                                                     <!--end::Quantity-->
                                                                     <!--begin::Total-->
-                                                                    <td class="text-end">
+                                                                    <td class="text-end pb-0 pt-0">
                                                                         {{$gs->currency}}&nbsp;&nbsp;{{$row->quantity*$row->price}}
                                                                     </td>
                                                                     <!--end::Total-->
@@ -384,7 +384,7 @@
                                         </div>
                                         <!--end::Body-->
                                         <!-- begin::Footer-->
-                                        <div class="d-flex flex-stack flex-wrap mt-lg-20 pt-13">
+                                        <div class="d-flex flex-stack flex-wrap mt-lg-20 pt-0">
                                             <!-- begin::Actions-->
                                             <div class="my-1 me-5">
                                                 <!-- begin::Pint-->
