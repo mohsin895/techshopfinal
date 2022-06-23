@@ -101,7 +101,7 @@
                                 <label class="required fs-5 fw-bold mb-2">Update Delivery Date</label>
                                 <!--end::Label-->
                                 <!--end::Input-->
-                                <input type="date" class="form-control form-control-solid" 
+                                <input type="date" class="form-control form-control-solid"
                                     name="delivery_date" value="{{ $row->delivery_date->format('d/m/Y')}}" required/>
                                 <!--end::Input-->
                             </div>
@@ -110,10 +110,10 @@
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2">Comment</label>
+                            <label class="fs-5 fw-bold mb-2">Comment</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid" placeholder="" name="comment" />
+                            <input type="text" class="form-control form-control-solid" value="{{ $row->comment }}" name="comment" />
                             <!--end::Input-->
                         </div>
                         <!--end::Input group-->
