@@ -29,42 +29,42 @@ class EventController extends Controller
     {
         $role = Role::find(Auth::guard('admin')->user()->role_id);
         if ($role->hasPermissionTo('event_index')) {
-      $permissions = Role::findByName($role->name)->permissions;
-        $data['title']="Admin Dashboard";
-        $data['table']="Event";
-        $data['add_title'] = "Add Event";
-        $data['event'] = Event::get();
-    return view('admin.event.index',$data);
-} else
-return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+            $permissions = Role::findByName($role->name)->permissions;
+            $data['title']="Admin Dashboard";
+            $data['table']="Event";
+            $data['add_title'] = "Add Event";
+            $data['event'] = Event::get();
+            return view('admin.event.index',$data);
+        } else
+        return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
-public function add()
-{ 
-    $role = Role::find(Auth::guard('admin')->user()->role_id);
+    public function add()
+    { 
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
         if ($role->hasPermissionTo('event_add')) {
- $permissions = Role::findByName($role->name)->permissions;
-    $data['title']="Admin Dashboard";
-    $data['table']="Show Event";
-   return view('admin.event.add',$data);
-} else
-return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
-}
+            $permissions = Role::findByName($role->name)->permissions;
+            $data['title']="Admin Dashboard";
+            $data['table']="Show Event";
+            return view('admin.event.add',$data);
+        } else
+        return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+    }
 
     public function status($id, $status)
     {
         $role = Role::find(Auth::guard('admin')->user()->role_id);
         if ($role->hasPermissionTo('category_status')) {
             $permissions = Role::findByName($role->name)->permissions;
-        $data = Event::find($id);
-        $data->status = $status;
-        if ($data->save()){
-            echo "1";
-        }else{
-            echo "0";
-        }
+            $data = Event::find($id);
+            $data->status = $status;
+            if ($data->save()){
+                echo "1";
+            }else{
+                echo "0";
+            }
 
-    } else
-    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+        } else
+        return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
     public function insert(Request $request)
@@ -76,20 +76,21 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data->event_purpose = $request['event_purpose']; 
         $data->event_cost = $request['event_cost']; 
         $data->save(); 
-       return redirect('/admin/event')->with('flash_message_success','Event added successfully');
+        return redirect('/admin/event')->with('flash_message_success','Event added successfully');
     }
 
     public function edit($id)
     { $role = Role::find(Auth::guard('admin')->user()->role_id);
         if ($role->hasPermissionTo('event_edit')) {
             $permissions = Role::findByName($role->name)->permissions;
-        $data['title']="Admin Dashboard";
-        $data['table']="Show Event";
-        $data['add']="Add Event";
-        $data['add_title'] = "Edit Event";
-        $data['event'] = Event::find($id);
-       return view('admin.event.edit',$data);} else
-       return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+            $data['title']="Admin Dashboard";
+            $data['table']="Show Event";
+            $data['add']="Add Event";
+            $data['add_title'] = "Edit Event";
+            $data['event'] = Event::find($id);
+            return view('admin.event.edit',$data);
+        } else
+        return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
 
     }
 
@@ -109,12 +110,12 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $role = Role::find(Auth::guard('admin')->user()->role_id);
         if ($role->hasPermissionTo('event_delete')) {
             $permissions = Role::findByName($role->name)->permissions;
-      $data = Event::find($id);
-    $data->delete();
-    return back()->with('flash_message_success','Event has delete successfully');
+            $data = Event::find($id);
+            $data->delete();
+            return back()->with('flash_message_success','Event has delete successfully');
 
-} else
-return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+        } else
+        return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
 
@@ -184,6 +185,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         // download PDF file with download method
      
       }
+
 
     public function last12MonthOrderData ()
  {
@@ -381,6 +383,120 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
   
   return response()->json($individualReport);
  }
+
+
+ //event and order count by month function starts 
+
+ public function last12MonthEventOrderData(Type $var = null)
+ {
+    $individualReport = [];
+    $today_date = Carbon::now()->format('d');
+  
+    for ($i=11; $i>=0; $i--) {  
+      
+        // $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
+        //                 ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
+        //                 ->get();   // gets only the data from previous month
+  
+        // $Event = Event::whereMonth('event_date', '=', Carbon::now()->subMonth($i)->month)
+        //                 ->whereYear('event_date', '=', Carbon::now()->subMonth($i)->year)
+        //                 ->get();   // gets only the data from previous month
+
+        $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i)));
+        
+        //$numberofFriday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "fri");
+        //$numberofSaturday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "sat");
+  
+        // $totalWorkDay = $DaysInMonth - count($numberofFriday) - count($numberofSaturday);
+        // $totalOrder = 0;
+        // $avgOrder = 0;
+
+        
+
+        $orderArray = [];
+        $eventArray = [];
+        $userArray = [];
+        $dayesOfMonth = [];
+        $orderMonths = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year);
+        $eventMonths = Event::whereMonth('event_date', '=', Carbon::now()->subMonth($i)->month)->whereYear('event_date', '=', Carbon::now()->subMonth($i)->year);
+        $userMonths = User::where('status', 1);
+        for ($j=0; $j < $DaysInMonth; $j++) { 
+  
+            array_push($dayesOfMonth, ($j+1));
+
+            // order count start
+            $sub = DB::table(DB::raw("({$orderMonths->toSql()}) as sub"))
+                      ->mergeBindings($orderMonths->getQuery())
+                      ->whereDay('created_at', '=', ($j+1))
+                      ->count();
+            if ($sub != 0) {
+                array_push($orderArray, ($sub));
+                // $totalOrder+=($sub);
+            } 
+            else {
+                array_push($orderArray, "N/A");
+            }
+            // order count ends
+
+            // event count start
+            $subEvent = DB::table( DB::raw("({$eventMonths->toSql()}) as sub"))
+                      ->mergeBindings($eventMonths->getQuery())
+                      ->whereDay('event_date', '=', ($j+1))
+                      ->count(); 
+            if ($subEvent != 0) {
+                array_push($eventArray, ($subEvent));
+            } 
+            else {
+                array_push($eventArray, "N/A");
+            }
+            // event count ends
+
+            $date = Carbon::createFromFormat('d/m/Y', ($j+1) . "/" . Carbon::now()->subMonth($i)->month . "/" . Carbon::now()->subMonth($i)->year);
+            $subUser = DB::table( DB::raw("({$userMonths->toSql()}) as sub"))
+                      ->mergeBindings($userMonths->getQuery())
+                      ->where('updated_at', '<=', $date )
+                      ->count(); 
+                      
+            if ($subUser != 0) {
+                array_push($userArray, ($subUser));
+            } 
+            else {
+                array_push($userArray, "N/A");
+            }
+
+        }
+
+        if ($i == 0) {
+          array_push($individualReport, [
+            'month' => [$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i))],
+            // 'totalOrder' => $totalOrder,
+            'dayesOfMonth' => $dayesOfMonth,
+            'orderArray' => $orderArray,
+            'eventArray' => $eventArray,
+            'userArray' => $userArray
+            // 'avgOrder' => $totalOrder/$today_date
+        ]);
+        } else {
+          array_push($individualReport, [
+            'month' => [$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i))],
+            // 'totalOrder' => $totalOrder,
+            'dayesOfMonth' => $dayesOfMonth,
+            'eventArray' => $eventArray,
+            'orderArray' => $orderArray,
+            'userArray' => $userArray
+            // 'avgOrder' => $totalOrder/$DaysInMonth
+        ]);
+        }
+        
+        // $totalOrder = 0;
+        $orderArray = [];
+        $eventArray = [];
+        $userArray = [];
+      }
+    return response()->json($individualReport);
+  }
+ //event and order count by month function ends 
+
 
  public function getMonth($time)
  {

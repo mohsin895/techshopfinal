@@ -49,7 +49,7 @@
                                 </span>
 
                             </div>
-                            <input type="number" name="phone" class="form-control" id="r_email"
+                            <input type="text" name="phone" class="form-control" id="r_email"
                                 placeholder="Enter your Mobile Number">
                             <div class="invalid-feedback">This email field is required</div>
 
@@ -62,8 +62,8 @@
                                 </span>
 
                             </div>
-                            <input type="date" name="date_of_birth" class="form-control" id="r_email"
-                                placeholder="Enter your Email">
+                            <input type="text" name="date_of_birth" class="form-control" id="date"
+                                placeholder="Enter your Date of Birth" onfocus="(this.type = 'date')">
                             <div class="invalid-feedback">This email field is required</div>
 
 

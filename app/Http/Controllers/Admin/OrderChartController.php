@@ -140,9 +140,9 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
   for ($i=11; $i>=0; $i--) {  
     
-      $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
-                      ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
-                      ->get();   // gets only the data from previous month
+      // $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
+      //                 ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
+      //                 ->get();   // gets only the data from previous month
 
       $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i)));
 
@@ -210,9 +210,9 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
   for ($i=11; $i>=0; $i--) {  
     
-      $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
-                      ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
-                      ->get();   // gets only the data from previous month
+      // $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
+      //                 ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
+      //                 ->get();   // gets only the data from previous month
 
       $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i)));
 
@@ -276,9 +276,9 @@ $data['current_year_orders'] = Order::whereYear('created_at',Carbon::now()->year
 
   for ($i=11; $i>=0; $i--) {  
     
-      $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
-                      ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
-                      ->get();   // gets only the data from previous month
+      // $Order = Order::whereMonth('created_at', '=', Carbon::now()->subMonth($i)->month)
+      //                 ->whereYear('created_at', '=', Carbon::now()->subMonth($i)->year)
+      //                 ->get();   // gets only the data from previous month
       $DaysInMonth = cal_days_in_month(CAL_GREGORIAN,$this->getMonth(Carbon::now()->subMonth($i)),$this->getYear(Carbon::now()->subMonth($i)));
 
       //$numberofFriday = $this->countAnydays($this->getMonth($attendance[0]->created_at),$this->getYear($attendance[0]->created_at), "fri");

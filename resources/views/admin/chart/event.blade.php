@@ -621,7 +621,14 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
                                 <!--begin::Body-->
                                 <div class="card-body">
                                     <!--begin::Chart-->
-                                    <div id="kt_charts_widget_1_chart" style="height: 350px"></div>
+                                    {{-- <div id="kt_charts_widget_1_chart" style="height: 350px"></div> --}}
+                                    <div class="swiper mySwiper">
+                                        <div class="swiper-wrapper monthEventOrderReport">
+                                          
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                      </div>
                                     <!--end::Chart-->
                                 </div>
                                 <!--end::Body-->
@@ -655,254 +662,457 @@ $order22 = App\Models\Order::where('order_date',$orderDateString22)->count('id')
 @endsection
 
 @push('order_js')
+
+<!-- Chart Js -->
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Swiper JS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
 <script>
 
+    //Initialize Swiper JS Start
 
+    var swiper = new Swiper(".mySwiper", {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    initialSlide: 12, // first active initialized to slide 3
+  });
+
+// Swiper JS end
    
 
+let monthEventOrderReport = document.querySelector('.monthEventOrderReport');
+
+function getMonthName(month) {
+    const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+    return monthNames[month-1];
+}
   
 
+$.ajax({
+    type: "get",
+    url: "../event/last12MonthEventOrderData",
+    dataType: "json",
+    success: function (response) {
+        
+        for (const IR of response) {
+            const individualGraphDiv = document.createElement("div");
+            individualGraphDiv.className = "swiper-slide"
+            individualGraphDiv.innerHTML = `
+
+            <canvas id="kt_charts_widget_` +(IR.month[0])+ `` +(IR.month[1])+ `_chart" style="width:100%; padding: 15px; height: 450px"></canvas>
+            <h5 class="text-center pt-3 monthWorkReportMY" style="color: #002db3;">` + getMonthName(IR.month[0]) + `, 20`+ IR.month[1] + `</h5>`
+            
+            monthEventOrderReport.append(individualGraphDiv);
+
+            
+            new Chart("kt_charts_widget_"+(IR.month[0])+""+(IR.month[1])+"_chart", {
+                data: {
+                    labels: IR.dayesOfMonth,
+                    datasets: [ {
+                        type: 'line',
+                        label: 'Event',
+                        data: IR.eventArray,
+                        fill: false,
+                        showLine:false,
+                        backgroundColor: 'red',
+                        radius: 4
+                    }, {
+                        type: 'line',
+                        label: 'User',
+                        data: IR.userArray,
+                        fill: false,
+                        borderColor: '#DAD6FE',
+                        backgroundColor: '#6958FE',
+                        radius: 4
+                    }, {
+                        type: 'bar',
+                        label: 'Order',
+                        data: IR.orderArray,
+                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: '#98F7AB',
+                        barThickness: 15
+                    }]
+                }
+                
+            });
+
+            
+        //     var element = document.getElementById("kt_charts_widget_"+(IR.month[0])+ "" +(IR.month[1])+"_chart");
+
+        //     var height = parseInt(KTUtil.css(element, 'height'));
+        //     var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        //     var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
+        //     var baseColor = KTUtil.getCssVariableValue('--bs-primary');
+        //     var secondaryColor = KTUtil.getCssVariableValue('--bs-danger');
+        //     var secondaryColor2 = KTUtil.getCssVariableValue('--bs-warning');
+
+        //     if (!element) {
+        //         return;
+        //     }
+
+        //     var options = {
+        //         series: [{
+        //             name: 'Number of Order',
+        //             data: IR.orderArray
+        //         }, {
+        //             name: 'Number of Event',
+        //             data: IR.eventArray
+        //         },
+        //         {
+        //             name: 'Number of Users',
+        //             data: IR.userArray
+        //         }],
+        //         chart: {
+        //             fontFamily: 'inherit',
+        //             type: 'bar',
+        //             height: height,
+        //             toolbar: {
+        //                 show: false
+        //             }
+        //         },
+        //         plotOptions: {
+        //             bar: {
+        //                 horizontal: false,
+        //                 columnWidth: ['30%'],
+        //                 borderRadius: 4
+        //             },
+        //         },
+        //         legend: {
+        //             show: false
+        //         },
+        //         dataLabels: {
+        //             enabled: false
+        //         },
+        //         stroke: {
+        //             show: true,
+        //             width: .1,
+        //             colors: ['transparent']
+        //         },
+        //         xaxis: {
+        //             categories: IR.dayesOfMonth,
+        //             axisBorder: {
+        //                 show: false,
+        //             },
+        //             axisTicks: {
+        //                 show: false
+        //             },
+        //             labels: {
+        //                 style: {
+        //                     colors: labelColor,
+        //                     fontSize: '12px'
+        //                 }
+        //             }
+        //         },
+        //         yaxis: {
+        //             labels: {
+        //                 style: {
+        //                     colors: labelColor,
+        //                     fontSize: '12px'
+        //                 }
+        //             }
+        //         },
+        //         fill: {
+        //             opacity: 1
+        //         },
+        //         states: {
+        //             normal: {
+        //                 filter: {
+        //                     type: 'none',
+        //                     value: 0
+        //                 }
+        //             },
+        //             hover: {
+        //                 filter: {
+        //                     type: 'none',
+        //                     value: 0
+        //                 }
+        //             },
+        //             active: {
+        //                 allowMultipleDataPointsSelection: false,
+        //                 filter: {
+        //                     type: 'none',
+        //                     value: 0
+        //                 }
+        //             }
+        //         },
+        //         tooltip: {
+        //             style: {
+        //                 fontSize: '12px'
+        //             },
+        //             y: {
+        //                 formatter: function (val) {
+        //                     return  val 
+        //                 }
+        //             }
+        //         },
+        //         colors: [baseColor, secondaryColor, secondaryColor2],
+        //         grid: {
+        //             borderColor: borderColor,
+        //             strokeDashArray: 4,
+        //             yaxis: {
+        //                 lines: {
+        //                     show: true
+        //                 }
+        //             }
+        //         }
+        //     };
+
+        //     var chart = new ApexCharts(element, options);
+        //     chart.render();      
+        }   
+        
+
+    }
+});
     // Charts widgets
-    var initChartsWidget1 = function() {
-        var element = document.getElementById("kt_charts_widget_1_chart");
+    // var initChartsWidget1 = function() {
+    //     var element = document.getElementById("kt_charts_widget_1_chart");
 
-        var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
-        var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
-        var baseColor = KTUtil.getCssVariableValue('--bs-danger');
-        var secondaryColor = KTUtil.getCssVariableValue('--bs-primary');
+    //     var height = parseInt(KTUtil.css(element, 'height'));
+    //     var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+    //     var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
+    //     var baseColor = KTUtil.getCssVariableValue('--bs-danger');
+    //     var secondaryColor = KTUtil.getCssVariableValue('--bs-primary');
 
-        if (!element) {
-            return;
-        }
+    //     if (!element) {
+    //         return;
+    //     }
 
-        var options = {
-            series: [{
-                name: 'Event Number',
-                data: [{{$event1}}, {{$event2}}, {{$event3}}, {{$event4}}, {{$event5}}, {{$event6}}, {{$event7}}, {{$event8}}, {{$event9}}, {{$event10}}, {{$event11}}, {{$event12}}, {{$event13}}, {{$event14}}, {{$event15}}, {{$event16}}, {{$event17}}, {{$event18}}, {{$event19}}, {{$event20}}, {{$event21}}, {{$event22}}]
-            }, {
-                name: 'Order Number',
-                data: [{{$order1}},{{$order2}},{{$order3}},{{$order4}},{{$order5}},{{$order6}},{{$order7}},{{$order8}},{{$order9}},{{$order10}},{{$order11}},{{$order12}},{{$order13}},{{$order14}},{{$order15}},{{$order16}},{{$order17}},{{$order18}},{{$order19}},{{$order20}},{{$order21}},{{$order22}}]
-            }],
-            chart: {
-                fontFamily: 'inherit',
-                type: 'bar',
-                height: height,
-                toolbar: {
-                    show: false
-                }
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: ['30%'],
-                    borderRadius: 4
-                },
-            },
-            legend: {
-                show: false
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: ['{{$mytime11}}', '{{$mytime22}}', '{{$mytime23}}', '{{$mytime24}}', '{{$mytime25}}', '{{$mytime26}}','{{$mytime27}}','{{$mytime28}}','{{$mytime29}}','{{$mytime31}}','{{$mytime32}}','{{$mytime33}}','{{$mytime34}}','{{$mytime35}}','{{$mytime36}}','{{$mytime37}}','{{$mytime38}}','{{$mytime39}}','{{$mytime40}}','{{$mytime41}}','{{$mytime42}}','{{$mytime43}}'],
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false
-                },
-                labels: {
-                    style: {
-                        colors: labelColor,
-                        fontSize: '12px'
-                    }
-                }
-            },
-            yaxis: {
-                labels: {
-                    style: {
-                        colors: labelColor,
-                        fontSize: '12px'
-                    }
-                }
-            },
-            fill: {
-                opacity: 1
-            },
-            states: {
-                normal: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                hover: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                active: {
-                    allowMultipleDataPointsSelection: false,
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                }
-            },
-            tooltip: {
-                style: {
-                    fontSize: '12px'
-                },
-                y: {
-                    formatter: function (val) {
-                        return  val 
-                    }
-                }
-            },
-            colors: [baseColor, secondaryColor],
-            grid: {
-                borderColor: borderColor,
-                strokeDashArray: 4,
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                }
-            }
-        };
+    //     var options = {
+    //         series: [{
+    //             name: 'Event Number',
+    //             data: [{{$event1}}, {{$event2}}, {{$event3}}, {{$event4}}, {{$event5}}, {{$event6}}, {{$event7}}, {{$event8}}, {{$event9}}, {{$event10}}, {{$event11}}, {{$event12}}, {{$event13}}, {{$event14}}, {{$event15}}, {{$event16}}, {{$event17}}, {{$event18}}, {{$event19}}, {{$event20}}, {{$event21}}, {{$event22}}]
+    //         }, {
+    //             name: 'Order Number',
+    //             data: [{{$order1}},{{$order2}},{{$order3}},{{$order4}},{{$order5}},{{$order6}},{{$order7}},{{$order8}},{{$order9}},{{$order10}},{{$order11}},{{$order12}},{{$order13}},{{$order14}},{{$order15}},{{$order16}},{{$order17}},{{$order18}},{{$order19}},{{$order20}},{{$order21}},{{$order22}}]
+    //         }],
+    //         chart: {
+    //             fontFamily: 'inherit',
+    //             type: 'bar',
+    //             height: height,
+    //             toolbar: {
+    //                 show: false
+    //             }
+    //         },
+    //         plotOptions: {
+    //             bar: {
+    //                 horizontal: false,
+    //                 columnWidth: ['30%'],
+    //                 borderRadius: 4
+    //             },
+    //         },
+    //         legend: {
+    //             show: false
+    //         },
+    //         dataLabels: {
+    //             enabled: false
+    //         },
+    //         stroke: {
+    //             show: true,
+    //             width: 2,
+    //             colors: ['transparent']
+    //         },
+    //         xaxis: {
+    //             categories: ['{{$mytime11}}', '{{$mytime22}}', '{{$mytime23}}', '{{$mytime24}}', '{{$mytime25}}', '{{$mytime26}}','{{$mytime27}}','{{$mytime28}}','{{$mytime29}}','{{$mytime31}}','{{$mytime32}}','{{$mytime33}}','{{$mytime34}}','{{$mytime35}}','{{$mytime36}}','{{$mytime37}}','{{$mytime38}}','{{$mytime39}}','{{$mytime40}}','{{$mytime41}}','{{$mytime42}}','{{$mytime43}}'],
+    //             axisBorder: {
+    //                 show: false,
+    //             },
+    //             axisTicks: {
+    //                 show: false
+    //             },
+    //             labels: {
+    //                 style: {
+    //                     colors: labelColor,
+    //                     fontSize: '12px'
+    //                 }
+    //             }
+    //         },
+    //         yaxis: {
+    //             labels: {
+    //                 style: {
+    //                     colors: labelColor,
+    //                     fontSize: '12px'
+    //                 }
+    //             }
+    //         },
+    //         fill: {
+    //             opacity: 1
+    //         },
+    //         states: {
+    //             normal: {
+    //                 filter: {
+    //                     type: 'none',
+    //                     value: 0
+    //                 }
+    //             },
+    //             hover: {
+    //                 filter: {
+    //                     type: 'none',
+    //                     value: 0
+    //                 }
+    //             },
+    //             active: {
+    //                 allowMultipleDataPointsSelection: false,
+    //                 filter: {
+    //                     type: 'none',
+    //                     value: 0
+    //                 }
+    //             }
+    //         },
+    //         tooltip: {
+    //             style: {
+    //                 fontSize: '12px'
+    //             },
+    //             y: {
+    //                 formatter: function (val) {
+    //                     return  val 
+    //                 }
+    //             }
+    //         },
+    //         colors: [baseColor, secondaryColor],
+    //         grid: {
+    //             borderColor: borderColor,
+    //             strokeDashArray: 4,
+    //             yaxis: {
+    //                 lines: {
+    //                     show: true
+    //                 }
+    //             }
+    //         }
+    //     };
 
-        var chart = new ApexCharts(element, options);
-        chart.render();      
-    }
+    //     var chart = new ApexCharts(element, options);
+    //     chart.render();      
+    // }
 
   
-    var initChartsWidget2 = function() {
-        var element = document.getElementById("kt_charts_widget_2_chart");
+    // var initChartsWidget2 = function() {
+    //     var element = document.getElementById("kt_charts_widget_2_chart");
 
-        var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
-        var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
-        var baseColor = KTUtil.getCssVariableValue('--bs-danger');
-        var secondaryColor = KTUtil.getCssVariableValue('--bs-primary');
+    //     var height = parseInt(KTUtil.css(element, 'height'));
+    //     var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+    //     var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
+    //     var baseColor = KTUtil.getCssVariableValue('--bs-danger');
+    //     var secondaryColor = KTUtil.getCssVariableValue('--bs-primary');
 
-        if (!element) {
-            return;
-        }
+    //     if (!element) {
+    //         return;
+    //     }
 
-        var options = {
-            series: [{
-                name: 'Event Number',
-                data: [{{$event1}}, {{$event2}}, {{$event3}}, {{$event4}}, {{$event5}}, {{$event6}}, {{$event7}}, {{$event8}}, {{$event9}}, {{$event10}}, {{$event11}}, {{$event12}}, {{$event13}}, {{$event14}}, {{$event15}}, {{$event16}}, {{$event17}}, {{$event18}}, {{$event19}}, {{$event20}}, {{$event21}}, {{$event22}}]
-            }, {
-                name: 'Order Number',
-                data: [{{$order1}},{{$order2}},{{$order3}},{{$order4}},{{$order5}},{{$order6}},{{$order7}},{{$order8}},{{$order9}},{{$order10}},{{$order11}},{{$order12}},{{$order13}},{{$order14}},{{$order15}},{{$order16}},{{$order17}},{{$order18}},{{$order19}},{{$order20}},{{$order21}},{{$order22}}]
-            }],
-            chart: {
-                fontFamily: 'inherit',
-                type: 'bar',
-                height: height,
-                toolbar: {
-                    show: false
-                }
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: ['30%'],
-                    borderRadius: 4
-                },
-            },
-            legend: {
-                show: false
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: ['{{$mytime11}}', '{{$mytime22}}', '{{$mytime23}}', '{{$mytime24}}', '{{$mytime25}}', '{{$mytime26}}','{{$mytime27}}','{{$mytime28}}','{{$mytime29}}','{{$mytime31}}','{{$mytime32}}','{{$mytime33}}','{{$mytime34}}','{{$mytime35}}','{{$mytime36}}','{{$mytime37}}','{{$mytime38}}','{{$mytime39}}','{{$mytime40}}','{{$mytime41}}','{{$mytime42}}','{{$mytime43}}'],
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false
-                },
-                labels: {
-                    style: {
-                        colors: labelColor,
-                        fontSize: '12px'
-                    }
-                }
-            },
-            yaxis: {
-                labels: {
-                    style: {
-                        colors: labelColor,
-                        fontSize: '12px'
-                    }
-                }
-            },
-            fill: {
-                opacity: 1
-            },
-            states: {
-                normal: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                hover: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                active: {
-                    allowMultipleDataPointsSelection: false,
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                }
-            },
-            tooltip: {
-                style: {
-                    fontSize: '12px'
-                },
-                y: {
-                    formatter: function (val) {
-                        return  val 
-                    }
-                }
-            },
-            colors: [baseColor, secondaryColor],
-            grid: {
-                borderColor: borderColor,
-                strokeDashArray: 4,
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                }
-            }
-        };
+    //     var options = {
+    //         series: [{
+    //             name: 'Event Number',
+    //             data: [{{$event1}}, {{$event2}}, {{$event3}}, {{$event4}}, {{$event5}}, {{$event6}}, {{$event7}}, {{$event8}}, {{$event9}}, {{$event10}}, {{$event11}}, {{$event12}}, {{$event13}}, {{$event14}}, {{$event15}}, {{$event16}}, {{$event17}}, {{$event18}}, {{$event19}}, {{$event20}}, {{$event21}}, {{$event22}}]
+    //         }, {
+    //             name: 'Order Number',
+    //             data: [{{$order1}},{{$order2}},{{$order3}},{{$order4}},{{$order5}},{{$order6}},{{$order7}},{{$order8}},{{$order9}},{{$order10}},{{$order11}},{{$order12}},{{$order13}},{{$order14}},{{$order15}},{{$order16}},{{$order17}},{{$order18}},{{$order19}},{{$order20}},{{$order21}},{{$order22}}]
+    //         }],
+    //         chart: {
+    //             fontFamily: 'inherit',
+    //             type: 'bar',
+    //             height: height,
+    //             toolbar: {
+    //                 show: false
+    //             }
+    //         },
+    //         plotOptions: {
+    //             bar: {
+    //                 horizontal: false,
+    //                 columnWidth: ['30%'],
+    //                 borderRadius: 4
+    //             },
+    //         },
+    //         legend: {
+    //             show: false
+    //         },
+    //         dataLabels: {
+    //             enabled: false
+    //         },
+    //         stroke: {
+    //             show: true,
+    //             width: 2,
+    //             colors: ['transparent']
+    //         },
+    //         xaxis: {
+    //             categories: ['{{$mytime11}}', '{{$mytime22}}', '{{$mytime23}}', '{{$mytime24}}', '{{$mytime25}}', '{{$mytime26}}','{{$mytime27}}','{{$mytime28}}','{{$mytime29}}','{{$mytime31}}','{{$mytime32}}','{{$mytime33}}','{{$mytime34}}','{{$mytime35}}','{{$mytime36}}','{{$mytime37}}','{{$mytime38}}','{{$mytime39}}','{{$mytime40}}','{{$mytime41}}','{{$mytime42}}','{{$mytime43}}'],
+    //             axisBorder: {
+    //                 show: false,
+    //             },
+    //             axisTicks: {
+    //                 show: false
+    //             },
+    //             labels: {
+    //                 style: {
+    //                     colors: labelColor,
+    //                     fontSize: '12px'
+    //                 }
+    //             }
+    //         },
+    //         yaxis: {
+    //             labels: {
+    //                 style: {
+    //                     colors: labelColor,
+    //                     fontSize: '12px'
+    //                 }
+    //             }
+    //         },
+    //         fill: {
+    //             opacity: 1
+    //         },
+    //         states: {
+    //             normal: {
+    //                 filter: {
+    //                     type: 'none',
+    //                     value: 0
+    //                 }
+    //             },
+    //             hover: {
+    //                 filter: {
+    //                     type: 'none',
+    //                     value: 0
+    //                 }
+    //             },
+    //             active: {
+    //                 allowMultipleDataPointsSelection: false,
+    //                 filter: {
+    //                     type: 'none',
+    //                     value: 0
+    //                 }
+    //             }
+    //         },
+    //         tooltip: {
+    //             style: {
+    //                 fontSize: '12px'
+    //             },
+    //             y: {
+    //                 formatter: function (val) {
+    //                     return  val 
+    //                 }
+    //             }
+    //         },
+    //         colors: [baseColor, secondaryColor],
+    //         grid: {
+    //             borderColor: borderColor,
+    //             strokeDashArray: 4,
+    //             yaxis: {
+    //                 lines: {
+    //                     show: true
+    //                 }
+    //             }
+    //         }
+    //     };
 
-        var chart = new ApexCharts(element, options);
-        chart.render();      
-    }
+    //     var chart = new ApexCharts(element, options);
+    //     chart.render();      
+    // }
    
 
 

@@ -3,6 +3,29 @@
 @section('content')
 @include('layout.front.detail_header')
 
+<style>
+    .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+}
+
+.control, fieldset {
+  margin: 6px 0;
+}
+
+label {
+  display: inline-block;
+  width: 120px;
+  vertical-align: top;
+}
+
+.required {
+  color: red;
+}
+</style>
 <div id="shipping" class=" ">
     <div class="content-section shippingorder shippingcheckout tab-margin-fix">
         <div class="address-section d-flex justify-content-between">
@@ -18,20 +41,20 @@
                             <button type="button" class="btn js--btn-shipping"><i class="fa fa-angle-up"></i></button>
                         </div>
                         <div class="card-body js--shipping-body">
-                            <p class="body-title">Fill out your information</p>
+                            <p class="body-title">Fill out your information  (<span class="required">*</span>Required)</p>
                             <form action="{{route('user.checkout')}}" method="post">
                                 @csrf
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6 col-lg-6">
-                                        <label for="inputEmail4">Name</label>
+                                        <label for="inputEmail4">Name<span class="required">*</span></label>
                                         <input type="text" id="name" name="name" placeholder="Name"
-                                            value="{{Auth::user()->name}}" class="form-control ">
+                                            value="{{Auth::user()->name}}" class="form-control " required>
                                     </div>
                                     <div class="form-group col-md-6 col-lg-6">
-                                        <label for="inputPassword4">Email</label>
+                                        <label for="inputPassword4">Email<span class="required">*</span></label>
                                         <input type="email" name="email" placeholder="Email"
-                                            value="{{Auth::user()->email}}" class="form-control " disabled>
+                                            value="{{Auth::user()->email}}" class="form-control " disabled required>
                                     </div>
                                 </div>
 
@@ -46,14 +69,14 @@
                                 <!-- <input id="discount_value" type="hidden" value="0" /> -->
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Mobile Number</label>
+                                        <label for="inputEmail4">Mobile Number<span class="required">*</span></label>
                                         <input type="text" id="phone" name="phone" placeholder="Phone"
-                                            value="{{Auth::user()->phone}}" class="form-control">
+                                            value="{{Auth::user()->phone}}" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Country</label>
+                                        <label for="inputPassword4">Country<span class="required">*</span></label>
                                         <input type="text" id="country" name="country" value="Bangladesh"
-                                            class="form-control">
+                                            class="form-control" required>
                                     </div>
                                 </div>
 
@@ -65,12 +88,12 @@
                                 </div> -->
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">City</label>
+                                        <label for="inputEmail4">City<span class="required">*</span></label>
                                         <input type="text" id="city" name="city" placeholder="City"
                                             value="{{Auth::user()->city}}" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Post Code</label>
+                                        <label for="inputPassword4">Post Code<span class="required">*</span></label>
                                         <input type="text" id="postCode" name="postcode" placeholder="Post Code"
                                             value="{{Auth::user()->postcode}}" class="form-control" required>
                                     </div>
@@ -84,12 +107,12 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6 ">
-                                        <label for="inputEmail4">Address1</label>
+                                        <label for="inputEmail4">Billing Address<span class="required">*</span></label>
                                         <textarea rows="2" class="form-control" name="address1" placeholder="Address1"
                                             id="address1" required>{{Auth::user()->address1}}</textarea>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Address2</label>
+                                        <label for="inputPassword4">Shipping Address<span class="required">*</span></label>
                                         <textarea rows="2" class="form-control" name="address2" placeholder="Address2"
                                             id="address2" required>{{Auth::user()->address2}}</textarea>
                                     </div>
