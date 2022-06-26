@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\User;
 use App\Models\OrderStatus;
+use Carbon\carbon;
 use Mail;
 use Auth;
 
@@ -61,6 +62,9 @@ class OrderController extends Controller
         $order=Order::find($id);
         $order->status = $data['status'];
         $order->delivery_date = $data['delivery_date'];
+        $order->admin_comment = $data['comment'];
+        $order->user_comment = $data['user_comment'];
+        $order->last_update_date = Carbon::now();
         $order->save();
         if($order->save()){
             $orderStatus =new OrderStatus();
@@ -69,24 +73,31 @@ class OrderController extends Controller
             $orderStatus->order_date = $request->order_date;
             $orderStatus->delivery_date = $request->delivery_date;
             $orderStatus->comment = $request->comment;
+            $orderStatus->user_comment = $request->user_comment;
             $orderStatus->save();
 
         }
         $user = User::where('id',$order->user_id)->first();
         $order =Order::where('id',$id)->first();
-        // dd($user);
+        $order = json_decode(json_encode($order),true);
+        $orderStatus = OrderStatus::latest()->first();
+        $orderStatus = json_decode(json_encode($orderStatus),true);
+
+        // dd($order);
         $email =$user['email'];
         $status = $data['status'];
-        $orderid =$order['order_id'];
+        $orderid =$request['product_order_id'];
+        $comment =$request['user_comment'];
         $messageData = [
             'email'=>$user['email'],
-            'name'=>$user['name'],
+            'user'=>$user,
             'status' => $data['status'],
-            'order_id' =>$order['order_id'],
+            'order' =>$order,
+            'orderStatus' =>$orderStatus,
             
         ];
          Mail::send('email.order.status',$messageData,function($message) use($email){
-           $message->to($email)->subject('Your Order Update');
+           $message->to($email)->subject('Your Order Update Status');
          });
          return back();
        }

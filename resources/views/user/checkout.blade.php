@@ -7,7 +7,7 @@
     <div class="content-section shippingorder shippingcheckout tab-margin-fix">
         <div class="address-section d-flex justify-content-between">
             <div class="row col-12 col-lg-12 col-md-12 col-sm-12">
-            @include('error.message')
+
 
 
                 <div class="col-12 col-md-8 col-lg-8 col-sm-12 mb-5 cntr">
@@ -240,6 +240,8 @@
 
                                     </form>
                                     <div class="card-body js--shipping-body">
+                                    @include('error.message')
+                                            &nbsp;&nbsp;&nbsp;
 
                                         <form action="{{route('user.cart.applyCoupon')}}" method="POST">
                                             @csrf
@@ -251,6 +253,7 @@
                                                     value=""><button type="submit" class="btn btn-warning">Coupon
                                                 </button>
                                             </div>
+                            
                                         </form>
 
 

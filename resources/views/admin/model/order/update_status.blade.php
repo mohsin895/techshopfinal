@@ -7,6 +7,7 @@
             <form class="form" method="post" action="{{route('admin.order.update.status',$row->id)}}"
                 id="kt_modal_new_address_form">
                 @csrf
+            
                 <!--begin::Modal header-->
                 <div class="modal-header" id="kt_modal_new_address_header">
                     <!--begin::Modal title-->
@@ -38,9 +39,13 @@
                         data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
                         <input type="hidden" class="form-control form-control-solid" name="order_id"
                             value="{{$row->id}}" />
-                        <input type="text" class="form-control form-control-solid" value="{{$row->order_id}}"
+                        <input type="hidden" class="form-control form-control-solid" name="product_order_id" value="{{$row->order_id}}"
                             readonly />
-                        <div class="d-flex flex-column mb-5 fv-row">
+                        
+                        <!--end::Input group-->
+                        <div class="row mb-5">
+
+                        <div class="col-md-6 mb-5 fv-row">
                             <!--begin::Label-->
                             <label class="d-flex align-items-center fs-5 fw-bold mb-2">
                                 <span class="required">Update Status</span>
@@ -71,8 +76,7 @@
                             </select>
                             <!--end::Select-->
                         </div>
-                        <!--end::Input group-->
-                        <div class="row mb-5">
+                        <!-
                             <!--begin::Col-->
                             <div class="col-md-6 fv-row">
 
@@ -92,28 +96,39 @@
                                 <!--end::Label-->
                                 <!--end::Input-->
                                 <input type="text" class="form-control form-control-solid" 
-                                    name="" value="{{ $row->delivery_date->format('d/m/Y')}}" />
+                                    name="" value="{{ $row->last_update_date}}" />
                                 <!--end::Input-->
                             </div>
 
                             <div class="col-md-6 fv-row">
                                 <!--end::Label-->
-                                <label class="required fs-5 fw-bold mb-2">Update Delivery Date</label>
+                                <label class="required fs-5 fw-bold mb-2">Up date Delivery Date</label>
                                 <!--end::Label-->
                                 <!--end::Input-->
                                 <input type="date" class="form-control form-control-solid" 
-                                    name="delivery_date" value="{{ $row->delivery_date->format('d/m/Y')}}" required/>
+                                    name="delivery_date" value="{{ $row->delivery_date->format('Y-m-d')}}" required/>
                                 <!--end::Input-->
                             </div>
+                            <div class="col-md-12 fv-row">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2">Admin Panel Comment</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text" class="form-control form-control-solid" placeholder="" name="comment" value="{{$row->admin_comment}}" />
+                            <!--end::Input-->
+                        </div>
+                         
                             <!--end::Col-->
                         </div>
                         <!--begin::Input group-->
-                        <div class="d-flex flex-column mb-5 fv-row">
+                        
+                         <!--begin::Input group-->
+                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2">Comment</label>
+                            <label class="required fs-5 fw-bold mb-2">User Comment(Send email when update status)</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid" placeholder="" name="comment" />
+                            <input type="text" class="form-control form-control-solid" placeholder="" name="user_comment" value="{{$row->user_comment}}" />
                             <!--end::Input-->
                         </div>
                         <!--end::Input group-->
@@ -127,11 +142,11 @@
                 <!--begin::Modal footer-->
                 <div class="modal-footer flex-center">
                     <!--begin::Button-->
-                    <button type="reset" id="kt_modal_new_address_cancel" class="btn btn-light me-3">Discard</button>
+                    
                     <!--end::Button-->
                     <!--begin::Button-->
                     <button type="submit" id="kt_modal_new_address_submit" class="btn btn-primary">
-                        <span class="indicator-label">Submit</span>
+                        <span class="indicator-label">Update Order Status</span>
                         <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                     </button>

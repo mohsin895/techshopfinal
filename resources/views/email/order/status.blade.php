@@ -2,10 +2,13 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Order Update Email</title>
+    <title>Order Update Status Email</title>
   </head>
   <body>
     <table>
+      <tr>
+        <td>Email:{{$user->email}}</td>
+</tr>
       <tr>
       
       </tr>
@@ -13,21 +16,21 @@
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td>Your Order Status
+        <td>Your Order Status:{{$status}}
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td>Order Id::{{$email}}
+        <td>Order Id::#{{$order['order_id']}}
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td>{{$status}}
+        <td>Message:{{$orderStatus['user_comment']}}
         </td>
       </tr>
       <tr>

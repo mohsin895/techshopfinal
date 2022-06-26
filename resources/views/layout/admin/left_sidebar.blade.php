@@ -1037,7 +1037,7 @@ $expireddateproduct= App\Models\Product::where('expired_date', '<', $expireddate
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
 
-                                <span class="menu-section text-muted text-uppercase fs-8 ls-1">Gift Card</span>
+                                <span class="menu-section text-muted text-uppercase fs-8 ls-1">Coupon Code and Gift Card</span>
 
                                 <span class="menu-arrow"></span>
                             </span>
@@ -1053,6 +1053,13 @@ $expireddateproduct= App\Models\Product::where('expired_date', '<', $expireddate
                     ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
                     ->where([
                     ['permissions.name', 'giftcard_order_view'],
+                    ['role_id', $role->id]
+                    ])->first();
+
+                    $coupon_code_index_permission_active = DB::table('permissions')
+                    ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+                    ->where([
+                    ['permissions.name', 'coupon_code_index'],
                     ['role_id', $role->id]
                     ])->first();
 
@@ -1109,6 +1116,43 @@ $expireddateproduct= App\Models\Product::where('expired_date', '<', $expireddate
                                     <div class="menu-sub menu-sub-accordion">
                                         <div class="menu-item">
                                             <a class="menu-link" href="{{route('admin.giftcard.index')}}">
+                                                <span class="menu-bullet">
+                                                    <span class="bullet bullet-dot"></span>
+                                                </span>
+                                                <span class="menu-title">Add & View</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            @endif
+
+                            @if($coupon_code_index_permission_active)
+                            <div class="menu-sub menu-sub-accordion">
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                    <span class="menu-link">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
+                                                        fill="black" />
+                                                    <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
+                                                        fill="black" />
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-title">Coupon Code</span>
+                                        <span class="menu-arrow"></span>
+                                    </span>
+                                    <div class="menu-sub menu-sub-accordion">
+                                        <div class="menu-item">
+                                            <a class="menu-link" href="{{route('admin.couponcode.index')}}">
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
@@ -1982,42 +2026,7 @@ $expireddateproduct= App\Models\Product::where('expired_date', '<', $expireddate
 
                             </div>
                             @endif
-                            @if($coupon_code_index_permission_active)
-                            <div class="menu-sub menu-sub-accordion">
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <span class="menu-link">
-                                        <span class="menu-icon">
-                                            <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
-                                            <span class="svg-icon svg-icon-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
-                                                        fill="black" />
-                                                    <rect opacity="0.3" x="8" y="3" width="8" height="8" rx="4"
-                                                        fill="black" />
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </span>
-                                        <span class="menu-title">Coupon Code</span>
-                                        <span class="menu-arrow"></span>
-                                    </span>
-                                    <div class="menu-sub menu-sub-accordion">
-                                        <div class="menu-item">
-                                            <a class="menu-link" href="{{route('admin.couponcode.index')}}">
-                                                <span class="menu-bullet">
-                                                    <span class="bullet bullet-dot"></span>
-                                                </span>
-                                                <span class="menu-title">Add & View</span>
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            @endif
+                          
                             @if($general_setting_frontend_slider_index_permission_active)
                             <div class="menu-sub menu-sub-accordion">
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">

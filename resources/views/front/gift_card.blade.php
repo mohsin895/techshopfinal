@@ -69,7 +69,7 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                            <a href="{{url('/product/details',$row->slug)}}">
+                                            <a href="{{url('/user/giftcard/details',$row->slug)}}">
                                                 <div class="card-body">
                                                     <h5 class="card-title">{{$row->name}}</h5>
                                                     <p class="card-text">GiftCard Value:{{$gs->currency}}
