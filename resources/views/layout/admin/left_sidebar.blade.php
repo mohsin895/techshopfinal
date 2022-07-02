@@ -2157,7 +2157,7 @@ $expireddateproduct= App\Models\Product::where('expired_date', '<', $expireddate
                             @if($gs->database_show == 1)
                             <div class="menu-sub menu-sub-accordion menu-active-bg">
                                 <div class="menu-item">
-                                    <a href="{{route('admin.setting.emptyDatabase')}}">
+                                    <a href="{{route('admin.setting.database')}}">
                                         <span class="menu-link">
                                             <span class="menu-icon">
                                                 <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->

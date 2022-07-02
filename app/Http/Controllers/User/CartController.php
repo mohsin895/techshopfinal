@@ -127,14 +127,21 @@ $expiry_date = $couponDetails->expiry_date;
  if ($expiry_date<$currebt_date) {
    return redirect()->back()->with('flash_message_error','Coupon is expired!!');
  }
+if(empty($couponDetails->unlimited)){
+  if($couponDetails->use_time <= $couponDetails->order_number){
+    return redirect()->back()->with('flash_message_error','Coupon code can not use!!');
+   }
+  }
+
+
+ 
+ 
 //  dd($couponDetails);
 
 $code = $request->get('coupon_code', '');
 Session::put('couponCode',$code);
 $couponCode = Session::get('couponCode');
 // dd($couponCode);
-
-
 
 
 

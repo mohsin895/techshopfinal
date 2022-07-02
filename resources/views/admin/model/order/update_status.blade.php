@@ -102,7 +102,7 @@
 
                             <div class="col-md-6 fv-row">
                                 <!--end::Label-->
-                                <label class="required fs-5 fw-bold mb-2">Up date Delivery Date</label>
+                                <label class="required fs-5 fw-bold mb-2">Update Delivery Date</label>
                                 <!--end::Label-->
                                 <!--end::Input-->
                                 <input type="date" class="form-control form-control-solid" 
@@ -125,7 +125,7 @@
                          <!--begin::Input group-->
                          <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2">User Comment(Send email when update status)</label>
+                            <label class="required fs-5 fw-bold mb-2">User Comment(Write somthing to Send email to the User)</label>
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" class="form-control form-control-solid" placeholder="" name="user_comment" value="{{$row->user_comment}}" />

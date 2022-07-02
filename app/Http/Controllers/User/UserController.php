@@ -292,6 +292,7 @@ public function chkUserPassword(Request $request)
     $dt = Carbon::now();
     $data['giftcard'] = GiftCardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->where('status','Completed')->sum('giftcard_value');
      $data['order'] = Order::where('user_id',Auth::user()->id)->sum('giftcard_amount');
+     $data['giftcardDeatils']=GiftcardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->Orderby('id','desc')->take(6)->get();
     return view('user.setting.giftcard',$data);
   }
 

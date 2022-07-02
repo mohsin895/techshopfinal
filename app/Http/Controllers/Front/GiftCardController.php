@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Mail;
 use Auth;
 use Session;
+use DB;
 
 class GiftCardController extends Controller
 {
@@ -48,7 +49,7 @@ class GiftCardController extends Controller
          $order->email = $data['email'];
          $order->transcation_number = $data['account_number'];
          $order->transcation_id = $data['transcation_id'];
-         $order->account_type = $data['account_type'];
+         $order->account_type = $request->account_type;
          $order->purchase_price = $data['purchase_price'];
          $order->giftcard_value = $data['giftcard_value'];
          $order->duration = $data['duration'];
@@ -57,6 +58,13 @@ class GiftCardController extends Controller
          $notification = new Notification;
          $notification->giftcard_id = $order->id;
          $notification->save();
+
+         $orderid = DB::getPdo()->lastInsertId();
+   $orderGiftcardId = Giftcard::where('id',$request->giftcard_id)->first();
+
+   $orderGiftcard = Giftcard::find($orderGiftcardId->id);
+   $orderGiftcard->order_number = $orderGiftcard->order_number + 1;
+   $orderGiftcard->save();
 
 
          $email =$data['email'];

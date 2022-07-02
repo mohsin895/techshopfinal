@@ -34,24 +34,44 @@ class GiftcardOrderController extends Controller
         $data = $request->all();
         $order=GiftCardOrder::find($id);
         $order->status = $data['status'];
+        if(!empty($request->admin_comment)){
+          $order->admin_comment = $data['admin_comment'];
+
+        }else{
+          $order->admin_comment = null;
+
+        }
+         if(!empty($request->user_comment)){
+          $order->user_comment = $data['user_comment'];
+
+         }else{
+          $order->user_comment = null;
+
+         }
+      
+        
         $order->save();
         
         $user = User::where('id',$order->user_id)->first();
         $order =GiftCardOrder::where('id',$id)->first();
+        if(!empty($request->user_comment)){
         // dd($user);
         $email =$user['email'];
         $status = $data['status'];
         $orderid =$order['order_id'];
         $messageData = [
             'email'=>$user['email'],
-            'name'=>$user['name'],
+            'user'=>$user,
             'status' => $data['status'],
-            'order_id' =>$order['order_id'],
+            'order' =>$order,
             
         ];
          Mail::send('email.giftcard.status',$messageData,function($message) use($email){
            $message->to($email)->subject('Your giftcard Order Update');
          });
+        }else{
+
+        }
          return back();
        }
       } else

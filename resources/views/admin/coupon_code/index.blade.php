@@ -97,6 +97,8 @@
                                 <th class="min-w-250px">Coupon Code</th>
                                 <th class="min-w-150px">Coupon Amount</th>
                                 <th class="min-w-250px">Coupon Type</th>
+                                <th class="min-w-250px">Coupon Code Use Time</th>
+                                <th class="min-w-250px">Total use</th>
                                 <th class="min-w-250px">Coupon Status</th>
                                 <th class="min-w-150px">Coupon Expired Date</th>
                                 <th class="text-end min-w-70px">Actions</th>
@@ -151,6 +153,18 @@
                                 <td>
                                     <!--begin::Badges-->
                                     <div class="">{{ $row->amount_type}}</div>
+                                    <!--end::Badges-->
+                                </td>
+                                
+                                <td>
+                                    <!--begin::Badges-->
+                                    <div class="">@if(empty($row->unlimited)){{ $row->use_time}} @else Unlimited @endif</div>
+                                    <!--end::Badges-->
+                                </td>
+                                
+                                <td>
+                                    <!--begin::Badges-->
+                                    <div class="">{{ $row->order_number}}</div>
                                     <!--end::Badges-->
                                 </td>
                                 <td> <div class="form-check form-switch form-switch-sm form-check-custom form-check-solid">

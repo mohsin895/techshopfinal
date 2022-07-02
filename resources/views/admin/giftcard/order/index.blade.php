@@ -135,6 +135,7 @@
                                 <th class="text-center">Transcation ID</th>
                                 <th class="text-center">Purchase Price</th>
                                 <th class="text-end min-w-100px">Order Date</th>
+                                <th class="text-end min-w-100px">Expired Date</th>
                               
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
@@ -205,6 +206,9 @@
                                 <!--begin::Date Added=-->
                                 <td class="text-end" data-order="2022-03-01">
                                     <span class="fw-bolder">{{ $row->created_at->toDayDateTimeString()}}</span>
+                                </td>
+                                <td class="text-end" data-order="2022-03-01">
+                                    <span class="fw-bolder">{{ $row->expired_date}}</span>
                                 </td>
                                 <!--end::Date Added=-->
                                 <!--begin::Date Modified=-->

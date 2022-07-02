@@ -82,6 +82,26 @@
                                         <!--end::Input group-->
                                     </div>
 
+                                    <div class="card-body pt-0">
+                                        <!--begin::Input group-->
+                                        <div class="mb-10 fv-row">
+                                            <!--begin::Label-->
+                                            <label class="required form-label">Number of Use </label>
+                                            (if unlimited please check this box else uncheck and enter use time) <input type="checkbox" name="unlimited" value="1" id="checkbox1" />
+                                            <div id="autoUpdate" class="autoUpdate">
+
+                                                <input type="number" name="use_time" class="form-control mb-2"
+                                                    placeholder="Coupon use time" value=""  />
+                                            </div>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <!--end::Input-->
+                                            <!--begin::Description-->
+
+                                            <!--end::Description-->
+                                        </div>
+
+                                    </div>
 
                                     <!--begin::Card header-->
                                     <div class="card-body pt-0">
@@ -199,5 +219,16 @@
     </div>
     <!--end::Post-->
 </div>
+<script>
+$(document).ready(function() {
+    $('#checkbox1').change(function() {
+        if (!this.checked)
+            //  ^
+            $('#autoUpdate').fadeIn('slow');
+        else
+            $('#autoUpdate').fadeOut('slow');
+    });
+});
+</script>
 
 @endsection

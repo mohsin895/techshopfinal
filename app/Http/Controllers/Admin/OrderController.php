@@ -84,6 +84,7 @@ class OrderController extends Controller
         $orderStatus = json_decode(json_encode($orderStatus),true);
 
         // dd($order);
+        if(!empty($request->user_comment)){
         $email =$user['email'];
         $status = $data['status'];
         $orderid =$request['product_order_id'];
@@ -99,6 +100,10 @@ class OrderController extends Controller
          Mail::send('email.order.status',$messageData,function($message) use($email){
            $message->to($email)->subject('Your Order Update Status');
          });
+        }else{
+            
+        }
+
          return back();
        }
     } else

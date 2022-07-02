@@ -53,6 +53,7 @@ Route::group(['middleware'=>['admin']],function(){
     Route::match(['get','post'], '/general-setting',[GeneralSettingController::class,'general_setting'])->name('general.setting');
     Route::get('setting/mail_setting', [GeneralSettingController::class,'mailSetting'])->name('general.mail');
     Route::post('setting/mail_setting_store',[GeneralSettingController::class,'mailSettingStore'])->name('setting.mailStore');
+    Route::get('setting/database', [GeneralSettingController::class,'database'])->name('setting.database');
     Route::get('setting/empty-database', [GeneralSettingController::class,'emptyDatabase'])->name('setting.emptyDatabase');
     //General Setting COntroller End
 

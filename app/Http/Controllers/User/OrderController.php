@@ -158,9 +158,27 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
 
    $orderevent = DB::getPdo()->lastInsertId();
    $ordereventid=Event::where('id',$request->event_id)->first();
+   if(!empty($ordereventid)){
    $eventid = Event::find($ordereventid->id);
    $eventid->order_number = $eventid->order_number + 1;
    $eventid->save();
+   }else{
+       
+   }
+
+
+   $orderCouponode = DB::getPdo()->lastInsertId();
+   $orderCouponId = CouponCode::where('coupon_code',$request->coupon_code)->first();
+   if(!empty($orderCouponId)){
+        $orderCoupon = CouponCode::find($orderCouponId->id);
+   $orderCoupon->order_number = $orderCoupon->order_number + 1;
+   $orderCoupon->save();
+       
+   }else{
+       
+   }
+  
+
    
    $cartProducts = DB::table('carts')->where(['user_email'=>$user_email])->get();
    foreach($cartProducts as $pro){

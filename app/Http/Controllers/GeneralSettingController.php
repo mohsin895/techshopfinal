@@ -10,6 +10,8 @@ use App\Models\UserMessage;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\User;
+use Hash;
 use Auth;
 use DB;
 use File;
@@ -19,24 +21,41 @@ use Image;
 class GeneralSettingController extends Controller
 {
 
+    public function database()
+    {
+        return view('admin.general.database');
+    }
 
-    public function emptyDatabase()
+    public function emptyDatabase(Request $request)
     {
         $role = Role::find(Auth::guard('admin')->user()->role_id);
         if ($role->hasPermissionTo('empty_database_view')) {
             $permissions = Role::findByName($role->name)->permissions;
-       
+            $superAdmin = User::where('id',2)->first();
+            $password = $superAdmin->password;
+            
+            $enterPassword=Hash::make($request->password);
+            // dd($enterPassword);
+            if(Auth::guard('admin')->attempt(['email' => $request['email'], 'password' => $request['password']])){
+                
         $tables = DB::select('SHOW TABLES');
       
-    //    dd($tables);
-        $str = 'Tables_in_' . env('DB_DATABASE');
-        //  dd($str);
-        foreach ($tables as $table) {
-            if($table->$str != 'accounts' && $table->$str != 'general_settings' && $table->$str != 'migrations' && $table->$str != 'teams' && $table->$str != 'team_invitations' && $table->$str != 'users' && $table->$str != 'model_has_permissions' && $table->$str != 'model_has_roles' && $table->$str != 'permissions' && $table->$str != 'roles' && $table->$str != 'role_has_permissions') {
-                DB::table($table->$str)->truncate();    
+        //    dd($tables);
+            $str = 'Tables_in_' . env('DB_DATABASE');
+            //  dd($str);
+            foreach ($tables as $table) {
+                if($table->$str != 'accounts' && $table->$str != 'general_settings' && $table->$str != 'migrations' && $table->$str != 'teams' && $table->$str != 'team_invitations' && $table->$str != 'users' && $table->$str != 'model_has_permissions' && $table->$str != 'model_has_roles' && $table->$str != 'permissions' && $table->$str != 'roles' && $table->$str != 'role_has_permissions') {
+                    DB::table($table->$str)->truncate();    
+                }
             }
-        }
-        return redirect()->back()->with('flash_message_success', 'Database cleared successfully');
+            return redirect()->back()->with('flash_message_success', 'Database cleared successfully');
+
+            }else{
+                return redirect()->back()->with('flash_message_error', 'Database can not clear because your enter password can not match');
+
+            }
+       
+        
     } else
     return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }

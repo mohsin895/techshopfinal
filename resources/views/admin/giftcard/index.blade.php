@@ -98,6 +98,7 @@
                                 </th>
                                 <th class="min-w-250px">GiftCard</th>
                                 <th class="min-w-150px">Duration</th>
+                                <th class="min-w-150px">Giftcar Use</th>
                                 <th class="min-w-150px">Purchase Price</th>
                                 <th class="min-w-150px">Gift Card Value</th>
                                 <th class="min-w-150px">Gift Card Status</th>
@@ -148,6 +149,7 @@
                                     {{ $row->duration}} &nbsp;&nbsp;Days
                                     <!--end::Badges-->
                                 </td>
+                                <td>{{$row->order_number}}</td>
                                 <td>
                                     <!--begin::Badges-->
                                     {{ $row->currency}}&nbsp;&nbsp;&nbsp; {{ $row->purchase_price}}

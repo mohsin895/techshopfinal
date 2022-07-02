@@ -83,7 +83,7 @@
                             <label class="required fs-5 fw-bold mb-2">Admin Panel Comment</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid" placeholder="" name="comment" />
+                            <input type="text" class="form-control form-control-solid" placeholder=""value="{{$row->admin_comment}}" name="admin_comment" />
                             <!--end::Input-->
                         </div>
 
@@ -93,7 +93,7 @@
                             <label class="required fs-5 fw-bold mb-2">User comment(Send email when status update)</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid" placeholder="" name="comment" />
+                            <input type="text" class="form-control form-control-solid" placeholder="" value="{{$row->user_comment}}" name="user_comment" />
                             <!--end::Input-->
                         </div>
                         <!--end::Input group-->

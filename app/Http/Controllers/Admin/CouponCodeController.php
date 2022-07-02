@@ -64,6 +64,13 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
        $data->coupon_code = $request['coupon_code'];
        $data->amount = $request['amount'];
        $data->amount_type = $request['amount_type'];
+       if(!empty($request->unlimited)){
+        $data->unlimited = $request['unlimited'];
+
+       }else{
+        $data->use_time = $request['use_time'];
+
+       }
       $data->expiry_date = $request['expiry_date'];
       $data->purpose = $request['purpose'];
       $data->save();
@@ -97,6 +104,13 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
       $data->amount_type = $request['amount_type'];
       $data->expiry_date = $request['expiry_date'];
       $data->purpose = $request['purpose'];
+      if(!empty($request->unlimited)){
+        $data->unlimited = $request['unlimited'];
+
+       }else{
+        $data->use_time = $request['use_time'];
+
+       }
         $data->save(); 
         return redirect('/admin/couponcode')->with('flash_message_success','Coupon Code Update successfully');
     }

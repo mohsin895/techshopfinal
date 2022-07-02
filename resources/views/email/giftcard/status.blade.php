@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Order Update Email</title>
+    <title>Giftcard Order Update Status</title>
   </head>
   <body>
     <table>
@@ -13,26 +13,28 @@
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td>Your Giftcard Order Status
+        <td>Your Giftcard Order Status::{{$status}}
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td>Order Id::{{$email}}
+        <td>Giftcard Name::{{$order->name}}
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td>{{$status}}
+        <td>Payment Type:{{$order->account_type}}
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
       </tr>
+      <tr><td>Purchase Price:{{$order->purchase_price}}</td></tr>
+      <tr><td>Message:{{$order->user_comment}}</td></tr>
       <tr>
         <td>Thanks & Regrads</td>
       </tr>
