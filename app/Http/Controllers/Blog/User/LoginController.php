@@ -15,6 +15,9 @@ class LoginController extends Controller
 {
     public function index(Request $request)
     {
+
+        $blogproductsUrl = Session::get('productsslug');
+
         if ($request->isMethod('post')) {
             $data=$request->all();
             // echo "<pre>";print_r($data);die;
@@ -36,9 +39,19 @@ class LoginController extends Controller
 
                 if (Auth::guard('blog')->attempt(['email'=>$data['email'], 'password'=>$data['password']])) {
 
+                    if(empty($blogproductsUrl)){
+                        return redirect('/blog/user')->with('flash_message_success', 'Login Successfully !!');
+
+                      }else{
+                        return redirect()->route('blog.post.details',$blogproductsUrl);
+                        Session::forget('productsslug');
+                        
+                        
+                      }
+
                     
-                    return redirect('/blog/user')->with('flash_message_success', 'Login Successfully !!');
-                    ;
+                    // return redirect('/blog/user')->with('flash_message_success', 'Login Successfully !!');
+                    
                 }
 
                 else {

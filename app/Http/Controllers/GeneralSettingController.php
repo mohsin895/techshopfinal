@@ -101,6 +101,12 @@ class GeneralSettingController extends Controller
             $setting->about_us = $data['about_us'];
             $setting->privecy_policy = $data['privecy_policy'];
             $setting->discord = $data['discord'];
+            $setting->section_1 = $data['section_1'];
+            $setting->section_2 = $data['section_2'];
+            $setting->section_3 = $data['section_3'];
+            $setting->section_4 = $data['section_4'];
+            $setting->shipping_policy = $data['shipping_policy'];
+            $setting->cart_page_vat = $data['cart_page_vat'];
          
             $setting->meta_viewport = $data['meta_viewport'];
             $setting->upcoming_expired_date = $data['upcoming_expired_date'];
@@ -138,7 +144,7 @@ class GeneralSettingController extends Controller
                     $filename = rand(111, 99999) . '.' . $extension;
                     $large_image_path = 'public/assets/images/setting/' . $filename;
 
-                    Image::make($image_tmp)->resize(75, 75)->save($large_image_path);
+                    Image::make($image_tmp)->resize(78, 78)->save($large_image_path);
                     $setting->site_logo = $filename;
                 }
             }
@@ -286,6 +292,12 @@ if ($request->hasFile('blog_logo')) {
     {
         $data['categories']= Category::with('subcategory')->where('parent_id',0)->get();
         return view('front.privacy_policy',$data);
+    }
+
+    public function shipping_policy()
+    {
+        $data['categories']= Category::with('subcategory')->where('parent_id',0)->get();
+        return view('front.shipping-policy',$data);
     }
 
     public function contact_us()

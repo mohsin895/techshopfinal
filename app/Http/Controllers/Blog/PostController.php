@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Carbon\carbon;
 use Auth;
 use Image;
+use Session;
 
 class PostController extends Controller
 {
@@ -23,6 +24,10 @@ class PostController extends Controller
    }
    public function post_details($slug)
    {
+    $urlblog = Session::get('productsslug',$slug);
+    //  dd($url);
+    Session::put('productsslug',$urlblog);
+ $blogproductsUrl = Session::get('productsslug');
        
        $data['post'] = BlogPost::where('slug',$slug)->first();
        $data['post_comment'] = BlogComment::where('post_id',$data['post']->id)->where('status','published')->get();
@@ -37,7 +42,7 @@ class PostController extends Controller
    {
     //   dd($request->all());
     $validated = $request->validate([
-        'image' => 'required|image|max:100',
+        'image' => 'image|max:100 |dimensions:width=800,height=400',
         
     ]);
        $data = new BlogPost();
@@ -53,7 +58,7 @@ class PostController extends Controller
                $large_image_path = 'public/assets/images/blog/' . $filename;
                
 
-               Image::make($image_tmp)->resize(1290, 645)->save($large_image_path);
+               Image::make($image_tmp)->resize(800, 400)->save($large_image_path);
                $data->image = $filename;
            }
        }

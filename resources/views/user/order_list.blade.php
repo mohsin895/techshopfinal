@@ -14,7 +14,7 @@
                             <div class="d-flex align-items-center ml-0 mr-0">
                                 <div class="title-header ml-0 ">
                                     <p class="title text-capitalize">My product order</p>
-                                    <p class="sub-title text-capitalize">Your total order: {{$ordercount}}</p>
+                                    <p class="sub-title text-capitalize" style="color:#D20A7D;font-weight:700">Your total order: {{$ordercount}}</p>
                                     @include('error.message')
                                 </div>
 
@@ -53,11 +53,11 @@
                             <div class="item ml-0">
                                 <div class="order-heading col-12 col-lg-12 col-md-12 col-sm-12">
                                     <div class=" ">
-                                        <p class="ml-0">Order Id: <span>{{$row->order_id}}</span>
+                                        <p>Order Id: <span  style="color:#D20A7D;font-weight:700">{{$row->order_id}}</span>
                                             (<span>{{$countProduct}}</span> items)</p>
 
-                                        <p>Status: <span>{{$row->status}}</span></p>
-                                        <p>Payable : <span class="amount">TK. {{$row->grand_total}}</span></p>
+                                        <p>Status: <span style="color:#D20A7D;font-weight:700">{{$row->status}}</span></p>
+                                        <p style="color:#D20A7D;font-weight:700">Payable : <span class="amount" style="color:#D20A7D;font-weight:700">TK. {{$row->grand_total}}</span></p>
                                         @if($row->status == 'New')
 
                                         <form method="post" action="{{route('user.order.status',$row->id)}}">
@@ -91,11 +91,11 @@
                                                     alt="product" class="img-fluid">
 
                                                 <div class="media-body">
-                                                    <p class="text-bold">
+                                                    <p class="text-bold" style="color:#000;font-weight:700">
                                                         {{$OrderProductdetails->product_name}}</p>
                                                     <p class="brand-name">{{$OrderProductdetails->model_no}}</p>
                                                     <p class="qty">Qty: {{$OrderProductdetails->quantity}}</p>
-                                                    <span class="amount">Unit Cost
+                                                    <span class="amount" style="color:#D20A7D;font-weight:700">Unit Cost
                                                         TK.{{$OrderProductdetails->price}}</span>
                                                 </div>
                                             </div>
@@ -113,4 +113,5 @@
         </div>
     </div>
 </section>
+@include('layout.front.footer');
 @endsection

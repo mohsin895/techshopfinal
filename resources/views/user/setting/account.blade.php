@@ -13,7 +13,7 @@
             <div class="card-group">
 
                 <div class="card p-4">
-                    <h2 class="text-center text-primary font-weight-bold">Personal Information</h2>
+                    <h2 class="text-center login-page-text font-weight-bold">Personal Information</h2>
                     @include('error.message')
                     <hr class="my-3">
                     <div id="registerError"></div>
@@ -59,7 +59,7 @@
 
 
                         <div class="form-group">
-                            <input type="submit" value="Updated" class="btn btn-primary btn-block">
+                            <input type="submit" value="Updated" class="btn sign-button btn-block">
 
                         </div>
                     </form>
@@ -74,5 +74,5 @@
     </div>
 </section>
 
-
+@include('layout.front.footer');
 @endsection

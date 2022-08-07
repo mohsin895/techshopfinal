@@ -211,7 +211,7 @@ function selectPaymentType(){
     }
 
   
-  const site_url = "http://localhost/techshop/public/";
+  const site_url = "https://robotics-shopbd.com/";
 
   $(document).ready(function(){
       $.ajaxSetup({
@@ -410,4 +410,24 @@ function selectPaymentType(){
     }
 
 });
+
+$(document).ready(function(){
+
+$("#copyAddress").click(function(){
+  if (this.checked) {
+    $("#address2").val($("#address1").val());
+
+  }else {
+    $("#address2").val('');
+ 
+  }
+
+
+});
+
+});
+
+
+
+
 

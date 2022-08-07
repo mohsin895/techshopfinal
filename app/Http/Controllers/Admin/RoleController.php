@@ -1396,6 +1396,53 @@ if ($request->has('bloog_post_edit')) {
                     } else
                         $role->revokePermissionTo('show_review_rating');
 
+                    
+                        
+
+
+
+
+                        if ($request->has('debit_index')) {
+                            $permission = Permission::firstOrCreate(['name' => 'debit_index']);
+                            if (!$role->hasPermissionTo('debit_index')) {
+                                $role->givePermissionTo($permission);
+                            }
+                        } else
+                            $role->revokePermissionTo('debit_index');
+    
+                            if ($request->has('debit_create')) {
+                                $permission = Permission::firstOrCreate(['name' => 'debit_create']);
+                                if (!$role->hasPermissionTo('debit_create')) {
+                                    $role->givePermissionTo($permission);
+                                }
+                            } else
+                                $role->revokePermissionTo('debit_create');
+        
+                                if ($request->has('debit_edit')) {
+                                    $permission = Permission::firstOrCreate(['name' => 'debit_edit']);
+                                    if (!$role->hasPermissionTo('debit_edit')) {
+                                        $role->givePermissionTo($permission);
+                                    }
+                                } else
+                                    $role->revokePermissionTo('debit_edit');
+            
+                                    if ($request->has('debit_delete')) {
+                                        $permission = Permission::firstOrCreate(['name' => 'debit_delete']);
+                                        if (!$role->hasPermissionTo('debit_delete')) {
+                                            $role->givePermissionTo($permission);
+                                        }
+                                    } else
+                                        $role->revokePermissionTo('debit_delete');
+                
+                                        if ($request->has('creadit_view')) {
+                                            $permission = Permission::firstOrCreate(['name' => 'creadit_view']);
+                                            if (!$role->hasPermissionTo('creadit_view')) {
+                                                $role->givePermissionTo($permission);
+                                            }
+                                        } else
+                                            $role->revokePermissionTo('creadit_view');
+                    
+
 
         return redirect('admin/role')->with('flash_message_success', 'Permission updated successfully');
        }

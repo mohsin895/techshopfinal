@@ -15,8 +15,10 @@ use App\Models\Gallery;
 use App\Models\GeneralSetting;
 use App\Models\Qty;
 use Carbon\carbon;
+use App\Models\Account;
 use Auth;
 use Image;
+use File;
 
 class ProductController extends Controller
 {
@@ -125,7 +127,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
             $image_tmp = $request->file('image');
             if ($image_tmp->isValid()) {
                 $extension = $image_tmp->getClientOriginalExtension();
-                $filename = rand(111, 99999) . '.' . $extension;
+                $filename = Str::slug($request['product_name']).'-'.rand(111, 99999) . '.' . $extension;
                 $large_image_path = 'public/assets/images/product/' . $filename;
 
                 Image::make($image_tmp)->resize(150, 120)->save($large_image_path);
@@ -147,6 +149,20 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
                
         }
 
+        if ($data->save()) {
+            $product_id = $data->id;
+
+              $account = new Account;
+              $account->product_id = $product_id;
+              $account->product_quantity = $request->quantity;
+              $account->buying_price = $request->buying_price;
+              $account->cost_name = $request->product_name;
+              $account->save();
+                  
+                    
+               
+        }
+
         if($data->save()){
             $product_id = $data->id;
             if ($request->hasFile('gallery')) {
@@ -159,12 +175,12 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
            
                // echo $orginalName = $image->getClientOriginalName();die();
                $extension = $image->getClientOriginalExtension();
-               $imageName =  rand(111,99999).time().".".$extension;
+               $imageName =  Str::slug($request['product_name']).'-'.rand(111, 99999).time().".".$extension;
                
                    $medium_image_path = 'public/assets/images/product/gallery/'.$imageName;
          
                   
-                   Image::make($image_tmp)->save($medium_image_path);
+                   Image::make($image_tmp)->resize(116,92)->save($medium_image_path);
                     $productimage->galery =$imageName;
                     $productimage->product_id = $product_id;
                     $productimage->save();
@@ -220,7 +236,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
             $image_tmp = $request->file('image');
             if ($image_tmp->isValid()) {
                 $extension = $image_tmp->getClientOriginalExtension();
-                $filename = rand(111, 99999) . '.' . $extension;
+                $filename = Str::slug($request['product_name']).'-'.rand(111, 99999) . '.' . $extension;
                 $large_image_path = 'public/assets/images/product/' . $filename;
 
                 Image::make($image_tmp)->resize(150, 120)->save($large_image_path);

@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Image;
+use FIle;
 use Auth;
 
 class GiftCardController extends Controller

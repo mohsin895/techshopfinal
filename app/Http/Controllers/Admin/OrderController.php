@@ -77,6 +77,29 @@ class OrderController extends Controller
             $orderStatus->save();
 
         }
+
+
+        if($order->save()){
+            $order_id =$order->id;
+            // $orderProductStatus =OrderProduct::find($order_id);
+
+            $orderProductStatus =OrderProduct::where('order_id',$order_id)->get();
+            //   dd($orderProductStatus);
+            foreach($orderProductStatus as $key => $status){
+                
+                $status->order_id =$order_id;
+                // dd($status->order_id);
+             $status->status = $request['status'];
+            //  dd($status);
+
+            $status->save();
+            
+           
+          
+            }
+
+        }
+
         $user = User::where('id',$order->user_id)->first();
         $order =Order::where('id',$id)->first();
         $order = json_decode(json_encode($order),true);

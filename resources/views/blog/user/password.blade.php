@@ -7,7 +7,7 @@
         <div class="col-lg-10 my-auto">
             <div class="card-group">
                 <div class="card p-4">
-                    <h2 class="text-center text-primary font-weight-bold">Forget Password</h2>
+                    <h2 class="text-center  font-weight-bold login-page-text">Forget Password</h2>
                     @include('error.message')
                     <hr class="my-3">
                     <div id="loginError"></div>
@@ -37,7 +37,7 @@
 
                         </div>
                         <div class="form-group">
-                            <input type="submit"  value="Send" class="btn btn-primary btn-block">
+                            <input type="submit"  value="Send" class="btn sign-button btn-block">
 
                         </div>
 
@@ -47,7 +47,9 @@
                     <h2 class="text-center text-white forn-mweght-blod">Welcome back</h2>
                     <hr class="my-3">
                     <p class="text-center text-light lead">Please Click to Back Login Page</p>
-                    <a href="{{route('blog.user.login')}}" class="btn btn-outline-light btn-lg align-self-center mt-4" id="showSignupForm">Back To Login</a>
+                    <a href="{{route('blog.user.login')}}" style="
+    background: #D20A7D;
+    color: #fff;" class="btn btn-outline-light btn-lg align-self-center mt-4" id="showSignupForm">Back To Login</a>
 
                 </div>
 

@@ -552,6 +552,27 @@
                                         </div>
                                     </div>
 
+
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>Use Vat Type</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Product Vat."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9" style="margin-top:15px">
+                                            <!--begin::Input-->
+                                            <input type="checkbox" @if($gs->cart_page_vat == 1) checked @endif  name="cart_page_vat" value="1" onclick="onlyOne(this)">&nbsp;&nbsp;<span>Add vat on the Cart page</span>
+                                            <input type="checkbox" @if($gs->cart_page_vat == 2) checked @endif name="cart_page_vat" value="2" onclick="onlyOne(this)">&nbsp;&nbsp;<span> Add vat directly with the product
+
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
+
+
                                     <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
                                             <!--begin::Label-->
@@ -569,6 +590,8 @@
                                             <!--end::Input-->
                                         </div>
                                     </div>
+
+
                                     <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
 
@@ -726,8 +749,9 @@
                                             <!--end::Label-->
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="number" class="form-control form-control-solid" name="upcoming_expired_date"
-                                                value="{{$gs->upcoming_expired_date}}" data-kt-ecommerce-settings-type="tagify" />
+                                            <input type="number" class="form-control form-control-solid"
+                                                name="upcoming_expired_date" value="{{$gs->upcoming_expired_date}}"
+                                                data-kt-ecommerce-settings-type="tagify" />
 
                                             <!--begin::Input-->
                                             <!--end::Input-->
@@ -782,9 +806,8 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
-                                            <input type="url" class="form-control form-control-solid"
-                                                name="discord" value="{{$gs->discord}}"
-                                                data-kt-ecommerce-settings-type="tagify" />
+                                            <input type="url" class="form-control form-control-solid" name="discord"
+                                                value="{{$gs->discord}}" data-kt-ecommerce-settings-type="tagify" />
                                             <!--end::Input-->
                                         </div>
                                     </div>
@@ -1035,6 +1058,99 @@
                                             <!--end::Input-->
                                         </div>
                                     </div>
+
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>SEO Section 1</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Privacy Policy."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
+                                            <textarea name="section_1" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->section_1 !!}</textarea>
+
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>SEO Section 2</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Privacy Policy."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
+                                            <textarea name="section_2" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->section_2 !!}</textarea>
+
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>SEO Section 3</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Privacy Policy."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
+                                            <textarea name="section_3" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->section_3 !!}</textarea>
+
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>SEO Section 4</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Privacy Policy."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
+                                            <textarea name="section_4" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->section_4 !!}</textarea>
+
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>Shipping Policy</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Privacy Policy."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
+                                            <textarea name="shipping_policy" id="" cols="30" rows="10"
+                                                class="ckeditor">{!! $gs->shipping_policy !!}</textarea>
+
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
                                     <!-- <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
                                         
@@ -1101,5 +1217,13 @@
 $(document).ready(function() {
     $('.ckeditor').ckeditor();
 });
+
+
+function onlyOne(checkbox) {
+    var checkboxes = document.getElementsByName('cart_page_vat')
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+    })
+}
 </script>
 @endsection

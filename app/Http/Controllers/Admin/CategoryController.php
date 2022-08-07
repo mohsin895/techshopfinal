@@ -14,6 +14,7 @@ use App\Models\Product;
 use App\Models\Gallery;
 use Auth;
 use Image;
+use File;
 
 class CategoryController extends Controller
 {

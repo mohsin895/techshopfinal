@@ -268,11 +268,11 @@ $products = array(
                                     <!--end::Svg Icon-->
                                     <a href="#" class="text-success fw-bold fs-1 mt-2">Total Profit </a>
                                     <p class="text-center text-success mt-10" style="font-size:30px">Total Buying
-                                        Price::&nbsp;&nbsp;{{$totalBuyingPrice}} &nbsp;&nbsp;{{$gs->currency}}</p>
+                                        Price=&nbsp;&nbsp;{{$totalBuyingPrice}} &nbsp;&nbsp;{{$gs->currency}}</p>
                                     <p class="text-center text-success" style="font-size:30px">Total Selling
-                                        Price::&nbsp;&nbsp;{{$totalSellingPrice}} &nbsp;&nbsp;{{$gs->currency}}</p>
+                                        Price=&nbsp;&nbsp;{{$totalSellingPrice}} &nbsp;&nbsp;{{$gs->currency}}</p>
                                     <p class="text-center text-success" style="font-size:30px">Total
-                                        Profit::&nbsp;&nbsp;{{$totalSellingPrice - $totalBuyingPrice}}
+                                        Profit=&nbsp;&nbsp;{{$totalSellingPrice - $totalBuyingPrice}}
                                         &nbsp;&nbsp;{{$gs->currency}}</p>
                                 </div>
 

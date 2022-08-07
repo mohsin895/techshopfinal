@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\GiftCardOrder;
 use App\Models\GeneralSetting;
 use App\Models\BlogPost;
+use App\Models\Product;
 use Hash;
 use App\Models\Notification;
 use Auth;
@@ -22,6 +23,10 @@ class UserController extends Controller
 {
     public function index( Request $request)
     {
+      $productsUrl = Session::get('slug');
+      // dd($productsUrl);
+      $product = Product::where("slug",$productsUrl)->get();
+      // dd($product);
         $referral = Session::get('referall');
         if ($request->isMethod('post')) {
             $data=$request->all();
@@ -52,11 +57,19 @@ class UserController extends Controller
 
                     if (!empty(Session::get('session_id'))) {
                         $session_id = Session::get('session_id');
+                        DB::table('reviw_ratings')->where('session_id',$session_id)->update(['user_id'=>Auth::user()->id]);
+                        DB::table('questions')->where('session_id',$session_id)->update(['user_id'=>Auth::user()->id]);
                            DB::table('carts')->where('session_id',$session_id)->update(['user_email'=>$data['email']]);
                            DB::table('wish_lists')->where('session_id',$session_id)->update(['user_email'=>$data['email']]);
                       }
-                    return redirect('/')->with('flash_message_success', 'Login Successfully !!');
-                    ;
+                      if(empty($productsUrl)){
+                        return redirect('/')->with('flash_message_success', 'Login Successfully !!');
+
+                      }else{
+                        return redirect()->route('product.details',$productsUrl);
+                      }
+                    
+                    
                 }
 
                 else {
@@ -119,7 +132,7 @@ class UserController extends Controller
                   $message->to($email)->subject($subject.' '.'Say Please Confirm your  Account');
                 });
        
-         return redirect('/user/login')->with('flash_message_success','Please Confirm Your email to Active your account !! ');
+         return redirect('/user/login')->with('flash_message_success','Please Confirm Your email to Active your account !! Please check your Email, also do not forget to check your Email Spam. If you still face any problem please contact us.');
        
             
            }
@@ -290,9 +303,10 @@ public function chkUserPassword(Request $request)
   {
     $data['dt'] = Carbon::now();
     $dt = Carbon::now();
-    $data['giftcard'] = GiftCardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->where('status','Completed')->sum('giftcard_value');
+    $data['giftcard'] = GiftCardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->where('status','Completed')->where('is_used','no')->sum('giftcard_value');
      $data['order'] = Order::where('user_id',Auth::user()->id)->sum('giftcard_amount');
      $data['giftcardDeatils']=GiftcardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->Orderby('id','desc')->take(6)->get();
+    //  dd( $data['giftcardDeatils']);
     return view('user.setting.giftcard',$data);
   }
 
@@ -309,5 +323,9 @@ public function chkUserPassword(Request $request)
     $data['blog']= BlogPost::where('user_id',Auth::user()->id)->get();
     return view('user.setting.blog',$data);
   }
+
+
+ 
+
 
 }

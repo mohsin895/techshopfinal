@@ -170,7 +170,7 @@
                                     <!--end::Badges-->
                                 </td>
                                 <td>
-                                    {!!  $row->description  !!}
+                                @php  echo substr($row->description,0,20)  @endphp
                                 </td>
                                 <td>
                                     {{$row->status}}

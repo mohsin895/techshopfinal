@@ -12,6 +12,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use Auth;
 use Image;
+use File;
 
 class SubCategoryController extends Controller
 {

@@ -40,6 +40,9 @@ $category = blogCategory::category();
     <link rel="stylesheet" href="{{asset('public/assets/blog/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('public/assets/blog/css/swiper.css')}}">
     <link rel="stylesheet" href="{{asset('public/assets/blog/css/style1.css')}}">
+    <!-- <link rel="stylesheet" href="{{ asset('public/assets/frontend/css/style.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('public/assets/blog/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/blog/extra/css/style.css')}}">
     <link rel="icon" href="{{asset('public/assets/images/setting/'.$gs->blog_favicon)}}" sizes="32x32" />
     @yield('details-css')
 
@@ -51,7 +54,7 @@ $category = blogCategory::category();
 
 @include('layout.blog.header')
     @yield('content')
-    @include('layout.blog.footer')
+ @include('layout.blog.footer')
 
    
 

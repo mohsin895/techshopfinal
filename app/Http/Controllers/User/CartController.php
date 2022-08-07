@@ -129,7 +129,7 @@ $expiry_date = $couponDetails->expiry_date;
  }
 if(empty($couponDetails->unlimited)){
   if($couponDetails->use_time <= $couponDetails->order_number){
-    return redirect()->back()->with('flash_message_error','Coupon code can not use!!');
+    return redirect()->back()->with('flash_message_error','Coupon code Alreday use!!');
    }
   }
 
@@ -145,8 +145,17 @@ $couponCode = Session::get('couponCode');
 
 
 
-return redirect()->back()->with('flash_message_success','Coupon Code successfully Applied. You are availing discount!!');
+return redirect()->back()->with('flash_message_success','Coupon Code successfully Applied !!');
 }
 
+}
+
+
+public function coupon_delete(Request $request){
+  
+  Session::forget('couponCode');
+    
+  
+  return back();
 }
 }

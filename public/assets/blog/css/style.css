@@ -540,3 +540,19 @@ a:hover {
         padding-bottom: 30px !important;
     }
 }
+
+.sign-button{
+    background-color: #D20A7D;
+    color: #fff;
+}
+
+
+.login-page-text{
+    color: #D20A7D;
+}
+
+@media(min-width:1000px){
+    .arrow-top{
+        margin-left: -120px;
+    }
+}

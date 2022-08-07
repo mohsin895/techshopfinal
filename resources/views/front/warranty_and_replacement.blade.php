@@ -1,7 +1,7 @@
 @extends('layout.front.master')
 
 @section('content')
-@include('layout.front.header')
+@include('layout.front.detail_header')
 <section id="about-page" class="main-content-section">
         <div class="content-section">
             <div class="d-flex">
@@ -27,6 +27,6 @@
     </section>
 
 
-   
+    @include('layout.front.footer');
 
 @endsection

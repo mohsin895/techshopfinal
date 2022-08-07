@@ -101,7 +101,7 @@ public function product_comment()
    $role = Role::find(Auth::guard('admin')->user()->role_id);
         if ($role->hasPermissionTo('view_product_question')) {
             $permissions = Role::findByName($role->name)->permissions;
-   $data['question'] = Question::orderBy('id','DESC')->get();
+   $data['question'] = Question::where('user_id', '!=',0)->orderBy('id','DESC')->get();
   return view('admin.user.question',$data);
 } else
 return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
@@ -258,7 +258,7 @@ public function today_birthday()
     $role = Role::find(Auth::guard('admin')->user()->role_id);
     if ($role->hasPermissionTo('show_review_rating')) {
         $permissions = Role::findByName($role->name)->permissions;
-    $data['review_rating'] = ReviwRating::orderBy('id','DESC')->get();
+    $data['review_rating'] = ReviwRating::where('user_id', '!=',0)->orderBy('id','DESC')->get();
     // dd($data['review_rating']);
     return view('admin.user.review_rating',$data);
    }else

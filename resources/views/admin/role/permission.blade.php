@@ -1364,6 +1364,122 @@
                                         </div>
 
                                     </div>
+                                    
+
+                                    <div class="card-body">
+
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered permission-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="6" class="text-center">Account Part</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th rowspan="2" class="text-center">Module Name</th>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="text-center">View</th>
+                                                        <th class="text-center">Add</th>
+                                                        <th class="text-center">Edit</th>
+                                                        <th class="text-center">Delete</th>
+                                                    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Debit </td>
+                                                        <td class="text-center">
+                                                            <div class="icheckbox_square-blue checked"
+                                                                aria-checked="false" aria-disabled="false">
+
+                                                                @if(in_array("debit_index", $all_permission))
+                                                                <input type="checkbox" value="1" id="debit_index"
+                                                                    name="debit_index" checked />
+                                                                @else
+                                                                <input type="checkbox" value="1" id="debit_index"
+                                                                    name="debit_index" />
+                                                                @endif
+                                                                <label for="debit_index"></label>
+
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                                aria-disabled="false">
+
+                                                                @if(in_array("debit_create", $all_permission))
+                                                                <input type="checkbox" value="1" id="debit_create"
+                                                                    name="debit_create" checked>
+                                                                @else
+                                                                <input type="checkbox" value="1" id="debit_create"
+                                                                    name="debit_create">
+                                                                @endif
+                                                                <label for="debit_create"></label>
+
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                                aria-disabled="false">
+
+                                                                @if(in_array("debit_edit", $all_permission))
+                                                                <input type="checkbox" value="1" id="debit_edit"
+                                                                    name="debit_edit" checked />
+                                                                @else
+                                                                <input type="checkbox" value="1" id="debit_edit"
+                                                                    name="debit_edit" />
+                                                                @endif
+                                                                <label for="debit_edit"></label>
+
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="icheckbox_square-blue" aria-checked="false"
+                                                                aria-disabled="false">
+
+                                                                @if(in_array("debit_delete", $all_permission))
+                                                                <input type="checkbox" value="1" id="debit_delete"
+                                                                    name="debit_delete" checked />
+                                                                @else
+                                                                <input type="checkbox" value="1" id="debit_delete"
+                                                                    name="debit_delete" />
+                                                                @endif
+                                                                <label for="debit_delete"></label>
+
+                                                            </div>
+                                                        </td>
+                                                  
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Others</td>
+                                                        <td class="text-center"> Credit View
+                                                            <div class="icheckbox_square-blue checked"
+                                                                aria-checked="false" aria-disabled="false">
+
+                                                                @if(in_array("creadit_view", $all_permission))
+                                                                <input type="checkbox" value="1"
+                                                                    id="creadit_view" name="creadit_view"
+                                                                    checked>
+                                                                @else
+                                                                <input type="checkbox" value="1"
+                                                                    id="creadit_view" name="creadit_view">
+                                                                @endif
+                                                                <label for="creadit_view"></label>
+
+                                                            </div>
+                                                        </td>
+                                                     
+
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
 
 
                                     <div class="card-body">

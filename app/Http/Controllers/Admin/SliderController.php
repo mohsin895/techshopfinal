@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Permission;
 use App\Models\Slider;
 use Auth;
 use Image;
+use File;
 
 class SliderController extends Controller
 {
@@ -113,7 +114,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
                 $filename = rand(111, 99999) . '.' . $extension;
                 $large_image_path = 'public/assets/images/slider/' . $filename;
 
-                Image::make($image_tmp)->resize(150, 120)->save($large_image_path);
+                Image::make($image_tmp)->resize(1037,293)->save($large_image_path);
                 $data->image = $filename;
             }
         }

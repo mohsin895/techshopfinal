@@ -16,6 +16,7 @@ use App\Models\GeneralSetting;
 use App\Models\Qty;
 use Image;
 use Auth;
+use File;
 
 class FlashSaleController extends Controller
 {

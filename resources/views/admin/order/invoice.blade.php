@@ -312,43 +312,133 @@
                                                                     <td class="text-end pb-0 pt-0">{{$row->model_no}}</td>
                                                                     <!--end::SKU-->
                                                                     <!--begin::Quantity-->
-                                                                    <td class="text-end pb-0 pt-0">{{$row->quantity}}</td>
-                                                                    <!--end::Quantity-->
-                                                                    <!--begin::Total-->
-                                                                    <td class="text-end pb-0 pt-0">
-                                                                        {{$gs->currency}}&nbsp;&nbsp;{{$row->quantity*$row->price}}
-                                                                    </td>
+                                                                    @php
+                                                    $vatSingleQty =($row->price*$gs->vat)/ 100;
+                                                    $vatWithQty =(($row->price*$gs->vat)/ 100)*$row->quantity;
+
+                                                    @endphp
+                                                    <!--end::Quantity-->
+                                                    <!--begin::Price-->
+                                                    @if($gs->cart_page_vat==1)
+
+                                                    <td class="text-end">{{$gs->currency}}&nbsp;&nbsp;{{$row->price}}
+                                                    </td>
+                                                    <!--end::Price-->
+                                                    <!--begin::Total-->
+                                                    <td class="text-end">
+                                                        {{$gs->currency}}&nbsp;&nbsp;{{$row->total_price}}</td>
+                                                    @else
+
+                                                    <td class="text-end">
+                                                        {{$gs->currency}}&nbsp;&nbsp;{{$row->price + $vatSingleQty}}
+                                                    </td>
+                                                    <!--end::Price-->
+                                                    <!--begin::Total-->
+                                                    <td class="text-end">
+                                                        {{$gs->currency}}&nbsp;&nbsp;{{$row->total_price +$vatWithQty}}
+                                                    </td>
+                                                    @endif
+
                                                                     <!--end::Total-->
                                                                 </tr>
                                                                 @endforeach
                                                                 <!--end::Products-->
                                                                 <!--begin::Subtotal-->
-                                                                <tr>
-                                                                    @if(!empty($order->coupon_code))
-                                                                    <td colspan="3" class="text-end">Subtotal With
-                                                                        Coupon Code(-)</td>
-                                                                    <td class="text-end">
-                                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}
-                                                                    </td>
+                                                                @if($gs->cart_page_vat==1)
+                                                <tr>
+                                                   
+                                                    <td colspan="3" class="text-end">Subtotal</td>
+                                                    <td class="text-end">
+                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}
+                                                    </td>
 
-                                                                    @else
-                                                                    <td colspan="3" class="text-end">Subtotal</td>
-                                                                    <td class="text-end">
-                                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}
-                                                                    </td>
+                                                   
+                                                </tr>
 
-                                                                    @endif
-                                                                </tr>
-                                                                <!--end::Subtotal-->
-                                                                <!--begin::VAT-->
-                                                                <tr>
-                                                                    <td colspan="3" class="text-end">VAT ({{$gs->vat}}%)
-                                                                    </td>
-                                                                    <td class="text-end">{{$gs->currency}}&nbsp;&nbsp;
-                                                                        {{$order->vat}}</td>
-                                                                </tr>
+
+                                                @if(!empty($order->coupon_code))
+
+                                                <tr>
+                                                    @if($order->amount_type=='fixed')
+
+                                                    <td colspan="3" class="text-end">
+                                                        Discount({{$gs->currency}}&nbsp;&nbsp;
+                                                        {{$order->discount_amount}} off)</td>
+
+                                                    @else
+                                                    <td colspan="3" class="text-end">Discount({{$order->amount}} % off)
+                                                    </td>
+
+                                                    @endif
+                                                    <td class="text-end">
+                                                        {{$gs->currency}}&nbsp;&nbsp; -{{$order->discount_amount}}
+                                                    </td>
+
+
+
+
+                                                </tr>
+                                                @else
+
+
+                                                @endif
+
+                                                <!--end::Subtotal-->
+                                                <!--begin::VAT-->
+                                                <tr>
+                                                    <td colspan="3" class="text-end">VAT ({{$gs->vat}}%)
+                                                    </td>
+                                                    <td class="text-end">{{$gs->currency}}&nbsp;&nbsp;
+                                                        {{$order->vat}}</td>
+                                                </tr>
+                                                @else
+
+                                                <tr>
+                                                
+
+
+                                                    <td colspan="3" class="text-end">Subtotal</td>
+                                                    <td class="text-end">
+                                                        {{$gs->currency}}&nbsp;&nbsp;{{$order->subtotal}}
+                                                    </td>
+
+
+                                                </tr>
+                                                @if(!empty($order->coupon_code))
+
+                                                <tr>
+                                                    @if($order->amount_type=='fixed')
+
+                                                    <td colspan="3" class="text-end">
+                                                        Discount({{$gs->currency}}&nbsp;&nbsp;
+                                                        {{$order->discount_amount}} off)</td>
+
+                                                    @else
+                                                    <td colspan="3" class="text-end">Discount({{$order->amount}} % off)
+                                                    </td>
+
+                                                    @endif
+                                                    <td class="text-end">
+                                                        {{$gs->currency}}&nbsp;&nbsp; -{{$order->discount_amount}}
+                                                    </td>
+
+
+
+
+                                                </tr>
+                                                @else
+
+
+                                                @endif
+                                                <!--end::Subtotal-->
+                                                <!--begin::VAT-->
+
+
+
+                                                @endif
                                                                 <!--end::VAT-->
                                                                 <!--begin::Shipping-->
+
                                                                 <tr>
                                                                     <td colspan="3" class="text-end">Shipping
                                                                         Rate({{$order->delivery}})</td>
@@ -356,12 +446,14 @@
                                                                         {{$gs->currency}}&nbsp;&nbsp;{{$order->shipping}}
                                                                     </td>
                                                                 </tr>
+                                                                @if(!empty($order->giftcard_amount))
                                                                 <tr>
                                                                     <td colspan="3" class="text-end">Giftcard</td>
                                                                     <td class="text-end">
                                                                         {{$gs->currency}}&nbsp;&nbsp;{{$order->giftcard_amount}}
                                                                     </td>
                                                                 </tr>
+                                                                @endif
                                                                 <!--end::Shipping-->
                                                                 <!--begin::Grand total-->
                                                                 <tr>

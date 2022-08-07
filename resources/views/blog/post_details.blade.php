@@ -125,16 +125,16 @@ $user= App\Models\User::find($post->user_id);
 
             <div class="reply-form">
 
-
+            
                 <form action="{{url('/blog/post/comment')}}" method="post">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="inputEmail4">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Name">
+                            <label for="inputEmail4">Name*&nbsp;(Required)</label>
+                            <input type="text" name="name" class="form-control" placeholder="Name" required>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="inputPassword4">Email</label>
+                            <label for="inputPassword4">Email*&nbsp;(Required)</label>
                             <input type="email" name="email" required class="form-control" id="inputEmail4"
                                 placeholder="Email">
                         </div>
@@ -144,12 +144,13 @@ $user= App\Models\User::find($post->user_id);
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="comment-reply">Comment</label>
-                        <input type="text" name="comment" class="form-control comment" id="comment-reply">
+                        <label for="comment-reply">Comment*&nbsp;(Required)</label>
+                        <input type="text" name="comment" class="form-control comment" id="comment-reply" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Comment</button>
+                    <button type="submit" class="btn sign-button">Comment</button>
                 </form>
+              
 
 
             </div>
@@ -164,7 +165,7 @@ $user= App\Models\User::find($post->user_id);
 @endphp
 
 <div class="container">
-    <div class="Headingtitle">
+    <div class="Headingtitle" style="color:#D20A7D">
         Related Post
     </div>
     <div class="divider"></div>
@@ -180,8 +181,8 @@ $user= App\Models\User::find($post->user_id);
                         alt="Card image cap ">
                     <div class="card-body ">
                         <h5 class="card-title ">{{substr($row->title,0,20)}}</h5>
-                        <p class="card-text " {!! substr($row->description,0,20) !!}</p>
-                        <a href="{{route('blog.post.details',$row->slug)}}" class="btn btn-primary btn-block ">Read
+                        <!-- <p class="card-text " {!! substr($row->description,0,20) !!}</p> -->
+                        <a href="{{route('blog.post.details',$row->slug)}}" class="btn  " style="background:#D20A7D;width:100%;color:#fff">Read
                             More</a>
                     </div>
                 </div>

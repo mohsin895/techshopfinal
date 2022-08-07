@@ -15,7 +15,7 @@
         <div class="col-lg-10 my-auto">
             <div class="card-group">
                 <div class="card p-4">
-                    <h2 class="text-center text-primary font-weight-bold">Forgot Password</h2>
+                    <h2 class="text-center login-page-text font-weight-bold">Forgot Password</h2>
                     @include('error.message')
                     <hr class="my-3">
                     <form class="px-3" method="post" id="forgotten-form" route="{{url('admin.forget.password')}}">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Reset Password"
-                                class="btn btn-primary btn-block">
+                                class="btn sign-button btn-block">
 
                         </div>
 
@@ -58,9 +58,6 @@
 </div>
 
 
-
-
-
-
+@include('layout.front.footer');
 
 @endsection

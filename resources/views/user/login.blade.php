@@ -10,7 +10,7 @@
         <div class="col-lg-10 my-auto">
             <div class="card-group">
                 <div class="card p-4">
-                    <h2 class="text-center text-primary font-weight-bold">Login to your account</h2>
+                    <h2 class="text-center  font-weight-bold login-page-text">Login to your account</h2>
                     @include('error.message')
                     <hr class="my-3">
                     <div id="loginError"></div>
@@ -46,23 +46,23 @@
 
                         </div>
                         <div class="form-group">
-                            <div class="float-left custom-control custom-checkbox">
+                            <!-- <div class="float-left custom-control custom-checkbox">
                                 <input type="checkbox" id="rememberMe" name="rememberMe">
                                 <label for="rememberMe">Remember me</label>
                                 <input type="checkbox" class="custom-control-input" name="">
 
-                            </div>
+                            </div> -->
 
                             <div class="float-right">
-                                <a href="{{route('user.forgot-password')}}" class="text-decoration-none">Forgot
-                                    password</a>
+                                <a href="{{route('user.forgot-password')}}" class="text-decoration-none"><span class="text-color-forget-password">Forgot
+                                    password</span></a>
 
                             </div>
                             <div class="clearfix"></div>
 
                         </div>
                         <div class="form-group">
-                            <input type="submit"  value="Sig In" class="btn btn-primary btn-block">
+                            <input type="submit"  value="Sign In" class="btn sign-button btn-block">
 
                         </div>
 
@@ -137,10 +137,7 @@
 
 </div>
 
-
-
-
-
+@include('layout.front.footer')
 
 
 @endsection

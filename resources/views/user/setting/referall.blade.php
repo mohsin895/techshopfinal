@@ -11,15 +11,15 @@
             <div class="card-group">
 
                 <div class="card p-4">
-                    <h2 class="text-center text-primary font-weight-bold">User Referral Link</h2>
+                    <h2 class="text-center login-page-text font-weight-bold">User Referral Link</h2>
 
                     <hr class="my-3">
 
 
-                    <p class="text-left">please click to copy for your referall link</p>
-                    <span class=" ml-4">{{ url('/') . '/?ref=' . Auth::user()->referral_id }}
+                    <p class="text-left" style="color:#000">please click to copy for your referral link</p>
+                    <span class=" ml-4" style="color:#000">{{ url('/') . '/?ref=' . Auth::user()->referral_id }}
                         <button id="copyBtn" data-text="{{ url('/') . '/?ref=' . Auth::user()->referral_id }}"
-                            class="btn btn-success ">Copy Referall Link</button></span>
+                            class="btn btn-success ">Copy Referral Link</button></span>
 
 
                 </div>
@@ -31,6 +31,6 @@
     </div>
 </section>
 
-
+@include('layout.front.footer');
 
 @endsection

@@ -2,684 +2,797 @@
 
 @section('content')
 @include('layout.front.detail_header')
-<div id="details">
-    <div class="content-section">
-        @include('error.message')
-        <div class="d-flex">
-            <div class="row col-lg-12">
-                <div class="col-12 col-md-6 "> @php
-                    $i = 1;
-                    @endphp
 
-                    <div class="details-image-section">
-                        <div class="details-image js--image-details">
-                            <img name="img-zoom" src="{{asset('public/assets/images/product/'.$productDetails->image)}}"
-                                id="js--main-image" alt="Soldering-Iron-Stand.jpg" />
-
-                        </div>
-
-                        <!-- <div class="thumbnail">
-                            <div class="thumbnail-owl-carousel owl-carousel owl-theme" id="js--product-thumbnail">
+<div id="product-details" class="container">
+    <section id="product-details-main " class="">
+        <div class="row ">
+            <div class="col-12 col-sm-12 col-md-5 col-lg-5 ">
 
 
-                                @foreach($productDetails->gallery as $image)
-                                <img name="" src="{{asset('public/assets/images/product/gallery/'.$image->galery)}}"
-                                    class="js--thumb-image img-fluid active" alt="Soldering-Iron-Stand.jpg">
-                                @php
-                                $i++;
-                                @endphp
-                                @endforeach
+                @php
 
-                            </div>
-                        </div> -->
+                $totalimage =
+                App\Models\Gallery::where('product_id',$productDetails->id)->count('id');
+                @endphp
 
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-sm-12 ">
-
-
-                    <div class="card">
-
-                        <div class="card-body">
-                            <h2 class="card-title">{{$productDetails->product_name}}</h2>
-                            <p class="card-text">Model No: <span>{{$productDetails->model_no}}</span>
-                            </p>
-                            @if($productDetails->flash_sale == 1)
-                            @php
-                            $flashSalePrice = $productDetails->price - $productDetails->flash_sale_price;
-                            $flashSaleparcentise = ($flashSalePrice * 100)/$productDetails->price;
-
-                            @endphp
-
-                            <p class="card-text"><del>Tk. {{$productDetails->price}}</del>
-                                Tk. {{$productDetails->flash_sale_price}} <button class="btn btn-success">
-                                    -{{round($flashSaleparcentise ,0)}} %</button></span>
-                            </p>
-                            @else
-
-                            <p class="price">TK. {{$productDetails->price}}
-                                @endif
-                            <p> @php
-
-                                $totalQuantity =
-                                App\Models\Qty::where('product_id',$productDetails->id)->sum('quantity');
-                                @endphp
- &nbsp;&nbsp;
-                            <p class="stock ">Availability: @if($totalQuantity == $orderProduct)<span class="btn btn-warning">Out of Stock
-                                </span>@else<span class="btn btn-success">In
-                                    stock </span> @endif
-                            <p></p>
-                            </p>
-                            &nbsp;&nbsp;
-                            <form name="addtocart" id="addtocart" action="{{route('add-cart')}}" method="POST">
-                                @csrf
-                                <input type="hidden" name="product_id" value="{{$productDetails->id}}">
-                                <input type="hidden" name="buying_price" value="{{$productDetails->buying_price}}">
-                                <input type="hidden" name="product_name" value="{{$productDetails->product_name}}">
-                                <input type="hidden" name="model_no" value="{{$productDetails->model_no}}">
-                                @if($productDetails->flash_sale == 1)
-                                <input type="hidden" name="price" value="{{$productDetails->flash_sale_price}}">
-                                @else
-
-                                <input type="hidden" name="price" value="{{$productDetails->price}}">
-                                @endif
-                                <input type="hidden" name="product_id" value="{{$productDetails->id}}">
-                                <input type="hidden" name="referral_id" value="{{$referral}}">
-
-                                <div class="quantity d-flex justify-content-between align-items-center">
-                                    <p class="mx-0">Quantity: </p>
-                                    <div class="input-group ml-3">
-                                        <span class="input-group-btn" id="js--btn-minus">
-                                            <button type="button" class="btn btn-number">
-                                                <img src="{{ asset('public/image/frontLogos/minus-icon.png')}}" alt="icon">
-                                            </button>
-                                        </span>
-
-                                        <input type="text" class="form-control input-number bg-white" name="quantity"
-                                            id="js--input-number" value="1" min="1" max="1000">
-                                        <span class="input-group-btn" id="js--btn-plus">
-                                            <button type="button" class="btn btn-number">
-                                                <img src="{{ asset('public/image/frontLogos/plus-icon.png')}}" alt="icon">
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                                &nbsp;&nbsp;
-
-                                <div class="rating-review">
-                                    <span class="fa  fa-star"></span>
-                                    <span class="fa  fa-star"></span>
-                                    <span class="fa  fa-star"></span>
-                                    <span class="fa  fa-star"></span>
-                                    <span class="fa  fa-star"></span>
-                                    <input type="hidden" id="average-rating-number" value="4.9" />
-
-                                    <a href="#write-review"><span class="count">{{$ratingCount}} Ratings /
-                                            {{$reviewCount }}
-                                            Reviews</span>
-                                    </a>
-                                </div>
-                                &nbsp;&nbsp;
-                                <div class="button">
-                                    @php
-
-                                    $totalQuantity =
-                                    App\Models\Qty::where('product_id',$productDetails->id)->sum('quantity');
-                                    @endphp
-
-                                    @if($totalQuantity == $orderProduct)
-                                    <a class="btn btn-success">Out
-                                        of Stock</a>
-
-                                    <!-- <a class="btn btn-back-order d-none">Back
-                            Order</a> -->
-                                    @else
-
-
-
-
-                                    <a class="btn btn-cart d-none btn-warning"><img
-                                            src="{{ asset('public/image/frontLogos/cart-icon-hover.png')}}" alt="icon">Add to
-                                        Cart</a>
-
-                                    <button type="submit" class="btn btn-cart-login btn-warning">
-                                        <img src="{{ asset('public/image/frontLogos/cart-icon-hover.png')}}" alt="icon">Add to
-                                        Cart</button>
-                                    @endif
-                            </form>
-
-
-                            <!-- <input type="hidden" name="product_id" value="{{$productDetails->id}}">
-
-                <button type="submit" class="btn btn-wishlist" id="add-to-wishlist"><i class="fa fa-heart"></i>Save to
-                    Wishlist</button> -->
-
-
-
-
-
-                        </div>
-                        &nbsp;&nbsp;
-
-                        <p class="category">Category: <span>{{$productCategory->cat_name}}</span>
-                        </p>
-
-                    </div>
+                <!-- 
+                <div class="mySlides mobile-image">
+                    <div class="number"></div>
+                    <img src="{{asset('public/assets/images/product/'.$productDetails->image)}}" width="100%" class="mobile-image" />
+                    <div class="text mobile-image">main Image/{{$totalimage+1}}</div>
                 </div>
 
-            </div>
+                @foreach($productDetails->gallery as $image)
+                <div class="mySlides mobile-image">
 
-
-
-
-
-
-
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="row col-lg-12">
-
-    <div class="col-12 col-md-12">
-        <div class="product-summery mt-5">
-            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                <li class="nav-item m-0">
-                    <a class="nav-link active" id="summery-tab" data-toggle="tab" href="#summery" role="tab"
-                        aria-controls="summery" aria-selected="true">summary</a>
-                </li>
-
-                <li class="nav-item m-0">
-                    <a class="nav-link" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc"
-                        aria-selected="false">Documents</a>
-                </li>
-            </ul>
-            <div class="tab-content col-md-12 col-sm-12 col-lg-12" id="myTabContent">
-                <div class="tab-pane fade show active " id="summery" role="tabpanel" aria-labelledby="summery-tab">
-
-
-                    {!! $productDetails->summery !!}
-
-
-                </div>
-                <div class="tab-pane fade" id="specification" role="tabpanel" aria-labelledby="specification-tab">
-                    <div class="content-section">
-                        <p></p>
-                    </div>
-                </div>
-                <div class="tab-pane fade col-md-12 col-sm-12 col-lg-12" id="doc" role="tabpanel"
-                    aria-labelledby="doc-tab">
-
-
-
-                    {!! $productDetails->document !!}
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-
-<!-- <div class="customer-bought product-list-wrapper">
-    <div class="content-section">
-        <div class="product-list-header">
-            <div class="d-flex align-items-center">
-                <p class="title ml-0 mb-0">Related To This Item</p>
-            </div>
-        </div>
-        <div class="product-list-item">
-            <div class="d-flex">
-                @foreach($relatedProducts as $row)
-                <div class="item" id="js--product-item">
-                    <a href="{{url('/product/details',$row->slug)}}" class="item-link">
-                        <div class="card">
-                            <img src="{{asset('public/assets/images/product/'.$row->image)}}" alt="product" class="img-fluid">
-
-                            <p class="product-name">{{$row->product_name}}</p>
-                            <p class="brand-name">{{$row->supplier}}</p>
-                            <hr />
-                            <div class="d-flex justify-content-between price">
-                                <p class="sell-price">TK. {{$row->price}}</p>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="product-btn-wrapper" id="js--product-btn">
-                        <a href="{{url('/product/details',$row->slug)}}" class="btn btn-view-details">View
-                            Details</a>
-                    </div>
+                    <img src="{{asset('public/assets/images/product/gallery/'.$image->galery)}}" width="100%" />
+                    <div class="number">{{$loop->index+1}}/{{$totalimage+1}}</div>
                 </div>
                 @endforeach
 
+                <a class="prev mobile-image" onclick="plusSlides(-1)">&#10094;</a>
 
-            </div>
-        </div>
-    </div>
-</div> -->
+                <a class="next mobile-image" onclick="plusSlides(1)">&#10095;</a>
 
-<div class="qa-section col-lg-12 col-sm-12 col-md-12" id="qa-section">
-    <div class="content-section">
-        <p class="title">Question & Answer</p>
-
-        <div class="post-question clearfix">
+                <div class="text-align mobile-image">
+                    @foreach($productDetails->gallery as $image)
+                    <span class="dot" onclick="currentSlide({{$loop->index+1}})"></span>
+                    @endforeach
+                </div> -->
 
 
-            <p id="question-message"></p>
 
-            </p>
-            @if(empty(Auth::check()))
-            <p class="question-form-login">Please login to
-                write question & answer
-                <a href="{{route('user.login')}}" class="user-login">Login</a>
-            </p>
-
-            @else
-            <form method="post" action="{{route('user.question')}}">
-                @csrf
-                <p>
-                    <input type="hidden" name="product_id" value="{{$productDetails->id}}">
-                    <textarea rows="4" class="form-control" placeholder="Please write your question"
-                        name="question"></textarea>
-
-                <p>
-                    <input type="submit" class="btn btn-post__question pull-right form-control" value="Post Your Question" />
-                </p>
-                </p>
-            </form>
-
-            @endif
-
-        </div>
-
-        <div class="qa-list-wrapper">
-            <p class="subtitle border-bottom"> questions</p>
-            @foreach($productDetails['question'] as $row)
-            @php
-            $user = App\Models\User::find($row->user_id);
-            $answer = App\Models\Answer::where('question_id',$row->id)->where('status',1)->get();
-            @endphp
-            <div class="qa-list js--qa-section ">
-                <div class="question-item">
-                    <p class="question d-flex">
-                        <span class="ml-0 mr-0">Q: </span>
-                        <span class="ml-2">
-                            <span>{{$row->question}}</span>
-                            <span class="ques-by">Questioned by </span><span>{{$user->name}}</span>
-                            <span class="ques-by">{{$row->created_at->toDayDateTimeString()}}</span>
-                        </span>
-                    </p>
-
-                    <div class="submit-answer">
-                        @if(empty(Auth::check()))
-                        <p><a href="{{route('user.login')}}">Please login to write answer</a></p>
-                        @else
-
-                        <a href="" class="js--submit-answer">Submit Your Answer</a>
-                        </p>
-                        <form action="{{route('user.answer')}}" method="post">
-                            @csrf
-                            <input name="question_id" type="hidden" value="{{$row->id}}" />
-
-                            <p><textarea name="answer" rows="4" class="form-control answer-text"></textarea></p>
-                            <div class="text-right mt-3">
-                                <input type="submit" class="bnt btn-submit-answer" value="Submit Answer" />
-                            </div>
-                        </form>
-                        @endif
-
-                    </div>
-                </div>
-                <div class="answer-item">
-                    <p class="answer d-flex">
-                        @foreach($answer as $row)
-                        @php
-                        $user = App\Models\user::find($row->user_id);
-
-                        @endphp
-                        <i class="fa fa-circle text-secondary small ml-0 mr-0 pt-1"></i>
-                        <span class="ml-2">
-                            <span>{{$row->answer }} </span>
-                            <span class="ans-by">Answered by </span><span>{{$user->name}},</span>
-                            <span class="ans-by">{{$row->created_at->toDayDateTimeString()}}</span>
-                        </span>
-                        @endforeach
-                    </p>
+                <div class="mt-5 main-image desktop-image">
+                    <img src="{{asset('public/assets/images/product/'.$productDetails->image)}}"
+                        class="imgmini product-details-image" id="mainimgid"></img>
                 </div>
 
-                <div id="write-review"></div>
+
+                <div class="glerry-image mt-5 owlcarouselGallery owl-carousel">
+                    <img src="{{asset('public/assets/images/product/'.$productDetails->image)}}"
+                        class="imgmini gallery-image " id="0" onclick="changeImage(this)" alt="Cute cat1"></img>
+
+
+                    @foreach($productDetails->gallery as $image)
+                    <img src="{{asset('public/assets/images/product/gallery/'.$image->galery)}}"
+                        class="imgmini gallery-image " id="{{$loop->index + 1}}" onclick="changeImage(this)"
+                        alt="Cute cat1"></img>
+
+
+                    @endforeach
+
+
+                </div>
+
             </div>
-            @endforeach
+            @php $vat= ($productDetails->price*$gs->vat)/ 100 @endphp
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-5 product-details-mobile-color">
+                <p class="product-details-name ">{{$productDetails->product_name}}</p>
+                <div class="products-details-main products-details-main-border mb-3">
+                    <p class="mt-3">Model No: <span>{{$productDetails->model_no}}</span></p>
+                    @php
 
-            <div class="btn-view-more border-bottom d-none">
-                <button type="button" class="btn js--qa-view-more">View More</button>
-            </div>
-        </div>
-    </div>
-</div>
+                    $totalQuantity =
+                    App\Models\Qty::where('product_id',$productDetails->id)->sum('quantity');
+                    @endphp
+                    <p class="mt-3">Status: @if($totalQuantity == $orderProduct)<span class="btn btn-warning">Out of
+                            Stock
+                        </span>@else<span class="btn stock-button">In
+                            stock </span> @endif</p>
+                    <p class="mt-3">Supplier: <span>{{$productDetails->supplier}}</span></p>
+                    <p class="mt-3">Category: <span>{{$productCategory->cat_name}}</span></p>
+                    @if($gs->cart_page_vat==1)
 
-<div class="review-section col-lg-12 col-sm-12 col-md-12" id="review-area">
-    <div class="content-section">
-        <p class="title">Reviews & Ratings</p>
-        <div class="submit-review d-flex align-items-center">
+                    @if($productDetails->flash_sale == 1)
+                    @php
+                    $flashSalePrice = $productDetails->price - $productDetails->flash_sale_price;
+                    $flashSaleparcentise = ($flashSalePrice * 100)/$productDetails->price;
 
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-6 col-sm-12"> @if(empty(Auth::check()))
-                    <p class="review-form-login form-control">Please login to write review & rating
-                        <a href="{{route('user.login')}}" class="user-login">Login</a>
+                    @endphp
+
+                    <p class="card-text mt-3"><del class="previous-price">{{$gs->currency}}.
+                            {{$productDetails->price}}</del>
+                        <span class="current-price"> Tk. {{$productDetails->flash_sale_price}}</span> <button
+                            class="btn stock-button">
+                            -{{round($flashSaleparcentise ,0)}} %</button></span>
                     </p>
                     @else
-                    <p>
-                    <form action="{{route('user.rating_review')}}" method="post">
-                        @csrf
-                        <input type="hidden" value="{{$productDetails->id}}" name="product_id" id="rating2">
-                        <textarea rows="6" id="review-details" name="review_details" class="form-control"
-                            placeholder="Please write your review"></textarea>
-                        <div class="d-flex">
 
-                            <div class="rating-css">
-                                <div class="star-icon">
-                                    <input type="radio" value="1" name="rating_star" checked id="rating1">
-                                    <label for="rating1" class="fa fa-star"></label>
-                                    <input type="radio" value="2" name="rating_star" id="rating2">
-                                    <label for="rating2" class="fa fa-star"></label>
-                                    <input type="radio" value="3" name="rating_star" id="rating3">
-                                    <label for="rating3" class="fa fa-star"></label>
-                                    <input type="radio" value="4" name="rating_star" id="rating4">
-                                    <label for="rating4" class="fa fa-star"></label>
-                                    <input type="radio" value="5" name="rating_star" id="rating5">
-                                    <label for="rating5" class="fa fa-star"></label>
+                    <p class="current-price">{{$gs->currency}}. {{$productDetails->price}}
+                        @endif
 
-                                </div>
+                        @else
+                        @if($productDetails->flash_sale == 1)
 
-                            </div>
+                        @if($gs->cart_page_vat==1)
 
 
-                          
-                        </div>
-                        <input type="submit" class="btn btn-warning form-control" value="Submit" />
-                        </p>
-                    </form>
+                        @php
+                        $flashSalePrice = $productDetails->price - $productDetails->flash_sale_price;
+                        $flashSaleparcentise = ($flashSalePrice * 100)/$productDetails->price;
+
+                        @endphp
+
+                    <p class="card-text mt-3"><del class="previous-price">{{$gs->currency}}.
+                            {{$productDetails->price}}</del>
+                        <span class="current-price"> Tk. {{$productDetails->flash_sale_price }}</span> <button
+                            class="btn stock-button">
+                            -{{round($flashSaleparcentise ,2)}} %</button></span>
+                    </p>
+                    @else
+
+                    @php $vatPrice= ($productDetails->price*$gs->vat)/ 100 ; @endphp
+                    @php $vatPriceFlashsall= ($productDetails->flash_sale_price*$gs->vat)/ 100
+                    ; @endphp
+                    @php
+
+                    $flashSalePrice = $productDetails->price - $productDetails->flash_sale_price;
+                    $flashSaleparcentise = ($flashSalePrice * 100)/$productDetails->price;
+
+                    @endphp
+
+                    @php
+                    $flashSalePrice = ($productDetails->price + $vatPrice )- ($productDetails->flash_sale_price + $vatPriceFlashsall);
+                    $flashSaleparcentise = ($flashSalePrice * 100)/($productDetails->price + $vatPrice);
+
+                    @endphp
+
+                    <p class="card-text mt-3"><del class="previous-price">{{$gs->currency}}.
+                            {{$productDetails->price + $vatPrice}}</del>
+                        <span class="current-price"> Tk. {{$productDetails->flash_sale_price + $vatPriceFlashsall}}</span> <button
+                            class="btn stock-button">
+                            -{{round($flashSaleparcentise ,2)}} %</button></span>
+                    </p>
+
                     @endif
-                </div>
-                <div class="col-12 col-md-6 col-lg-6 col-sm-12">
-                    <div class="review-info">
+                    @else
 
-                        <div class="d-flex align-items-center mb-4">
-                            <p class="total-rating align-self-center" id="average-rating">
-                                <?=$ratingCount ? ($progress*5)/ ($ratingCount*5) : 0 ?></p>
+                    <p class="current-price">{{$gs->currency}}. {{$productDetails->price + $vat}}
+                        @endif
+
+                        @endif
+
+
+
+                    <div class="rating-review mb-3">
+
+
+
+
+
+                        @php $totalrating = round($ratingCount ? ($progress*5)/ ($ratingCount*5) : 0) @endphp
+
+
+                        <p class="stars">
+                            @if($totalrating ==5)
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+
+                            @elseif($totalrating ==4)
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-size star-color">&#9734</span>
+                            @elseif($totalrating ==3)
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size star-color">&#9734</span>
+
+                            @elseif($totalrating ==2)
+
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size star-color">&#9734</span>
+                            @elseif($totalrating ==1)
+                            <span class="star-color star-size">&#9733</span>
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size">&#9734</span>
+                            @else
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size star-color">&#9734</span>
+                            <span class="star-size star-color">&#9734</span>
+
+                            @endif
+
+                            &nbsp;&nbsp;
+                            <span> {{$ratingCount}} Ratings</span>
+                        </p>
+
+
+
+
+                    </div>
+                </div>
+
+
+                <form name="addtocart" id="addtocart" action="{{route('add-cart')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{$productDetails->id}}">
+                    <input type="hidden" name="buying_price" value="{{$productDetails->buying_price}}">
+                    <input type="hidden" name="product_name" value="{{$productDetails->product_name}}">
+                    <input type="hidden" name="model_no" value="{{$productDetails->model_no}}">
+                    @if($productDetails->flash_sale == 1)
+                    <input type="hidden" name="price" value="{{$productDetails->flash_sale_price}}">
+                    @else
+
+
+
+                    <input type="hidden" name="price" value="{{$productDetails->price}}">
+
+                    @endif
+
+
+                    <input type="hidden" name="product_id" value="{{$productDetails->id}}">
+                    <input type="hidden" name="referral_id" value="{{$referral}}">
+
+
+
+                    <div class="qty-container products-details-main">
+                        Quantity:&nbsp;&nbsp;
+                        <button class="qty-btn-minus btn-light" type="button" style="margin-left: 10px;
+    margin-right: -210px"><i class="fa fa-minus"></i></button>
+                        <input type="text" name="quantity" value="1" class="input-qty"
+                            style="margin-left:210px;margin-right:0px" />
+                        <button class="qty-btn-plus btn-light" type="button" style=""><i
+                                class="fa fa-plus"></i></button>
+                    </div>
+
+                    <!-- <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">
+                        <span>-</span>
+                    </div>
+                    <input type="number" name="quantity" id="number" value="1" />
+                    <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div> -->
+                    &nbsp;&nbsp;
+                    &nbsp;&nbsp;
+
+
+                    <div class="button mt-3">
+                        @php
+
+                        $totalQuantity =
+                        App\Models\Qty::where('product_id',$productDetails->id)->sum('quantity');
+                        @endphp
+
+                        @if($totalQuantity == $orderProduct)
+
+
+                        @else
+
+                        <button type="submit" class="btn btn-cart-login  btn-warning">
+                            <img style="height: 30px;width: 30px;margin-right:10px"
+                                src="{{ asset('public/image/frontLogos/cart-icon-hover.png')}}" alt="icon"><span
+                                style="font-size:1.2rem">Add to
+                                Cart</span></button>
+                        @endif
+                </form>
+
+
+
+            </div>
+
+        </div>
+    </section>
+</div>
+<div class="products-decription product-details-mobile-color">
+
+    <div class="container">
+
+        <section>
+
+
+            <div class=" col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class=" mobile-underliner">
+                    <button type="button" class="featuredBtn active mt-3" id="btnOne" onclick="show('Section1');"><a
+                            href="#description" class="review-rating-detils-font-color-size">Description</a></button>
+                    <button type="button" class="featuredBtn mt-3" id="btnTwo" onclick="show('Section2');"><a
+                            href="#summery" class="review-rating-detils-font-color-size">Summery</a></button>
+                    <button type="button" class="featuredBtn featuredBtnMobile mt-3" id="btnThree"><a href="#question"
+                            class="review-rating-detils-font-color-size">Questions</a></button>
+                    <button type="button" class="featuredBtn featuredBtnMobile mt-3" id="btnFour"><a href="#review"
+                            class="review-rating-detils-font-color-size">Review</a></button>
+
+                </div>
+                <br>
+                <div class="mb-3" id="Section1">
+                    <div id="description " class="description-summery-font-size">
+
+                        {!! $productDetails->document !!}
+                    </div>
+                </div>
+
+                <div class="mb-3" id="Section2" style="display: none;">
+                    <div id="summery" class="description-summery-font-size">
+                        {!! $productDetails->summery !!}
+                    </div>
+
+                </div>
+                <br>
+
+
+            </div>
+
+        </section>
+    </div>
+</div>
+<div id="product-details-question" class="container">
+    <section>
+
+        <div class="row ">
+            <div id="question" class="col-12 col-sm-12 col-md-12 col-lg-12 product-details-mobile-color">
+                @php
+                $productQuestion = App\Models\Question::where('product_id',$productDetails['id'])->count('id');
+
+                @endphp
+                <p class="question-review-header">Questions({{$productQuestion}})</p>
+
+                <div class="row ">
+                    <div class="col-sm mobile-question-review-formate-hidden">
+                        <p class="question-review-formate">Have question about this product? Get specific details about
+                            this product from expert.</p>
+                    </div>
+                    <div class="col-sm mobile-question-review-formate-hidden">
+
+                        <p class="question-review-user"><a href="{{url('user/question',$productDetails['slug'])}}"><span
+                                    style="color:#D20A7d">Ask Question</span></a></p>
+                    </div>
+
+                </div>
+                <p class="question-border"></p>
+                @foreach($question as $row)
+                @php
+                $user = App\Models\User::find($row->user_id);
+
+                $answer = App\Models\Answer::where('question_id',$row->id)->where('status',1)->get();
+                @endphp
+
+
+                <p><span class="question-review-user-name ">{{$user->name}}</span> <span
+                        class="question-review-user-date">
+                        on {{$row->created_at->toDayDateTimeString()}}</span></p>
+
+
+
+                <p class="user-question">Q:{{$row->question}}</p>
+
+                @foreach($answer as $row)
+                @php
+                $user = App\Models\user::find($row->user_id);
+
+                @endphp
+
+
+                <p class="user-answer">A:{{$row->answer }} </p>
+
+                @endforeach
+
+
+
+                <p class="question-border"></p>
+
+
+                @endforeach
+                <div style="text-align:right" class="mb-3">
+                    {!! $question->links('pagination::bootstrap-5') !!}
+                </div>
+                <button class="mobile-question-review-user"><a
+                        href="{{url('user/question',$productDetails['slug'])}}">Ask Question</a></button>
+
+            </div>
+        </div>
+
+    </section>
+</div>
+<div id="product-details-review" class="container">
+
+    <section class="mobile-summery-description-color">
+        <div class="row ">
+            <div id="review" class="col-12 col-sm-12 col-md-12 col-lg-12 product-details-mobile-color ">
+                @php
+                $productReview = App\Models\ReviwRating::where('product_id',$productDetails['id'])->count('id');
+                @endphp
+                <p class="question-review-header"> Review({{$productReview}})</p>
+
+                <div class="row">
+                    <div class="col-sm mobile-question-review-formate-hidden">
+                        <p class="question-review-formate">Get specific details about this product from customers who
+                            own it.</p>
+                    </div>
+                    <div class="col-sm mobile-question-review-formate-hidden">
+                        <p class="question-review-user"><a
+                                href="{{url('user/rating_review',$productDetails['slug'])}}"><span
+                                    style="color:#D20A7d"> Write a Review</span></a></p>
+                    </div>
+
+                </div>
+                <p class="question-border"></p>
+
+                <div class="row" id="details">
+                    <div class="col-sm-1 col-md-6 col-lg-6">
+
+                        <div class="d-flex align-items-center mobile-rating mb-4">
 
                             <div class="count">
-                                <p>{{$ratingCount}} Ratings / {{$reviewCount }} Reviews</p>
-                                <input id="total_number_of_rating" type="hidden" value="10" />
-                                <p class="stars">
-                                    <span class="fa  fa-star"></span>
-                                    <span class="fa  fa-star"></span>
-                                    <span class="fa  fa-star"></span>
-                                    <span class="fa  fa-star"></span>
-                                    <span class="fa  fa-star"></span>
+
+                                <p class="total-rating align-self-center total-rating-style" id="average-rating">
+                                    <?= $totalrating = round($ratingCount ? ($progress*5)/ ($ratingCount*5) : 0) ?>/5
+                                </p>
+                                <p class="stars responsive-stars">
+                                    @if($totalrating ==5)
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+
+                                    @elseif($totalrating ==4)
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    @elseif($totalrating ==3)
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+
+                                    @elseif($totalrating ==2)
+
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    @elseif($totalrating ==1)
+                                    <span class="star-color star-size">&#9733</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    @else
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+                                    <span class="star-size star-color">&#9734</span>
+
+                                    @endif
                                 </p>
 
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row rating-count">
-                                <div class="col-4 star-append">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
+                                <p class="total-rating-count" id="mobile-rating-count">{{$ratingCount}} Ratings </p>
 
-
-
-
-                                <div class="col-1">
-                                    <p class="rating-number">[{{$progress5}}]</p>
-                                </div>
-                                <div class="col-7">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar"
-                                            style="width: <?= $ratingCount ?  ($progress5 / $ratingCount) * 100 : 0 ?>%;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row rating-count">
-
-                                <div class="col-4 star-append">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    
-                                </div>
-
-
-
-                                <div class="col-1">
-                                    <p class="rating-number">[{{$progress4}}]</p>
-                                </div>
-                                <div class="col-7">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar"
-                                            style="width: <?= $ratingCount ?  ($progress4 / $ratingCount) * 100 : 0 ?>%;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row rating-count">
-
-
-                                <div class="col-4 star-append">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-
-
-                                <div class="col-1">
-                                    <p class="rating-number">[{{$progress3}}]</p>
-                                </div>
-                                <div class="col-7">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar"
-                                            style="width:<?= $ratingCount ?  ($progress3 / $ratingCount) * 100 : 0 ?>%;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row rating-count">
-
-
-
-                                <div class="col-4 star-append">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-
-                                <div class="col-1">
-                                    <p class="rating-number">[{{$progress2}}]</p>
-                                </div>
-                                <div class="col-7">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar"
-                                            style="width:<?= $ratingCount ?  ($progress2 / $ratingCount) * 100 : 0 ?>%;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row rating-count">
-
-
-
-
-                                <div class="col-4 star-append">
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="col-1">
-                                    <p class="rating-number">[{{$progress1}}]</p>
-                                </div>
-                                <div class="col-7">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar"
-                                            style="width:<?= $ratingCount ?  ($progress1 / $ratingCount) * 100 : 0 ?>%;">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-3 col-md-6 col-lg-6">
+
+                        <div class="review-section col-lg-12 col-sm-12 col-md-12" id="review-area">
+                            <div class="content-section">
+
+                                <div class="submit-review d-flex align-items-center">
+
+                                    <div class="row">
+
+                                        <div class="col-12 col-md-12 col-lg-12 col-sm-12">
+                                            <div class="review-info">
+
+
+                                                <div class="row rating-count">
+
+                                                    <div class="col-1">
+                                                        <p class="rating-number">5 star</p>
+                                                    </div>
+                                                    <div class="col-8">
+
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width: <?= $ratingCount ?  ($progress5 / $ratingCount) * 100 : 0 ?>%;">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p class="count-progess-bar">{{$progress5}}</p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row rating-count">
+
+                                                    <div class="col-1">
+                                                        <p class="rating-number">4 star</p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width: <?= $ratingCount ?  ($progress4 / $ratingCount) * 100 : 0 ?>%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                        <p class="count-progess-bar">{{$progress4}}</p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row rating-count">
+
+
+                                                    <div class="col-1">
+                                                        <p class="rating-number">3 star</p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width:<?= $ratingCount ?  ($progress3 / $ratingCount) * 100 : 0 ?>%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p class="count-progess-bar">{{$progress3}}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row rating-count">
+
+
+                                                    <div class="col-1">
+                                                        <p class="rating-number">2 star</p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width:<?= $ratingCount ?  ($progress2 / $ratingCount) * 100 : 0 ?>%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p class="count-progess-bar">{{$progress2}}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row rating-count">
+
+                                                    <div class="col-1">
+                                                        <p class="rating-number">1 star</p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar"
+                                                                style="width:<?= $ratingCount ?  ($progress1 / $ratingCount) * 100 : 0 ?>%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p class="count-progess-bar">{{$progress1}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="qa-list-wrapper">
-            <p class="subtitle border-bottom"> Review</p>
-            @foreach($productDetails['review'] as $row)
-            @php
-            $user = App\Models\User::find($row->user_id);
-           
-            @endphp
-            <div class="qa-list js--qa-section ">
-                <div class="question-item">
+                <p class="question-border"></p>
+
+                @foreach($review as $row)
+                @php
+                $user = App\Models\User::find($row->user_id);
+
+                @endphp
 
 
-                <p class="question d-flex">
-                        <span class="ml-0 mr-0">Review: </span>
-                        <span class="ml-2">
-                            <span>{{$row->review_details}}</span>
-                            <span class="ques-by">Review By by </span><span>{{$user->name}}</span>
-                            <span class="ques-by">{{$row->created_at->toDayDateTimeString()}}</span>
-                        </span>
+                <p> <span class="question-review-user-date">By</span> <span class="question-review-user-name">
+                        {{$user->name}}</span> <span class="question-review-user-date"> on
+                        {{$row->created_at->toDayDateTimeString()}}</span></p>
+
+
+                <div class="count">
+
+                    <p class="total-rating align-self-center total-rating-style" id="average-rating">
+                        @php $totalrating = $ratingCount ? ($progress*5)/ ($ratingCount*5) : 0 @endphp</p>
+                    <p class="stars comment-stars">
+                        @if($row->rating_star ==5)
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+
+                        @elseif($row->rating_star ==4)
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-size">&#9734</span>
+                        @elseif($row->rating_star ==3)
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-size">&#9734</span>
+                        <span class="star-size">&#9734</span>
+
+                        @elseif($row->rating_star ==2)
+
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-size">&#9734</span>
+                        <span class="star-size">&#9734</span>
+                        <span class="star-size">&#9734</span>
+                        @elseif($row->rating_star ==1)
+                        <span class="star-color star-size">&#9733</span>
+                        <span class="star-size star-color">&#9734</span>
+                        <span class="star-size star-color">&#9734</span>
+                        <span class="star-size star-color">&#9734</span>
+                        <span class="star-size">&#9734</span>
+                        @else
+                        <span class="star-size star-color">&#9734</span>
+                        <span class="star-size star-color">&#9734</span>
+                        <span class="star-size star-color">&#9734</span>
+                        <span class="star-size star-color">&#9734</span>
+                        <span class="star-size star-color">&#9734</span>
+
+                        @endif
                     </p>
-                   
 
-                   
+
+
                 </div>
-              
 
-                
-            </div>
-            @endforeach
-           
 
-            <div class="btn-view-more border-bottom d-none">
-                <button type="button" class="btn js--qa-view-more">View More</button>
+
+
+                <p class="review-details">{{$row->review_details}} </p>
+
+
+
+
+                <p class="question-border"></p>
+
+
+                @endforeach
+
+                <div style="text-align:right" class="mb-3">
+                    {!! $review->links('pagination::bootstrap-5') !!}
+                </div>
+                <button class="mobile-question-review-user"><a
+                        href="{{url('user/rating_review',$productDetails['slug'])}}"> Write a Review</a></button>
+
+
             </div>
         </div>
-    </div>
 
-    </div>
-    <div class="review-list-wrapper">
-
-
-  
+    </section>
 </div>
-</div>
-<!--<section class="recently-view-section">-->
-<!--    <div class="content-section">-->
-<!--        <p class="title">Recently Viewed</p>-->
 
-<!--        <div class="owl-carousel owl-theme recently-owl-carousel">-->
-<!--            <a class="recently-view-item" href="Soldering_Iron_Stand_techshop_bangladesh.html?product_id=10">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/Soldering-Iron-Stand.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../5/Goot_Soldering_Iron_-_40W__techshop_bangladesh.html?product_id=5">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/Goot-soldering-iron--40w.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../3747/CH340_USB_to_Serial_Converter_3V3-5V_techshop_bangladesh.html?product_id=3747">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/DSC_10982.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../3710/RS232_to_TTL_Serial_Port_Converter_techshop_bangladesh.html?product_id=3710">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/RS232-to-TTL-Serial-Port-Converter-1.jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../3488/FTDI_USB_to_Serial_Converter_3V3-5V_techshop_bangladesh.html?product_id=3488">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/FTDI-USB-to-Serial-Converter-3V3-5V-1.jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../2932/USB_to_TTL_4-pin_Wire_techshop_bangladesh.html?product_id=2932">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/USB-to-TTL-4-pin-Wire-2.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../2708/Logic_Level_Converter_TSB_techshop_bangladesh.html?product_id=2708">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/logic-level-convetrer-tsb-1.jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../2193/Logic_Level_Converter_techshop_bangladesh.html?product_id=2193">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/Logic-Level-Converter-1.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../1971/PL2303_USB_UART_Board_(type_A)_techshop_bangladesh.html?product_id=1971">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/PL2303-USB-UART-Board-(type-A).jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item" href="../1771/FTDI_Basic_Breakout_-_3.html?product_id=1771">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/FTDI-Basic-Breakout---3.3V.jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../1770/SparkFun_FTDI_Basic_Breakout_-_5V_techshop_bangladesh.html?product_id=1770">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/SparkFun-FTDI-Basic-Breakout---5V.jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../1440/FT245_USB_FIFO_Board_(mini)_techshop_bangladesh.html?product_id=1440">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/FT245-USB-FIFO-Board-(mini).jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../1430/USB_3300_USB_HS_Board_techshop_bangladesh.html?product_id=1430">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/USB-3300-USB-HS-Board.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../1426/PL2303_USB_UART_Board_(mini)_techshop_bangladesh.html?product_id=1426">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/PL2303-USB-UART-Board-(mini).jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../1346/SparkFun_Logic_Level_Converter_-_Bi-Directional_techshop_bangladesh.html?product_id=1346">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/12009-06.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../1268/CP2102_USB_UART_Board_(type_A)_techshop_bangladesh.html?product_id=1268">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/CP2102-USB-UART-Board-(type-A)-2.jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../1208/WIZnet_Serial-to-Ethernet_Gateway_-_WIZ110SR_techshop_bangladesh.html?product_id=1208">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/WIZnet-Serial-to-Ethernet-Gateway---WIZ110SR.jpg"-->
-<!--                    alt="product" class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../3716/PIC_Programmer_R2_techshop_bangladesh.html?product_id=3716">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/pic-programmer-r2.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../3733/USBASP_AVR_Programmer_techshop_bangladesh.html?product_id=3733">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/USBASPAVRProgrammer_1.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a><a class="recently-view-item"-->
-<!--                href="../3631/AVR_Programmer_R2_techshop_bangladesh.html?product_id=3631">-->
-<!--                <img src="../../../admin.techshopbd.com/uploads/product/AVRProgrammerR2.jpg" alt="product"-->
-<!--                    class="img-fluid">-->
-<!--            </a>-->
-<!--        </div>-->
+@include('layout.front.footer')
 
-<!--    </div>-->
-<!--</section>-->
+
+<script>
+var divs = ["Section1", "Section2"];
+var visibleId = null;
+
+function show(id) {
+    if (visibleId !== id) {
+        visibleId = id;
+    }
+    hide();
+}
+
+function hide() {
+    var div, i, id;
+    for (i = 0; i < divs.length; i++) {
+        id = divs[i];
+        div = document.getElementById(id);
+        if (visibleId === id) {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+    }
+}
+</script>
+
+
+<script>
+$("button").click(function() {
+    $("button").removeClass("active");
+    $(this).addClass("active");
+});
+</script>
+<script>
+var buttonPlus = $(".qty-btn-plus");
+var buttonMinus = $(".qty-btn-minus");
+
+var incrementPlus = buttonPlus.click(function() {
+    var $n = $(this)
+        .parent(".qty-container")
+        .find(".input-qty");
+    $n.val(Number($n.val()) + 1);
+});
+
+var incrementMinus = buttonMinus.click(function() {
+    var $n = $(this)
+        .parent(".qty-container")
+        .find(".input-qty");
+    var amount = Number($n.val());
+    if (amount > 1) {
+        $n.val(amount - 1);
+    }
+});
+</script>
+
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+
+    showSlides(slideIndex += n);
+
+}
+
+function currentSlide(n) {
+
+    showSlides(slideIndex = n);
+
+}
+
+function showSlides(n) {
+
+    var i;
+
+    var slides = document.getElementsByClassName("mySlides");
+
+    var dots = document.getElementsByClassName("dot");
+
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
+
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
+
+    for (i = 0; i < slides.length; i++) {
+
+        slides[i].style.display = "none";
+
+    }
+
+    for (i = 0; i < dots.length; i++) {
+
+        dots[i].className = dots[i].className.replace("active", "");
+
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+
+    dots[slideIndex - 1].className += " active";
+
+}
+</script>
+
 
 
 @endsection

@@ -11,7 +11,7 @@
         <div class="col-lg-10 my-auto">
             <div class="card-group">
                 <div class="card p-4">
-                    <h2 class="text-center text-primary font-weight-bold">Create New account</h2>
+                    <h2 class="text-center login-page-text font-weight-bold">Create New account</h2>
                     @include('error.message')
                     <hr class="my-3">
                     <div id="registerError"></div>
@@ -108,7 +108,7 @@
                      
 
                         <div class="form-group">
-                            <input type="submit" value="Register" class="btn btn-primary btn-block">
+                            <input type="submit" value="Register" class="btn sign-button btn-block">
 
                         </div>
 
@@ -176,11 +176,6 @@
     <!--Admin Forgot password End-->
 
 </div>
-
-
-
-
-
-
+@include('layout.front.footer');
 
 @endsection

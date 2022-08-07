@@ -1,4 +1,7 @@
 @charset "UTF-8";
+body{
+    color: #000;
+}
 
 .swal2-popup.swal2-toast {
     flex-direction: row;
@@ -6444,7 +6447,8 @@ a.ui-button:active {
 
 .owl-carousel .owl-item img {
     display: block;
-    width: 100%
+    width: 100%;
+    height: auto;
 }
 
 .owl-carousel .owl-dots.disabled,
@@ -10262,10 +10266,10 @@ section {
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-family:Lexend, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     font-size: 1rem;
     line-height: 1.5;
-    color: #212529;
+    color: #000;
     text-align: left;
     background-color: #fff
 }
@@ -10370,13 +10374,13 @@ sup {
 }
 
 a {
-    color: #007bff;
+    color: #fff;
     text-decoration: none;
     background-color: transparent
 }
 
 a:hover {
-    color: #0056b3;
+    color: #D20A7D;
     text-decoration: underline
 }
 
@@ -10452,7 +10456,7 @@ button:focus {
     outline: 5px auto -webkit-focus-ring-color
 }
 
-button,
+/* button,
 input,
 optgroup,
 select,
@@ -10461,7 +10465,7 @@ textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit
-}
+} */
 
 button,
 input {
@@ -10776,8 +10780,8 @@ pre code {
 
 .container {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    /* padding-right: 15px;
+    padding-left: 15px; */
     margin-right: auto;
     margin-left: auto
 }
@@ -10866,6 +10870,7 @@ pre code {
         max-width: 1300px
     }
 }
+
 @media (min-width:1600px) {
 
     .container,
@@ -10878,7 +10883,7 @@ pre code {
 }
 
 
-@media (min-width:1601px) and (max-width:1700px){
+@media (min-width:1601px) and (max-width:1700px) {
 
     .container,
     .container-lg,
@@ -10888,13 +10893,13 @@ pre code {
         max-width: 1190px;
     }
 
-    .profile{
+    .profile {
         max-width: 1300px;
-        }
-  
+    }
+
 }
 
-@media (min-width:1701px) and (max-width:1849px){
+@media (min-width:1701px) and (max-width:1849px) {
 
     .container,
     .container-lg,
@@ -10904,13 +10909,13 @@ pre code {
         max-width: 1300px;
     }
 
-    .profile{
+    .profile {
         max-width: 1300px;
-        }
-  
+    }
+
 }
 
-@media (min-width:1850px) and (max-width:2000px){
+@media (min-width:1850px) and (max-width:2000px) {
 
     .container,
     .container-lg,
@@ -10920,13 +10925,13 @@ pre code {
         max-width: 1380px;
     }
 
-    .profile{
+    .profile {
         max-width: 1600px;
-        }
-  
+    }
+
 }
 
-@media (min-width:2001px) and (max-width:2200px){
+@media (min-width:2001px) and (max-width:2200px) {
 
     .container,
     .container-lg,
@@ -10935,13 +10940,14 @@ pre code {
     .container-xl {
         max-width: 1500px;
     }
-    .profile{
+
+    .profile {
         max-width: 1700px;
-        }
-  
+    }
+
 }
 
-@media (min-width:2201px) and (max-width:2349px){
+@media (min-width:2201px) and (max-width:2349px) {
 
     .container,
     .container-lg,
@@ -10951,13 +10957,13 @@ pre code {
         max-width: 1700px;
     }
 
-    .profile{
+    .profile {
         max-width: 1800px;
-        }
-  
+    }
+
 }
 
-@media (min-width:2350px) and (max-width:2500px){
+@media (min-width:2350px) and (max-width:2500px) {
 
     .container,
     .container-lg,
@@ -10967,12 +10973,13 @@ pre code {
         max-width: 1800px;
     }
 
-    .profile{
+    .profile {
         max-width: 2000px;
-        }
-  
+    }
+
 }
-@media (min-width:2501px) and (max-width:2700px){
+
+@media (min-width:2501px) and (max-width:2700px) {
 
     .container,
     .container-lg,
@@ -10982,13 +10989,13 @@ pre code {
         max-width: 1900px;
     }
 
-    .profile{
+    .profile {
         max-width: 2050px;
-        }
-  
+    }
+
 }
 
-@media (min-width:2701px) and (max-width:3000px){
+@media (min-width:2701px) and (max-width:3000px) {
 
     .container,
     .container-lg,
@@ -10998,13 +11005,13 @@ pre code {
         max-width: 2050px;
     }
 
-    .profile{
+    .profile {
         max-width: 2100px;
-        }
-  
+    }
+
 }
 
-@media (min-width:3001px) and (max-width:4000px){
+@media (min-width:3001px) and (max-width:4000px) {
 
     .container,
     .container-lg,
@@ -11013,10 +11020,11 @@ pre code {
     .container-xl {
         max-width: 2100px;
     }
-    .profile{
+
+    .profile {
         max-width: 2200px;
-        }
-  
+    }
+
 }
 
 
@@ -11026,8 +11034,8 @@ pre code {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px
+    /* margin-right: -15px;
+    margin-left: -15px */
 }
 
 .no-gutters {
@@ -11111,10 +11119,10 @@ pre code {
 .col-xl-11,
 .col-xl-12,
 .col-xl-auto {
-    position: relative;
+    /* position: relative;
     width: 100%;
     padding-right: 15px;
-    padding-left: 15px
+    padding-left: 15px */
 }
 
 .col {
@@ -12358,22 +12366,25 @@ pre code {
 
 
 @media (min-width:768px) and (max-width:992px) {
-    
-    .tab-fix-containership{
+
+    .tab-fix-containership {
         width: 500px;
         margin: auto !important;
     }
-    .tab-fix-container{
+
+    .tab-fix-container {
         margin: auto !important;
     }
-    .tab-card{
+
+    .tab-card {
         width: 500px !important;
         margin-left: -80px !important;
     }
-    .cntr{
+
+    .cntr {
         margin: auto;
     }
-    
+
 }
 
 .table {
@@ -12658,18 +12669,18 @@ pre code {
 }
 
 @media (max-width:739px) {
-    .phn-fix-cart{
+    .phn-fix-cart {
         width: 100%;
     }
 
-    .phn-fix-table{
+    .phn-fix-table {
         width: 350px;
         overflow-x: clip;
         -webkit-overflow-scrolling: touch;
         display: block;
     }
-    
-    .phn-fix-media{
+
+    .phn-fix-media {
         width: 10px;
         height: 10px;
     }
@@ -12743,7 +12754,7 @@ pre code {
     width: 100%;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
@@ -13267,6 +13278,10 @@ textarea.form-control.is-invalid {
     }
 }
 
+.cart-button{
+    font-size: 1.2rem;
+}
+
 .btn {
     display: inline-block;
     font-weight: 400;
@@ -13401,20 +13416,20 @@ fieldset:disabled a.btn {
 
 .btn-success {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #D20A7d;
+    border-color: #D20A7d
 }
 
 .btn-success:hover {
     color: #fff;
-    background-color: #218838;
-    border-color: #1e7e34
+    background-color: #D20A7d;
+    border-color: #D20A7D
 }
 
 .btn-success.focus,
 .btn-success:focus {
     color: #fff;
-    background-color: #218838;
+    background-color: #D20A7d;
     border-color: #1e7e34;
     box-shadow: 0 0 0 .2rem rgba(72, 180, 97, .5)
 }
@@ -13422,8 +13437,8 @@ fieldset:disabled a.btn {
 .btn-success.disabled,
 .btn-success:disabled {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #D20A7d;
+    border-color: #D20A7d
 }
 
 .btn-success:not(:disabled):not(.disabled).active,
@@ -13482,38 +13497,38 @@ fieldset:disabled a.btn {
 }
 
 .btn-warning {
-    color: #212529;
-    background-color: #ffc107;
-    border-color: #ffc107
+    color: #fff;
+    background: #D20A7D;
+    border-radius: 5px;
 }
 
-.btn-warning:hover {
+/* .btn-warning:hover {
     color: #212529;
     background-color: #e0a800;
     border-color: #d39e00
-}
+} */
 
 .btn-warning.focus,
 .btn-warning:focus {
     color: #212529;
-    background-color: #e0a800;
-    border-color: #d39e00;
-    box-shadow: 0 0 0 .2rem rgba(222, 170, 12, .5)
+    /* background-color: #e0a800;
+    border-color: #d39e00; */
+    /* box-shadow: 0 0 0 .2rem rgba(222, 170, 12, .5) */
 }
 
 .btn-warning.disabled,
 .btn-warning:disabled {
     color: #212529;
-    background-color: #ffc107;
-    border-color: #ffc107
+    /* background-color: #ffc107;
+    border-color: #ffc107 */
 }
 
 .btn-warning:not(:disabled):not(.disabled).active,
 .btn-warning:not(:disabled):not(.disabled):active,
 .show>.btn-warning.dropdown-toggle {
     color: #212529;
-    background-color: #d39e00;
-    border-color: #c69500
+    /* background-color: #d39e00;
+    border-color: #c69500 */
 }
 
 .btn-warning:not(:disabled):not(.disabled).active:focus,
@@ -13524,21 +13539,21 @@ fieldset:disabled a.btn {
 
 .btn-danger {
     color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545
+    background-color: #34D1BF;
+    border-color: #34D1BF
 }
 
 .btn-danger:hover {
     color: #fff;
-    background-color: #c82333;
-    border-color: #bd2130
+    background-color: #34D1BF;
+    border-color: #34D1BF
 }
 
 .btn-danger.focus,
 .btn-danger:focus {
     color: #fff;
-    background-color: #c82333;
-    border-color: #bd2130;
+    background-color: #34D1BF;
+    border-color: #34D1BF;
     box-shadow: 0 0 0 .2rem rgba(225, 83, 97, .5)
 }
 
@@ -13553,8 +13568,8 @@ fieldset:disabled a.btn {
 .btn-danger:not(:disabled):not(.disabled):active,
 .show>.btn-danger.dropdown-toggle {
     color: #fff;
-    background-color: #bd2130;
-    border-color: #b21f2d
+    background-color: #34D1BF;
+    border-color: #34D1BF;
 }
 
 .btn-danger:not(:disabled):not(.disabled).active:focus,
@@ -15686,7 +15701,9 @@ input[type=submit].btn-block {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     min-height: 1px;
-    padding: 1.25rem
+    padding: 1.25rem;
+    color: #000;
+    margin-top: 30px;
 }
 
 .card-title {
@@ -15936,7 +15953,7 @@ input[type=submit].btn-block {
 .pagination {
     display: -ms-flexbox;
     display: flex;
-    padding-left: 0;
+    padding-left: 120px;
     list-style: none;
     border-radius: .25rem
 }
@@ -15947,14 +15964,14 @@ input[type=submit].btn-block {
     padding: .5rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #007bff;
+    color: #D20A7D;
     background-color: #fff;
     border: 1px solid #dee2e6
 }
 
 .page-link:hover {
     z-index: 2;
-    color: #0056b3;
+    color: #D20A7D;
     text-decoration: none;
     background-color: #e9ecef;
     border-color: #dee2e6
@@ -15980,8 +15997,8 @@ input[type=submit].btn-block {
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff
+    background-color: #D20A7D;
+    border-color: #D20A7D;
 }
 
 .page-item.disabled .page-link {
@@ -16139,7 +16156,7 @@ a.badge-info:focus {
 a.badge-warning:focus,
 a.badge-warning:hover {
     color: #212529;
-    background-color: #d39e00
+    /* background-color: #d39e00 */
 }
 
 a.badge-warning.focus,
@@ -17787,7 +17804,7 @@ a.bg-warning:focus,
 a.bg-warning:hover,
 button.bg-warning:focus,
 button.bg-warning:hover {
-    background-color: #d39e00 !important
+    /* background-color: #d39e00 !important */
 }
 
 .bg-danger {
@@ -17880,7 +17897,7 @@ button.bg-dark:hover {
 }
 
 .border-success {
-    border-color: #28a745 !important
+    border-color: #D20A7D !important
 }
 
 .border-info {
@@ -21554,9 +21571,7 @@ button.bg-dark:hover {
     text-align: right !important
 }
 
-.text-center {
-    text-align: center !important
-}
+
 
 @media (min-width:576px) {
     .text-sm-left {
@@ -21731,7 +21746,8 @@ a.text-dark:hover {
 }
 
 .text-muted {
-    color: #6c757d !important
+    color: #6c757d !important;
+    display: none;
 }
 
 .text-black-50 {
@@ -21866,22 +21882,6 @@ a.text-dark:hover {
     }
 }
 
-/*!
- * Copyright (c), Onnorokom Web Services Ltd (OWSL) and/or its affiliates. All rights reserved.
- * OWSL PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
-/*!
- * Copyright (c), Onnorokom Web Services Ltd (OWSL) and/or its affiliates. All rights reserved.
- * OWSL PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
-/*!
- * Copyright (c), Onnorokom Web Services Ltd (OWSL) and/or its affiliates. All rights reserved.
- * OWSL PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
-/*!
- * Copyright (c), Onnorokom Web Services Ltd (OWSL) and/or its affiliates. All rights reserved.
- * OWSL PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
 * {
     margin: 0 auto;
     padding: 0;
@@ -21894,11 +21894,11 @@ html {
 
 body {
     background-color: #f9fbfd;
-    font-family: raleway-regular;
+    font-family: 'Lexend';
     font-size: .875rem;
     font-weight: 400;
     text-rendering: optimizeLegibility;
-    color: #7c7c7c;
+    color: #fff;
     width: 100%
 }
 
@@ -21911,7 +21911,7 @@ body a:link {
 }
 
 body a:hover {
-    color: #247cc6
+    color: #000
 }
 
 body P {
@@ -21983,13 +21983,13 @@ body ::placeholder {
 }
 
 @font-face {
-    font-family: raleway-semibold;
-    src: url(../../common/fonts/Raleway-SemiBold.ttf)
+    font-family: 'Lexend';
+    src: url({{asset('public/assets/frontend/Lexend/Lexend-Regular.ttf')}})
 }
 
 @font-face {
-    font-family: raleway-medium;
-    src: url(../../common/fonts/Raleway-Medium.ttf)
+    font-family: 'Lexend';
+    src: url(../../common/fonts/Lexend.ttf)
 }
 
 @font-face {
@@ -22022,14 +22022,7 @@ body ::placeholder {
     src: url(../../common/fonts/Lato-Light.ttf)
 }
 
-/*!
- * Copyright (c), Onnorokom Web Services Ltd (OWSL) and/or its affiliates. All rights reserved.
- * OWSL PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
-/*!
- * Copyright (c), Onnorokom Web Services Ltd (OWSL) and/or its affiliates. All rights reserved.
- * OWSL PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
+
 .header-section {
     background-color: #fff;
     padding: 1.5em 0;
@@ -22059,7 +22052,7 @@ body ::placeholder {
     border-right: 0;
     font-size: .8125rem;
     padding: .875em 1.5em;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #7c7c7c
 }
 
@@ -22112,7 +22105,7 @@ body ::placeholder {
 .header-section .search-input .input-group .btn-search {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -22177,12 +22170,12 @@ body ::placeholder {
 .header-section .search-input .input-group .search-option .search-item .product-name {
     color: #333;
     font-size: .875rem;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 .header-section .search-input .input-group .search-option .search-item .product-price {
     color: #da7d02;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1rem
 }
 
@@ -22236,7 +22229,7 @@ body ::placeholder {
 .header-section .header-cart .dropdown-menu .dropdown-item {
     padding: .325em;
     font-size: .875rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     transition: all .5s ease
 }
 
@@ -22269,7 +22262,7 @@ body ::placeholder {
     border-radius: 0;
     color: #fff;
     font-size: .875em;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     padding: .7em 0;
     border-radius: 0 0 20px 20px;
     transition: all .5s ease
@@ -22303,7 +22296,7 @@ body ::placeholder {
 }
 
 .header-section .header-cart span {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #333;
     padding-left: .625em
 }
@@ -22325,7 +22318,7 @@ body ::placeholder {
 }
 
 .header-section .user .dropdown-toggle-user span {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #333;
     padding-left: .325em
 }
@@ -22350,7 +22343,7 @@ body ::placeholder {
 
 .header-section .user .dropdown-menu .dropdown-item {
     font-size: .875rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     text-align: center;
     transition: all .5s ease
 }
@@ -22382,7 +22375,7 @@ body ::placeholder {
 }
 
 .header-section .user .user-login span {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #333;
     padding-left: .325em
 }
@@ -22417,7 +22410,7 @@ body ::placeholder {
 .header-section .navbar-section .navbar .navbar-nav .nav-item .nav-link {
     color: #fff;
     font-size: .875rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     letter-spacing: .03em;
     transition: all .5s ease
 }
@@ -22441,7 +22434,7 @@ body ::placeholder {
     color: #fff;
     border: none;
     border-radius: 6px 6px 0 0;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     padding: 1.25em 3.75em;
     margin: -.875em .625em -.5em 0;
     box-shadow: none;
@@ -22478,7 +22471,7 @@ body ::placeholder {
 
 .header-section .navbar-section .navbar .navbar-nav .nav-item .header-category .header-category-list .category-item .category-name {
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .8125rem;
     transition: all .5s ease
 }
@@ -22510,7 +22503,7 @@ body ::placeholder {
     border-bottom: 1px solid #f2f2f2;
     font-size: .8125rem;
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     padding: .325em 0 .5em .325em !important
 }
 
@@ -22521,7 +22514,7 @@ body ::placeholder {
 .header-section .navbar-section .navbar .navbar-nav .nav-item .header-category .header-category-list .category-item .dropdown-menu a:hover {
     background-color: #fafafa;
     color: #247cc6;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 .header-section .navbar-section .navbar .navbar-nav .nav-item .header-category .header-category-list .category-item .dropdown-menu:hover {
@@ -22535,7 +22528,7 @@ body ::placeholder {
 
 .header-section .navbar-section .navbar .navbar-nav .nav-item .header-category .header-category-list .category-item:hover .category-name {
     color: #247cc6;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 /*!
@@ -22565,12 +22558,12 @@ body ::placeholder {
     color: #fff;
     padding: 1.325em 1.5em;
     height: 58px;
-    
+
 }
 
 .main-content-section .sidebar-category .card-header .sidebar-title {
     font-size: 1rem;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 .main-content-section .sidebar-category .card-header .sidebar-title img {
@@ -22591,7 +22584,7 @@ body ::placeholder {
 
 .main-content-section .sidebar-category .card-body .category-list .category-item .category-name {
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .8125rem;
     transition: all .5s ease
 }
@@ -22623,7 +22616,7 @@ body ::placeholder {
     border-bottom: 1px solid #f2f2f2;
     font-size: .8125rem;
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     padding: .325em 0 .5em .325em !important
 }
 
@@ -22634,7 +22627,7 @@ body ::placeholder {
 .main-content-section .sidebar-category .card-body .category-list .category-item .dropdown-menu a:hover {
     background-color: #fafafa;
     color: #247cc6;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 .main-content-section .sidebar-category .card-body .category-list .category-item .dropdown-menu:hover {
@@ -22648,7 +22641,7 @@ body ::placeholder {
 
 .main-content-section .sidebar-category .card-body .category-list .category-item:hover .category-name {
     color: #247cc6;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 /*!
@@ -22689,7 +22682,7 @@ body ::placeholder {
 
 .subscribe-section .title {
     font-size: 1.875em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-bottom: .75em;
     color: #fff;
@@ -22705,7 +22698,7 @@ body ::placeholder {
 
 .subscribe-section .offer-purchase {
     color: #fff;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1rem;
     letter-spacing: .03em
 }
@@ -22725,7 +22718,7 @@ body ::placeholder {
     box-shadow: none;
     border-radius: 25px 25px 25px 25px;
     padding: 1.75em 1.5em;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 .subscribe-section .subscribe-form .btn-subscribe {
@@ -22759,7 +22752,7 @@ body ::placeholder {
 
 .footer-section .footer-contact {
     font-size: .875rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333
 }
 
@@ -22812,7 +22805,7 @@ body ::placeholder {
 
 .footer-section .footer-menu .footer-menu-item {
     font-size: .8125rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     margin-top: .5em;
     line-height: 1.7
 }
@@ -22858,7 +22851,7 @@ body ::placeholder {
 
 .footer-section .copyright-text p {
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .8125rem
 }
 
@@ -22879,7 +22872,7 @@ body ::placeholder {
 .short-footer-section .footer-contact span {
     font-size: .875rem;
     color: #666;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 .short-footer-section .payment-option {
@@ -22900,7 +22893,7 @@ body ::placeholder {
 
 .short-footer-section .copyright-text p {
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .8125rem
 }
 
@@ -22921,7 +22914,7 @@ body ::placeholder {
     width: 300px;
     font-size: .9375rem;
     color: #333;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     padding: 1.25em 1.5em;
     transition: all .5s ease
 }
@@ -23012,7 +23005,7 @@ body ::placeholder {
 
 .home-content .home-feature-section .title {
     font-size: 1.875em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-bottom: .75em
 }
@@ -23052,7 +23045,7 @@ body ::placeholder {
 
 .home-content .home-feature-section .featured-item p {
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1.05rem;
     padding-top: .625em
 }
@@ -23067,26 +23060,31 @@ body ::placeholder {
     padding-bottom: 1em
 }
 
-.product-list-wrapper .product-list-header .title {
-    font-size: 1.875em;
-    font-family: raleway-medium;
-    color: #333;
-    margin-bottom: .75em
-}
+/* .product-list-wrapper .product-list-header .title {
+   
+    margin-bottom: .75em;
+    font-family: 'Lexend';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 40px;
+
+color: #000000;
+} */
 
 .product-list-wrapper .product-list-header .btn-see__more {
-    border: 1px solid #247cc6;
+    border: 1px solid #D20A7D;
     padding: .5em 1em;
-    color: #247cc6;
+    color: #D20A7D;
     align-self: center;
     font-size: .8rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     background-color: #fff;
     transition: all .5s ease
 }
 
 .product-list-wrapper .product-list-header .btn-see__more:hover {
-    background-color: #247cc6;
+    background-color: #D20A7D;
     color: #fff
 }
 
@@ -23215,15 +23213,19 @@ body ::placeholder {
 .product-list-wrapper .product-list-item .item .item-link .card #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .type,
 .product-list-wrapper .product-list-item .item .item-link .card #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .warranty,
 .product-list-wrapper .product-list-item .item .item-link .card .product-name {
-    font-family: raleway-semibold;
-    font-size: .875rem;
+    font-family: 'Poppins';
+    font-size: 20px;
     color: #333;
-    padding-top: 1.325em;
+    /* padding-top: 1.325em; */
     width: 150px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    text-align: center
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    text-transform:capitalize;
+    margin-top: 18px;
 }
 
 .product-list-wrapper .product-list-item .item .item-link .card .brand-name {
@@ -23238,23 +23240,23 @@ body ::placeholder {
 }
 
 .product-list-wrapper .product-list-item .item .item-link .card .price {
-    font-family: lato-bold
+    font-family: 'Lexend'
 }
 
 .product-list-wrapper .product-list-item .item .item-link .card .price .sell-price {
-    font-size: .875rem;
-    color: #fd9812
+    font-size: 20px;
+    color: #D20A7D
 }
 
 @media (min-width:1200px) {
     .product-list-wrapper .product-list-item .item .item-link .card .price .sell-price {
-        font-size: .9375rem
+        font-size: 20px
     }
 }
 
 @media (min-width:1400px) {
     .product-list-wrapper .product-list-item .item .item-link .card .price .sell-price {
-        font-size: 1rem
+        font-size: 20px
     }
 }
 
@@ -23370,7 +23372,7 @@ body ::placeholder {
 
 .tech-product-list-wrapper .tech-product-list-header .title {
     font-size: 1.875em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-bottom: .75em
 }
@@ -23381,7 +23383,7 @@ body ::placeholder {
     color: #247cc6;
     align-self: center;
     font-size: .8rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     background-color: #fff;
     transition: all .5s ease
 }
@@ -23443,7 +23445,7 @@ body ::placeholder {
     text-align: center;
     padding-top: 1.125em;
     color: #333;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 .supplier-list-wrapper {
@@ -23459,7 +23461,7 @@ body ::placeholder {
 
 .supplier-list-wrapper .supplier-list-header .title {
     font-size: 1.875em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-bottom: .75em
 }
@@ -23480,7 +23482,7 @@ body ::placeholder {
     text-align: center;
     padding-top: 1em;
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1rem
 }
 
@@ -23529,7 +23531,7 @@ body ::placeholder {
 
 .recently-view-section .title {
     font-size: 1.875em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-bottom: .75em
 }
@@ -23566,12 +23568,8 @@ body ::placeholder {
     width: 130px
 }
 
-/*!
- * Copyright (c), Onnorokom Web Services Ltd (OWSL) and/or its affiliates. All rights reserved.
- * OWSL PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
 #details {
-    background-color: #fff;
+    /* background-color: #fff; */
     padding-top: 2em
 }
 
@@ -23694,7 +23692,7 @@ body ::placeholder {
 #details .details-section .product-title {
     font-size: 1.625rem;
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     margin-bottom: .4em
 }
 
@@ -23705,7 +23703,7 @@ body ::placeholder {
 #details .details-section .supply,
 #details .details-section .type,
 #details .details-section .warranty {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     margin-bottom: .375em
 }
 
@@ -23793,7 +23791,7 @@ body ::placeholder {
 #details .details-section .rating-review {
     margin-top: 1.5em;
     color: #4d4d4d;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #details .details-section .rating-review .count {
@@ -23808,13 +23806,13 @@ body ::placeholder {
 #details .details-section .button .btn-wishlist {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     border-radius: 25px 25px 25px 25px;
     transition: all .5s ease;
     background-color: #666;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     cursor: pointer
 }
 
@@ -23847,14 +23845,14 @@ body ::placeholder {
 #details .details-section .button .btn-go-to-cart,
 #details .details-section .button .btn-na {
     color: #fff;
-    background-color: #fd9812;
-    font-family: raleway-semibold;
+    background-color: #D20A7D;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     border-radius: 25px 25px 25px 25px;
     transition: all .5s ease;
     margin-left: 1em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     cursor: pointer
 }
 
@@ -23888,7 +23886,7 @@ body ::placeholder {
 #details .details-section .button .btn-cart:hover,
 #details .details-section .button .btn-go-to-cart:hover,
 #details .details-section .button .btn-na:hover {
-    background-color: #f38c02
+    background-color: #D20A7D
 }
 
 #details .details-section .button .btn-back-na img,
@@ -23971,7 +23969,7 @@ body ::placeholder {
 }
 
 #details .report form .btn-send__report {
-    font-size: "raleway-medium";
+    font-size: "'Lexend'";
     font-size: .875rem;
     background-color: #247cc6;
     color: #fff;
@@ -24056,7 +24054,7 @@ body ::placeholder {
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .bought-together .tab-content #together a .product-list .product-info .warranty {
     color: #247cc6;
     margin-top: 1em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .875rem
 }
 
@@ -24119,7 +24117,7 @@ body ::placeholder {
 #details .bought-together .tab-content #together .cart-info .btn-buy {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -24127,7 +24125,7 @@ body ::placeholder {
     transition: all .5s ease;
     background-color: #666;
     padding: .625em 2.75em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1rem;
     margin-top: .625em;
     margin-left: 0
@@ -24268,7 +24266,7 @@ body ::placeholder {
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .bought-together .tab-content #similar .product-list-item .item .item-link .card .supply,
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .bought-together .tab-content #similar .product-list-item .item .item-link .card .type,
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .bought-together .tab-content #similar .product-list-item .item .item-link .card .warranty {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: .875rem;
     color: #333;
     padding-top: 1.325em;
@@ -24417,7 +24415,7 @@ body ::placeholder {
 #details .product-summery .tab-content #specification,
 #details .product-summery .tab-content #summery {
     color: #333;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: .875rem;
     /* margin: 0 26em 0 15em;
     padding: 3em 0 2.5em */
@@ -24470,7 +24468,7 @@ body ::placeholder {
 
 #details .product-summery .tab-content #doc .table tr td,
 #details .product-summery .tab-content #specification .table tr td {
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #details .qa-section {
@@ -24479,7 +24477,7 @@ body ::placeholder {
 
 #details .qa-section .title {
     font-size: 1.875em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-bottom: .75em;
     font-size: 1.875rem;
@@ -24502,7 +24500,7 @@ body ::placeholder {
     box-shadow: none;
     border-width: 0 0 1px;
     border-color: #e6e6e6;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     padding-left: 0
 }
 
@@ -24541,13 +24539,13 @@ body ::placeholder {
 #details .qa-section .post-question form .btn-post__question {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
     border-radius: 25px 25px 25px 25px;
     transition: all .5s ease;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1.125rem;
     padding: .5em 1.625em;
     margin-top: 1em
@@ -24564,13 +24562,13 @@ body ::placeholder {
 
 #details .qa-section .post-question form .question-form-login .user-login {
     color: #247cc6;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: inherit
 }
 
 #details .qa-section .qa-list-wrapper .subtitle {
     font-size: 1.25rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-top: 1.75em;
     padding-bottom: 1.25em
@@ -24588,7 +24586,7 @@ body ::placeholder {
 }
 
 #details .qa-section .qa-list-wrapper .qa-list .question {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: .9375rem
 }
 
@@ -24600,7 +24598,7 @@ body ::placeholder {
 #details .qa-section .qa-list-wrapper .qa-list .reply-answer,
 #details .qa-section .qa-list-wrapper .qa-list .submit-answer {
     margin: .125em 0 0 1.375em;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #details .qa-section .qa-list-wrapper .qa-list .reply-answer a,
@@ -24621,7 +24619,7 @@ body ::placeholder {
     box-shadow: none;
     resize: none;
     font-size: .875rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     padding: 1em 1.325em
 }
 
@@ -24632,7 +24630,7 @@ body ::placeholder {
     border: none;
     padding: .625em 2em;
     font-size: .875rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     border-radius: 20px 20px 20px 20px;
     transition: all .5s ease
 }
@@ -24643,7 +24641,7 @@ body ::placeholder {
 }
 
 #details .qa-section .qa-list-wrapper .qa-list .answer {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: .9375rem;
     margin: .6125em 0 0 2.75em
 }
@@ -24664,7 +24662,7 @@ body ::placeholder {
 #details .qa-section .qa-list-wrapper .qa-list .load-answer a {
     color: #247cc6;
     font-size: .9375rem;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #details .btn-view-more {
@@ -24675,7 +24673,7 @@ body ::placeholder {
 #details .btn-view-more .btn {
     padding: 0;
     font-size: 1rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #247cc6
 }
 
@@ -24715,7 +24713,7 @@ body ::placeholder {
     box-shadow: none;
     border-width: 0 0 1px;
     border-color: #e6e6e6;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     padding-left: 0
 }
 
@@ -24765,13 +24763,13 @@ body ::placeholder {
 #details .review-section .submit-review form .btn-submit__review {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
     border-radius: 25px 25px 25px 25px;
     transition: all .5s ease;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1.325rem;
     padding: .425em 1.75em;
     margin-top: 1em
@@ -24788,7 +24786,7 @@ body ::placeholder {
 
 #details .review-section .submit-review form .review-form-login .user-login {
     color: #247cc6;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: inherit
 }
 
@@ -24808,20 +24806,16 @@ body ::placeholder {
 }
 
 @media (min-width:960px) {
-    #details .review-section .submit-review .review-info .d-flex .total-rating {
-        
-    }
+    #details .review-section .submit-review .review-info .d-flex .total-rating {}
 }
 
 @media (min-width:1600px) {
-    #details .review-section .submit-review .review-info .d-flex .total-rating {
-       
-    }
+    #details .review-section .submit-review .review-info .d-flex .total-rating {}
 }
 
 #details .review-section .submit-review .review-info .d-flex .count p {
     font-size: 1.125rem;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #details .review-section .submit-review .review-info .d-flex .count .stars {
@@ -24853,7 +24847,7 @@ body ::placeholder {
     margin-left: -4em;
     color: #333;
     font-size: 1rem;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 @media (min-width:960px) {
@@ -24890,7 +24884,7 @@ body ::placeholder {
 
 #details .review-section .submit-review .review-info .rating-count .progress .progress-bar {
     margin-left: 0;
-    background-color: #feb95e;
+    background-color: #D20A7D;
     border-radius: 8px 8px 8px 8px
 }
 
@@ -24925,13 +24919,13 @@ body ::placeholder {
 
 #details .review-section .review-list-wrapper .review-list .certify {
     margin: 1.325em 0;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #details .review-section .review-list-wrapper .review-list .certify .buyer-name {
     font-size: 1rem;
     color: #333;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #cart .cart-wrapper .cart-summary .summary-info #details .review-section .review-list-wrapper .review-list p.payable,
@@ -24941,7 +24935,7 @@ body ::placeholder {
 #shipping .address-section .shipping-summary .card .summary-info #details .review-section .review-list-wrapper .review-list p.payable {
     color: #333;
     font-size: 1rem;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #cart .cart-wrapper .cart-summary .summary-info #details .review-section .review-list-wrapper .review-list p.payable a,
@@ -24955,7 +24949,7 @@ body ::placeholder {
 
 #details .review-section .review-list-wrapper .review-list .query {
     margin-top: 1.125em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #7c7c7c;
     font-size: 1rem
 }
@@ -24982,7 +24976,7 @@ body ::placeholder {
 #details .review-section .review-list-wrapper .show-review a {
     color: #44a7d9;
     font-size: 1.175rem;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #details .customer-bought {
@@ -25111,7 +25105,7 @@ body ::placeholder {
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .customer-bought .product-list-item .item .item-link .card .supply,
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .customer-bought .product-list-item .item .item-link .card .type,
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .customer-bought .product-list-item .item .item-link .card .warranty {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: .875rem;
     color: #333;
     padding-top: 1.325em;
@@ -25164,8 +25158,9 @@ body ::placeholder {
     #details .customer-bought .product-list-item .item .item-link .card .price .original-price {
         margin-left: 1.75em
     }
-    .shippingorder{
-        height: 600px;
+
+    .shippingorder {
+        height: auto;
     }
 }
 
@@ -25174,8 +25169,8 @@ body ::placeholder {
         margin-left: 1.875em
     }
 
-    .shippingorder{
-        height: 600px;
+    .shippingorder {
+        height: auto;
     }
 }
 
@@ -25184,8 +25179,8 @@ body ::placeholder {
         margin-left: 3em
     }
 
-    .shippingorder{
-        height: 600px;
+    .shippingorder {
+        height: auto;
     }
 }
 
@@ -25276,9 +25271,10 @@ body ::placeholder {
 }
 
 #cart .cart-wrapper .cart-section .cart-details .header p {
-    font-family: raleway-semibold;
+    font-family: 'lexend' ;
     font-size: 1.25rem;
-    color: #333
+    color: #fff;
+    font-weight: 700;
 }
 
 #cart .cart-wrapper .cart-section .cart-details .card-body {
@@ -25300,11 +25296,14 @@ body ::placeholder {
 }
 
 #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media img {
-    width: 90px
+    width: auto;
+    height: auto;
 }
 
 #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body {
-    margin-top: .625em
+    margin-top:2.5rem;
+    width: 100px;
+    text-align: center;
 }
 
 #browse .main-content .product-wrapper .product-list .card a .product-info #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .supply,
@@ -25319,12 +25318,14 @@ body ::placeholder {
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .supply,
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .type,
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .warranty {
-    font-family: raleway-medium;
-    color: #247cc6
+    font-family: 'lexend';
+    color: #000
 }
 
 #cart .cart-wrapper .cart-section .cart-details .card-body .table td .price {
-    color: #fd9812
+    color: #D20A7D;
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 #cart .cart-wrapper .cart-section .cart-details .card-body .table td .quantity .input-group {
@@ -25359,12 +25360,16 @@ body ::placeholder {
     border-right: none;
     border-left: none;
     padding: 1.25em 0;
-    color: #7c7c7c
+    color: #7c7c7c;
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 #cart .cart-wrapper .cart-section .cart-details .card-body .table td .total {
-    font-family: raleway-semibold;
-    font-size: 1.125rem
+    font-family: 'Lexend';
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #D20A7D;
 }
 
 #cart .cart-wrapper .cart-section .cart-details .card-body .table td#remove-btn a {
@@ -25374,7 +25379,7 @@ body ::placeholder {
 #cart .cart-wrapper .cart-section .btn-cart__next {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -25405,7 +25410,7 @@ body ::placeholder {
 #cart .cart-wrapper .cart-summary .summary-title {
     font-size: 1.25rem;
     color: #111;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #cart .cart-wrapper .cart-summary .summary-info {
@@ -25415,7 +25420,7 @@ body ::placeholder {
 #cart .cart-wrapper .cart-summary .summary-info p {
     padding: .75em 0;
     color: #333;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #cart .cart-wrapper .cart-summary #shipping .address-section .shipping-summary .card .summary-info p.payable,
@@ -25423,7 +25428,7 @@ body ::placeholder {
 #cart .cart-wrapper .cart-summary .summary-info p.text,
 #shipping .address-section .shipping-summary .card #cart .cart-wrapper .cart-summary .summary-info p.payable {
     margin-left: 0;
-    font-size: .875rem
+    font-size: 1.2rem
 }
 
 #cart .cart-wrapper .cart-summary #shipping .address-section .shipping-summary .card .summary-info p.total,
@@ -25431,21 +25436,21 @@ body ::placeholder {
 #cart .cart-wrapper .cart-summary .summary-info p.total,
 #shipping .address-section .shipping-summary .card #cart .cart-wrapper .cart-summary .summary-info p.total {
     margin-right: 0;
-    font-size: .975rem;
-    padding-top: .5em
+    font-size: 1.2rem;
+    padding-top: 1rem
 }
 
 #cart .cart-wrapper .cart-summary .summary-info p.payable {
     padding-top: 0;
     font-size: .975rem;
-    color: #fd9812;
+    color: #D20A7D;
     margin-top: -.125em
 }
 
 #cart .cart-wrapper .cart-summary .summary-info p.total {
     padding-top: 0;
     font-size: 1.125rem;
-    color: #fd9812;
+    color: #D20A7D;
     margin-top: -.325em
 }
 
@@ -25488,15 +25493,16 @@ body ::placeholder {
 }
 
 #shipping .address-section .card-header {
-    background-color: #fff;
+    background-color: #D20A7D;
     margin: 0;
-    padding: .25em 2.5em
+    padding: .25em 2.5em;
+    color: #fff;
 }
 
 #shipping .address-section .card-header .address-title {
     margin-left: 0;
-    font-family: raleway-semibold;
-    color: #333;
+    font-family: 'lexend';
+    color: #fff;
     font-size: 1.25rem
 }
 
@@ -25520,9 +25526,10 @@ body ::placeholder {
 }
 
 #shipping .address-section .card-body .body-title {
-    font-size: 1rem;
-    font-family: raleway-medium;
-    color: #333
+    font-size: 1.2rem;
+    font-family: 'Lexend';
+    color: #333;
+
 }
 
 #shipping .address-section .card-body form {
@@ -25536,8 +25543,8 @@ body ::placeholder {
     border-radius: 25px 25px 25px 25px;
     margin-left: 2.5em;
     border-color: #e6e6e6;
-    font-size: .875rem;
-    font-family: raleway-medium;
+    /* font-size: .875rem; */
+    font-family: 'Lexend';
     box-shadow: none
 }
 
@@ -25548,7 +25555,7 @@ body ::placeholder {
     #shipping .address-section .card-body form .form-inline .select-city .dropdown-toggle-city {
         width: 285px
     }
-    
+
 }
 
 @media (min-width:1200px) {
@@ -25558,7 +25565,7 @@ body ::placeholder {
     #shipping .address-section .card-body form .form-inline .select-city .dropdown-toggle-city {
         width: 288px
     }
-    
+
 }
 
 @media (min-width:1600px) {
@@ -25568,7 +25575,7 @@ body ::placeholder {
     #shipping .address-section .card-body form .form-inline .select-city .dropdown-toggle-city {
         width: 305px
     }
-    
+
 }
 
 #shipping .address-section .card-body form .form-inline .form-control::-moz-placeholder,
@@ -25689,7 +25696,7 @@ body ::placeholder {
 
 #shipping .address-section .card-body form .form-inline.delivery-check .form-check-label {
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     padding-left: .325em
 }
 
@@ -25703,13 +25710,13 @@ body ::placeholder {
 }
 
 #shipping .address-section .card-body form .delivery-msg span {
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #shipping .address-section .card-body form .btn-continue__payment {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -25770,7 +25777,7 @@ body ::placeholder {
 #shipping .address-section .shipping-summary .card .promo-code .promo-title {
     font-size: 1.25rem;
     color: #111;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #shipping .address-section .shipping-summary .card .promo-code form {
@@ -25783,7 +25790,7 @@ body ::placeholder {
 #shipping .address-section .shipping-summary .card .promo-code .card-body form .form-inline .select-city .dropdown-toggle-city,
 #shipping .address-section .shipping-summary .card .promo-code form .form-control {
     font-size: .875rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     border-radius: 25px 25px 25px 25px;
     padding: 1.8125em 1.625em;
     box-shadow: none
@@ -25816,14 +25823,14 @@ body ::placeholder {
 #shipping .address-section .shipping-summary .card .promo-code form .btn-coupon__apply {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
     border-radius: 25px 25px 25px 25px;
     transition: all .5s ease;
     background-color: #247cc6;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     margin-left: -3em;
     padding: .8125em 2em;
     z-index: 1050
@@ -25839,9 +25846,26 @@ body ::placeholder {
 }
 
 #shipping .address-section .shipping-summary .card .summary-title {
-    font-size: 1.25rem;
-    color: #111;
-    font-family: raleway-semibold
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: 'Lexend';
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* color: #D20A7D; */
+    margin-left: -15px;
+}
+
+
+ .checkout-title {
+    font-size: 1.2rem;
+    /* color: #fff; */
+    font-family: 'Lexend';
+    font-weight: 700;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+    color: #D20A7D;
+    margin-left: 20px;
 }
 
 #shipping .address-section .shipping-summary .card .summary-info {
@@ -25851,20 +25875,21 @@ body ::placeholder {
 #shipping .address-section .shipping-summary .card .summary-info p {
     padding: .75em 0;
     color: #333;
-    font-family: raleway-semibold
+    font-family: 'Lexend';
+    font-size: 1.2rem;
 }
 
 #shipping .address-section .shipping-summary .card .summary-info p.payable,
 #shipping .address-section .shipping-summary .card .summary-info p.text {
-    margin-left: 0;
-    font-size: .875rem
+    margin-left: 20px;
+    font-size: 1.2rem
 }
 
 #shipping .address-section .shipping-summary .card .summary-info p.amount,
 #shipping .address-section .shipping-summary .card .summary-info p.total {
     margin-right: 0;
-    font-size: .975rem;
-    padding-top: .5em
+    font-size: 1.2rem;
+    padding-top: 1rem
 }
 
 #shipping .address-section .shipping-summary .card .summary-info p.payable {
@@ -25913,14 +25938,14 @@ body ::placeholder {
 
 #shipping .payment-section .card-header .payment-title {
     margin-left: 0;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1.25rem
 }
 
 #shipping .payment-section .card-header .payment-title span {
     font-size: 1rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #7c7c7c;
     margin-left: 1.325em
 }
@@ -25982,7 +26007,7 @@ body ::placeholder {
 
 #shipping .payment-section .card .payment-option .pay-check .custom-control-label .title {
     color: #555f91;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: 1.125rem
 }
 
@@ -25996,7 +26021,7 @@ body ::placeholder {
     margin-top: 0;
     padding-top: 0;
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     max-height: 0;
     overflow: hidden;
     transition: max-height 1s ease
@@ -26050,7 +26075,7 @@ body ::placeholder {
 #shipping .payment-section .card .payment-option .payment-details .btn-confirm__order {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -26110,7 +26135,7 @@ body ::placeholder {
 #browse .sidebar-recently-sold .card-header p {
     color: #fff;
     font-size: 1rem;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #browse .sidebar-best-seller .card-header .angle-icon,
@@ -26249,7 +26274,7 @@ body ::placeholder {
 #details .details-section #cart .cart-wrapper .cart-section .cart-details #browse .sidebar-recently-sold .card-body.product-wrapper .table td .product-item .media-body .type,
 #details .details-section #cart .cart-wrapper .cart-section .cart-details #browse .sidebar-recently-sold .card-body.product-wrapper .table td .product-item .media-body .warranty {
     font-size: .875rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333
 }
 
@@ -26360,7 +26385,7 @@ body ::placeholder {
 }
 
 #browse .main-content .browse-header {
-    background-color: #f7f7f7;
+    background-color: #D20A7d;
     border-top: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6
 }
@@ -26368,7 +26393,7 @@ body ::placeholder {
 #browse .main-content .browse-header .title {
     border-bottom: 1px solid #e6e6e6;
     font-size: 1.875rem;
-    color: #333;
+    color: #fff;
     padding: .625em
 }
 
@@ -26394,7 +26419,7 @@ body ::placeholder {
 
 #browse .main-content .browse-header .sort-wrapper .show-count {
     font-size: 1rem;
-    color: #b0b0b0;
+    color: #fff;
     margin-right: 0
 }
 
@@ -26405,7 +26430,7 @@ body ::placeholder {
 #browse .main-content .browse-header .sort-wrapper .sort label {
     font-size: .875rem;
     color: #333;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #browse .main-content .browse-header .sort-wrapper .sort #brand-filter,
@@ -26457,7 +26482,7 @@ body ::placeholder {
 }
 
 #browse .main-content .product-wrapper .product-list .card a .product-info {
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #browse .main-content .product-wrapper .product-list .card a .product-info #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body #details .details-section .category,
@@ -26599,7 +26624,7 @@ body ::placeholder {
 #details .details-section .button #browse .main-content .product-wrapper .product-list .card .other-info .btn-na a {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     border-radius: 25px 25px 25px 25px;
@@ -26607,7 +26632,7 @@ body ::placeholder {
     height: 48px;
     margin-top: 1em;
     line-height: 2.25;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     cursor: pointer;
     transition: all .5s ease
 }
@@ -26628,7 +26653,7 @@ body ::placeholder {
 
 #browse .main-content .product-wrapper .product-list .card .other-info .stock-text {
     text-align: center;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #7c7c7c;
     font-size: 1rem;
     transition: all .5s ease
@@ -26641,7 +26666,7 @@ body ::placeholder {
 #browse .main-content .product-wrapper .product-list .card .other-info .btn-list a {
     width: 210px;
     height: 48px;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #7c7c7c;
     font-size: 1rem;
     margin-top: .325em;
@@ -26778,7 +26803,7 @@ body ::placeholder {
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body #browse .main-content .product-wrapper .product-thumb .item .item-link .card .supply,
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body #browse .main-content .product-wrapper .product-thumb .item .item-link .card .type,
 #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body #browse .main-content .product-wrapper .product-thumb .item .item-link .card .warranty {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: .875rem;
     color: #333;
     padding-top: 1.325em;
@@ -26924,7 +26949,7 @@ body ::placeholder {
 #browse .main-content .product-wrapper .btn-load-more {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -27001,7 +27026,7 @@ body ::placeholder {
     background-color: #f2f2f2;
     color: #7c7c7c;
     font-size: 1rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     width: 255px;
     height: 52px;
     text-align: center;
@@ -27053,7 +27078,7 @@ body ::placeholder {
 #training .training-type .tab-content .course-wrapper .course-item .item-link .card-body .course-title {
     font-size: 1.125rem;
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     width: 235px;
     min-height: 52px
 }
@@ -27069,7 +27094,7 @@ body ::placeholder {
 #training .training-type .tab-content .course-wrapper .course-item .item-link .card-body .course-info .name,
 #training .training-type .tab-content .course-wrapper .course-item .item-link .card-body .course-instructor .name {
     color: #333;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #training .training-type .tab-content .course-wrapper .course-item .item-link .card-body .course-info {
@@ -27082,7 +27107,7 @@ body ::placeholder {
 
 #training .training-type .tab-content .course-wrapper .course-item .item-link .card-body .course-info p span {
     color: #333;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #training .training-type .tab-content .course-wrapper .course-item .item-link .card-body .course-info p .fa-bookmark {
@@ -27134,7 +27159,7 @@ body ::placeholder {
     width: 185px;
     height: 40px;
     font-size: 1rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     line-height: 1.6
 }
 
@@ -27311,7 +27336,7 @@ body ::placeholder {
 }
 
 #training-details .details-section .training-info .card-body table td {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1rem
 }
 
@@ -27328,7 +27353,7 @@ body ::placeholder {
 }
 
 #training-details .details-section .training-info .card-body table td.title-info {
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #training-details .details-section .training-info .btn-book-now {
@@ -27337,7 +27362,7 @@ body ::placeholder {
     height: 60px;
     line-height: 2.3;
     font-size: 1.25rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border-radius: 30px 30px 30px 30px;
     transition: all .5s ease
 }
@@ -27388,7 +27413,7 @@ body ::placeholder {
     background-color: #f2f2f2;
     color: #7c7c7c;
     font-size: 1.125rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     width: 250px;
     height: 54px;
     text-align: center;
@@ -27419,7 +27444,7 @@ body ::placeholder {
 #training-details .overview-section .tab-content .overview-wrapper .title {
     padding-top: 2.325em;
     font-size: 1rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #333;
     text-transform: uppercase
 }
@@ -27462,7 +27487,7 @@ body ::placeholder {
 #training-details .similar-course .title {
     font-size: 1.625rem;
     color: #333;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #training-details .similar-course .similar-course-wrapper {
@@ -27512,7 +27537,7 @@ body ::placeholder {
 #training-details .similar-course .similar-course-wrapper .course-item .item-link .card-body .course-title {
     font-size: 1.125rem;
     color: #333;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #training-details .similar-course .similar-course-wrapper #training .training-type .tab-content .course-wrapper .course-item .item-link .card-body .course-info,
@@ -27528,7 +27553,7 @@ body ::placeholder {
 #training-details .similar-course .similar-course-wrapper .course-item .item-link .card-body .course-info .name,
 #training-details .similar-course .similar-course-wrapper .course-item .item-link .card-body .course-instructor .name {
     color: #333;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #training-details .similar-course .similar-course-wrapper .course-item .item-link .card-body .course-info {
@@ -27541,7 +27566,7 @@ body ::placeholder {
 
 #training-details .similar-course .similar-course-wrapper .course-item .item-link .card-body .course-info p span {
     color: #333;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #training-details .similar-course .similar-course-wrapper .course-item .item-link .card-body .course-info p .fa-bookmark {
@@ -27593,7 +27618,7 @@ body ::placeholder {
     width: 185px;
     height: 40px;
     font-size: 1rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     line-height: 1.6
 }
 
@@ -27711,7 +27736,7 @@ body ::placeholder {
     border: none;
     border-bottom: 2px solid #e6e6e6;
     font-size: 1rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #b3b3b3
 }
 
@@ -27776,7 +27801,7 @@ body ::placeholder {
     border-radius: 25px 25px 25px 25px;
     font-size: .875rem;
     border: 1px solid #e6e6e6;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     transition: all .5s ease
 }
@@ -27873,13 +27898,13 @@ body ::placeholder {
     padding-top: .125em;
     font-size: .8175rem;
     color: #a6a6a6;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #login .card .login-section .otp-content form .forgot-pass a,
 #login .card .login-section .tab-content form .forgot-pass a {
     font-size: .8175rem;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #login .card .login-section .otp-content form .btn-sign__in,
@@ -27888,7 +27913,7 @@ body ::placeholder {
 #login .card .login-section .tab-content form .btn-sign__up {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -27913,7 +27938,7 @@ body ::placeholder {
 #login .card .login-section .tab-content .signin-link,
 #login .card .login-section .tab-content .signup-link {
     margin-top: 7em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-style: italic;
     font-size: 1rem;
     color: #333
@@ -27938,7 +27963,7 @@ body ::placeholder {
 #login .card .login-section .otp-content #otp-submit .otp-msg,
 #login .card .login-section .tab-content #otp-submit2 .otp-msg,
 #login .card .login-section .tab-content #otp-submit .otp-msg {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: 1.125rem;
     color: #333;
     text-align: center
@@ -27961,7 +27986,7 @@ body ::placeholder {
 #login .card .login-section .otp-content #otp-submit .time,
 #login .card .login-section .tab-content #otp-submit2 .time,
 #login .card .login-section .tab-content #otp-submit .time {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1.125rem;
     margin-bottom: 1em
@@ -27971,7 +27996,7 @@ body ::placeholder {
 #login .card .login-section .otp-content #otp-submit .resend,
 #login .card .login-section .tab-content #otp-submit2 .resend,
 #login .card .login-section .tab-content #otp-submit .resend {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1rem
 }
@@ -27980,7 +28005,7 @@ body ::placeholder {
 #login .card .login-section .otp-content #otp-submit .resend a,
 #login .card .login-section .tab-content #otp-submit2 .resend a,
 #login .card .login-section .tab-content #otp-submit .resend a {
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #login .card .login-section .otp-content #otp-submit2 .btn-submit__otp,
@@ -27989,7 +28014,7 @@ body ::placeholder {
 #login .card .login-section .tab-content #otp-submit .btn-submit__otp {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -28015,7 +28040,7 @@ body ::placeholder {
 .flash-message {
     font-size: 1.125rem;
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     text-align: center;
     background: linear-gradient(90deg, #fff, #fff4e6, #fff);
     padding: 1.325em 2.5em;
@@ -28058,7 +28083,7 @@ body ::placeholder {
 #pcb .sidebar-recently-sold .card-header p {
     color: #fff;
     font-size: 1rem;
-    font-family: raleway-semibold
+    font-family: 'Lexend'
 }
 
 #pcb .sidebar-best-seller .card-header .angle-icon,
@@ -28203,7 +28228,7 @@ body ::placeholder {
 #pcb .sidebar-recently-sold #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body.product-wrapper .table td .product-item .media-body .warranty,
 #pcb .sidebar-recently-sold .card-body.product-wrapper .product-item .media-body .product-name {
     font-size: .875rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333
 }
 
@@ -28340,7 +28365,7 @@ body ::placeholder {
     background-color: transparent;
     width: 100%;
     height: 80px;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     border-color: #e6e6e6
 }
@@ -28358,7 +28383,7 @@ body ::placeholder {
 
 #pcb .main-content .pcb-calculation .card-body form label {
     color: #111;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     display: block;
     margin-right: .75em
 }
@@ -28397,7 +28422,7 @@ body ::placeholder {
     border: 1px solid #e6e6e6;
     color: #969696;
     font-size: .875rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     text-align: center;
     position: relative;
     border-radius: 25px 25px 25px 25px
@@ -28412,7 +28437,7 @@ body ::placeholder {
     font-size: .8125rem;
     min-width: 6rem;
     text-align: left;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     border-radius: 20px 20px 20px 20px
 }
 
@@ -28482,7 +28507,7 @@ body ::placeholder {
     border: 1px solid #e6e6e6;
     color: #969696;
     font-size: .875rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     text-align: left;
     padding-left: 1.325em;
     position: relative;
@@ -28515,7 +28540,7 @@ body ::placeholder {
     font-size: .8125rem;
     min-width: 18rem;
     text-align: left;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     border-radius: 20px 20px 20px 20px
 }
 
@@ -28663,7 +28688,7 @@ body ::placeholder {
 #pcb .main-content .pcb-calculation .card-body form .upload-file #js--file-input #shipping .address-section .shipping-summary .card .summary-info p.payable .js--selected-file,
 #pcb .main-content .pcb-calculation .card-body form .upload-file #js--file-input .text .js--selected-file,
 #shipping .address-section .shipping-summary .card .summary-info #pcb .main-content .pcb-calculation .card-body form .upload-file #js--file-input p.payable .js--selected-file {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .8125rem;
     margin-left: .325em;
     opacity: .3
@@ -28675,7 +28700,7 @@ body ::placeholder {
 #pcb .main-content .pcb-calculation .card-body form .upload-file #js--file-input .text p,
 #shipping .address-section .shipping-summary .card .summary-info #pcb .main-content .pcb-calculation .card-body form .upload-file #js--file-input p.payable p {
     font-size: .8125rem;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #cart .cart-wrapper .cart-summary .summary-info #pcb .main-content .pcb-calculation .card-body form .upload-file #js--file-input p.payable p a,
@@ -28700,7 +28725,7 @@ body ::placeholder {
     border-radius: 30px 30px 30px 30px;
     resize: none;
     font-size: .875rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     padding: 1em 1.5em;
     border-color: #e6e6e6
 }
@@ -28733,7 +28758,7 @@ body ::placeholder {
     color: #fff;
     background-color: #fd9812;
     font-size: 1rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     margin-top: 1.325em;
     border-radius: 30px 30px 30px 30px;
     transition: all .5s ease
@@ -28762,7 +28787,7 @@ body ::placeholder {
 
 #pcb .main-content .pcb-guideline .title {
     font-size: 1.875em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-bottom: .75em
 }
@@ -28779,7 +28804,7 @@ body ::placeholder {
 #pcb .main-content .pcb-guideline .subtitle {
     font-size: 1.125rem;
     color: #333;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     margin-bottom: .625em
 }
 
@@ -28848,7 +28873,7 @@ body ::placeholder {
 #brand-list .brand-list__wrapper .card a {
     color: #fff;
     font-size: 1.25rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     padding: 2em 0;
     width: 100%;
     text-align: center
@@ -28895,20 +28920,20 @@ body ::placeholder {
 
 #confirmation .card .order-info .title {
     color: #247cc6;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: 1.1rem;
     padding: .625em 0 .25em
 }
 
 #confirmation .card .order-info .order-id {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1.25rem;
     padding-bottom: .475em
 }
 
 #confirmation .card .order-info .desc {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1rem
 }
@@ -28916,7 +28941,7 @@ body ::placeholder {
 #confirmation .card .order-info .btn-goto-order {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -28939,13 +28964,13 @@ body ::placeholder {
 }
 
 #confirmation .card .cart-summary .title {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: 1.375rem;
     color: #333
 }
 
 #confirmation .card .cart-summary .summary-info {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: 1rem;
     color: #333
 }
@@ -28955,8 +28980,9 @@ body ::placeholder {
 #confirmation .card #cart .cart-wrapper .cart-summary .summary-info p.payable,
 #confirmation .card .cart-summary .summary-info .text,
 #shipping .address-section .shipping-summary #confirmation .card .cart-summary .summary-info p.payable {
-    margin-left: 6em;
-    padding: 1.25em 0
+    /* margin-left: 6em; */
+    padding: 1.25em 0;
+   font-size:1.2rem;
 }
 
 #cart .cart-wrapper #confirmation .card .cart-summary .summary-info p.total,
@@ -28964,8 +28990,9 @@ body ::placeholder {
 #confirmation .card #cart .cart-wrapper .cart-summary .summary-info p.total,
 #confirmation .card .cart-summary .summary-info .amount,
 #shipping .address-section .shipping-summary #confirmation .card .cart-summary .summary-info p.total {
-    margin-right: 6em;
-    padding: 1.25em 0
+    /* margin-right: 6em; */
+    padding: 1.25em 0;
+    font-size: 1.2rem;
 }
 
 #confirmation .card .cart-summary .summary-info .text-wrapper {
@@ -28982,8 +29009,8 @@ body ::placeholder {
 #confirmation .card #cart .cart-wrapper .cart-summary .summary-info .payable-total p.payable,
 #confirmation .card .cart-summary .summary-info .payable-total .text,
 #shipping .address-section .shipping-summary #confirmation .card .cart-summary .summary-info .payable-total p.payable {
-    color: #fd9812;
-    margin-left: 4.7em
+    color: #D20A7D;
+    margin-left: 15px;
 }
 
 #cart .cart-wrapper #confirmation .card .cart-summary .summary-info .payable-total p.total,
@@ -28991,8 +29018,8 @@ body ::placeholder {
 #confirmation .card #cart .cart-wrapper .cart-summary .summary-info .payable-total p.total,
 #confirmation .card .cart-summary .summary-info .payable-total .amount,
 #shipping .address-section .shipping-summary #confirmation .card .cart-summary .summary-info .payable-total p.total {
-    color: #fd9812;
-    margin-right: 4.7em
+    color: #D20A7D;
+    /* margin-right: 4.7em */
 }
 
 #confirmation .card .cart-summary .summary-info .delivery-date {
@@ -29066,7 +29093,7 @@ body ::placeholder {
 #shipping .address-section .shipping-summary .card .summary-info #my-profile .my-profile-section__wrapper .heading p.payable {
     font-size: 1.125rem;
     color: #333;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #my-profile .my-profile-section__wrapper .heading .js--address-edit1,
@@ -29076,7 +29103,7 @@ body ::placeholder {
 #my-profile .my-profile-section__wrapper .heading .js--link-edit4 {
     color: #247cc6;
     font-size: .9375rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     cursor: pointer
 }
 
@@ -29088,7 +29115,7 @@ body ::placeholder {
 
 #my-profile form .form-group .form-label {
     font-size: .9375rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333
 }
 
@@ -29110,7 +29137,7 @@ body ::placeholder {
     font-size: .9375rem;
     border-color: #e6e6e6;
     padding-left: 1.25em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     border-radius: 30px 30px 30px 30px
 }
 
@@ -29131,7 +29158,7 @@ body ::placeholder {
     height: 45px;
     background-color: transparent;
     color: #fd9812;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1rem;
     border: 1px solid #fd9812;
     border-radius: 30px 30px 30px 30px;
@@ -29188,14 +29215,14 @@ body ::placeholder {
 }
 
 #change-password .card-header .card-title {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1.25rem
 }
 
 #change-password .card-body form .form-group .form-control-label {
     font-size: 1rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #000;
     padding-bottom: .325em
 }
@@ -29253,7 +29280,7 @@ body ::placeholder {
     height: 55px;
     background-color: transparent;
     color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: 1rem;
     border: 1px solid #fd9812;
     border-radius: 30px 30px 30px 30px;
@@ -29312,7 +29339,7 @@ body ::placeholder {
 }
 
 #my-order .my-order-section .card.filter-section .title-header .title {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1.125rem
 }
@@ -29325,7 +29352,7 @@ body ::placeholder {
 
 #my-order .my-order-section .card.filter-section .order-id .form-control-label {
     font-size: .9375rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #000
 }
 
@@ -29384,7 +29411,7 @@ body ::placeholder {
 #my-order .my-order-section .card.filter-section .status .form-control-label {
     font-size: .9375rem;
     color: #000;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #my-order .my-order-section .card.filter-section .status .custom-select {
@@ -29429,7 +29456,7 @@ body ::placeholder {
     background-color: #fd9812;
     color: #fff;
     border: 1px solid #fd9812;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .8125rem;
     border-radius: 25px 25px 25px 25px
 }
@@ -29458,7 +29485,7 @@ body ::placeholder {
 
 #my-order .my-order-section .card.order-section .item .order-heading p {
     font-size: 1rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #111;
     margin-left: 4em;
     margin-right: 0
@@ -29561,7 +29588,7 @@ body ::placeholder {
 #my-order .my-order-section .card.order-section .item .order-list-wrapper .product-list #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .warranty,
 #my-order .my-order-section .card.order-section .item .order-list-wrapper .product-list .media-body .product-name {
     font-size: 1rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #111
 }
 
@@ -29651,7 +29678,7 @@ body ::placeholder {
 #my-order .my-order-section .card.order-section .item .order-list-wrapper .btn-view-details .btn-view-order {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     box-shadow: none;
     cursor: pointer;
     border-radius: 25px 25px 25px 25px;
@@ -29721,7 +29748,7 @@ body ::placeholder {
 }
 
 #my-pcb-order .my-order-section .card.filter-section .title-header .title {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1.25rem
 }
@@ -29734,7 +29761,7 @@ body ::placeholder {
 
 #my-pcb-order .my-order-section .card.filter-section .order-id .form-control-label {
     font-size: .9375rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #000
 }
 
@@ -29793,7 +29820,7 @@ body ::placeholder {
 #my-pcb-order .my-order-section .card.filter-section .status .form-control-label {
     font-size: .9375rem;
     color: #000;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #my-pcb-order .my-order-section .card.filter-section .status .custom-select {
@@ -29838,7 +29865,7 @@ body ::placeholder {
     background-color: #fd9812;
     color: #fff;
     border: 1px solid #fd9812;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .8125rem;
     border-radius: 25px 25px 25px 25px
 }
@@ -29867,7 +29894,7 @@ body ::placeholder {
 
 #my-pcb-order .my-order-section .card.order-section .item .order-heading p {
     font-size: 1rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #111;
     margin-left: 4em;
     margin-right: 0
@@ -29987,7 +30014,7 @@ body ::placeholder {
     color: #fd9812;
     background-color: #fff;
     font-size: 1rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: 1px solid #fd9812;
     margin-left: 7em;
     border-radius: 25px 25px 25px 25px;
@@ -30071,7 +30098,7 @@ body ::placeholder {
 }
 
 #my-sourcing-order .my-sourcing-order-section .card.filter-section .title-header .title {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1rem
 }
@@ -30084,7 +30111,7 @@ body ::placeholder {
 
 #my-sourcing-order .my-sourcing-order-section .card.filter-section .order-id .form-control-label {
     font-size: .9375rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #000
 }
 
@@ -30143,7 +30170,7 @@ body ::placeholder {
 #my-sourcing-order .my-sourcing-order-section .card.filter-section .status .form-control-label {
     font-size: .9375rem;
     color: #000;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #my-sourcing-order .my-sourcing-order-section .card.filter-section .status .custom-select {
@@ -30188,7 +30215,7 @@ body ::placeholder {
     background-color: #fd9812;
     color: #fff;
     border: 1px solid #fd9812;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .8125rem;
     border-radius: 25px 25px 25px 25px
 }
@@ -30214,7 +30241,7 @@ body ::placeholder {
 
 #my-sourcing-order .my-sourcing-order-section .card.sourcing-order-section .item .order-heading p {
     font-size: 1rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #111;
     margin-left: 4em;
     margin-right: 0
@@ -30288,7 +30315,7 @@ body ::placeholder {
 #my-sourcing-order .my-sourcing-order-section .card.sourcing-order-section .item .order-list-wrapper .product-details #details .details-section #cart .cart-wrapper .cart-section .cart-details .card-body .table td .media-body .warranty,
 #my-sourcing-order .my-sourcing-order-section .card.sourcing-order-section .item .order-list-wrapper .product-details .product-name {
     font-size: 1rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #111;
     width: 350px
 }
@@ -30326,7 +30353,7 @@ body ::placeholder {
     color: #fd9812;
     border: 1px solid #fd9812;
     font-size: 1rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     line-height: 2;
     border-radius: 25px 25px 25px 25px;
     transition: all .5s ease
@@ -30385,7 +30412,7 @@ body ::placeholder {
 }
 
 #my-review-rating .my-order-section .card.header-section .title-header .title {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1.25rem
 }
@@ -30457,7 +30484,7 @@ body ::placeholder {
 #my-review-rating .my-order-section .card.order-section .item .product-details .product-name {
     color: #333;
     font-size: 1rem;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #my-review-rating .my-order-section .card.order-section .item .product-details .product-brand {
@@ -30481,7 +30508,7 @@ body ::placeholder {
 }
 
 #my-review-rating .my-order-section .card.order-section .item .product-details .review .js--text-truncate {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: inherit;
     color: #44a7d9;
     cursor: pointer
@@ -30493,7 +30520,7 @@ body ::placeholder {
     color: #fd9812;
     background-color: #fff;
     font-size: 1rem;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: 1px solid #fd9812;
     border-radius: 25px 25px 25px 25px;
     transition: all .5s ease
@@ -30552,7 +30579,7 @@ body ::placeholder {
 }
 
 #my-wishlist .my-order-section .card.header-section .title-header .title {
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1.25rem
 }
@@ -30622,20 +30649,20 @@ body ::placeholder {
 #my-wishlist .my-order-section .card.order-section .item .product-details .product-name {
     color: #333;
     font-size: 1.125rem;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #my-wishlist .my-order-section .card.order-section .item .product-details .product-model,
 #my-wishlist .my-order-section .card.order-section .item .product-details .product-supplier {
     font-size: .875rem;
     color: #7c7c7c;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     margin-top: .875em
 }
 
 #my-wishlist .my-order-section .card.order-section .item .product-details .product-model span,
 #my-wishlist .my-order-section .card.order-section .item .product-details .product-supplier span {
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     color: #333
 }
 
@@ -30658,7 +30685,7 @@ body ::placeholder {
 
 #my-wishlist .my-order-section .card.order-section .item .action-section .qty .qty-text {
     color: #7c7c7c;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: .875rem;
     margin-right: .75em
 }
@@ -30708,7 +30735,7 @@ body ::placeholder {
     height: 50px;
     background-color: #fd9812;
     color: #fff;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     font-size: 1rem;
     line-height: 2.25;
     border-radius: 25px 25px 25px 25px;
@@ -30726,7 +30753,7 @@ body ::placeholder {
 
 #my-wishlist .my-order-section .card.order-section .item .action-section .action-button .btn-remove {
     display: block;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #7c7c7c;
     margin-top: .325em;
     transition: all .5s ease
@@ -30792,7 +30819,7 @@ body ::placeholder {
 
 #forgot-password .card .forgot-pass .title {
     margin: 1.5em 0 .25em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     font-size: 1.25rem
 }
@@ -30823,7 +30850,7 @@ body ::placeholder {
     border-radius: 25px 25px 25px 25px;
     font-size: .875rem;
     border: 1px solid #e6e6e6;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     transition: all .5s ease
 }
@@ -30882,7 +30909,7 @@ body ::placeholder {
 #forgot-password .card .forgot-pass form .btn-submit {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -30946,14 +30973,14 @@ body ::placeholder {
 
 #about-page .content-section .about__content--body .title {
     font-size: 1.875em;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-bottom: .75em
 }
 
 #about-page .content-section .about__content--body .body-text .sub-title {
     font-size: 1.125rem;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     margin-bottom: .625em
 }
@@ -31003,7 +31030,7 @@ body ::placeholder {
 
 #about-page .content-section .about__content--body .accordion .card-header button {
     color: #333;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     font-size: 1rem;
     text-decoration: none;
     box-shadow: none
@@ -31032,7 +31059,7 @@ body ::placeholder {
 #contact .card .contact-title {
     font-size: 1.625rem;
     color: #333;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     text-align: left !important;
     margin-top: 1em
 }
@@ -31048,7 +31075,7 @@ body ::placeholder {
 #contact .card .contact-form .form-group .form-label {
     color: #333;
     font-size: .875rem;
-    font-family: raleway-medium
+    font-family: 'Lexend'
 }
 
 #contact .card .contact-form .form-group #shipping .address-section .card-body form .form-inline .select-area .dropdown-toggle-area,
@@ -31060,7 +31087,7 @@ body ::placeholder {
     box-shadow: none;
     font-size: .875rem;
     border: 1px solid #b7b7b7;
-    font-family: raleway-medium;
+    font-family: 'Lexend';
     color: #333;
     height: 50px;
     padding: 1em 1.5em !important;
@@ -31084,7 +31111,7 @@ body ::placeholder {
 #contact .card .contact-form .form-group .btn-contact-submit {
     color: #fff;
     background-color: #fd9812;
-    font-family: raleway-semibold;
+    font-family: 'Lexend';
     border: none;
     box-shadow: none;
     cursor: pointer;
@@ -31129,411 +31156,769 @@ body ::placeholder {
 
 
 
-@media screen and (min-device-width: 1600px) and (max-device-width: 2100px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 800px;
-    }
-    .details-image{
-        width: 500px;
-    height: 400px;
-    }
+
+
+#question {
+    background-color: #FFFFFF;
 }
 
-@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 700px;
-    }
-    .details-image{
-        width: 500px;
-    height: 400px;
-    }
-    .menu-bar ul li{
-        width: 100%;
-        border-bottom: 1px solid #e6e6e6;
 
-    }
+.question-design {
+
+
+    background: #FFFFFF;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    width: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
+
 }
-@media screen and (min-device-width: 1024px) and (max-device-width: 1200px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 600px;
-    }
-    .menu-bar ul li{
-        width: 100%;
-        border-bottom: 1px solid #e6e6e6;
 
-    }
-    /* .category{
-    display: none;
+.back-button {
+    background: #FFFFFF;
+    border: 2px solid #D20A7D;
+}
+
+.question-fornt {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: #000000;
+}
+
+
+.form-design {
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.question-design-robotic:hover {
+    border: 1px solid #D20A7D;
+}
+
+.btn-question {
+    background-color: #D20A7D;
+    /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+
+/* .product-details-name {
+    border-bottom: 3px solid #D20A7D;
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 32px;
+   
+
+
+    color: #000000;
+}
+
+
+.products-details-main {
+
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 32px;
+
+
+    color: #000000;
+
 } */
+
+/* .products-decription {
+    background-color: #E5E5E5;
+    margin-top: 10px;
+} */
+
+.question-review {
+    background-color: #fff;
 }
 
-@media screen and (min-device-width: 900px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 400px;
-    }
+.question-border {
 
-    .shippingorder{
-        height: 1200px;
-    }
-    .menu-bar ul li{
-        width: 100%;
-        border-bottom: 1px solid #e6e6e6;
-
-    }
-}
-
-@media screen and (min-device-width: 768px) and (max-device-width: 900px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 400px;
-    }
-
-    .shippingorder{
-        height: 1200px;
-    }
-    .menu-bar ul li{
-        width: 100%;
-        border-bottom: 1px solid #e6e6e6;
-
-    }
-}
-
-@media screen and (min-device-width: 600px) and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 250px;
-    }
-    .shippingorder{
-        height: 1200px;
-    }
-
-    .menu-bar ul li{
-        width: 100%;
-        border-bottom: 1px solid #e6e6e6;
-
-    }
+    /* position: absolute; */
+    border-bottom: 3px solid #D20A7D;
+    margin-top: 35px;
+    margin-bottom: 20px;
 
 }
 
-@media screen and (min-device-width: 480px) and (max-device-width: 600px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 250px;
-    }
+.total-rating-style {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 60px;
+    /* identical to box height */
 
-    .shippingorder{
-        height: 1300px;
-    }
-    .progress{
-        width: 260px;
-    }
+
+    color: #D20A7D;
 }
 
-@media screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 230px;
-    }
+.total-rating-count {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 28px;
+    /* identical to box height */
 
-    .shippingorder{
-        height: 1400px;
-    }
-    .progress{
-        width: 100px;
-    }
+
+    color: #000000;
 }
 
-@media screen and (min-device-width: 218px) and (max-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 180px;
-    }
-    .details-image{
-        width: 100px;
-    height: 70px;
-    }
+/* .question-review-header {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 32px;
+    color: #000000;
+} */
 
-    .shippingorder{
-        height: 1500px;
-    }
+.question-review-user {
+    width: 152px;
+    /* height: 49px; */
+    border: 2px solid #D20A7D;
+    border-radius: 5px;
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    font-size: 20px;
+    line-height: 25px;
+    /* identical to box height */
 
-    .progress{
-        width: 100px;
-    }
-}
 
-@media screen and (min-device-width: 1px) and (max-device-width: 218px) and (-webkit-min-device-pixel-ratio: 1) {
-    .searchbar {
-        text-align: center;
-        width: 180px;
-    }
-    .details-image{
-        width: 100px;
-    height: 70px;
-    }
-
-    .shippingorder{
-        height: 1500px;
-    }
-
-    .shippingcheckout{
-        height: 1700px;
-    }
+    color: #D20A7D;
 }
 
 
+.question-review-formate {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    /* identical to box height */
 
-@media (min-width:600px) {
 
-    .searchbar {
-        text-align: center;
-        width: 400px;
-    }
-
-    .details-image{
-        width: 300px;
-    height: 250px;
-    }
-    /* .shippingorder{
-        height: 1200px;
-    } */
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 280px;
-    }
-
-    .shippingcheckout{
-        height: 1500px;
-    }
+    color: #282828;
 }
 
-@media (min-width:800px) {
+/* .question-review-user-name {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 28px;
+    color: #D20A7D;
+} */
 
-    .searchbar {
-        text-align: center;
-        width: 400px;
-    }
+/* .question-review-user-date {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 28px;
 
-    .details-image{
-        width: 300px;
-    height: 250px;
-    }
-    .progress{
-        width: 260px;
-    }
-    /* .shippingorder{
-        height: 1200px;
-    } */
 
-    .menu-bar ul li{
-        width: 300px;
-        border-bottom: 1px solid #e6e6e6;
 
-    }
+    color: #000000;
+} */
 
-    .main-content-section .sidebar-category .card-header{
-        /* width: 340px !important; */
-
-    }
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 280px;
-    }
-}
-
-@media (min-width:900px) {
-
+/* .review-details {
    
-    .menu-bar ul li{
-        width: 220px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 33px;
+    margin-bottom: 5px;
 
-    }
-    .main-content-section .sidebar-category .card-header{
-        /* width: 340px !important; */
+    color: #282828;
+} */
 
-    }
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 200px;
-    }
+/* .user-question {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+
+
+
+    color: #000000;
 }
 
-@media (min-width:1000px) {
-
-    .searchbar {
-        text-align: center;
-        width: 500px;
-    }
-
-    .details-image{
-        width: 400px;
-    height: 280px;
-    }
-
-    .menu-bar ul li{
-        width: 220px;
-
-    }
-    .main-content-section .sidebar-category .card-header{
-        /* width: 340px !important; */
-
-    }
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 200px;
-    }
-}
-@media (min-width:1100px) {
-
-   
-
-    .menu-bar ul li{
-        width: 240px;
-
-    }
-    .main-content-section .sidebar-category .card-header{
-        /* width: 340px !important; */
-
-    }
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 230px;
-    }
-}
-@media (min-width:1200px) {
-
-    .searchbar {
-        text-align: center;
-        width: 600px;
-    }
-
-    .details-image{
-        width: 500px;
-    height: 400px;
-    }
-    .progress{
-        width: 260px;
-    }
-
-    .menu-bar ul li{
-        width: 260px;
-
-    }
-    .main-content-section .sidebar-category .card-header{
-        /* width: 340px !important; */
-
-    }
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 240px;
-    }
+.user-answer {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
     
-}
 
-@media (min-width:1400px) {
-    /* #shipping .address-section .shipping-summary {
-        width: 430px
-    } */
 
-    /* .searchbar{
-        text-align: center;
-    width: 600px;
+    color: #000000;
 } */
 
-.category-slider{
-    max-width: 1600px !important;
+.stock-button {
+    background: #34D1BF;
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
 
+
+    color: #FFFFFF;
 }
 
-.progress{
-        width: 260px;
-    }
-
-    .menu-bar ul li{
-        width: 270px;
-
-    }
-    .main-content-section .sidebar-category .card-header{
-        /* width: 340px !important; */
-
-    }
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 250px;
-    }
-    /* .fon-margin{
-        margin-left: 180px;
-
-    } */
+.current-price {
+    color: #D20A7D;
 }
-@media (min-width:1600px) {
-    /* #shipping .address-section .shipping-summary {
-        width: 440px
-    } */
 
-    .searchbar {
-        text-align: center;
-        width: 700px;
-    }
+.previous-price {
+    color: #ff0000;
+}
 
-    .details-image{
-        width: 500px;
+.featuredBtn.active {
+    background-color: #D20A7D;
+    color: white;
+}
+/* 
+.featuredBtn {
+    width: 130px;
+    height: 30px;
+    color: #8c8c8c;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    border: none;
+    letter-spacing: 2px;
+    outline: none;
+} */
+
+
+
+
+button:focus,
+input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+/*--------------------------*/
+.qty-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.qty-container .input-qty {
+    text-align: center;
+    padding: 6px 10px;
+    border: 1px solid #d4d4d4;
+    max-width: 80px;
+    height: 38px;
+}
+
+.qty-container .qty-btn-minus,
+.qty-container .qty-btn-plus {
+    border: 1px solid #d4d4d4;
+    font-size: 10px;
+    height: 38px;
+    width: 38px;
+    transition: 0.3s;
+}
+
+.qty-container .qty-btn-plus {
+    margin-left: -1px;
+}
+
+.qty-container .qty-btn-minus {
+    margin-right: -1px;
+}
+
+
+/*---------------------------*/
+.btn-cornered,
+.input-cornered {
+    border-radius: 4px;
+}
+
+.btn-rounded {
+    border-radius: 50%;
+}
+
+.input-rounded {
+    border-radius: 50px;
+}
+
+.star-color{
+    color: #000;
+}
+.main-image {
+    text-align: center;
+}
+
+.product-details-image{
+    height: 150px;
+    width: 200px;
+    box-sizing: border-box;
+
+/* position: absolute; */
+/* width: 496px;
+height: 438px;
+left: 280px;
+top: 225px;
+
+background: url(image.png); */
+border: 1px solid #EFEFEF;
+}
+
+.gallery-image{
+    height: 100px;
+    width: 100px;
+}
+
+/* .review-rating-detils-font-color-size{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+
+
+
+color: #000000;
+} */
+
+.sell-price{
+    color: #D20A7D;
+    font-size: 28px;
+}
+
+
+
+.menu-bar {
+    text-align: left;
+    font-family: 'Lexend';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 25px;
+/* identical to box height */
+
+
+color: #000000;
+}
+
+.menu-bar ul {
+    /*display: inline-flex;*/
+    list-style: none;
+    /* color: red; */
+}
+
+.menu-bar ul li {
+    /* width: 340px; */
+    /* margin: 15px;
+padding: 15px; */
+    text-align: left;
+    /* border-bottom: 1px solid #e6e6e6; */
+    padding: 0.86em;
+    margin: 0 0.325em
+}
+
+.menu-bar ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* .menu-bar   span {
+   margin-left:180px;
+} */
+
+
+ .menu-bar.ul li span {
+    position: absolute;
+    top: 50%;
+    right: 6%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.menu-bar ul li:hover {
+    background: #fff;
+    border-radius: 3px;
+    /* cursor: pointer; */
+    /* background-color: #fafafa */
+}
+
+.sub-menu-1 {
+    display: none;
+}
+
+.menu-bar ul li:hover .sub-menu-1 {
+    display: block;
+    position: absolute;
+    background: #fff;
+    margin-top: -30px;
+    /* left:100%; */
+    z-index: 1000;
+    /* margin-left: 320px; */
+
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 0.25rem
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul {
+    display: block;
+    /*margin: 10px;*/
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul li {
+    width: 250px;
+    padding: 10px;
+    border-bottom: 1px dotted #fff;
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+}
+
+
+
+.box {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
     height: 400px;
-    }
-    .menu-bar ul li{
-        width: 400px;
-
-    }
-    /* .menu-bar ul li i{
-        margin-left: 200px;
-
-    } */
-    .main-content-section .sidebar-category .card-header{
-        /* width: 340px !important; */
-
-    }
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 320px;
-    }
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .1);
 }
 
-@media (min-width:1600px) and (max-width:2000px){
-
-
-    .sidebar-category{
-        max-width:400px !important;
- 
-     }
-     .category-slider{
-         max-width: 2225px !important;
-
-     }
-
-     .menu-bar ul li{
-        width: 280px;
-
-    }
-
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 260px;
-    }
+/* common */
+.ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
 }
 
-@media (min-width:2000px) and (max-width:4000px){
-
-    .sidebar-category{
-        max-width:400px !important;
- 
-     }
-     .category-slider{
-         max-width: 2225px !important;
-
-     }
-
-     .menu-bar ul li{
-        width: 360px;
-
-    }
-
-    .menu-bar ul li:hover .sub-menu-1{
-        margin-left: 340px;
-    }
+.ribbon::before,
+.ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #2980b9;
 }
 
+.ribbon span {
+    position: absolute;
+    display: block;
+    width: 225px;
+    padding: 15px 0;
+    background-color: #3498db;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    color: #fff;
+    font: 700 18px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* top left*/
+.ribbon-top-left {
+    top: -10px;
+    left: -10px;
+}
+
+.ribbon-top-left::before,
+.ribbon-top-left::after {
+    border-top-color: transparent;
+    border-left-color: transparent;
+}
+
+.ribbon-top-left::before {
+    top: 0;
+    right: 0;
+}
+
+.ribbon-top-left::after {
+    bottom: 0;
+    left: 0;
+}
+
+.ribbon-top-left span {
+    right: -25px;
+    top: 30px;
+    transform: rotate(-45deg);
+}
+
+/* top right*/
+.ribbon-top-right {
+    top: -10px;
+    right: -10px;
+}
+
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+    border-top-color: transparent;
+    border-right-color: transparent;
+}
+
+.ribbon-top-right::before {
+    top: 0;
+    left: 0;
+}
+
+.ribbon-top-right::after {
+    bottom: 0;
+    right: 0;
+}
+
+.ribbon-top-right span {
+    left: -25px;
+    top: 30px;
+    transform: rotate(45deg);
+}
+
+/* bottom left*/
+.ribbon-bottom-left {
+    bottom: -10px;
+    left: -10px;
+}
+
+.ribbon-bottom-left::before,
+.ribbon-bottom-left::after {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.ribbon-bottom-left::before {
+    bottom: 0;
+    right: 0;
+}
+
+.ribbon-bottom-left::after {
+    top: 0;
+    left: 0;
+}
+
+.ribbon-bottom-left span {
+    right: -25px;
+    bottom: 30px;
+    transform: rotate(225deg);
+}
+
+/* bottom right*/
+.ribbon-bottom-right {
+    bottom: -10px;
+    right: -10px;
+}
+
+.ribbon-bottom-right::before,
+.ribbon-bottom-right::after {
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+}
+
+.ribbon-bottom-right::before {
+    bottom: 0;
+    left: 0;
+}
+
+.ribbon-bottom-right::after {
+    top: 0;
+    right: 0;
+}
+
+.ribbon-bottom-right span {
+    left: -25px;
+    bottom: 30px;
+    transform: rotate(-225deg);
+}
+
+
+.rating-css div {
+    color: #f38c02;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+}
+
+.rating-css input {
+    display: none;
+}
+
+.rating-css input+label {
+    font-size: 30px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+}
+
+.rating-css input:checked+label~label {
+    color: #b4afaf;
+}
+
+.rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+}
+
+.portfolio-home {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    /*max-height: 100%;*/
+    /*background-image: url('/home/slider/user_back.png');*/
+}
+
+.portfolio-menu-content {
+    margin: 10px;
+}
+
+.portfolio-menu-content i,
+.portfolio-menu-content li {
+    color: #fff;
+    cursor: pointer;
+}
+
+.portfolio-menu-content h1 {
+    margin-bottom: 0px;
+}
+
+#sidebar {
+    min-width: 120px;
+    max-width: 120px;
+    background-color: #3CC122;
+    /*float: left;*/
+    margin-left: 5%;
+    min-height: 60%;
+    max-height: 60%;
+    position: relative;
+
+}
+
+.sub-menu {
+    background-color: green;
+    display: none;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0 20px;
+    position: absolute;
+    right: -89px;
+    top: -18px;
+}
+
+.nav>li:hover .sub-menu {
+    display: block;
+}
+
+.portfolio-menu-content {
+    margin: 10px 0;
+}
+.product-extra{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 27px;
+/* identical to box height */
+
+
+color: #717171;
+}
+
+.sign-button{
+    background-color: #D20A7D;
+    color: #fff;
+}
+.login-page-text{
+    color: #D20A7D;
+}
+
+.text-color-forget-password{
+    color: #000;
+}
+
+
+.categoryfixed{
+    background-color: #fff;
+}
+
+
+.owl-carousel.owl-item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.delivery-method{
+    color: #D20A7D;
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: 'Lexend';
+}
+
+.order-button-style{
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: 'Lexend';
+
+}
+.checkout-order-title{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.checout-form-address{
+    font-size: 1.2rem;
+}

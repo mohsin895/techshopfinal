@@ -15,6 +15,7 @@ use App\Models\BlogPostCommentReply;
 use DB;
 use Auth;
 use Image;
+use File;
 
 class BlogPostController extends Controller
 {
@@ -70,7 +71,7 @@ public function get_subcat(Request $request)
         // dd($request->all());
 
         $validated = $request->validate([
-            'image' => 'required|image|max:100',
+            'image' => 'image|max:100 |dimensions:width=800,height=400',
             
         ]);
         $data = new BlogPost();
@@ -101,7 +102,7 @@ public function get_subcat(Request $request)
                 $large_image_path = 'public/assets/images/blog/' . $filename;
                 
 
-                Image::make($image_tmp)->resize(1290, 645)->save($large_image_path);
+                Image::make($image_tmp)->resize(800, 400)->save($large_image_path);
                 $data->image = $filename;
             }
         }
@@ -131,6 +132,11 @@ public function get_subcat(Request $request)
 
     public function update(Request $request,$id)
     {
+        $validated = $request->validate([
+            'image' => 'image|max:100 |dimensions:width=800,height=400',
+            
+        ]);
+
         $data = BlogPost::find($id);
         $data->cat_id = $request['parent_id']; 
         $data->subcat_id = $request['subcat_id']; 
@@ -145,7 +151,7 @@ public function get_subcat(Request $request)
                 $filename = rand(111, 99999) . '.' . $extension;
                 $large_image_path = 'public/assets/images/blog/' . $filename;
 
-                Image::make($image_tmp)->resize(1290, 645)->save($large_image_path);
+                Image::make($image_tmp)->resize(800, 400)->save($large_image_path);
                 $data->image = $filename;
             }
         }

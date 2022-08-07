@@ -16,7 +16,7 @@ class IndexController extends Controller
     {
         $data['slider'] = BlogSlider::get();
         $data['baseslider']= Slider::get();
-        $data['new_post'] = BlogPost::where('status','published')->whereDay('created_at','>=',Carbon::now()->subDays(7))->get();
+        $data['new_post'] = BlogPost::get();
         $data['ardino'] = BlogPost::where('cat_id',2)->where('status','published')->get();
         $data['robotic'] = BlogPost::where('cat_id',2)->where('status','published')->get();
         $data['avr'] = BlogPost::where('cat_id',2)->where('status','published')->get();

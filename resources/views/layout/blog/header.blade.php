@@ -1,3 +1,8 @@
+<style>
+ .blog-active {
+  color: red;
+}
+    </style>
 <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -8,25 +13,6 @@
 </div>
 
 
-<div class="top-bar">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <span class="d-none d-md-inline-block">@if(!empty(Auth::guard('blog')->check()))
-
-                    {{Auth::guard('blog')->user()->name}}
-                    @else
-                    @endif</span>
-
-
-
-
-            </div>
-
-        </div>
-
-    </div>
-</div>
 
 <header class="site-navbar js-sticky-header site-navbar-target" role="banner"
     style="box-shadow: -1px 10px 11px -4px rgb(0 0 0 / 39%)">
@@ -43,14 +29,14 @@
             <div class="col-12">
                 <nav class="site-navigation text-right ml-auto " role="navigation">
 
-                    <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                        <li><a href="{{url('blog/user')}}" class="nav-link" style="color:#ffa500 !important">Home</a></li>
+                    <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block blog-nav">
+                        <li><a href="{{url('blog/user')}}" class="nav-link" >Home</a></li>
                     
 
-                        <li><a href="{{route('blog.post')}}" class="nav-link">All Post</a></li>
+                        <li class=" blog-active" {{ request()->is('scam-type-number-*') ? ' class="active"' : '' }}><a href="{{route('blog.post')}}" class="nav-link">All Post</a></li>
                         <li class="has-children">
                             <a href="#about-section" class="nav-link">Category</a>
-                            <ul class="dropdown arrow-top">
+                            <ul class="dropdown arrow-top" >
                                 @foreach($category as $row)
 
 
@@ -87,3 +73,4 @@
     </div>
 
 </header>
+ 

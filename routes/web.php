@@ -357,6 +357,22 @@ Route::post('/role/update/{id}',[App\Http\Controllers\Admin\RoleController::clas
 Route::get('/delete-role/{id}',[App\Http\Controllers\Admin\RoleController::class,'delete'])->name('role.delete');
 
 Route::get('/role/update-status/{id}/{status}',[App\Http\Controllers\Admin\RoleController::class,'status']);
+//AccountController Start
+
+Route::get('/accounting',[App\Http\Controllers\Admin\AccountController::class,'index'])->name('accounting');
+
+Route::get('/account/debit',[App\Http\Controllers\Admin\AccountController::class,'debit'])->name('debit');
+Route::post('/account_creadit/pdf', [App\Http\Controllers\Admin\AccountController::class, 'creadit_createPDF'])->name('account.download');
+Route::post('/account_debit/pdf', [App\Http\Controllers\Admin\AccountController::class, 'debit_createPDF'])->name('debit.download');
+//AccountController End
+
+//ExtraCostControll Strat
+
+
+Route::match(['get','post'],'/extraCost/{id?}',[App\Http\Controllers\Admin\ExtraCostController::class,'insert'])->name('extraCost');
+Route::get('/delete-extraCost/{id}',[App\Http\Controllers\Admin\ExtraCostController::class,'delete'])->name('extraCost.delete');
+
+//ExtraCostController End
 
 //Permission
 Route::get('role/permission/{id}', [App\Http\Controllers\Admin\RoleController::class,'permission'])->name('role.permission');
@@ -390,7 +406,8 @@ Route::match(['get','post'],'/wishlist/insert', [App\Http\Controllers\User\Wishl
 Route::post('/search-products', [App\Http\Controllers\Front\IndexController::class,'SearchProducts'])->name('user.searchProducts');
 Route::post('/autocomplete/fetch', [App\Http\Controllers\Front\IndexController::class,'fetch'])->name('autocomplete.fetch');
 Route::get('/term_condition', [GeneralSettingController::class,'t_c'])->name('t_c');
-Route::get('/abut_us', [GeneralSettingController::class,'about_us'])->name('about_us');
+Route::get('/about_us', [GeneralSettingController::class,'about_us'])->name('about_us');
+Route::get('/shipping_policy', [GeneralSettingController::class,'shipping_policy'])->name('shipping_policy');
 Route::get('/warranty-and-replacement', [GeneralSettingController::class,'warranty_and_replacement'])->name('warranty-and-replacement');
 Route::get('/privacy-policy', [GeneralSettingController::class,'privacy_policy'])->name('privacy-policy');
 Route::get('/contact_us', [GeneralSettingController::class,'contact_us'])->name('contact_us');
@@ -413,14 +430,19 @@ Route::match(['get','post'],'/user/cart', [App\Http\Controllers\User\CartControl
 Route::get('/cart/update-quantity/{id}/{quantity}', [App\Http\Controllers\User\CartController::class,'updateCartQuantity'])->name('cart.update');
 Route::match(['get','post'],'/cart/delete-product/{id}', [App\Http\Controllers\User\CartController::class,'deleteCartProduct'])->name('cart.delete');
 //UserLoginControlel end
-Route::match(['get','post'],'/user/question', [App\Http\Controllers\User\ExtraController::class,'question'])->name('user.question');
+
 Route::match(['get','post'],'/user/answer', [App\Http\Controllers\User\ExtraController::class,'answer'])->name('user.answer');
-Route::match(['get','post'],'/user/rating_review', [App\Http\Controllers\User\ExtraController::class,'rating_review'])->name('user.rating_review');
+
 Route::get('search', [App\Http\Controllers\User\ExtraController::class, 'index'])->name('search');
 Route::get('autocomplete', [App\Http\Controllers\User\ExtraController::class, 'autocomplete'])->name('autocomplete');
 
 Route::group(['middleware'=>['auth']],function(){
+
+    Route::match(['get','post'],'/user/rating_review/{slug}', [App\Http\Controllers\User\ExtraController::class,'rating_review'])->name('user.rating_review');
+        Route::match(['get','post'],'/user/question/{slug}', [App\Http\Controllers\User\ExtraController::class,'question'])->name('user.question');
     Route::name('user.')->prefix('user')->group(function () {
+
+        Route::post('coupon/delete', [App\Http\Controllers\User\CartController::class,'coupon_delete'])->name('coupon.delete');
         Route::match(['get','post'],'/cart/apply-coupon', [App\Http\Controllers\User\CartController::class,'applyCoupon'])->name('cart.applyCoupon');
         Route::get('/logout', [App\Http\Controllers\User\UserController::class,'logout'])->name('logout');
         Route::match(['get','post'],'/order', [App\Http\Controllers\User\OrderController::class,'order'])->name('order');
@@ -436,13 +458,15 @@ Route::group(['middleware'=>['auth']],function(){
         Route::match(['get','post'],'/referall/withdraw/insert', [App\Http\Controllers\User\ReferralController::class,'withdraw_insert'])->name('referall.withdraw.insert');
 
         //User Update Password start 
+        
+
         Route::get('/users/check-user-pwd_form', [App\Http\Controllers\User\UserController::class, 'chkUserPasswordForm'])->name('checkPassword.form');
         Route::get('/users/check-user-pwd', [App\Http\Controllers\User\UserController::class, 'chkUserPassword'])->name('checkPassword');
         Route::post('/users/update-user-pwd', [App\Http\Controllers\User\UserController::class, 'updateUserPassword'])->name('updatePassword');
         //User Update password end
         //GiftCardController Start 
 Route::get('/giftcard/details/{slug}',[App\Http\Controllers\Front\GiftCardController::class,'index'])->name('giftcard.details');
-Route::post('/giftcard/purchase',[App\Http\Controllers\Front\GiftCardController::class,'giftcard_purchase'])->name('giftcard.purchase');
+Route::match(['get','post'],'/giftcard/purchase',[App\Http\Controllers\Front\GiftCardController::class,'giftcard_purchase'])->name('giftcard.purchase');
 Route::match(['get','post'],'/giftcard/checkout', [App\Http\Controllers\Front\GiftCardController::class,'checkout'])->name('giftcard.checkout');
 //GiftCardController End
         //GifCard start 
@@ -470,8 +494,9 @@ Route::match(['get','post'],'/blog/register',[App\Http\Controllers\Blog\User\Log
 Route::match(['get','post'],'/blog/forgot-password',  [App\Http\Controllers\Blog\User\LoginController::class,'forgotPassword'])->name('blog.forget_password');
 Route::get('/blog/post',[App\Http\Controllers\Blog\PostController::class,'index'])->name('blog.post');
 Route::get('/blog/post/details/{slug}',[App\Http\Controllers\Blog\PostController::class,'post_details'])->name('blog.post.details');
-Route::match(['get','post'],'/blog/post/comment',[App\Http\Controllers\Blog\PostController::class,'comment'])->name('blog.user.comment');
+
 Route::group(['middleware'=>['blog']],function(){
+    Route::match(['get','post'],'/blog/post/comment',[App\Http\Controllers\Blog\PostController::class,'comment'])->name('blog.user.comment');
     Route::name('blog.')->prefix('blog')->group(function () {
         Route::get('/logout', [App\Http\Controllers\Blog\User\LoginController::class,'bloglogout'])->name('logout');
         Route::get('/user/post',[App\Http\Controllers\Blog\PostController::class,'post'])->name('user.post');
@@ -479,3 +504,6 @@ Route::group(['middleware'=>['blog']],function(){
     });
 });
 //Blog Part End
+
+
+

@@ -32,16 +32,16 @@
 
 
                         <div class="card details-section h-100">
-                            <h1 class="product-title">{{$giftcard->name}}</h1>
+                            <h1 class="product-title text-capitalize" style="font-weight:700">{{$giftcard->name}}</h1>
 
 
-                            <p class="price">Purchse Price::{{$gs->currency}}&nbsp;&nbsp; {{$giftcard->purchase_price}}
+                            <p class="price">Purchse Price:&nbsp;{{$gs->currency}} {{$giftcard->purchase_price}}
                             <p>
 
-                            <p class="price">GiftCard Value::{{$gs->currency}}&nbsp;&nbsp; {{$giftcard->giftcard_value}}
+                            <p class="price">GiftCard Value:&nbsp;{{$gs->currency}} {{$giftcard->giftcard_value}}
                             <p>
 
-                            <p class="price">GiftCard Duration:: {{$giftcard->duration}} days
+                            <p class="price">GiftCard Duration:&nbsp; {{$giftcard->duration}} Days
                             <p>
 
                             <div class="d-flex justify-content-start align-items-end mt-2">
@@ -128,5 +128,5 @@
 </div>
 
 
-
+@include('layout.front.footer');
 @endsection

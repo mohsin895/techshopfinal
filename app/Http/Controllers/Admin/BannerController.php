@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Banner;
 use Image;
 use Auth;
+use File;
 
 class BannerController extends Controller
 {
@@ -114,7 +115,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
                 $filename = rand(111, 99999) . '.' . $extension;
                 $large_image_path = 'public/assets/images/banner/' . $filename;
 
-                Image::make($image_tmp)->resize(150, 120)->save($large_image_path);
+                Image::make($image_tmp)->resize(508, 245)->save($large_image_path);
                 $data->image = $filename;
             }
         }

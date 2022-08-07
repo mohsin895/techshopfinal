@@ -48,14 +48,28 @@
               <td>{{$product['model_no']}}</td>
             
               <td>{{$product['quantity']}}</td>
+              @php   $vat= ($product['price']*$gs->vat)/ 100 ; @endphp
+              @if($gs->cart_page_vat==1)
               <td>{{$gs->currency}}&nbsp;&nbsp;{{$product['price']}}</td>
+              @else 
+              <td>{{$gs->currency}}&nbsp;&nbsp;{{$product['price'] + $vat}}</td>
+              @endif
             </tr>
 
             @endforeach
+            @if($gs->cart_page_vat==1)
             @if(!empty($productDetails['coupon_code']))
             <tr>
-              <td colspan="3" align="right">Subtotal With Coupon Code(-):</td>
+              <td colspan="3" align="right">Subtotal:</td>
               <td>{{$gs->currency}}&nbsp;&nbsp; {{$productDetails['subtotal']}}</td>
+            </tr>
+            <tr>
+              @if($productDetails['amount_type'] == 'fixed')
+              <td colspan="3" align="right">Discount({{$productDetails['discount_amount']}} &nbsp;&nbsp;{{$gs->currency}} &nbsp;off):</td>
+              @else
+              <td colspan="3" align="right">Discount({{$productDetails['amount']}} % off):</td>
+              @endif
+              <td>{{$gs->currency}}&nbsp;&nbsp; -{{$productDetails['discount_amount']}}</td>
             </tr>
             @else
             <tr>
@@ -67,14 +81,40 @@
               <td colspan="3" align="right">Vat(%):</td>
               <td>{{$gs->currency}}&nbsp;&nbsp; {{$productDetails['vat']}}</td>
             </tr>
+            @else
+
+            @if(!empty($productDetails['coupon_code']))
+            <tr>
+              <td colspan="3" align="right">Subtotal:</td>
+              <td>{{$gs->currency}}&nbsp;&nbsp; {{$productDetails['subtotal']}}</td>
+            </tr>
+            <tr>
+              @if($productDetails['amount_type'] == 'fixed')
+              <td colspan="3" align="right">Discount(off}}):</td>
+              @else
+              <td colspan="3" align="right">Discount({{$productDetails['amount']}} % off):</td>
+              @endif
+              <td>{{$gs->currency}}&nbsp;&nbsp; -{{$productDetails['discount_amount']}}</td>
+            </tr>
+            @else
+            <tr>
+              <td colspan="3" align="right">Subtotal:</td>
+              <td>{{$gs->currency}}&nbsp;&nbsp; {{$productDetails['subtotal']}}</td>
+            </tr>
+            @endif
+        
+
+            @endif
             <tr>
               <td colspan="3" align="right">Shipping Charge</td>
               <td>{{$gs->currency}}&nbsp;&nbsp; {{$productDetails['shipping']}}</td>
             </tr>
+            @if(!empty($productDetails['giftcard_amount']))
             <tr>
               <td colspan="3" align="right">Giftcard Balance</td>
-              <td>{{$gs->currency}}&nbsp;&nbsp; {{$productDetails['giftcard_amount']}}</td>
+              <td>{{$gs->currency}}&nbsp;&nbsp; -{{$productDetails['giftcard_amount']}}</td>
             </tr>
+            @endif
             
             <tr>
               <td colspan="3" align="right">Grand Total</td>

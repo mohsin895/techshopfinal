@@ -1,46 +1,51 @@
-<footer class="footer-section text-center text-lg-start text-white" style="background-color: #45526e">
+<footer class="footer-section text-center text-lg-start text-white" style="background-color: #EFEFEF" >
         <!-- Grid container -->
-        <div class=" p-4 pb-0">
+        <div class=" container  pb-0">
             <!-- Section: Links -->
-            <section class="">
+            <section>
                 <!--Grid row-->
                 <div class="row">
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">
+                    <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mt-3 mobile-text-align">
+                        <p class="text-capitalize footer-header-font-size">
                             {{$gs->site_title}}
-                        </h6>
-                        <p>
-                        <div class="site-logo">
-                            <a href="{{url('/')}}" class="text-black"><span class="text-primary"><img
-                                        src="{{asset('public/assets/images/setting/'.$gs->site_logo)}}" alt="logo"
-                                        class="img-fluid"></a>
-
-
-
-
-                        </div>
                         </p>
 
+                        <p class="mb-4 footer-font-size text-capitalize"> {!! $gs->address !!}</p>
 
+                        <!-- Grid column -->
 
 
 
                         <!-- Facebook -->
-                        <a href="{{$gs->facebook_page}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
-                            class="text-white" role="button"><i class="fa-brands fa-facebook-square fa-2xl"></i></a>
+                        <a href="{{$gs->facebook_page}}" target="_blank" class="" class="text-white" role="button"
+                            style="color:#000000"><img
+                            src="{{asset('public/assets/images/setting/facebook.png')}}" style="left: 5%;right: 5%;top: 5%;bottom: 5%;"></a>
+                            <a href="{{$gs->facebook_group}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
+                            class="text-white" role="button" style="color:#fff;background:#000"><i class="fa fa-users" aria-hidden="true"></i></a>
+                        <a href="{{$gs->discord}}" target="_blank" class="" class="text-white" role="button"
+                            style="color:#000000"><img
+                            src="{{asset('public/assets/images/setting/descord.png')}}" style="left: 5%;right: 5%;top: 5%;bottom: 5%;"></a>
 
-                        <!-- Twitter -->
-                        <a href="{{$gs->linkdi}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
-                            class="text-white" role="button"><i class="fa-brands fa-twitter-square fa-2xl"></i></a>
 
+
+
+                        <a href="{{$gs->linkdi}}" target="_blank" class="" class="text-white" role="button"
+                            style="color:#000000"><img
+                            src="{{asset('public/assets/images/setting/linkdi.png')}}" style="height:40px;left: 5%;right: 5%;top: 5%;bottom: 5%;"></a>
                         <!-- Google -->
-                        <a href="{{$gs->youtube}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
-                            class="text-white" role="button"><i class="fa-brands fa-youtube-square fa-2xl"></i></a>
+                        <a href="{{$gs->youtube}}" target="_blank" class="" class="text-white" role="button"
+                            style="color:#000000"><img
+                            src="{{asset('public/assets/images/setting/youtube.png')}}" style="height:40px;left: 5%;right: 5%;top: 5%;bottom: 5%;"></a>
 
                         <!-- Instagram -->
-                        <a href="{{$gs->instagram}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
-                            class="text-white" role="button"> <i class="fa-brands fa-instagram-square fa-2xl"></i></a>
+                        <a href="{{$gs->instagram}}" target="_blank" class="" class="text-white" role="button"
+                            style="color:#000000"> <img
+                            src="{{asset('public/assets/images/setting/instagram.png')}}" style="left: 5%;right: 5%;top: 5%;bottom: 5%;"></a>
+                        <!-- Twitter -->
+                        <a href="{{$gs->twiter}}" target="_blank" class="" class="text-white" role="button"
+                            style="color:#000000"> <img
+                            src="{{asset('public/assets/images/setting/twiter.png')}}" style="left: 5%;right: 5%;top: 5%;bottom: 5%;"></a>
                     </div>
                     <!-- Grid column -->
 
@@ -49,59 +54,59 @@
                     <hr class="w-100 clearfix d-md-none" />
 
                     <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                        <p>
-                            <a class="text-white" href="{{url('blog/user')}}">Blog</a>
-                        </p>
-                        <p>
-                            <a class="text-white" href="{{url('/gift_card')}}">Gift Card</a>
-                        </p>
-                        <p>
-                            <a class="text-white" href="{{url('/flash_sale')}}">Flash Sale</a>
-                        </p>
+                    <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <p class="text-text-capitalize mb-4 footer-header-font-size mobile-text-align">Support</p>
 
+                        <p class="support-size"><img src="{{asset('public/assets/images/setting/mobile.png')}}" style="left: 16.67%;right: 16.67%;top: 16.67%;bottom: 16.67%;width:20px;height:16px;margin-left:-60px"><button class="footer-font-size-support-mobile" style="border: none; margin-left:10px;text-align: center; margin-top: 3px;"> {{$gs->mobile1}}</button></p>
+                        <p class="support-size">
+                        <img src="{{asset('public/assets/images/setting/email.png')}}" style="left: 16.67%;right: 16.67%;top: 16.67%;bottom: 16.67%;width:20px;height:16px;margin-left:-50px"><span class="footer-font-size" style="margin-right:-50px"> {{$gs->email1}}</span></p>
                     </div>
                     <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none" />
 
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 mobile-text-align">
+
+                        <p class="text-text-capitalize   footer-header-font-size">
+                            Products
+                        </p>
+                        <p><a href="{{url('/blog/user')}}" class="footer-font-size">Blog</a> </p>
+                        <p><a href="{{url('/gift_card')}}" class="footer-font-size">Gift Card</a></p>
+                        <p> <a href="{{url('/flash_sale')}}" class="footer-font-size">Flash Sale</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
                     <hr class="w-100 clearfix d-md-none" />
 
 
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 mobile-text-align">
+                        <p class="text-text-capitalize   footer-header-font-size">
                             Useful links
-                        </h6>
-                        <p>
-                            <a href="{{route('t_c')}}" class="text-white">Terms & conditions</a>
+                        </p>
+                        <p> <a href="{{route('t_c')}}" class="footer-font-size">Terms & conditions</a>
                         </p>
                         <p>
-                            <a class="text-white" href="{{route('privacy-policy')}}">Privacy Policy</a>
+                            <a class="footer-font-size" href="{{route('privacy-policy')}}">Privacy Policy</a>
                         </p>
                         <p>
-                            <a class="text-white" href="{{route('warranty-and-replacement')}}">Warrenty &
+                            <a class="footer-font-size" href="{{route('warranty-and-replacement')}}">Warrenty &
                                 Replacement</a>
                         </p>
+
                         <p>
-                            <a class="text-white" href="{{route('about_us')}}">About Us</a>
+                            <a class="footer-font-size" href="{{route('shipping_policy')}}">Shipping Policy</a>
                         </p>
                         <p>
-                            <a class="text-white" href="{{route('contact_us')}}">Contact Us</a>
+                            <a class="footer-font-size" href="{{route('about_us')}}">About Us</a>
+                        </p>
+                        <p>
+                            <a class="footer-font-size" href="{{route('contact_us')}}">Contact Us</a>
                         </p>
                     </div>
 
                     <!-- Grid column -->
-                    <hr class="w-100 clearfix d-md-none" />
 
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                        <p><i class="fa fa-home mr-3"></i> {!! $gs->address !!}</p>
-                        <p><i class="fa fa-envelope mr-3"></i> {{$gs->email1}}</p>
-                        <p><i class="fa fa-phone mr-3"></i> {{$gs->mobile1}}</p>
-                        <p><i class="fa fa-print mr-3"></i> {{$gs->site_title}}</p>
-                    </div>
-                    <!-- Grid column -->
                 </div>
                 <!--Grid row-->
             </section>
@@ -112,48 +117,48 @@
                     <div class="col-md-5 col-lg-4 ml-lg-0 text-left text-md-end">
 
 
-                      
-                        <a href="{{$gs->facebook_page}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
-                            class="text-white" role="button"><i class="fa-brands fa-facebook-square fa-2xl"></i></a>
+                     
+                        <a href="{{$gs->facebook_page}}" target="_blank" class=""
+                            class="text-white" role="button"><i class="fa fa-facebook-square"></i></a>
 
                      
-                        <a href="{{$gs->linkdi}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
-                            class="text-white" role="button"><i class="fa-brands fa-twitter-square fa-2xl"></i></a>
+                        <a href="{{$gs->linkdi}}" target="_blank" class=""
+                            class="text-white" role="button"><i class="fa fa-linkedin-square"></i></a>
 
-                        <a href="{{$gs->youtube}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
-                            class="text-white" role="button"><i class="fa-brands fa-youtube-square fa-2xl"
+                      
+                        <a href="{{$gs->youtube}}" target="_blank" class=""
+                            class="text-white" role="button"><i class="fa fa-youtube-square"
                                 style="color: #D5452D;"></i></a>
 
-                        <a href="{{$gs->instagram}}" target="_blank" class="btn btn-outline-light btn-floating m-1"
-                            class="text-white" role="button"> <i class="fa-brands fa-instagram-square fa-2xl"></i></a>
+                      
+                        <a href="{{$gs->instagram}}" target="_blank" class=""
+                            class="text-white" role="button"> <i class="fa fa-instagram"></i></a>
                     </div>
                    
                 </div>
             </section> -->
-
+<!-- 
             <hr class="my-3">
 
-            <!-- Section: Copyright -->
+        
             <section class="p-3 pt-0">
                 <div class="row d-flex align-items-center">
-                    <!-- Grid column -->
-                    <div class="col-md-12 col-lg-12 text-center text-md-start">
-                        <!-- Copyright -->
+                 
+                    <div class="col-md-7 col-lg-8 text-center text-md-start">
+                       
                         <div class="p-3 text-center">
                             <p>&copy; 2012-21 {{$gs->site_title}} Bangladesh - <a href="{{route('t_c')}}">Terms</a> - <a
                                     href="{{route('privacy-policy')}}">Privacy</a></p>
 
                         </div>
-                        <!-- Copyright -->
+                      
                     </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
+                
                 </div>
-            </section>
+            </section> -->
             <!-- Section: Copyright -->
         </div>
         <!-- Grid container -->
     </footer>
+
+   

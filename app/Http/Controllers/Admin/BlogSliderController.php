@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Permission;
 use App\Models\BlogSlider;
 use Image;
 use Auth;
+use File;
 
 class BlogSliderController extends Controller
 {

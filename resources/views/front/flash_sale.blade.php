@@ -1,7 +1,7 @@
 @extends('layout.front.master')
 
 @section('content')
-@include('layout.front.header')
+@include('layout.front.detail_header')
 <section id="browse" class="main-content-section">
 
 <div class="content-section slider">
@@ -15,21 +15,22 @@
 
                 <div class="sidebar-category ml-0">
 
-                    <div class="card">
+                    <div class="card categoryfixed">
                         <div class="card-header w-100">
-                            <p class="sidebar-title text-uppercase"> <a
-                                    href="category-list" class="text-white">Categories</a></p>
+                    
+                                <p class="sidebar-title" style="margin-left:15px font-family: 'Lexend';font-style: normal;font-weight: 400;font-size: 24px;line-height: 30px;color: #FFFFFF;"> <a href="category-list" class="text-white" style="margin-left:15px"> Categories&nbsp;(Flash)</a></p>
+                                
                         </div>
                         <div class="menu-bar manures">
                             <ul>
                                 @foreach($categories as $cat)
-                                <li class="active"><a href="{{url('/',$cat->slug)}}">{{$cat->cat_name}}</a>
+                                <li class="active"><a href="{{url('/flash_sale',$cat->slug)}}">{{$cat->cat_name}}</a>
 
                                     <div class="sub-menu-1">
 
                                         <ul>
                                             @foreach($cat['subcategory'] as $subcat)
-                                            <li><a href="{{url('/',$subcat->slug)}}">{{$subcat->cat_name}}</a></li>
+                                            <li><a href="{{url('/flash_sale',$subcat->slug)}}">{{$subcat->cat_name}}</a></li>
                                             @endforeach
                                         </ul>
 
@@ -44,21 +45,18 @@
                 </div>
 
             </div>
-            <div class=" col-md-8 col-lg-9 col-sm-12">
+            <div class="col-12  col-sm-12 col-md-8 col-lg-8 ">
                 <div class="main-content">
                     <div class="browse-header">
                         @include('error.message')
-                        <p class="title text-capitalize text-center"><?php echo $breadcrumb; ?></p>
+                        <?php echo $breadcrumb; ?>
                         <div class="d-flex align-items-center sort-wrapper">
-                            <div class="list-type">
-                                <a href="#" id="js--btn-list"><i class="fa fa-th-list"></i></a>
-
-                            </div>
+                           
                             <p class="show-count">(Showing {{count($categoryProduct)}} products)</p>
                             <form class="form-horizontal" style="text-align:right" action="" id="sortProducts"
                                 name="sortProducts">
                                 <div class="sort-product">
-                                    <label for="sort-product" class="mr-2">Sort By: </label>
+                                    <label for="sort-product" class="mr-2" style="color:#fff">Sort By: </label>
                                     <select name="sort" id="sort" class="custom-control custom-select">
                                         <option value="">Any</option>
                                         <option value="product_lowest" @if (isset($_GET['sort']) &&
@@ -93,10 +91,11 @@
                                     <div class="col-md-4">
                                         <a href="{{url('/product/details',$row->slug)}}">
                                             <div class="card-body">
-                                                <h5 class="card-title">{{$row->product_name}}</h5>
+                                                <h5 class="card-title" style="font-weight:700">{{$row->product_name}}</h5>
                                                 <p class="card-text">Model No: <span>{{$row->model_no}}</span></p>
                                                 <p class="card-text">Supplier: <span>{{$row->supplier}}</span></p>
-                                                <p class="card-text"> @php
+                                                @if($gs->cart_page_vat==1)
+                                                <p class="card-text" style="color:#D20A7D;font-weight:700;font-size:1.25rem"> @php
                                                     $flashSalePrice = $row->price - $row->flash_sale_price;
                                                     $flashSaleparcentise = ($flashSalePrice * 100)/$row->price;
 
@@ -105,11 +104,29 @@
 
 
                                                     <del>Tk. {{$row->price}}</del>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp; Tk.
-                                                    {{$row->flash_sale_price}} &nbsp;&nbsp;&nbsp;&nbsp;<button
-                                                        class="btn btn-success"> -{{round($flashSaleparcentise ,0)}}
+                                                    &nbsp;&nbsp; Tk.
+                                                    {{$row->flash_sale_price}} &nbsp;&nbsp;<button
+                                                        class="btn btn-success"> -{{round($flashSaleparcentise ,2)}}
                                                         %</button>
                                                 </p>
+                                                @else
+                                                @php   $vatPrice= ($row->price*$gs->vat)/ 100 ; @endphp
+                                                @php   $vatPriceFlashsall= ($row->flash_sale_price*$gs->vat)/ 100 ; @endphp
+                                                <p class="card-text" style="color:#D20A7D;font-weight:700;font-size:1.25rem"> @php
+                                                    $flashSalePrice = ($row->price + $vatPrice )- ($row->flash_sale_price + $vatPriceFlashsall);
+                                                    $flashSaleparcentise = ($flashSalePrice * 100)/($row->price + $vatPrice);
+
+                                                    @endphp
+
+
+
+                                                    <del>Tk. {{$row->price + $vatPrice}}</del>
+                                                    &nbsp;&nbsp; Tk.
+                                                    {{$row->flash_sale_price + $vatPriceFlashsall}} &nbsp;&nbsp;<button
+                                                        class="btn btn-success"> -{{round($flashSaleparcentise ,2)}}
+                                                        %</button>
+                                                </p>
+                                                @endif
                                             </div>
 
 
@@ -201,21 +218,7 @@
                 </div>
             </div>
 
-       
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-    <div id="pagination">
+            <div id="pagination">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
@@ -226,10 +229,34 @@
         </nav>
 
     </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div id="pagination">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+
+                    {!! $categoryProduct->withQueryString()->links('pagination::bootstrap-5') !!}
+                </li>
+            </ul>
+        </nav>
+
+    </div> -->
 </div>
 </div>
 </section>
 
-
+@include('layout.front.footer')
 
 @endsection

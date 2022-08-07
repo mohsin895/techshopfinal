@@ -30,9 +30,9 @@ $category = blogCategory::category();
                     <div class="card-body">
                         <p class="card-text">{{$row->title}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
+                            <div class="btn-group btn-border">
                                 <a href="{{route('blog.post.details',$row->slug)}}"
-                                    class="btn btn-sm btn-outline-secondary">View Details</a>
+                                    class="btn btn-sm btn-outline-style">View Details</a>
 
                             </div>
                             <small class="text-muted">{{ $row->created_at->toDayDateTimeString()}}</small>

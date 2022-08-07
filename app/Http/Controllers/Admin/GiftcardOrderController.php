@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
+use App\Models\Order;
 use Auth;
 use Mail;
 
@@ -51,6 +52,10 @@ class GiftcardOrderController extends Controller
       
         
         $order->save();
+        if($order->save()){
+          $order_id = $order->id;
+          $order_status_giftcard =Order::where('gift_card_id',$order_id)->update(['status'=>$data['status']]);
+        }
         
         $user = User::where('id',$order->user_id)->first();
         $order =GiftCardOrder::where('id',$id)->first();

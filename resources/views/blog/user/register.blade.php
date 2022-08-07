@@ -3,7 +3,7 @@
 <div class="container mt-5 mb-5">
 
     <!--Admin Login For start-->
-   
+
 
     <!--Admin Login Form End-->
 
@@ -14,7 +14,7 @@
         <div class="col-lg-10 my-auto">
             <div class="card-group">
                 <div class="card p-4">
-                    <h2 class="text-center text-primary font-weight-bold">Create New account</h2>
+                    <h2 class="text-center  font-weight-bold login-page-text">Create New account</h2>
                     @include('error.message')
                     <hr class="my-3">
                     <div id="registerError"></div>
@@ -27,7 +27,8 @@
                                 </span>
 
                             </div>
-                            <input type="text" name="name" required class="form-control" id="name" placeholder="Enter your Name">
+                            <input type="text" name="name" required class="form-control" id="name"
+                                placeholder="Enter your Name">
                             <div class="invalid-feedback">This name field is required</div>
 
                         </div>
@@ -81,7 +82,7 @@
                             </div>
                             <input type="password" name="password" class="form-control" id="pass_reg_id"
                                 placeholder="Enter your Password" required>
-                                <div class="input-group-prepend">
+                            <div class="input-group-prepend">
                                 <span toggle="#password-field" class="input-group-text toggle-password ">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </span>
@@ -90,28 +91,31 @@
                             <div class="invalid-feedback">This password field is required</div>
 
                         </div>
+                        <div style="
+    text-align: center;
+    margin-bottom: 10px;
+">
 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                                    value="male" required>
+                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
+                                    value="femal" required>
+                                <label class="form-check-label" for="inlineRadio2">Femal</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio3"
+                                    value="other" required>
+                                <label class="form-check-label" for="inlineRadio3">Other</label>
+                            </div>
 
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male"
-                                required>
-                            <label class="form-check-label" for="inlineRadio1">Male</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="femal"
-                                required>
-                            <label class="form-check-label" for="inlineRadio2">Femal</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio3" value="other"
-                                required>
-                            <label class="form-check-label" for="inlineRadio3">Other</label>
-                        </div>
-
-                     
 
                         <div class="form-group">
-                            <input type="submit" value="Register" class="btn btn-primary btn-block">
+                            <input type="submit" value="Register" class="btn sign-button btn-block">
 
                         </div>
 
@@ -122,7 +126,9 @@
                     <hr class="my-3">
                     <p class="text-center text-light lead">Please login in useing your email and pssword.if you have not
                         register yet.you can register free</p>
-                    <a href="{{route('blog.user.login')}}" class="btn btn-outline-light btn-lg align-self-center mt-4" id="showSignInForm">Sign
+                    <a href="{{route('blog.user.login')}}" style="
+    background: #D20A7D;
+    color: #fff;" class="btn btn-outline-light btn-lg align-self-center mt-4" id="showSignInForm">Sign
                         In</a>
 
                 </div>
@@ -156,8 +162,7 @@
 
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Reset Password"
-                                class="btn btn-primary btn-block">
+                            <input type="submit" value="Reset Password" class="btn btn-primary btn-block">
 
                         </div>
 

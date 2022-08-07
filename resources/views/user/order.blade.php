@@ -8,7 +8,7 @@
     <div class="content-section">
         <div class="address-section d-flex justify-content-between">
             <div class="row col-12 col-lg-12 col-md-12 col-sm-12">
-                
+
                 <div class="col-12 col-md-6 col-lg-6 col-sm-12 mt-2">
                     <form action="{{route('user.order')}}" method="post">
                         @csrf
@@ -23,9 +23,13 @@
                                 @endforeach
 
                                 <div class="summary ">
-                                    <p class="summary-title">Order Summery</p>
+                                    <div class="card-header">
+                                        <p class="summary-title">Order Summery</p>
+                                    </div>
                                     <hr />
                                     <div class="summary-info">
+                                        @php $vat= ($total_amount*$gs->vat)/ 100 @endphp
+                                        @if($gs->cart_page_vat==1)
                                         <div class="d-flex">
                                             <p class="text">Subtotal: </p>
                                             <p class="amount subtotal">{{$gs->currency}}&nbsp;&nbsp;
@@ -35,6 +39,7 @@
                                             <input class="form-check-input" type="hidden" name="total_buying_price"
                                                 value="<?php echo $total_buying_amount; ?>">
                                         </div>
+
                                         <div class="d-flex">
                                             <p class="text">vat({{$gs->vat}}%): </p>
                                             <p id="discount" class="amount">{{$gs->currency}}&nbsp;&nbsp;
@@ -42,20 +47,37 @@
                                             <input type="hidden" name="vat" value="{{$vat}}">
                                         </div>
 
-
                                         <div class="d-flex">
                                             <p class="text">Total: </p>
                                             <p class="amount price-total">{{$gs->currency}}&nbsp;&nbsp;
                                                 <?php echo $total_amount+ $vat; ?></p>
                                         </div>
+                                        @else
                                         <div class="d-flex">
-                                            @if($total_amount > $toatlbalancegiftcard)
+                                            <p class="text">Subtotal: </p>
+                                            <p class="amount subtotal">{{$gs->currency}}&nbsp;&nbsp;
+                                                <?php echo $total_amount + $vat; ?></p>
+                                            <input class="form-check-input" type="hidden" name="subtotal"
+                                                value="<?php echo $total_amount; ?>">
+                                            <input class="form-check-input" type="hidden" name="total_buying_price"
+                                                value="<?php echo $total_buying_amount; ?>">
+                                        </div>
+
+                                        @endif
+
+
+
+                                        <div class="d-flex">
+
+                                        
+                                            @if($giftcardvalue > 0)
                                             <input name="giftcard_amount" type="checkbox" id="ser1"
-                                                data-price="{{$toatlbalancegiftcard}}" value="{{$toatlbalancegiftcard}}"
-                                                title="Service 1" />
-                                            <p class="text">Gift Card Balance: </p>
+                                                data-price="{{$giftcardvalue}}" value="{{$giftcardvalue}}"
+                                                 style="margin-left:18px" />
+                                            <p class="" style="margin-left:-150px;margin-top:2px">Gift Card
+                                                Balance: </p>
                                             <p id="discount" class="amount">{{$gs->currency}}&nbsp;&nbsp;
-                                                {{$toatlbalancegiftcard}} </p>
+                                               - {{$giftcardvalue}} </p>
                                             @else
 
                                             @endif
@@ -63,10 +85,11 @@
 
                                         </div>
                                         <div class="d-flex">
-                                            <p class=" text text-black" style="font-size:20px;font-weight:bold">Payable
+                                            <p class=" text" style="font-size:20px;font-weight:bold;color:#D20A7D">
+                                                Payable
                                                 Total: </p>
 
-                                            <p class=" amount text-black" style="font-size:20px;font-weight:bold">
+                                            <p class=" amount" style="font-size:20px;font-weight:bold;color:#D20A7D">
                                                 <label class="giftcard"
                                                     data-original="<?php echo $total_amount+ $vat ; ?>">{{$gs->currency}}&nbsp;&nbsp;<?php echo $total_amount+ $vat; ?></label>
                                             </p>
@@ -79,11 +102,11 @@
 
 
                                         <hr class="hr-line" />
-                                        @if($total_amount > $toatlbalancegiftcard)
+                                        @if($total_amount > $giftcardvalue)
 
-                                        @else <p class="text " style="font-size:15px;font-weight:bold">Gift Card
+                                        @else <p class="text" style="font-size:15px;font-weight:bold">Gift Card
                                             Balance:
-                                            {{$gs->currency}}&nbsp;&nbsp; {{$toatlbalancegiftcard}} </p>
+                                            {{$gs->currency}}&nbsp;&nbsp; {{$giftcardvalue}} </p>
                                         <p id="discount" class="amount text-danger"
                                             style="font-size:15px;font-weight:bold">
                                             N.B.: To enable your Gift Card balance, your Subtotal balance have to
@@ -91,37 +114,79 @@
                                             than Gift Card balance . </p>
 
                                         @endif
-                                        <label for="delivery" class="ml-0 mr-0">Select Deliver Method: </label>
+                                        <label for="delivery" class="ml-3 mr-0 delivery-method">Select Cash On Deliver
+                                            Method:
+                                        </label>
 
-                                        <div class="form-inline delivery-check">
+                                        <div class="form-inline delivery-check order-delivery-margin">
 
 
-                                            <div class="form-check form-check-inline ml-3">
+                                            <div class="form-check form-check-inline ml-3 delivery-method">
                                                 <input class="form-check-input" type="radio" name="delivery" id="flat"
-                                                    value="flat">
-                                                <label class="form-check-label" for="flat">Flat Rate:
+                                                    value="flat" onclick="show('Section1');">
+                                                <label class="form-check-label" for="flat" style="margin-left:1px">Flat
+                                                    Rate:
                                                     {{$gs->currency}}&nbsp;&nbsp; {{$sc->flat_rate}}</label>
                                             </div>
-                                            <div class="form-check form-check-inline ml-3">
-                                                <input class="form-check-input" type="radio" name="delivery"
-                                                    id="express" value="express">
-                                                <label class="form-check-label" for="express">Express Delivery:
+                                            <div class="form-check form-check-inline ml-3 delivery-method">
+                                                <input class="form-check-input" type="radio" name="delivery" id="express"
+                                                    value="express" onclick="show('Section2');">
+                                                <label class="form-check-label" for="express"
+                                                    style="margin-left:1px">Express Delivery:
                                                     {{$gs->currency}}&nbsp;&nbsp; {{$sc->express_delivery}}</label>
+                                            </div>
+
+                                            <!-- 
+                                            <button type="button" class="featuredBtn active mt-3" id="btnOne"
+                                                onclick="show('Section1');"><a href="#description"
+                                                    class="review-rating-detils-font-color-size">Description</a></button>
+                                            <button type="button" class="featuredBtn mt-3" id="btnTwo"
+                                                onclick="show('Section2');"><a href="#summery"
+                                                    class="review-rating-detils-font-color-size">Summery</a></button> -->
+
+
+
+                                        </div>
+
+
+                                        <div class="mb-3" id="Section1">
+                                            <div >
+
+                                                <p class="delivery-msg" style="margin-left:20px">
+                                                    <span>Flat Rate:</span> Delivery in 2-3 (Dhaka city) / 3-5 (outside
+                                                    Dhaka)
+                                                    working days.
+                                                </p>
                                             </div>
                                         </div>
 
-                                        <p class="delivery-msg" id="flatMsg">
+                                        <div class="mb-3" id="Section2" style="display: none;">
+                                            <div  class="description-summery-font-size">
+                                                <p class="delivery-msg " >
+                                                    <span>Express Delivery:</span> Delivery within 24 Hours (only
+                                                    available in
+                                                    Dhaka
+                                                    Metro)
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- <p class="delivery-msg" id="flatMsg" style="margin-left:20px">
                                             <span>Flat Rate:</span> Delivery in 2-3 (Dhaka city) / 3-5 (outside Dhaka)
-                                            working days
+                                            working days.
                                         </p>
                                         <p class="delivery-msg d-none" id="expressMsg">
                                             <span>Express Delivery:</span> Delivery within 24 Hours (only available in
                                             Dhaka
                                             Metro)
-                                        </p>
+                                        </p> -->
 
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-success pl-4 pr-4 mt-2"
+                                        <div class="text-center" style="text-align:center">
+                                            <button type="submit"
+                                                class="btn sign-button pl-4 pr-4 mt-2 mr-3 order-button-style">Back</button>
+                                            <button type="submit"
+                                                class="btn sign-button pl-4 pr-4 mt-2 order-button-style"
                                                 onclick="return selectShippingType();">Continue To Payment
 
 
@@ -147,6 +212,8 @@
     </div>
 </div>
 
+@include('layout.front.footer');
+
 <script>
 var subt_value = parseFloat($('.giftcard').text());
 var start_price = parseFloat($('.giftcard').attr('data-original'));
@@ -163,6 +230,32 @@ $("#ser1").click(function() {
 
     $('.giftcard').text(parseFloat(start_price - amountToAdd).toFixed(2));
 });
+</script>
+
+
+<script>
+var divs = ["Section1", "Section2"];
+var visibleId = null;
+
+function show(id) {
+    if (visibleId !== id) {
+        visibleId = id;
+    }
+    hide();
+}
+
+function hide() {
+    var div, i, id;
+    for (i = 0; i < divs.length; i++) {
+        id = divs[i];
+        div = document.getElementById(id);
+        if (visibleId === id) {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+    }
+}
 </script>
 
 @endsection

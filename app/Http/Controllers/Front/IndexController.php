@@ -31,8 +31,10 @@ class IndexController extends Controller
         $data['homepage']= Category::with('subcategory')->where('parent_id',0)->where('status',1)->orderBy('serial_number','asc')->get();
        
         $data['slider']= Slider::get();
+        $data['firstSlider']= Slider::latest()->first();
+        // dd($data['firstSlider']);
         $data['banner']= Banner::take(2)->orderBy('id','DESC')->get();
-        $data['flash_sale_product']= Product::where('flash_sale' ,1)->take(2)->get();
+        $data['flash_sale_product']= Product::where('flash_sale' ,1)->inRandomOrder()->get();
        
 
      
@@ -70,8 +72,8 @@ class IndexController extends Controller
       
             $categoryProduct = $categoryProduct->paginate(20);
             $categoryDetails = Category::where(['slug'=>$slug])->first();
-             $breadcrumb = " <a href='".$categoryDetails->slug."'>
-        ".$categoryDetails->cat_name."</a>";
+             $breadcrumb = " <h1 style='color:#fff;text-align:center'>
+        ".$categoryDetails->cat_name."</h1>";
         $relatedProducts = Product::get();
          // echo "<pre>";print_r($categoryProduct);die();
          return view('front.category',$data,compact('relatedProducts','categoryDetails','categoryProduct','breadcrumb'));
@@ -88,9 +90,21 @@ class IndexController extends Controller
       
      
       $referral = Session::get('referall');
-     
+
+      
+      $url = Session::get('slug',$slug);
+      // dd($url);
+
+      Session::put('slug',$url);
+     $productsUrl = Session::get('slug');
+    //  dd($productsUrl);
 
         $productDetails = Product::with('gallery','question','review')->where('slug',$slug)->first();
+        $data['question'] = Question::where('product_id',$productDetails->id)->where('status',1)->paginate(10);
+        $data['review'] = ReviwRating::where('product_id',$productDetails->id)->where('status',1)->paginate(10);
+        // dd( $data['question']);
+        
+      
         // dd($productDetails);
         $data['orderProduct']= OrderProduct::where('product_id',$productDetails->id)->sum('quantity');
         //  dd($data['orderProduct']);
@@ -172,7 +186,9 @@ public function flash_sale($slug=null)
       }
     $categoryProduct = $categoryProduct->paginate(20);
     $categoryDetails = Category::where(['slug'=>$slug])->first();
-     $breadcrumb = " <a href=''></a>";
+    $category_name = 'Flash Sale Product';
+    $breadcrumb = " <h1 style='color:#fff;text-align:center'>
+    ".$category_name."</h1>";
 
     return view('front.flash_sale',$data,compact('relatedProducts','categoryDetails','categoryProduct','breadcrumb'));
 
@@ -200,8 +216,8 @@ public function flash_sale($slug=null)
       
             $categoryProduct = $categoryProduct->paginate(20);
             $categoryDetails = Category::where(['slug'=>$slug])->first();
-             $breadcrumb = " <a href='".$categoryDetails->slug."'>
-        ".$categoryDetails->cat_name."</a>";
+            $breadcrumb = " <h1 style='color:#fff;text-align:center'>
+            ".$categoryDetails->cat_name."</h1>";
         $relatedProducts = Product::get();
          // echo "<pre>";print_r($categoryProduct);die();
          return view('front.flash_sale',$data,compact('relatedProducts','categoryDetails','categoryProduct','breadcrumb'));

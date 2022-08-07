@@ -18,13 +18,16 @@
 
                         <div class="card categoryfixed">
                             <div class="card-header w-100">
-                                <p class="sidebar-title text-uppercase"> <a href="category-list"
-                                        class="text-white">Categories</a></p>
+                                <p class="sidebar-title"
+                                    style="margin-left:15px font-family: 'Lexend';font-style: normal;font-weight: 400;font-size: 24px;line-height: 30px;color: #FFFFFF;">
+                                    <a href="category-list" class="text-white" style="margin-left:15px">Categories</a>
+                                </p>
                             </div>
                             <div class="menu-bar manures">
-                                <ul>
+                                <ul class="category-list">
                                     @foreach($categories as $cat)
-                                    <li class="active"><a href="{{url('/',$cat->slug)}}">{{$cat->cat_name}} </a>
+                                    <li class="active category-item"><a href="{{url('/',$cat->slug)}}"
+                                            class="category-name">{{$cat->cat_name}} </a>
 
                                         <div class="sub-menu-1">
 
@@ -48,11 +51,14 @@
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-8  col-lg-8">
-                    <div id="js--home-carousel" class="carousel slide carousel-fade" data-ride="carousel" style="margin-right:10px">
+                    <div id="js--home-carousel" class="carousel slide carousel-fade" data-ride="carousel"
+                        style="margin-right:10px">
                         <ol class="carousel-indicators">
+
+                            <!-- <li data-target="#js--home-carousel" data-slide-to="0" class="active"></li> -->
                             @foreach($slider as $row)
                             <!-- <li data-target="#js--home-carousel" data-slide-to="0" class="active"></li> -->
-                            <li data-target="#js--home-carousel" data-slide-to="{{$loop->index+1}}"></li>
+                            <li data-target="#js--home-carousel" data-slide-to="{{$loop->index}}"></li>
                             <!-- <li data-target="#js--home-carousel" data-slide-to="2"></li> -->
 
 
@@ -60,6 +66,12 @@
                         </ol>
 
                         <div class="carousel-inner mr-2">
+                            <!-- <div class="carousel-item" data-interval="5000">
+                                <a href="#">
+                                    <img src="{{asset('public/assets/images/slider/'.$firstSlider->image)}}"
+                                        class="d-block w-100" alt="about_us_banner" />
+                                </a>
+                            </div> -->
                             @foreach($slider as $key => $row)
                             <div class="carousel-item @if($key ==0) active @endif" data-interval="5000">
                                 <a href="#">
@@ -87,44 +99,78 @@
                         </div>
                     </div>
                     @elseif ($gs->flash_slider==1)
-                    <section class="product-list-wrapper  col-md-12 col-lg-12 col-sm-12 mt-3">
+                    <section class="product-list-wrapper flash-sale-product">
                         <div class="content-section">
                             <div class="product-list-header">
                                 <div class="d-flex align-items-center">
-                                    <p class="title ml-0 mb-0">Flash sale Products</p>
+                                    <p class="title ml-0 mb-0">Flash Sale Products</p>
                                     <a href="{{url('/flash_sale')}}" class="btn btn-see__more mr-0 text-uppercase">See
                                         More</a>
                                 </div>
                             </div>
                             <div class="product-list-item">
                                 <div class="d-flex">
-                                    <div class="owl-carousel">
+                                    <div class=" owlcarouselFlashsall owl-carousel">
                                         @foreach($flash_sale_product as $row)
                                         <div class="item">
                                             <a href="{{url('/product/details',$row->slug)}}" class="item-link">
                                                 <div class="card">
                                                     <img src="{{asset('public/assets/images/product/'.$row->image)}}"
-                                                        alt="Arduino-Uno-Price-in-BD.jpg" class="img-fluid">
+                                                        alt="{{$row->image}}" class="img-fluid">
 
                                                     <p class="product-name">{{$row->product_name}}</p>
                                                     <!-- <input type="text" name="referral" id="referral" value="{{$referral}}"> -->
 
-                                                    <p class="model">Model No: <span>{{$row->model_no}}</span></p>
-                                                    <p class="supply">Supplier: <span>{{$row->supplier}}</span></p>
-                                                    @php
-                                                    $flashSalePrice = $row->price - $row->flash_sale_price;
-                                                    $flashSaleparcentise = ($flashSalePrice * 100)/$row->price;
+                                                    <p class="product-extra">Model No: <span>{{$row->model_no}}</span>
+                                                    </p>
+                                                    <p class="product-extra">Supplier: <span>{{$row->supplier}}</span>
+                                                    </p>
 
-                                                    @endphp
 
 
                                                     <div
                                                         class="price d-flex justify-content-between align-items-center">
+
+                                                        @if($gs->cart_page_vat==1)
+
+                                                        @php
+
+                                                        $flashSalePrice = $row->price - $row->flash_sale_price;
+                                                        $flashSaleparcentise = ($flashSalePrice * 100)/$row->price;
+
+                                                        @endphp
+
                                                         <p class="sell-price"><del>Tk. {{$row->price}}</del></p>
                                                         &nbsp;&nbsp;&nbsp;&nbsp; <p class="sell-price">Tk.
                                                             {{$row->flash_sale_price}}</p>
                                                         &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-success">
-                                                            -{{round($flashSaleparcentise ,0)}} %</button>
+                                                            -{{round($flashSaleparcentise ,2)}} %</button>
+                                                        @else
+
+                                                        @php $vatPrice= ($row->price*$gs->vat)/ 100 ; @endphp
+                                                        @php $vatPriceFlashsall= ($row->flash_sale_price*$gs->vat)/ 100
+                                                        ; @endphp
+                                                        @php
+
+                                                        $flashSalePrice = $row->price - $row->flash_sale_price;
+                                                        $flashSaleparcentise = ($flashSalePrice * 100)/$row->price;
+
+                                                        @endphp
+
+                                                        @php
+                                                    $flashSalePrice = ($row->price + $vatPrice )- ($row->flash_sale_price + $vatPriceFlashsall);
+                                                    $flashSaleparcentise = ($flashSalePrice * 100)/($row->price + $vatPrice);
+
+                                                    @endphp
+
+                                                        <p class="sell-price"><del>Tk. {{$row->price + $vatPrice}}</del></p>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp; <p class="sell-price">Tk.
+                                                            {{$row->flash_sale_price +  $vatPriceFlashsall}}</p>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-success">
+                                                            -{{round($flashSaleparcentise ,2)}} %</button>
+
+                                                        @endif
+
 
                                                     </div>
                                                 </div>
@@ -141,7 +187,10 @@
                                                         value="{{$row->product_name}}">
                                                     <input type="hidden" name="model_no" value="{{$row->model_no}}">
 
-                                                    <input type="hidden" name="price" value="{{$row->price}}">
+
+                                                    <input type="hidden" name="price"
+                                                        value="{{$row->flash_sale_price}}">
+
                                                     <input type="hidden" name="product_id" value="{{$row->id}}">
                                                     <input type="hidden" name="referral_id" value="{{$referral}}">
                                                     <input type="hidden" class="form-control input-number bg-white"
@@ -156,7 +205,7 @@
                                                     @endphp
 
                                                     @if($totalQuantity == $orderProduct)
-                                                    <a class="btn-na">Out
+                                                    <a class="btn btn-danger">Out
                                                         of Stock</a>
 
 
@@ -181,6 +230,9 @@
                             </div>
                         </div>
                     </section>
+
+
+
                     @else
                     @endif
                 </div>
@@ -215,17 +267,24 @@
 
                     <div class="item">
                         <a href="{{url('/product/details',$row->slug)}}" class="item-link">
-                            <div class="card">
+                            <div class="card" style="opacity: 1; box-shadow: none; transform: scaleX(1) scaleY(1);">
                                 <img src="{{asset('public/assets/images/product/'.$row->image)}}"
-                                    alt="Arduino-Uno-Price-in-BD.jpg" class="img-fluid">
+                                    alt="{{$gs->site_title}}-{{$row->image}}" class="img-fluid">
 
-                                <p class="product-name" style="fnt-size:16px">{{$row->product_name}}</p>
+                                <p class="product-name product-name-font">{{$row->product_name}}</p>
                                 <!-- <input type="text" name="referral" id="referral" value="{{$referral}}"> -->
 
-                                <p class="model">Model No: <span>{{$row->model_no}}</span></p>
-                                <p class="supply">Supplier: <span>{{$row->supplier}}</span></p>
+                                <p class="product-extra">Model No: <span>{{$row->model_no}}</span></p>
+                                <p class="product-extra">Supplier: <span>{{$row->supplier}}</span></p>
                                 <div class="price d-flex align-items-center justify-content-between">
+                                    @if($gs->cart_page_vat==1)
                                     <p class="sell-price mx-0" style="fnt-size:16px">TK. {{$row->price}}</p>
+                                    @else
+
+                                    @php $vat= ($row->price*$gs->vat)/ 100 @endphp
+                                    <p class="sell-price mx-0" style="fnt-size:16px">TK. {{$row->price + $vat}}</p>
+
+                                    @endif
 
                                 </div>
                             </div>
@@ -240,6 +299,7 @@
                                 <input type="hidden" name="model_no" value="{{$row->model_no}}">
 
                                 <input type="hidden" name="price" value="{{$row->price}}">
+
                                 <input type="hidden" name="product_id" value="{{$row->id}}">
                                 <input type="hidden" name="referral_id" value="{{$referral}}">
                                 <input type="hidden" class="form-control input-number bg-white" name="quantity"
@@ -357,6 +417,6 @@
 </section> -->
 
 
-
-
+@include('layout.front.footer')
+@include('layout.front.seo')
 @endsection

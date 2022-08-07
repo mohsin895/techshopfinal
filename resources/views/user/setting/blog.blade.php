@@ -11,7 +11,7 @@
             <div class="card-group">
 
                 <div class="card p-4">
-                    <h2 class="text-center text-primary font-weight-bold">User Blog</h2>
+                    <h2 class="text-center login-page-text font-weight-bold">User Blog</h2>
 
                     <hr class="my-3">
                     <div id="registerError"></div>
@@ -19,8 +19,8 @@
                     @foreach($blog as $row)
 
 
-                    <p class="ml-0 text-left mt-5 ml-5">Blog Title: <span><a
-                                href="{{route('blog.post.details',$row->slug)}}">{{$row->title}}</a></span>
+                    <p class="ml-0 text-left mt-5 ml-5" style="color:#000">Blog Title: <a
+                                href="{{route('blog.post.details',$row->slug)}}"><span style="color:#000">{{$row->title}}</span></a>
 
 
 
@@ -36,6 +36,6 @@
     </div>
 </section>
 
-
+@include('layout.front.footer');
 
 @endsection

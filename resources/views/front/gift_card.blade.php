@@ -10,17 +10,14 @@
             <div class="main-content">
                 <div class="browse-header">
                     @include('error.message')
-                    <p class="title text-capitalize text-center"></p>
+                   
                     <div class="d-flex align-items-center sort-wrapper">
-                        <div class="list-type">
-                            <a href="#" id="js--btn-list"><i class="fa fa-th-list"></i></a>
-
-                        </div>
+                       
                         <p class="show-count"></p>
                         <form class="form-horizontal" style="text-align:right" action="" id="sortProducts"
                             name="sortProducts">
                             <div class="sort-product">
-                                <label for="sort-product" class="mr-2">Sort By: </label>
+                                <label for="sort-product" class="mr-2" style="color:#fff">Sort By: </label>
                                 <select name="sort" id="sort" class="custom-control custom-select">
                                     <option value="">Any</option>
                                     <option value="product_lowest" @if (isset($_GET['sort']) &&
@@ -74,10 +71,10 @@
                                                     <h5 class="card-title">{{$row->name}}</h5>
                                                     <p class="card-text">GiftCard Value:{{$gs->currency}}
                                                         {{$row->giftcard_value}}</p>
-                                                    <p class="card-text"><small class="text-muted">GiftCard Price:
-                                                            {{$gs->currency}}{{$row->purchase_price}}</small></p>
-                                                    <p class="card-text"><small class="text-muted">GiftCard Duration:
-                                                            {{$row->duration}}</small></p>
+                                                    <p class="card-text" style="color:#D20A7D;font-weight:700">GiftCard Price:
+                                                            {{$gs->currency}}{{$row->purchase_price}}</p>
+                                                    <p class="card-text" style="color:#D20A7D;font-weight:700"> Duration:
+                                                            {{$row->duration}} Days</p>
                                                 </div>
 
 
@@ -106,5 +103,5 @@
 
 </section>
 
-
+@include('layout.front.footer')
 @endsection

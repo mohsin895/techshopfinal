@@ -96,8 +96,8 @@ $post = App\Models\BlogPost::where('cat_id',$cat->id)->get();
                         alt="Card image cap ">
                     <div class="card-body ">
                         <h5 class="card-title ">{{substr($row->title,0,20)}}</h5>
-                        <p class="card-text "{!! substr($row->description,0,20) !!}</p>
-                        <a href="{{route('blog.post.details',$row->slug)}}" class="btn btn-primary btn-block ">Read
+                        <!-- <p class="card-text ">{!! substr($row->description,0,20) !!}</p> -->
+                        <a href="{{route('blog.post.details',$row->slug)}}" class="btn  " style="background:#D20A7D;width:100%;color:#fff">Read
                             More</a>
                     </div>
                 </div>

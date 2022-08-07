@@ -223,7 +223,7 @@
                                                 data-control="select2" data-placeholder="Select a Sub Category"
                                                 data-allow-clear="true" required>
                                                 @foreach($subcategory as $row)
-                                                <option value="{{$row->id}}" disabled @if($row->id==$product->subcat_id) ? selected @endif; >{{$row->cat_name}}</option>
+                                                <option value="{{$row->id}}" disabled @if($row->id==$product->subcat_id) selected @endif; >{{$row->cat_name}}</option>
                                                 @endforeach
 
                                             </select>

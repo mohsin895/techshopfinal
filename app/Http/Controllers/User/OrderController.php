@@ -18,6 +18,7 @@ use App\Models\GeneralSetting;
 use App\Http\Requests;
 use App\Models\CouponCode;
 use App\Models\Event;
+use App\Models\Account;
 use Session;
 use Mail;
 use DB;
@@ -32,9 +33,11 @@ public function order(Request $request)
   $userCartCount = DB::table('carts')->where(['user_email'=>$user_email])->count('id');
   if($userCartCount > 0){
     $giftcardOrder = Order::where('user_id',Auth::user()->id)->sum('giftcard_amount');
+    // dd($giftcardOrder);
     $dt = Carbon::now();
-    $giftcardvalue = GiftCardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->where('status','Completed')->sum('giftcard_value');
-    // dd($giftcardvalue);
+    $giftcardvalue = GiftCardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->where('status','Completed')->where('is_used','no')->sum('giftcard_value');
+
+    //  dd($giftcardvalue);
     $toatlbalancegiftcard = $giftcardvalue - $giftcardOrder;
   $user_id = Auth::user()->id;
     $user_email = Auth::user()->email;
@@ -86,6 +89,10 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
       // dd($delivery);
       $giftcardOrder = Order::where('user_id',Auth::user()->id)->sum('giftcard_amount');
       $dt = Carbon::now();
+      $data['dt'] = Carbon::now();
+    
+    $gift = GiftCardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->where('status','Completed')->where('is_used','no')->first();
+    //  dd($gift);
       $giftcardvalue = GiftCardOrder::where('user_id',Auth::user()->id)->where('expired_date','>=', $dt->toDateString())->where('status','Completed')->sum('giftcard_value');
       // dd($giftcardvalue);
       $toatlbalancegiftcard = $giftcardvalue - $giftcardOrder;
@@ -100,6 +107,12 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
     if ($request->isMethod('post')) {
     $data = $request->all();
   //  echo "<pre>";print_r($data);die;
+   $giftcardstatus = GiftCardOrder::where('id',$request->gift_card_id)->get();
+
+   DB::table('gift_card_orders')->where(['id'=>$request['gift_card_id']])->update(['is_used'=>$request['is_used']]);
+  
+  
+  
   
     User::where('id',$user_id)->update(['name'=>$data['name'],'address1'=>$data['address1'],'city'=>$data['city'],'address2'=>$data['address2'],
    'country'=>$data['country'],'postcode'=>$data['postcode'],'phone'=>$data['phone']]);
@@ -124,14 +137,22 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
    $order->grand_total= $data['grand_total'];
    if(!empty($data['giftcard_amount'])){
     $order->giftcard_amount= $data['giftcard_amount'];
+    $order->giftcard_name= $data['giftcard_name'];
+    // dd($order->giftcard_name);
+  
+    // dd($order->giftcard_purchase_price);
    }else{
     $order->giftcard_amount= '0';
    }
 
    if(!empty($data['coupon_code'])){
     $order->coupon_code= $data['coupon_code'];
+    $order->subtotal_with_coupon= $data['subtotal_with_coupon'];
+    $order->discount_amount= $data['discount_amount'];
    }else{
     $order->coupon_code= '0';
+    $order->subtotal_with_coupon= '0';
+    $order->discount_amount= '0';
    }
    if(!empty($data['amount_type'])){
     $order->amount_type= $data['amount_type'];
@@ -149,6 +170,8 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
  
 
    $order->save();
+
+ 
 
    $order_id = DB::getPdo()->lastInsertId();
    $notification = new Notification;
@@ -177,9 +200,11 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
    }else{
        
    }
+
+
   
 
-   
+  //  $order_id = DB::getPdo()->lastInsertId();
    $cartProducts = DB::table('carts')->where(['user_email'=>$user_email])->get();
    foreach($cartProducts as $pro){
      $cartPro = new OrderProduct;
@@ -190,9 +215,17 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
      $cartPro->product_id = $pro->product_id;
      $cartPro->model_no = $pro->model_no;
      $cartPro->product_name = $pro->product_name;
-  
+  if(!empty($pro->price)){
      $cartPro->price = $pro->price;
      $cartPro->total_price = $pro->price * $pro->quantity;
+  }else{
+    
+    $cartPro->price = '0';
+    $cartPro->total_price = '0';
+
+  }
+
+     
      $cartPro->buying_price = $pro->buying_price;
      if(Auth::user()->referral_id ==$pro->referral_id){
       $cartPro->referral_id = 0;
@@ -202,6 +235,7 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
      }
      
      $cartPro->quantity = $pro->quantity;
+      // dd($cartPro);
      $cartPro->save();
 
    }
@@ -239,11 +273,34 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
   Mail::send('email.order',$messageData,function($message) use($email,$subject){
     $message->to($email)->subject('order Placed from' .' '.$subject);
   });
+
+
+
+  if ($order->save()) {
+    $product_id = $order->id;
+
+      $account = new Account;
+      $account->order_product_id = $product_id;
+     
+        
+      $account->selling_price= $request['grand_total'];
+      
+     
+       
+      $account->vat = $request->vat;
+      $account->save();
+          
+            
+       
+}else{
+
+}
+
    return redirect('/user/order/details');
   
      }
      
-        return view('user.checkout',compact('event','userCart','giftcardvalue','toatlbalancegiftcard','delivery','giftcard','couponCode'));
+        return view('user.checkout',$data,compact('event','userCart','giftcardvalue','gift','toatlbalancegiftcard','delivery','giftcard','couponCode'));
       }else{
 
         $data['product']= Product::take(8)->inRandomOrder()->get();
@@ -257,6 +314,9 @@ return view('user.order',compact('userCart','giftcardvalue','toatlbalancegiftcar
     public function order_details()
     {
         $orderDetails = Order::where('user_id',Auth::user()->id)->latest()->first();
+        Session::forget('couponCode');
+         Session::forget('delivery');
+         Session::forget('giftcard_amount');
        return view('user.order_details',compact('orderDetails'));
     }
 }

@@ -12,7 +12,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-5 mb-5">
             <div class="card-group">
                 <div class="card p-4">
-                    <h2 class="text-center text-primary font-weight-bold">Change Password</h2>
+                    <h2 class="text-center login-page-text font-weight-bold">Change Password</h2>
                     @include('error.message')
                     <hr class="my-3">
                     <div id="loginError"></div>
@@ -75,7 +75,7 @@
                         </div>
                       
                         <div class="form-group">
-                            <input type="submit"  value="Update Password" class="btn btn-primary btn-block">
+                            <input type="submit"  value="Update Password" class="btn sign-button btn-block">
 
                         </div>
 
@@ -92,6 +92,6 @@
 </div>
 
 
-
+@include('layout.front.footer');
 
 @endsection

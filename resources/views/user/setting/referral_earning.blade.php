@@ -11,7 +11,7 @@
                 <div class=" col-12 col-md-6 col-lg-6 mt-5">
 
                     <div class="card border-success mb-3">
-                        <div class="card-header bg-transparent border-success">Your Referral Income Balance</div>
+                        <div class="card-header login-page-text bg-transparent border-success">Your Referral Income Balance</div>
                         <div class="card-body text-success">
                             <span class="text text-left text-bold">You Referral Total Income
                                 :&nbsp;&nbsp;{{$amount}}
@@ -48,4 +48,5 @@
 
     </div>
 </section>
+@include('layout.front.footer');
 @endsection

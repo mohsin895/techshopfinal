@@ -95,6 +95,6 @@
         </div>
     </div>
 </section>
-
+@include('layout.front.footer');
 
 @endsection

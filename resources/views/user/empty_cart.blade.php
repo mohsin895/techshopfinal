@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<p class="card-text text-center" style="font-size: 30px;font-weight: 500;">Just for You !!.</p>
+<p class="card-text text-center" style="font-size: 30px;font-weight: 500; color:#000;text-align:center">Just for You !!.</p>
 <div class="album py-5">
 
     <div class="container">
@@ -54,8 +54,17 @@
                         <img class="card-img-top" src="{{asset('public/assets/images/product/'.$row->image)}}"
                             alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text">Product Name:{{$row->product_name}}</p>
+                            <p class="card-text">Product Name:
+                            <?php
+echo substr($row->product_name,0,20)
+?>
+                        </p>
+                        @php  $vat= ($row->price*$gs->vat)/ 100  @endphp
+                        @if($gs->cart_page_vat==1)
                             <p class="card-text">Price:TK. {{$row->price}}</p>
+                            @else
+                            <p class="card-text">Price:TK. {{$row->price + $vat}}</p>
+                            @endif
                             <p class="card-text">Model No: {{$row->model_no}}</p>
 
                         </div>
@@ -68,5 +77,7 @@
         </div>
     </div>
 </div>
+
+@include('layout.front.footer');
 
 @endsection

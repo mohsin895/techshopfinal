@@ -95,7 +95,7 @@
                             <!--end::Image input-->
                             <!--begin::Description-->
                             <div class="text-muted fs-7">Set the category thumbnail image. Only *.png, *.jpg and *.jpeg
-                                image files are accepted</div>
+                                image files are accepted,image size:less then 100kb, Width:800px; Height:400px</div>
                             <!--end::Description-->
                         </div>
                         <!--end::Card body-->
