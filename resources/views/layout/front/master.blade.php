@@ -65,8 +65,10 @@
 
     <script src="{{ asset('public/assets/frontend/extra/js/main.js')}}"></script>
     <!-- <script src="{{ asset('public/assets/frontend/extra/js/index.js')}}"></script> -->
-    <!-- <script src="{{ asset('public/assets/frontend/common-desktop.bundle.js') }}"></script> -->
+     <!-- <script src="{{ asset('public/assets/frontend/common-desktop.bundle.js') }}"></script> -->
     <!-- <script src="{{ asset('public/assets/frontend/home-desktop.bundle.js') }}"></script> -->
+
+    @yeild('css')
 
     <script src="{{ asset('public/assets/frontend/js/index.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
@@ -75,6 +77,8 @@
 
 
     <script>
+
+        
     $(document).ready(function() {
 
         $('#serach').keyup(function() {
@@ -349,17 +353,17 @@
 
 
             600: {
-                items: 2,
+                items: 1,
                 nav: false
 
             },
             1000: {
-                items: 2,
+                items: 1,
                 nav: false,
                 loop: false
             },
             1600: {
-                items: 2,
+                items: 1,
                 nav: false
             }
         }

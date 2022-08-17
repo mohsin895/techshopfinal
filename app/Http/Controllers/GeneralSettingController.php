@@ -44,7 +44,7 @@ class GeneralSettingController extends Controller
             $str = 'Tables_in_' . env('DB_DATABASE');
             //  dd($str);
             foreach ($tables as $table) {
-                if($table->$str != 'accounts' && $table->$str != 'general_settings' && $table->$str != 'migrations' && $table->$str != 'teams' && $table->$str != 'team_invitations' && $table->$str != 'users' && $table->$str != 'model_has_permissions' && $table->$str != 'model_has_roles' && $table->$str != 'permissions' && $table->$str != 'roles' && $table->$str != 'role_has_permissions') {
+                if($table->$str != 'accounts' && $table->$str != 'general_settings' && $table->$str != 'migrations' && $table->$str != 'teams' && $table->$str != 'team_invitations' && $table->$str != 'users' && $table->$str != 'model_has_permissions' && $table->$str != 'model_has_roles' && $table->$str != 'permissions' && $table->$str != 'roles' && $table->$str != 'role_has_permissions' && $table->$str !='shipping_charges') {
                     DB::table($table->$str)->truncate();    
                 }
             }

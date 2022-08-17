@@ -58,7 +58,7 @@
                             <!-- <li data-target="#js--home-carousel" data-slide-to="0" class="active"></li> -->
                             @foreach($slider as $row)
                             <!-- <li data-target="#js--home-carousel" data-slide-to="0" class="active"></li> -->
-                            <li data-target="#js--home-carousel" data-slide-to="{{$loop->index}}"></li>
+                            <li data-target="#js--home-carousel" data-slide-to="{{$loop->index +1}}" ></li>
                             <!-- <li data-target="#js--home-carousel" data-slide-to="2"></li> -->
 
 
@@ -66,12 +66,12 @@
                         </ol>
 
                         <div class="carousel-inner mr-2">
-                            <!-- <div class="carousel-item" data-interval="5000">
+                            <div class="carousel-item" data-interval="5000">
                                 <a href="#">
                                     <img src="{{asset('public/assets/images/slider/'.$firstSlider->image)}}"
                                         class="d-block w-100" alt="about_us_banner" />
                                 </a>
-                            </div> -->
+                            </div>
                             @foreach($slider as $key => $row)
                             <div class="carousel-item @if($key ==0) active @endif" data-interval="5000">
                                 <a href="#">

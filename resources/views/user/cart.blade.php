@@ -52,7 +52,7 @@
                                         
                                         <td>
                                         @if($gs->cart_page_vat==1)
-                                            <p class="price 693243">{{$gs->currency}}&nbsp;&nbsp; {{$cart->price}}</p>
+                                            <p class="price 693243">    </p>
                                             @else
                                             <p class="price 693243">{{$gs->currency}}&nbsp;&nbsp; {{$cart->price + $vatSingleQty}}</p>
 

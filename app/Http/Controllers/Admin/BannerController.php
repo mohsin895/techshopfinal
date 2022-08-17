@@ -128,7 +128,11 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         if ($role->hasPermissionTo('general_setting_frontend_banner_delete')) {
             $permissions = Role::findByName($role->name)->permissions;
       $data = Banner::find($id);
+      if(!empty($data->image)){
       unlink("public/assets/images/banner/".$data->image);
+      }else{
+          
+      }
     $data->delete();
     return back()->with('flash_message_success','banner has delete successfully');
 } else
