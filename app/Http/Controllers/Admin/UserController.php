@@ -265,4 +265,12 @@ public function today_birthday()
    return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
     }
 
+
+    public function userMessage($id)
+    {
+      $message= UserMessage::find($id);
+      $message->delete();
+      return back();
+    }
+
 }

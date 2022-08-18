@@ -252,6 +252,7 @@ Route::get('/user/blog/user_post',[App\Http\Controllers\Admin\UserController::cl
 Route::get('/user/details/{id}',[App\Http\Controllers\Admin\UserController::class,'user_details'])->name('user.details');
 Route::post('/user/edit/{id}',[App\Http\Controllers\Admin\UserController::class,'edit'])->name('user.edit');
 Route::get('/delete-user/{id}',[App\Http\Controllers\Admin\UserController::class,'delete'])->name('user.delete');
+Route::get('/delete-userMessage/{id}',[App\Http\Controllers\Admin\UserController::class,'userMessage'])->name('userMessage.delete');
 //UserController End
 
 //EventController Start 

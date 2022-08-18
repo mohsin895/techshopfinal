@@ -13,16 +13,16 @@
                 <input type="text" class="form-control" id="name" name="name">
             </div>
             <div class="form-group">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="form-label">Email (Required)</label>
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="email" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="email" required name="phone">
+                <label for="email" class="form-label">Phone (Required)</label>
+                <input type="text" class="form-control" id="email" required name="phone" required>
             </div>
             <div class="form-group">
-                <label for="subject" class="form-label">Subject</label>
-                <input type="text" class="form-control" id="subject" name="subject" value="">
+                <label for="subject" class="form-label">Subject (Required)</label>
+                <input type="text" class="form-control" id="subject" name="subject" value="" required>
             </div>
             <!-- <div class="form-group">
                     <label for="department" class="form-label">Department</label>
@@ -35,11 +35,11 @@
                     </select>
                 </div> -->
             <div class="form-group">
-                <label for="body" class="form-label">Your message</label>
-                <textarea class="form-control" id="body" rows="6" name="body"></textarea>
+                <label for="body" class="form-label">Your message (Required)</label>
+                <textarea class="form-control" id="body" rows="6" name="body" required></textarea>
             </div>
             <div class="form-group text-center mt-4">
-                <button type="submit" class="btn btn-contact-submit">Submit</button>
+                <button type="submit" class="btn sign-button btn-block">Submit</button>
             </div>
         </form>
     </div>

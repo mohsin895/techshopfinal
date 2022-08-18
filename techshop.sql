@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2022 at 02:46 PM
+-- Generation Time: Aug 18, 2022 at 07:14 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -301,7 +301,9 @@ INSERT INTO `carts` (`id`, `product_id`, `product_name`, `model_no`, `price`, `b
 (134, 20, 'Floortec 2K-EP Thick Coat 894', 'C&C-00008', '1800', '1200', 1, NULL, '', '39hGa9KZg63BRLXxm73Ab3m7wCCbnhvKfAQF0wct', '2022-07-19 05:26:44', '2022-07-19 05:26:44'),
 (135, 20, 'Floortec 2K-EP Thick Coat 894', 'C&C-00008', '1800', '1200', 1, NULL, '', 'xQVQxmG4Q0VHMlPqc9Hac93M207dDE6NqFvINhrA', '2022-07-20 06:10:15', '2022-07-20 06:10:15'),
 (136, 20, 'Floortec 2K-EP Thick Coat 894', 'C&C-00008', '1800', '1200', 1, NULL, '', 'QRv4QuojkorDK7yKeAFzqFnnJJ7AvDEvItBKS6Pf', '2022-07-21 09:59:52', '2022-07-21 09:59:52'),
-(144, 7, 'styles shirt', 'SWD-00005', '2000', '1200', 1, NULL, '', '1RJzp15Qszcws5MgjTcwOBITynIKhEPnwVKruQHK', '2022-07-27 09:59:45', '2022-07-27 09:59:45');
+(144, 7, 'styles shirt', 'SWD-00005', '2000', '1200', 1, NULL, '', '1RJzp15Qszcws5MgjTcwOBITynIKhEPnwVKruQHK', '2022-07-27 09:59:45', '2022-07-27 09:59:45'),
+(217, 10, 'styles shirt', 'SWD-00005', '2000', '1200', 1, NULL, 'mohsinsikder895@gmail.com', 'YE3qs24u132XQbXUP0qXL2sgbCsEqjIjxgOVKNjP', '2022-08-11 10:06:04', '2022-08-11 10:06:04'),
+(218, 16, 'food sdfrg', 'C&C-00008', '1800', '1100', 1, NULL, '', 'e0myjnqF5O1KHPkgG2MAVH6yNkNy9ASLSJfisDFX', '2022-08-11 11:52:06', '2022-08-11 11:52:06');
 
 -- --------------------------------------------------------
 
@@ -464,7 +466,9 @@ CREATE TABLE `general_settings` (
   `favicon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `blog_favicon` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `website_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blog_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `site_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shop_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `currency` varchar(225) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `commission` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `vat` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -513,8 +517,8 @@ CREATE TABLE `general_settings` (
 -- Dumping data for table `general_settings`
 --
 
-INSERT INTO `general_settings` (`id`, `login_image`, `site_logo`, `blog_logo`, `dashboard_logo`, `favicon`, `blog_favicon`, `website_name`, `site_title`, `currency`, `commission`, `vat`, `quantity`, `email1`, `email2`, `address`, `mobile1`, `mobile2`, `bkash`, `rocket`, `nogod`, `flash_slider`, `meta_description`, `meta_keyword`, `meta_viewport`, `created_at`, `updated_at`, `facebook_page`, `facebook_group`, `twiter`, `instagram`, `youtube`, `linkdi`, `blog_about_us`, `privecy_policy`, `about_us`, `w_r`, `t_c`, `facebook_pixel`, `less_selling_product`, `best_selling_product`, `database_show`, `expired_date`, `upcoming_expired_date`, `discord`, `section_1`, `section_2`, `section_3`, `section_4`, `shipping_policy`, `cart_page_vat`) VALUES
-(1, '25401.png', '80694.png', '95131.png', '46484.png', '27788.png', '8955.png', 'Roboticsabc Shop', 'Roboticsabc shop', 'TK', '10', '7', 2, 'mohsinsikder895@gmail.com', 'mohsinsikder895@gmail.com', 'plashbari bazar', '01715486265', '01706125400', '01715486265', '01715486265', '01715486265', 1, 'erfegter', '\"fdsgfrgdtfhgf\"', 'rtgrgy', NULL, '2022-07-31 12:43:28', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.linkedin.com/in/mohsin-sikder/', '<p><strong>Bangladesh</strong>, is a country in&nbsp;<a href=\"https://en.wikipedia.org/wiki/South_Asia\">South Asia</a>. It is the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\">eighth-most populous country</a>&nbsp;in the world, with a population exceeding 163 million people in an area of either 148,460 square kilometres (57,320&nbsp;sq&nbsp;mi) or 147,570 square kilometres (56,980&nbsp;sq&nbsp;mi),<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bdarea-7\">[7]</a><a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bbs-15\">[15]</a>&nbsp;making it one of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population_density\">most densely populated countries</a>&nbsp;in the world. Bangladesh shares land borders with&nbsp;<a href=\"https://en.wikipedia.org/wiki/India\">India</a>&nbsp;to the west, north, and east, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Myanmar\">Myanmar</a>&nbsp;to the southeast; to the south it has a coastline along the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bay_of_Bengal\">Bay of Bengal</a>. It is narrowly separated from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nepal\">Nepal</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bhutan\">Bhutan</a>&nbsp;by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Siliguri_Corridor\">Siliguri Corridor</a>; and from&nbsp;<a href=\"https://en.wikipedia.org/wiki/China\">China</a>&nbsp;by 100&nbsp;km of the Indian state of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Sikkim\">Sikkim</a>&nbsp;in the north.<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-16\">[16]</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dhaka\">Dhaka</a>, the capital and&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Bangladesh\">largest city</a>, is the nation&#39;s economic, political, and cultural hub.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Chittagong\">Chittagong</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Port_of_Chittagong\">largest seaport</a>, is the second-largest city. The official language is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bengali_language\">Bengali</a>, one of the most eastern branches of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Indo-European_language_family\">Indo-European language family</a>.</p>', NULL, NULL, NULL, NULL, NULL, 20, 10, 2, 1, 11, 'https://www.facebook.com/', '<p><strong>Category&nbsp;</strong></p>', '<p>Cateroy2</p>', '<p><strong>cateory 3</strong></p>', '<p><strong>Category 4</strong></p>', NULL, 1);
+INSERT INTO `general_settings` (`id`, `login_image`, `site_logo`, `blog_logo`, `dashboard_logo`, `favicon`, `blog_favicon`, `website_name`, `blog_title`, `site_title`, `shop_title`, `currency`, `commission`, `vat`, `quantity`, `email1`, `email2`, `address`, `mobile1`, `mobile2`, `bkash`, `rocket`, `nogod`, `flash_slider`, `meta_description`, `meta_keyword`, `meta_viewport`, `created_at`, `updated_at`, `facebook_page`, `facebook_group`, `twiter`, `instagram`, `youtube`, `linkdi`, `blog_about_us`, `privecy_policy`, `about_us`, `w_r`, `t_c`, `facebook_pixel`, `less_selling_product`, `best_selling_product`, `database_show`, `expired_date`, `upcoming_expired_date`, `discord`, `section_1`, `section_2`, `section_3`, `section_4`, `shipping_policy`, `cart_page_vat`) VALUES
+(1, '25401.png', '80694.png', '95131.png', '46484.png', '27788.png', '8955.png', 'Roboticsabc Shop', 'Roboticsabc shop', 'Roboticsabc shop', 'Roboticsabc shopRoboticsabc shop', 'TK', '10', '7', 2, 'mohsinsikder895@gmail.com', 'mohsinsikder895@gmail.com', 'plashbari bazar', '01715486265', '01706125400', '01715486265', '01715486265', '01715486265', 1, 'erfegter', '\"fdsgfrgdtfhgf\"', 'rtgrgy', NULL, '2022-08-18 15:52:25', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.linkedin.com/in/mohsin-sikder/', '<p><strong>Bangladesh</strong>, is a country in&nbsp;<a href=\"https://en.wikipedia.org/wiki/South_Asia\">South Asia</a>. It is the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\">eighth-most populous country</a>&nbsp;in the world, with a population exceeding 163 million people in an area of either 148,460 square kilometres (57,320&nbsp;sq&nbsp;mi) or 147,570 square kilometres (56,980&nbsp;sq&nbsp;mi),<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bdarea-7\">[7]</a><a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-bbs-15\">[15]</a>&nbsp;making it one of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population_density\">most densely populated countries</a>&nbsp;in the world. Bangladesh shares land borders with&nbsp;<a href=\"https://en.wikipedia.org/wiki/India\">India</a>&nbsp;to the west, north, and east, and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Myanmar\">Myanmar</a>&nbsp;to the southeast; to the south it has a coastline along the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bay_of_Bengal\">Bay of Bengal</a>. It is narrowly separated from&nbsp;<a href=\"https://en.wikipedia.org/wiki/Nepal\">Nepal</a>&nbsp;and&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bhutan\">Bhutan</a>&nbsp;by the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Siliguri_Corridor\">Siliguri Corridor</a>; and from&nbsp;<a href=\"https://en.wikipedia.org/wiki/China\">China</a>&nbsp;by 100&nbsp;km of the Indian state of&nbsp;<a href=\"https://en.wikipedia.org/wiki/Sikkim\">Sikkim</a>&nbsp;in the north.<a href=\"https://en.wikipedia.org/wiki/Bangladesh#cite_note-16\">[16]</a>&nbsp;<a href=\"https://en.wikipedia.org/wiki/Dhaka\">Dhaka</a>, the capital and&nbsp;<a href=\"https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Bangladesh\">largest city</a>, is the nation&#39;s economic, political, and cultural hub.&nbsp;<a href=\"https://en.wikipedia.org/wiki/Chittagong\">Chittagong</a>, the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Port_of_Chittagong\">largest seaport</a>, is the second-largest city. The official language is&nbsp;<a href=\"https://en.wikipedia.org/wiki/Bengali_language\">Bengali</a>, one of the most eastern branches of the&nbsp;<a href=\"https://en.wikipedia.org/wiki/Indo-European_language_family\">Indo-European language family</a>.</p>', NULL, '<p>About Us&nbsp;</p>', NULL, NULL, NULL, 20, 10, 2, 1, 11, 'https://www.facebook.com/', '<p><strong>Category </strong></p>', '<p>Cateroy2</p>', '<p><strong>cateory 3</strong></p>', '<p><strong>Category 4</strong></p>', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -2002,8 +2006,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('RGO2y0XlPMXShE4nOqN8nqR31DrdCsCT3JI908xI', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiNDB0VzRINE5kTExTUFFraXB6TklTYTFlcXZxZERvVjM1ajFmdFFtMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly9sb2NhbGhvc3QvdGVjaHNob3BmaW5hbC9hZG1pbi9hY2NvdW50aW5nIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6ODoicmVmZXJhbGwiO3M6MDoiIjtzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozMjtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHVTZ3lKMXpXLmgzZG5WSm1oZzN4b3VLSWhrS25EbkxQQ2s4M3RZdFdyTE45TnFrUnpvUU9tIjt9', 1659876416),
-('eXeLoScKva7tELkdKw58KpluHouWItGfuUiprbJu', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiaXNSZ1Q2SmVHOGNFdUprNTZ6NkJtSzJyQ0kxM1EwUUdnTmVNSG1rbiI7czo4OiJyZWZlcmFsbCI7czowOiIiO3M6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjQ1OiJodHRwOi8vbG9jYWxob3N0L3RlY2hzaG9wZmluYWwvYmxvZy91c2VyL3Bvc3QiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozMjtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHVTZ3lKMXpXLmgzZG5WSm1oZzN4b3VLSWhrS25EbkxQQ2s4M3RZdFdyTE45TnFrUnpvUU9tIjtzOjUxOiJsb2dpbl9ibG9nXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MzI7fQ==', 1659876343);
+('VgX0HJvtQpfCQuXt2jYdPSxqaBQUZMFAWkIiLrJN', 32, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiYTBqQnZyVWtsOUp5NjVKVTB6WmowZ1hEUjlmbnpoQ25TVVhiYVhJQiI7czo4OiJyZWZlcmFsbCI7czowOiIiO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vbG9jYWxob3N0L3RlY2hzaG9wZmluYWwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MzI7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCR1U2d5SjF6Vy5oM2RuVkptaGczeG91S0loa0tuRG5MUENrODN0WXRXckxOOU5xa1J6b1FPbSI7fQ==', 1660842882);
 
 -- --------------------------------------------------------
 
@@ -2174,7 +2177,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `slug`, `date_of_birth`, `gender`, `referral_id`, `referred_by`, `referral`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `image`, `is_admin`, `last_login`, `role_id`, `is_banned`, `status`, `created_at`, `updated_at`, `city`, `country`, `postcode`, `address1`, `address2`, `commision`, `range_amount`, `ip`) VALUES
 (2, 'admin', 'admin@gmail.com', '1715786', NULL, '$2y$10$uSgyJ1zW.h3dnVJmhg3xouKIhkKnDnLPCk83tYtWrLN9NqkRzoQOm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, '358.jpg', 'admin', '2022-07-17 16:52:31', 1, '0', '1', '2022-03-20 09:25:49', '2022-07-17 10:52:31', NULL, NULL, NULL, NULL, NULL, NULL, '100', '::1'),
 (11, 'Rahat', 'rahat89512@gmail.com', '01715486265', NULL, '$2y$10$d70SICXdCrHQ/grYy9YohOe725PK0ssED.YOMqMYGHI79O/Wj9s3m', '62Mohsin Sikder', '2022-05-05', 'male', 'Mohsin Sikder2994', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '2022-04-19 08:14:49', '2022-04-19 08:14:49', NULL, NULL, NULL, NULL, NULL, 10, '100', NULL),
-(32, 'Yeamin', 'mohsinsikder895@gmail.com', '01715486265', NULL, '$2y$10$uSgyJ1zW.h3dnVJmhg3xouKIhkKnDnLPCk83tYtWrLN9NqkRzoQOm', '99Mohsin', '2022-05-05', 'male', 'sikder99', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-07 17:38:53', NULL, '0', '1', '2022-03-28 20:48:27', '2022-08-07 11:38:53', 'saver ashulia', 'Bangladesh', '02128736', 'plashbari bazar', 'plashbari bazar', 10, '100', '::1'),
+(32, 'Yeamin', 'mohsinsikder895@gmail.com', '01715486265', NULL, '$2y$10$uSgyJ1zW.h3dnVJmhg3xouKIhkKnDnLPCk83tYtWrLN9NqkRzoQOm', '99Mohsin', '2022-05-05', 'male', 'sikder99', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-18 22:00:49', NULL, '0', '1', '2022-03-28 20:48:27', '2022-08-18 16:00:49', 'saver ashulia', 'Bangladesh', '02128736', 'plashbari bazar', 'plashbari bazar', 10, '100', '::1'),
 (47, 'Rahat', 'mohsinsikder999@gmail.com', '0171548696', NULL, '$2y$10$nAAE3gtnCD13PCmdt9BxP.l4bhcmKMjz6djrrazzDC.wdDqmZ7qfy', '82Mohsin Sikder', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-04-24 02:30:04', '2022-04-24 02:56:50', NULL, NULL, NULL, NULL, NULL, NULL, '100', NULL),
 (48, 'Mohsin Sikder', 'm@gmail.com', '01715486265', NULL, '$2y$10$Ir4viEulxO66GmHDJRFtJOdk4PrHET4WinPPZkeIJeM8dCMzUP2ly', '49Mohsin Sikder', '2022-05-29', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '2022-04-26 06:13:34', '2022-04-26 06:13:34', NULL, NULL, NULL, NULL, NULL, NULL, '100', NULL),
 (52, 'Sikder', 'mohsinsikder.cse@gmail.com', '01706125400', NULL, '$2y$10$gGnqDJvdOCDsEQkTqA22u.I0/qALPb7zwNvKpVWnApFlEephyPKWa', '56Sikder', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '2022-04-26 19:22:34', '2022-05-25 04:31:19', NULL, NULL, NULL, NULL, NULL, 10, '100', NULL),
@@ -2206,8 +2209,7 @@ CREATE TABLE `user_messages` (
 INSERT INTO `user_messages` (`id`, `name`, `phone`, `email`, `subject`, `body`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Mohsin Sikder', NULL, 'mohsinsikder895@gmail.com', 'fgbf', 'eferf', '1', '2022-04-06 23:34:57', '2022-04-07 01:23:23'),
 (2, 'Mohsin Sikder', NULL, 'mohsinsikder895@gmail.com', 'fgbf', 'eferf', '1', '2022-04-06 23:35:12', '2022-04-07 01:00:38'),
-(3, 'Mohsin Sikder', NULL, 'mohsinsikder895@gmail.com', 'wedwrtfr', 'wedwr', '0', '2022-04-26 02:34:55', '2022-04-26 02:34:55'),
-(4, 'Sikder', '01706125400', 'b@gmail.com', NULL, NULL, '0', '2022-04-28 13:00:52', '2022-04-28 13:00:52');
+(3, 'Mohsin Sikder', NULL, 'mohsinsikder895@gmail.com', 'wedwrtfr', 'wedwr', '0', '2022-04-26 02:34:55', '2022-04-26 02:34:55');
 
 -- --------------------------------------------------------
 
@@ -2606,7 +2608,7 @@ ALTER TABLE `browse_histories`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -2786,7 +2788,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_messages`
 --
 ALTER TABLE `user_messages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `wish_lists`

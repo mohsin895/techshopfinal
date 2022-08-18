@@ -441,6 +441,24 @@
                                         </div>
                                         <div class="col-md-9">
                                             <!--begin::Input-->
+                                            <input type="text" class="form-control form-control-solid" name="shop_title"
+                                                value="{{$gs->shop_title}}" />
+                                            <!--end::Input-->
+
+                                        </div>
+                                    </div>
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span class="required">Shop Name</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Website  Shop Title"></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
                                             <input type="text" class="form-control form-control-solid" name="site_title"
                                                 value="{{$gs->site_title}}" />
                                             <!--end::Input-->
@@ -454,6 +472,23 @@
                                             <!--begin::Label-->
                                             <label class="fs-6 fw-bold form-label mt-3">
                                                 <span>Blog Title</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Blog  Website Title."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
+                                            <input type="text" class="form-control form-control-solid"
+                                                name="blog_title" value="{{$gs->blog_title}}">
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>Blog Name</span>
                                                 <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
                                                     title="Blog  Website Title."></i>
                                             </label>

@@ -192,6 +192,12 @@
                                                 data-bs-target="#kt_modal_message_answer_user{{$row->id}}">Reply</a>
                                         </div>
 
+                                        <div class="menu-item px-3">
+                                          
+                                          <a href="javascript:void(0)" record="userMessage" recordid="{{ $row->id }}"
+                                                class="menu-link px-3 confirmDelete">Delete</a>
+                                  </div>
+
 
 
                                         <!--end::Menu item-->

@@ -54,10 +54,10 @@
                     <hr class="w-100 clearfix d-md-none" />
 
                     <!-- Grid column -->
-                    <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <div class="col-md-7 col-lg-4 col-xl-4 mx-auto mt-3">
                         <p class="text-text-capitalize mb-4 footer-header-font-size mobile-text-align">Support</p>
 
-                        <p class="support-size"><img src="{{asset('public/assets/images/setting/mobile.png')}}" style="left: 16.67%;right: 16.67%;top: 16.67%;bottom: 16.67%;width:20px;height:16px;margin-left:-60px"><button class="footer-font-size-support-mobile" style="border: none; margin-left:10px;text-align: center; margin-top: 3px;"> {{$gs->mobile1}}</button></p>
+                        <p class="support-size"><img src="{{asset('public/assets/images/setting/mobile.png')}}" style="left: 16.67%;right: 16.67%;top: 16.67%;bottom: 16.67%;width:20px;height:16px;margin-left:-60px"><span class="footer-font-size-support-mobile" style="border: none; margin-left:10px;text-align: center; margin-top: 3px;"> {{$gs->mobile1}}</span></p>
                         <p class="support-size">
                         <img src="{{asset('public/assets/images/setting/email.png')}}" style="left: 16.67%;right: 16.67%;top: 16.67%;bottom: 16.67%;width:20px;height:16px;margin-left:-50px"><span class="footer-font-size" style="margin-right:-50px"> {{$gs->email1}}</span></p>
                     </div>

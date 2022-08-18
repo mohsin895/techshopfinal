@@ -46,7 +46,7 @@ $category = blogCategory::category();
     <link rel="icon" href="{{asset('public/assets/images/setting/'.$gs->blog_favicon)}}" sizes="32x32" />
     @yield('details-css')
 
-    <title>{{$gs->site_title}}</title>
+    <title>{{$gs->blog_title}}</title>
 </head>
 
 <body>

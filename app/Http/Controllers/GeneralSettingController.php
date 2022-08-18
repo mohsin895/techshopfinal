@@ -86,6 +86,8 @@ class GeneralSettingController extends Controller
             $setting->website_name = $data['website_name'];
             $setting->currency = $data['currency'];
             $setting->site_title = $data['site_title'];
+            $setting->shop_title = $data['shop_title'];
+            $setting->blog_title = $data['blog_title'];
             $setting->flash_slider = $data['flash_slider'];
             $setting->facebook_page = $data['facebook_page'];
             $setting->facebook_group = $data['facebook_group'];

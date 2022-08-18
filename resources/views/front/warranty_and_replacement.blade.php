@@ -9,16 +9,16 @@
                 <div class="about__content mr-0">
                     <nav class="mb-3" aria-label="breadcrumb">
                         <ol class="breadcrumb bg-light">
-                            <li class="breadcrumb-item m-0"><a href="{{url('/')}}">Home</a></li>
-                            <li class="breadcrumb-item active m-0" aria-current="page">About Us</li>
+                            <li class="breadcrumb-item m-0"><a href="{{url('/')}}" style="color:black">Home</a></li>
+                            <li class="breadcrumb-item active m-0" aria-current="page">Warrenty & Replacement</li>
                         </ol>
                     </nav>
                     <div class="card about__content--body">
-                        <h1 class="title ml-0">About Us</h1>
-                        <div class="body-text">
+                      
+                        <div class="body-text" style="margin-left:0px">
                         {!! $gs->w_r !!}
                         </div>
-                        <
+                        
                         
                     </div>
                 </div>
