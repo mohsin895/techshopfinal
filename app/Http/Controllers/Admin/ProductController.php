@@ -122,7 +122,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data->document = $request['document']; 
         $data->supplier = $request['supplier']; 
         $data->specification = $request['specification']; 
-        $data->slug = Str::slug($request['product_name']);
+        $data->slug = Str::slug($request['product_name']).'-'.rand(111, 99999);
         if ($request->hasFile('image')) {
             $image_tmp = $request->file('image');
             if ($image_tmp->isValid()) {
@@ -130,7 +130,12 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
                 $filename = Str::slug($request['product_name']).'-'.rand(111, 99999) . '.' . $extension;
                 $large_image_path = 'public/assets/images/product/' . $filename;
 
-                Image::make($image_tmp)->resize(150, 120)->save($large_image_path);
+                Image::make($image_tmp)->resize(200, 200)->save($large_image_path);
+
+
+                $details_image_path = 'public/assets/images/product/details/' . $filename;
+
+                Image::make($image_tmp)->resize(300, 300)->save($details_image_path);
                 $data->image = $filename;
             }
         }
@@ -180,7 +185,7 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
                    $medium_image_path = 'public/assets/images/product/gallery/'.$imageName;
          
                   
-                   Image::make($image_tmp)->resize(116,92)->save($medium_image_path);
+                   Image::make($image_tmp)->resize(300,300)->save($medium_image_path);
                     $productimage->galery =$imageName;
                     $productimage->product_id = $product_id;
                     $productimage->save();
@@ -226,12 +231,16 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         $data->document = $request['document']; 
         $data->supplier = $request['supplier']; 
         $data->specification = $request['specification']; 
-        $data->slug = Str::slug($request['product_name']);
+        $data->slug = Str::slug($request['product_name']).'-'.rand(111, 99999);
         if ($request->hasFile('image')) {
             $imagePath = public_path('public/assets/images/product/'.$data->image);
+            $DetailsimagePath = public_path('public/assets/images/product/details/'.$data->image);
             // dd($imagePath);
             if(File::exists($imagePath)){
                 unlink($imagePath);
+            }
+            if(File::exists($DetailsimagePath)){
+                unlink($DetailsimagePath);
             }
             $image_tmp = $request->file('image');
             if ($image_tmp->isValid()) {
@@ -239,25 +248,71 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
                 $filename = Str::slug($request['product_name']).'-'.rand(111, 99999) . '.' . $extension;
                 $large_image_path = 'public/assets/images/product/' . $filename;
 
-                Image::make($image_tmp)->resize(150, 120)->save($large_image_path);
+                Image::make($image_tmp)->resize(200, 200)->save($large_image_path);
+                $details_image_path = 'public/assets/images/product/details/' . $filename;
+
+                Image::make($image_tmp)->resize(300, 300)->save($details_image_path);
                 $data->image = $filename;
             }
         }
-        $data->save(); 
+        $data->save();
 
-        if ($data->save()) {
+
+        
+        if($data->save()){
             $product_id = $data->id;
-
-              $qty = new Qty;
-              $qty->product_id = $product_id;
-              $qty->quantity = $request->quantity;
-              $qty->save();
-                  
-                    
+            if ($request->hasFile('gallery')) {
+                
+              $galleryimages = $request->file('gallery');
+              foreach ($galleryimages as $key => $image) {
+                  if(empty($request->product_id)){
+               $productimage = new Gallery;
                
-        }
+                // echo "<pre>";print_r(( $productimage));die();
+               $image_tmp = Image::make($image);
+           
+               // echo $orginalName = $image->getClientOriginalName();die();
+               $extension = $image->getClientOriginalExtension();
+               $imageName =  Str::slug($request['product_name']).'-'.rand(111, 99999).time().".".$extension;
+               
+                   $medium_image_path = 'public/assets/images/product/gallery/'.$imageName;
+         
+                  
+                   Image::make($image_tmp)->resize(116,92)->save($medium_image_path);
+                    $productimage->galery =$imageName;
+                    $productimage->product_id = $product_id;
+                    $productimage->save();
+                  }else{
+
+                    $productimage =Gallery::find($data->product_id);
+               
+                    // echo "<pre>";print_r(( $productimage));die();
+                   $image_tmp = Image::make($image);
+               
+                   // echo $orginalName = $image->getClientOriginalName();die();
+                   $extension = $image->getClientOriginalExtension();
+                   $imageName =  Str::slug($request['product_name']).'-'.rand(111, 99999).time().".".$extension;
+                   
+                       $medium_image_path = 'public/assets/images/product/gallery/'.$imageName;
+             
+                      
+                       Image::make($image_tmp)->resize(116,92)->save($medium_image_path);
+                        $productimage->galery =$imageName;
+                        $productimage->product_id = $product_id;
+                        $productimage->save();
+
+                  }
+                   }
+                   
+                  
+             }
+          }
         return redirect('/admin/product')->with('flash_message_success','product Update successfully');
     }
+
+
+
+
 
     public function update_qty(Request $request,$id)
     {
@@ -287,6 +342,165 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
         
     }
 
+
+    
+    public function insert_qty(Request $request,$id)
+    {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('product_edit')) {
+            $permissions = Role::findByName($role->name)->permissions;
+
+
+            if(($request->buying_price_check ==0)){
+            $validated = $request->validate([
+               
+                'buying_price' => 'required',
+            ]);
+        }else{
+
+        }
+
+        if(($request->selling_price_check ==0)){
+            $validated = $request->validate([
+               
+                'price' => 'required',
+            ]);
+        }else{
+
+        }
+
+        $Qty = new Qty();
+        $Qty->product_id = $request->product_id;
+        $Qty->quantity = $request->quantity;
+        $Qty->save();
+
+        if($Qty->save()){
+            $product=Product::where('id',$Qty->product_id)->first();
+            $productbuyingprice = $product->buying_price;
+            $productprice = $product->price;
+         
+            if(($request->buying_price_check ==0)){
+            $product->buying_price = $request->buying_price;
+            }else if($request->buying_price_check ==1){
+                $product->buying_price =$productbuyingprice;
+
+            }else{
+
+            }
+            if(($request->selling_price_check ==0)){
+            $product->price = $request->price;
+            }else if($request->selling_price_check ==1){
+                $product->price = $productprice;
+            }else{
+
+            }
+            $product->save();
+        }
+
+       
+
+            return back()->with('flash_message_success','Product Quantity Add Successfulle');
+        
+        }else
+        return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+        
+    }
+
+    public function delete_qty($id)
+    {
+        
+            
+      $data = Qty::find($id);
+      
+
+      $data->delete();
+      return back()->with('flash_message_success','product Quantity delete successfully');
+
+        
+    }
+
+
+    public function insert_gallery(Request $request,$id)
+    {
+
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Product";
+        $data['add']="Add Product Image Gallery";
+        $data['add_title'] = "Edit Category";
+        $row=Product::where('id',$id)->first();
+
+        if ($request->hasFile('gallery')) {
+            $galleryimages = $request->file('gallery');
+            if(!empty($galleryimages)){
+            foreach ($galleryimages as $key => $image) {
+             $productimage = new Gallery;
+             
+            //   echo "<pre>";print_r(( $productimage));die();
+             $image_tmp = Image::make($image);
+         
+            //  echo $orginalName = $image->getClientOriginalName();die();
+             $extension = $image->getClientOriginalExtension();
+             $imageName = $row['slug'].'-'.rand(111, 99999).time().".".$extension;
+             
+                 $medium_image_path = 'public/assets/images/product/gallery/'.$imageName;
+       
+                
+                 Image::make($image_tmp)->resize(300,300)->save($medium_image_path);
+                  $productimage->galery =$imageName;
+                  $productimage->product_id = $row->id;
+                  $productimage->save();
+                  
+                 
+                 }
+                 return redirect('/admin/product')->with('flash_message_success','product Gallery Image Add successfully');
+                }else{
+                    return redirect('/admin/product')->with('flash_message_success','product Gallery Image Add successfully');
+
+                }
+                
+                
+           }
+        
+
+        return view('admin.product.insert_gallery',$data,compact('row'));
+    }
+
+
+
+    public function update_gallery(Request $request,$id)
+    {
+
+        
+        $data['title']="Admin Dashboard";
+        $data['table']="Show Product";
+        $data['add']="Add Product Image Gallery";
+        $data['add_title'] = "Edit Category";
+        $row=Product::where('id',$id)->first();
+        $gallery = Gallery::where('product_id',$row->id)->get();             
+
+        return view('admin.product.update_gallery',$data,compact('row','gallery'));
+    }
+
+
+    
+
+
+    public function gallery_delete($id)
+    {
+        $role = Role::find(Auth::guard('admin')->user()->role_id);
+        if ($role->hasPermissionTo('product_delete')) {
+            $permissions = Role::findByName($role->name)->permissions;
+      $data = Gallery::find($id);
+      unlink("public/assets/images/product/gallery/".$data->galery);
+      
+      $data->delete();
+      return back()->with('flash_message_success','product gallery has delete successfully');
+  } else
+  return redirect()->back()->with('flash_message_error', 'Sorry! You are not allowed to access this module');
+      }
+
+
+     
     public function delete($id)
     {
         $role = Role::find(Auth::guard('admin')->user()->role_id);
@@ -297,6 +511,17 @@ return redirect()->back()->with('flash_message_error', 'Sorry! You are not allow
       $galleryImage = Gallery::where('product_id',$data->id)->get();
       foreach($galleryImage as $gallery){
         unlink("public/assets/images/product/gallery/".$gallery->galery);
+      }
+
+      $account= Account::where('product_id',$data->id)->first();
+      if($account){
+          $account->delete();
+      }
+
+
+      $qty= Qty::where('product_id',$data->id)->get();
+      foreach($qty as $row){
+       $row->delete();
       }
 
     $data->delete();

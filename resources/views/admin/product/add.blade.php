@@ -75,7 +75,7 @@
                                     data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                     <i class="bi bi-pencil-fill fs-7"></i>
                                     <!--begin::Inputs-->
-                                    <input type="file" name="image" multiple="" accept=".png, .jpg, .jpeg" required />
+                                    <input type="file" name="image" multiple="" accept=".png, .jpg, .jpeg, .webp" required />
                                     <input type="hidden" name="avatar_remove" />
                                     <!--end::Inputs-->
                                 </label>
@@ -131,7 +131,7 @@
                                     data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                     <i class="bi bi-pencil-fill fs-7"></i>
                                     <!--begin::Inputs-->
-                                    <input type="file" name="gallery[]" accept=".png, .jpg, .jpeg" />
+                                    <input type="file" name="gallery[]" accept=".png, .jpg, .jpeg, .webp" />
                                     <input type="hidden" name="avatar_remove" />
                                     <!--end::Inputs-->
                                 </label>
@@ -163,7 +163,7 @@
                                     data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                     <i class="bi bi-pencil-fill fs-7"></i>
                                     <!--begin::Inputs-->
-                                    <input type="file" name="gallery[]" multiple="" accept=".png, .jpg, .jpeg" />
+                                    <input type="file" name="gallery[]" multiple="" accept=".png, .jpg, .jpeg, .webp" />
                                     <input type="hidden" name="avatar_remove" />
                                     <!--end::Inputs-->
                                 </label>
@@ -195,7 +195,7 @@
                                     data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                     <i class="bi bi-pencil-fill fs-7"></i>
                                     <!--begin::Inputs-->
-                                    <input type="file" name="gallery[]" multiple="" accept=".png, .jpg, .jpeg" />
+                                    <input type="file" name="gallery[]" multiple="" accept=".png, .jpg, .jpeg, .webp" />
                                     <input type="hidden" name="avatar_remove" />
                                     <!--end::Inputs-->
                                 </label>
@@ -227,7 +227,7 @@
                                     data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                     <i class="bi bi-pencil-fill fs-7"></i>
                                     <!--begin::Inputs-->
-                                    <input type="file" name="gallery[]" multiple="" accept=".png, .jpg, .jpeg" />
+                                    <input type="file" name="gallery[]" multiple="" accept=".png, .jpg, .jpeg, .webp" />
                                     <input type="hidden" name="avatar_remove" />
                                     <!--end::Inputs-->
                                 </label>
@@ -259,7 +259,7 @@
                                     data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                     <i class="bi bi-pencil-fill fs-7"></i>
                                     <!--begin::Inputs-->
-                                    <input type="file" name="gallery[]" multiple="" accept=".png, .jpg, .jpeg" />
+                                    <input type="file" name="gallery[]" multiple="" accept=".png, .jpg, .jpeg, .webp" />
                                     <input type="hidden" name="avatar_remove" />
                                     <!--end::Inputs-->
                                 </label>
@@ -289,10 +289,14 @@
                         </div>
 
 
+
+
                         <!--end::Card body-->
                     </div>
                     <!--end::Thumbnail settings-->
                     <!--begin::Status-->
+                 
+
 
 
                 </div>

@@ -213,6 +213,7 @@
                             @foreach($account as $row)
                             @php
                             $orderProduct =App\Models\OrderProduct::where('order_id',$row->id)->get();
+                            
                             @endphp
                             @if(empty($row->gift_card_id))
 

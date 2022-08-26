@@ -72,18 +72,7 @@
                     <!--end::Card title-->
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        <div class="w-100 mw-150px">
-                            <!--begin::Select2-->
-                            <select class="form-select form-select-solid" data-control="select2" data-hide-search="true"
-                                data-placeholder="Status" data-kt-ecommerce-product-filter="status">
-                                <option></option>
-                                <option value="all">All</option>
-                                <option value="published">Published</option>
-                                <option value="scheduled">Scheduled</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-                            <!--end::Select2-->
-                        </div>
+                        
                         <!--begin::Add product-->
                         <a href="{{route('admin.product.add')}}" class="btn btn-primary">Add Product</a>
                         <!--end::Add product-->
@@ -221,7 +210,7 @@
                                         <!--end::Svg Icon-->
                                     </a>
                                     <!--begin::Menu-->
-                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
+                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
                                         data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
@@ -232,9 +221,23 @@
                                             <a href="{{route('admin.product.edit',$row->id)}}"
                                                 class="menu-link px-3">Edit</a>
                                         </div>
+                                        
+                                        <div class="menu-item px-3">
+                                        <a href="#" class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_insert_qty{{$row->id}}">Add Qty</a>
+                                        </div>
 
                                         <div class="menu-item px-3">
                                         <a href="#" class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_edit_qty{{$row->id}}">Edit Qty</a>
+                                        </div>
+
+                                        <div class="menu-item px-3">
+                                            <a href="{{route('admin.product.insert.gallery',$row->id)}}"
+                                                class="menu-link px-3">Add Gallery Image</a>
+                                        </div>
+
+                                        <div class="menu-item px-3">
+                                            <a href="{{route('admin.product.update.gallery',$row->id)}}"
+                                                class="menu-link px-3">Edit Gallery Image</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
@@ -249,6 +252,8 @@
                                 <!--end::Action=-->
                             </tr>
                             @include('admin.model.product.qty')
+                            @include('admin.model.product.insert_qty')
+                        
                            
                           @endforeach
                           

@@ -1,16 +1,16 @@
-<div class="modal fade" id="kt_modal_edit_qty{{$row->id}}" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="kt_modal_insert_qty{{$row->id}}" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
         <!--begin::Modal content-->
         <div class="modal-content">
             <!--begin::Form-->
-            <form class="form" method="post" action="{{route('admin.product.update.qty',$row->id)}}"
+            <form class="form" method="post" action="{{route('admin.product.insert.qty',$row->id)}}"
                 id="kt_modal_new_address_form">
                 @csrf
                 <!--begin::Modal header-->
                 <div class="modal-header" id="kt_modal_new_address_header">
                     <!--begin::Modal title-->
-                    <h2>Qunatity Update </h2>
+                    <h2>Qunatity Add </h2>
                     <!--end::Modal title-->
                     <!--begin::Close-->
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -46,51 +46,49 @@
                        
                         <div class="row mb-5">
                             <!--begin::Col-->
-                            <div class="col-md-4 fv-row">
+                            <div class="col-md-12 fv-row">
 
                                 <!--begin::Label-->
-                                <label class="required fs-5 fw-bold mb-2">Update Qunatity</label>
+                                <label class="required fs-5 fw-bold mb-2">Add Qunatity</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                @foreach($qty as $qt)
-                                <input type="number" class="form-control form-control-solid" placeholder=""
-                                    name="quantity[]" value="{{$qt->quantity}}" />
+                             
+                                <input type="number" class="form-control form-control-solid" placeholder="Enter Product Quantity"
+                                    name="quantity" />
                                     &nbsp;&nbsp;
-                                    @endforeach
+                                    <input type="hidden" class="form-control form-control-solid" placeholder="Enter Product Quantity"
+                                    name="product_id" value="{{$row->id}}"/>
+                                    
                                 <!--end::Input-->
                             </div>
+                            <div class="col-md-12 fv-row">
 
-                            <div class="col-md-4 fv-row">
+                        <!--begin::Label-->
+                        <label class="fs-5 fw-bold mb-2">Buying Price(<input type="checkbox" id="price" name="buying_price_check" value="1"> same as before)</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
 
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2">Update Qunatity</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            @foreach($qty as $qt)
-                            <input type="text" class="form-control form-control-solid" placeholder=""
-                                name="created_at[]" value="{{ $qt->created_at->format('d/m/Y')}}" />
-                                &nbsp;&nbsp;
-                                @endforeach
-                            <!--end::Input-->
-                            </div>
-                            @if($Totalqty > 1)
-                            <div class="col-md-4 fv-row">
+                        <input type="text" class="form-control form-control-solid" placeholder="Enter Product Buying Price"
+                            name="buying_price" />
+                            &nbsp;&nbsp;
+                            
+                        <!--end::Input-->
+                        </div>
 
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2">Delete Qunatity</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            @foreach($qty as $qt)
 
-                            <a href="javascript:void(0)" record="productQty" recordid="{{ $qt->id }}"
-                                                                            class="form-control form-control-solid confirmDelete">Delete</a>
-                                &nbsp;&nbsp;
-                                @endforeach
-                            <!--end::Input-->
-                            </div>
-                            @else 
+                        <div class="col-md-12 fv-row">
 
-                            @endif
+                        <!--begin::Label-->
+                        <label class="fs-5 fw-bold mb-2">Selling Price  (<input type="checkbox" id="price" name="selling_price_check" value="1"> same as before)</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+
+                        <input type="text" class="form-control form-control-solid" placeholder="Enter Product Selling Price"
+                            name="price" />
+                            &nbsp;&nbsp;
+                            
+                        <!--end::Input-->
+                        </div>
 
                             <!--end::Col-->
                             <!--begin::Col-->
@@ -114,7 +112,7 @@
                     <!--end::Button-->
                     <!--begin::Button-->
                     <button type="submit" id="kt_modal_new_address_submit" class="btn btn-primary">
-                        <span class="indicator-label">Update Quantity</span>
+                        <span class="indicator-label">Add Quantity</span>
                         <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                     </button>

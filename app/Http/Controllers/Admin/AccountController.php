@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\OrderProduct;
 use App\Models\Order;
 use App\Models\Account;
-
+use App\Models\Qty;
 class AccountController extends Controller
 {
     public function index()
     {
         
         $data['title']="Admin Dashboard";
-        $data['table']="Show Account";
+        $data['table']="Show Credit";
         $data['add']="Add Banner";
         $data['add_title'] = "Add banner";
         // $data['account'] =Order::where('status','Completed')->orderBy('id','DESC')->get();
@@ -72,7 +72,7 @@ class AccountController extends Controller
     public function debit()
     {
         $data['title']="Admin Dashboard";
-        $data['table']="Show Account";
+        $data['table']="Show Debit";
         $data['add']="Add Cost";
         $data['add_title'] = "Add Cost";
         $data['edit_title'] = "Edit Cost";
@@ -84,6 +84,7 @@ class AccountController extends Controller
         $data['account'] =Account::orderBy('id','DESC')->whereBetween('created_at', [$fromdate, $todate])->get();
         // $data['total_debit'] =OrderProduct::sum('buying_price');
         $data['product_cost'] =Account::where('product_id','>',0)->whereBetween('created_at', [$fromdate, $todate])->sum('buying_price');
+        $data['product_qty'] =Qty::where('product_id','>',0)->whereBetween('created_at', [$fromdate, $todate])->sum('quantity');
         $data['extra_cost'] =Account::where('product_id','=',NULL)->whereBetween('created_at', [$fromdate, $todate])->sum('buying_price');
         $data['total_cost'] =Account::whereBetween('created_at', [$fromdate, $todate])->sum('buying_price');
         }else{
@@ -91,6 +92,7 @@ class AccountController extends Controller
         $data['account'] =Account::orderBy('id','DESC')->get();
         // $data['total_debit'] =OrderProduct::sum('buying_price');
         $data['product_cost'] =Account::where('product_id','>',0)->sum('buying_price');
+        $data['product_qty'] =Qty::sum('quantity');
         $data['extra_cost'] =Account::where('product_id','=',NULL)->sum('buying_price');
         $data['total_cost'] =Account::sum('buying_price');
 

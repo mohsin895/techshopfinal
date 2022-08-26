@@ -121,7 +121,7 @@
                         <tbody>
                             <tr>
                                 <th scope="row"></th>
-                                <td>{{$product_cost}} {{$gs->currency}}</td>
+                                <td>{{$product_cost * $product_qty}} {{$gs->currency}}</td>
                                 <td>{{$extra_cost}} {{$gs->currency}}</td>
                                 <td>{{$total_cost}} {{$gs->currency}}</td>
 
@@ -182,6 +182,10 @@
                             <!--begin::Table row-->
 
                             @foreach($account as $row)
+                            @php 
+                            $productQty =App\Models\Qty::where('product_id',$row->product_id)->sum('quantity');
+
+                            @endphp
 
                             <tr>
                                 <!--begin::Checkbox-->
@@ -198,7 +202,7 @@
                                 <td>{{ $row->cost_name}}</td>
 
 
-                                <td> {{ $row->buying_price}} &nbsp;{{$gs->currency}} </td>
+                                <td> {{ $row->buying_price * $productQty}}  &nbsp;{{$gs->currency}} </td>
                                 @if(empty($row->product_id))
                                 <td>
                                     <a href="#" class="btn btn-sm btn-light btn-active-light-primary"

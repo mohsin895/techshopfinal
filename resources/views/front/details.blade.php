@@ -42,10 +42,15 @@
 
 
 
-                <div class="mt-5 main-image desktop-image">
-                    <img src="{{asset('public/assets/images/product/'.$productDetails->image)}}"
-                        class="imgmini product-details-image" id="mainimgid"></img>
+                <div class="mt-5 main-image desktop-image  img_producto_container" data-scale="1.6">
+                    <img src="{{asset('public/assets/images/product/details/'.$productDetails->image)}}"
+                        class="imgmini product-details-image dslc-lightbox-image img_producto " id="mainimgid"></img>
+
+
+                        
                 </div>
+             
+                
 
 
                 <div class="glerry-image mt-5 owlcarouselGallery owl-carousel">
@@ -297,7 +302,7 @@
                     <button type="button" class="featuredBtn active mt-3" id="btnOne" onclick="show('Section1');"><a
                             href="#description" class="review-rating-detils-font-color-size">Description</a></button>
                     <button type="button" class="featuredBtn mt-3" id="btnTwo" onclick="show('Section2');"><a
-                            href="#summery" class="review-rating-detils-font-color-size">Summery</a></button>
+                            href="#summery" class="review-rating-detils-font-color-size">Summary</a></button>
                     <button type="button" class="featuredBtn featuredBtnMobile mt-3" id="btnThree"><a href="#question"
                             class="review-rating-detils-font-color-size">Questions</a></button>
                     <button type="button" class="featuredBtn featuredBtnMobile mt-3" id="btnFour"><a href="#review"
@@ -791,6 +796,12 @@ function showSlides(n) {
     dots[slideIndex - 1].className += " active";
 
 }
+
+
+
+
+
+
 </script>
 
 

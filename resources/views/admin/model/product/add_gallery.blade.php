@@ -1,16 +1,19 @@
-<div class="modal fade" id="kt_modal_edit_qty{{$row->id}}" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="kt_modal_insert_gallery{{$img->id}}" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
         <!--begin::Modal content-->
         <div class="modal-content">
             <!--begin::Form-->
-            <form class="form" method="post" action="{{route('admin.product.update.qty',$row->id)}}"
-                id="kt_modal_new_address_form">
+            <form class="form" method="post" action="{{route('admin.product.update.single.gallery',[$img->product_id,$img->id])}}"
+                id="kt_modal_new_address_form" enctype="multipart/form-data">
+
                 @csrf
+                <input type="text" name="id" value="{{$img->id}}">
+                <input type="text" name="product_id" value="{{$img->product_id}}">
                 <!--begin::Modal header-->
                 <div class="modal-header" id="kt_modal_new_address_header">
                     <!--begin::Modal title-->
-                    <h2>Qunatity Update </h2>
+                    <h2>Gallry Image Add </h2>
                     <!--end::Modal title-->
                     <!--begin::Close-->
                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -37,60 +40,24 @@
                         data-kt-scroll-dependencies="#kt_modal_new_address_header"
                         data-kt-scroll-wrappers="#kt_modal_new_address_scroll" data-kt-scroll-offset="300px">
                        
-                       @php 
-                       $qty = App\Models\Qty::where('product_id',$row->id)->get();
-                       $Totalqty = App\Models\Qty::where('product_id',$row->id)->count('id');
-                      
-                       @endphp
                         <!--end::Input group-->
                        
                         <div class="row mb-5">
                             <!--begin::Col-->
-                            <div class="col-md-4 fv-row">
+                            <div class="col-md-12 fv-row">
 
                                 <!--begin::Label-->
-                                <label class="required fs-5 fw-bold mb-2">Update Qunatity</label>
+                                <label class="required fs-5 fw-bold mb-2">Add Qunatity</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                @foreach($qty as $qt)
-                                <input type="number" class="form-control form-control-solid" placeholder=""
-                                    name="quantity[]" value="{{$qt->quantity}}" />
+                             
+                                <input type="file" class="form-control form-control-solid" name="gallery" />
                                     &nbsp;&nbsp;
-                                    @endforeach
+                                    <input type="text" class="form-control form-control-solid" placeholder="Enter Product Quantity"
+                                    name="id" value="{{$img->id}}"/>
+                                    
                                 <!--end::Input-->
                             </div>
-
-                            <div class="col-md-4 fv-row">
-
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2">Update Qunatity</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            @foreach($qty as $qt)
-                            <input type="text" class="form-control form-control-solid" placeholder=""
-                                name="created_at[]" value="{{ $qt->created_at->format('d/m/Y')}}" />
-                                &nbsp;&nbsp;
-                                @endforeach
-                            <!--end::Input-->
-                            </div>
-                            @if($Totalqty > 1)
-                            <div class="col-md-4 fv-row">
-
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2">Delete Qunatity</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            @foreach($qty as $qt)
-
-                            <a href="javascript:void(0)" record="productQty" recordid="{{ $qt->id }}"
-                                                                            class="form-control form-control-solid confirmDelete">Delete</a>
-                                &nbsp;&nbsp;
-                                @endforeach
-                            <!--end::Input-->
-                            </div>
-                            @else 
-
-                            @endif
 
                             <!--end::Col-->
                             <!--begin::Col-->
@@ -114,7 +81,7 @@
                     <!--end::Button-->
                     <!--begin::Button-->
                     <button type="submit" id="kt_modal_new_address_submit" class="btn btn-primary">
-                        <span class="indicator-label">Update Quantity</span>
+                        <span class="indicator-label">Add Quantity</span>
                         <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                     </button>

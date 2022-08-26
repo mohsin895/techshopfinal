@@ -11,6 +11,8 @@
     <title>{{$gs->shop_title}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
@@ -36,10 +38,30 @@
     <!-- <link rel="stylesheet" href="{{ asset('public/assets/frontend/extra/css/index.css')}}"> -->
     <!-- <link rel="stylesheet" href="{{ asset('public/assets/frontend/css/style.css') }}"> -->
 
-    <style>
-    
-    </style>
+<style>
+    .img_producto_container {
+  width: 300px;
+  max-width: 50vw;
+  height: 300px !important;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair;
+  margin:auto;
+}
 
+.img_producto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: transform 0.5s ease-out;
+}
+    </style>
 
 </head>
 
@@ -72,7 +94,7 @@
 
     <script src="{{ asset('public/assets/frontend/js/index.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
 
 
@@ -255,7 +277,8 @@
         responsive: {
             0: {
                 items: 1,
-                nav: true
+                nav: true,
+                
             },
             100: {
                 items: 1,
@@ -277,11 +300,13 @@
             },
             1000: {
                 items: 5,
-                nav: false
+                nav: false,
+                loop:false
             },
             1600: {
                 items: 6,
-                nav: false
+                nav: false,
+                loop:false
             }
         }
     });
@@ -389,6 +414,34 @@ document.getElementById("mainimgid").src=img.src;
 document.getElementById("text").innerText = img.alt
   
  }
+
+
+
+ $(".img_producto_container")
+  // tile mouse actions
+  .on("mouseover", function() {
+    $(this)
+      .children(".img_producto")
+      .css({ transform: "scale(" + $(this).attr("data-scale") + ")" });
+  })
+  .on("mouseout", function() {
+    $(this)
+      .children(".img_producto")
+      .css({ transform: "scale(1)" });
+  })
+  .on("mousemove", function(e) {
+    $(this)
+      .children(".img_producto")
+      .css({
+        "transform-origin":
+          ((e.pageX - $(this).offset().left) / $(this).width()) * 100 +
+          "% " +
+          ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +
+          "%"
+      });
+  });
+
+ 
         </script>
 
 

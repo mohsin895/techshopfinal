@@ -518,6 +518,33 @@
                                             <!--end::Input-->
                                         </div>
                                     </div>
+
+                                    <div class="row fv-row mb-7">
+                                        <div class="col-md-3 text-md-end">
+                                            <!--begin::Label-->
+                                            <label class="fs-6 fw-bold form-label mt-3">
+                                                <span>User Email verify</span>
+                                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
+                                                    title="Landing Page Flash Sale/Slider."></i>
+                                            </label>
+                                            <!--end::Label-->
+                                        </div>
+                                        <div class="col-md-9">
+                                            <!--begin::Input-->
+                                            <select class="form-select form-select-solid" data-control="select2"
+                                                data-hide-search="true" data-placeholder="Status"
+                                                data-kt-ecommerce-order-filter="status" name="email_verify">
+                                                <option value="yes" @if($gs->email_verify=='yes') selected ;@endif >Required
+                                                </option>
+                                                <option value="no" @if($gs->email_verify=='no') selected ;@endif>Not Required
+                                                </option>
+                                    
+
+                                            </select>
+                                            <!--end::Input-->
+                                        </div>
+                                    </div>
+                                    
                                     <div class="row fv-row mb-7">
                                         <div class="col-md-3 text-md-end">
                                             <!--begin::Label-->

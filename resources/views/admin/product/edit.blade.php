@@ -75,7 +75,7 @@
                                     data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                     <i class="bi bi-pencil-fill fs-7"></i>
                                     <!--begin::Inputs-->
-                                    <input type="file" name="image" multiple="" accept=".png, .jpg, .jpeg" />
+                                    <input type="file" name="image" multiple="" accept=".png, .jpg, .jpeg, .webp" />
                                     <input type="hidden" name="avatar_remove" />
                                     <!--end::Inputs-->
                                 </label>
@@ -105,71 +105,10 @@
 
                         <!--end::Card body-->
                     </div>
-                    <div class="card card-flush py-4">
-                        <!--begin::Card header-->
-                        <div class="card-header">
-                            <!--begin::Card title-->
-                            <div class="card-title">
-                                <h2>Gallery</h2>
-                            </div>
-                            <!--end::Card title-->
-                        </div>
-                        <!--end::Card header-->
-                        <!--begin::Card body-->
-                        <div class="card-body text-center pt-0">
-                            <!--begin::Image input-->
-                            @php
-                            $gallery = App\Models\Gallery::where('product_id',$product->id)->get();
+                    @php
                             $totalQuantity = App\Models\Qty::where('product_id',$product->id)->sum('quantity');
                             
                             @endphp
-                            @foreach($gallery as $image)
-                            <div class="image-input image-input-empty image-input-outline mb-3"
-                                data-kt-image-input="true"
-                                style="background-image: url({{asset('public/assets/images/product/gallery/'.$image->galery)}})">
-                                <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-150px h-150px"></div>
-                                <!--end::Preview existing avatar-->
-                                <!--begin::Label-->
-                                <label
-                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                    data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-                                    <i class="bi bi-pencil-fill fs-7"></i>
-                                    <!--begin::Inputs-->
-                                    <input type="file" name="gallery[]" accept=".png, .jpg, .jpeg" />
-                                    <input type="hidden" name="avatar_remove" />
-                                    <!--end::Inputs-->
-                                </label>
-                                <!--end::Label-->
-                                <!--begin::Cancel-->
-                                <span
-                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                    data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-                                    <i class="bi bi-x fs-2"></i>
-                                </span>
-                                <!--end::Cancel-->
-                                <!--begin::Remove-->
-                                <span
-                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                    data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-                                    <i class="bi bi-x fs-2"></i>
-                                </span>
-                                <!--end::Remove-->
-                            </div>
-                            @endforeach
-                           
-
-
-                            <!--end::Image input-->
-                            <!--begin::Description-->
-                            <div class="text-muted fs-7">Set the product thumbnail image. Only *.png, *.jpg and *.jpeg
-                                image files are accepted</div>
-                            <!--end::Description-->
-                        </div>
-
-
-                        <!--end::Card body-->
-                    </div>
                     <!--end::Thumbnail settings-->
                     <!--begin::Status-->
 
@@ -223,7 +162,7 @@
                                                 data-control="select2" data-placeholder="Select a Sub Category"
                                                 data-allow-clear="true" required>
                                                 @foreach($subcategory as $row)
-                                                <option value="{{$row->id}}" disabled @if($row->id==$product->subcat_id) selected @endif; >{{$row->cat_name}}</option>
+                                                <option value="{{$row->id}}" @if($row->id==$product->subcat_id) selected @endif; >{{$row->cat_name}}</option>
                                                 @endforeach
 
                                             </select>
@@ -274,7 +213,7 @@
                                             <!--end::Label-->
                                             <!--begin::Input-->
                                             <input type="number" name="quantity" class="form-control mb-2"
-                                                placeholder="Quantity" value="{{$totalQuantity}}" min="1" />
+                                                placeholder="Quantity" value="{{$totalQuantity}}" min="1" readonly />
                                             <!--end::Input-->
                                             <!--begin::Description-->
 

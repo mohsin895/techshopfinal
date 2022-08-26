@@ -114,10 +114,14 @@
         <?php $subtotal_amount = 0; ?>
    
           @foreach($account as $data)
+          @php 
+          $productQty =App\Models\Qty::where('product_id',$data->product_id)->sum('quantity');
+
+         @endphp
           <tr>
             <td>{{$data->cost_name}}</td>
-            <td>{{$gs->currency}}&nbsp;&nbsp;{{$data->buying_price}}</td>
-            <?php $subtotal_amount =  $subtotal_amount + $data->buying_price; ?>
+            <td>{{$gs->currency}}&nbsp;&nbsp;{{$data->buying_price * $productQty}}</td>
+            <?php $subtotal_amount =  $subtotal_amount + ($data->buying_price * $productQty); ?>
            
           </tr>
           @endforeach

@@ -92,6 +92,7 @@ class UserController extends Controller
 
         $referral = Session::get('referall');
         $gs = GeneralSetting::first();
+        if($gs->email_verify =='yes'){
         if ($request->isMethod('post')) {
             $data = $request->all();
             $referred_by = Cookie::get('referral_id');
@@ -137,6 +138,41 @@ class UserController extends Controller
             
            }
         }
+
+      }else{
+        if ($request->isMethod('post')) {
+          $data = $request->all();
+          $referred_by = Cookie::get('referral_id');
+      //   echo "<pre>";print_r($data);die;
+           $userCount = User::where('email',$data['email'])->count();
+           if ($userCount>0) {
+             return redirect()->back()->with('flash_message_error','Email already exists!');
+           }else {
+           $user = new User;
+           $user->name = $data['name'];
+           $user->slug = rand(11,99).$data['name'];
+           $user->commision = $gs['commission'];
+           $user->email = $data['email'];
+           $user->phone = $data['phone'];
+           $user->date_of_birth = $data['date_of_birth'];
+           $user->gender = $data['gender'];
+           $user->status = 1;
+           $user->referred_by = $referred_by;
+           $user->referral_id = $data['name'].rand(111,9999);
+           $user->password = bcrypt($data['password']);
+           $user->save();
+           $notification = new Notification;
+           $notification->user_id = $user->id;
+           $notification->save();
+          
+     
+           return redirect('/user/login')->with('flash_message_success','Your Account is created successfully !! Please Login now.');
+     
+          
+         }
+      }
+
+      }
         return view('user.registration');
     }
 

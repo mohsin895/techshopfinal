@@ -1,123 +1,143 @@
 @extends('layout.front.master')
-@include('layout.front.header')
+
 @section('content')
+@include('layout.front.detail_header')
 
-<section id="login">
-            <div class="card">
-                <div class="d-flex ml-0">
-                    <div class="banner-section">
-                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                            </ol>
-                            
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ asset('image/frontLogos/login-banner.png')}}" class="d-block w-100" alt="banner">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('image/frontLogos/login-banner.png')}}" class="d-block w-100" alt="banner">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('image/frontLogos/login-banner.png')}}" class="d-block w-100" alt="banner">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="login-section">
+<div class="container mt-5 mb-5">
+
+    <!--Admin Login For start-->
+    <div class="row justify-content-center h-100vh" id="login-form-box">
+        <div class="col-lg-10 my-auto">
+            <div class="card-group">
+                <div class="card p-4">
+                    <h2 class="text-center  font-weight-bold login-page-text">Login to your account</h2>
                     @include('error.message')
-                        <ul class="nav nav-tabs js--user-login__tab" id="myTab" role="tablist">
-                            <li class="nav-item js--tab-signin">
-                                <a class="nav-link text-uppercase active"  id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign in</a>
-                            </li>
-                            <li class="nav-item js--tab-signup">
-                                <a class="nav-link text-uppercase" id="signup-tab" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">Sign up</a>
-                            </li>
-                        </ul>
-   
-                       
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade active show" id="signin" role="tabpanel" aria-labelledby="signin-tab">
-                                <form action="{{route('user.login')}}" method="post" id="login-form">
-  @csrf
-                                    <div class="form-group">
-                                        <img src="{{ asset('image/frontLogos/phone-icon.png')}}" alt="icon" class="img-fluid phone">
-                                        <input type="email" name="email" class="form-control" placeholder="Email" required/>
-                                    </div>
-                                    <div class="form-group" id="password-field">
-                                        <img src="{{ asset('image/frontLogos/pass-icon.png')}}" alt="icon" class="img-fluid password">
-                                        <input type="password" name="password" class="form-control" placeholder="Password" required/>
-                                        <i class="fa fa-eye"></i>
-                                    </div>
-                                   
-                                    <div class="form-group d-flex">
-<!--                                        <div class="custom-control custom-checkbox ml-0">-->
-<!--                                            <input type="checkbox" name="remember-me" class="custom-control-input" id="remember">-->
-<!--                                            <label class="custom-control-label" for="remember">Remember Ne</label>-->
-<!--                                        </div>-->
-                                        <div class="forgot-pass mr-0">
-                                            <a href="forget-password.html" id="js--forgot-password" class="btn btn-link pr-0 pt-0">Forgot Password?</a>
-                                        </div>
-                                    </div>
+                    <hr class="my-3">
+                    <div id="loginError"></div>
+                    <form action="{{route('user.login')}}" method="post" id="login-form">
+                        @csrf
+                        <div class="input-group input-group-lg form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
 
-             
-
-                                    <div class="form-group text-center">
-                                        
-                                        <input type="submit" class="btn btn-sign__in" value="Sign In">
-                                    </div>
-                                </form>
-                            
-                                <p class="signup-link text-center">Don't have any account? <a data-toggle="tab" href="#signup" class="btn btn-link js--btn-signup pl-0"> Sign Up Now!</a></p>
                             </div>
-                            <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
-                                <form method="post" action="{{route('user.registration')}}" id="register-form">
-                                    @csrf
-                                    <div class="form-group">
-                                        <img src="{{ asset('image/frontLogos/reg-user-icon.png')}}" alt="icon" class="img-fluid">
-                                        <input type="text" id="userName" class="form-control" placeholder="Full Name" required name="name" value="" />
-                                        
-                                    </div>
-                                    <div class="form-group">
-                                        <img src="{{ asset('image/frontLogos/reg-email-icon.png')}}" alt="icon" class="img-fluid">
-                                        <input type="email" id="email" class="form-control" placeholder="Email" required name="email" value=""/>
-                                        
-                                    </div>
-                                    <div class="form-group">
-                                        <img src="{{ asset('image/frontLogos/phone-icon.png')}}" alt="icon" class="img-fluid">
-                                        <input type="number" id="phone" class="form-control" placeholder="Phone" required name="phone" value=""/>
-                                        
-                                    </div>
-                                    <div class="form-group" id="password-field-register">
-                                        <img src="{{ asset('image/frontLogos/pass-icon.png')}}" alt="icon" class="img-fluid">
-                                        <input type="password" id="password" class="form-control" placeholder="Password" required name="password" value=""/>
-                                        <i class="fa fa-eye"></i>
-                                        
-                                    </div>
+                            <input type="email" name="email" class="form-control" id="email" required
+                                placeholder="Enter your Email">
 
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox ml-0">
-                                            <input type="checkbox" class="custom-control-input" id="privacy" required>
-                                            <label class="custom-control-label" for="privacy">
-                                                I agree to the <a href="terms-conditions.html">Terms of Use</a> and <a href="privacy-policy.html">Privacy Policy</a>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    
-
-                                    <div class="form-group text-center">
-                                        
-                                        <input type="submit" class="btn btn-sign__up" value="Sign Up">
-                                    </div>
-                                    <p class="signin-link text-center">Already have an account? <a href="#" class="btn btn-link pl-0"> Login Now!</a></p>
-                                </form>
-                            </div>
                         </div>
-                    </div>
+
+                        <div class="input-group input-group-lg form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-key"></i>
+                                </span>
+
+                            </div>
+                            <input type="password" name="password" class="form-control" id="pass_log_id" required
+                                placeholder="Enter your Password">
+                            <div class="input-group-prepend">
+                                <span toggle="#password-field" class="input-group-text toggle-password">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </span>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <!-- <div class="float-left custom-control custom-checkbox">
+                                <input type="checkbox" id="rememberMe" name="rememberMe">
+                                <label for="rememberMe">Remember me</label>
+                                <input type="checkbox" class="custom-control-input" name="">
+
+                            </div> -->
+
+                            <div class="float-right">
+                                <a href="{{route('user.forgot-password')}}" class="text-decoration-none"><span class="text-color-forget-password">Forgot
+                                    password</span></a>
+
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="submit"  value="Sign In" class="btn sign-button btn-block">
+
+                        </div>
+
+                    </form>
                 </div>
+                <div class="card p-4 justify-content-center" style="background: #363C43">
+                    <h2 class="text-center text-white forn-mweght-blod">Welcome back</h2>
+                    <hr class="my-3">
+                    <p class="text-center text-light lead">Please complete the sign up process first,If you are not registered.Its free and take only 1 minute.</p>
+                    <a href="{{route('user.registration')}}" class="btn btn-outline-light btn-lg align-self-center mt-4" >Sign
+                        Up</a>
+
+                </div>
+
             </div>
-        </section>
+        </div>
+
+    </div>
+
+    <!--Admin Login Form End-->
+
+    <!--Admin register Form start-->
+
+
+    
+    <!--Admin register Form end-->
+
+    <!--Admin Forgot password Start-->
+
+    <div class="row justify-content-center h-100vh" id="forgotten-form-box" style="display: none">
+        <div class="col-lg-10 my-auto">
+            <div class="card-group">
+                <div class="card p-4">
+                    <h2 class="text-center text-primary font-weight-bold">Forgot Password</h2>
+                    <hr class="my-3">
+                    <form class="px-3" method="post" id="forgotten-form" route="{{url('admin.forget.password')}}">
+                        @csrf
+                        <div class="input-group input-group-lg form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+
+                            </div>
+                            <input type="email" name="email" class="form-control" id="email1"
+                                placeholder="Enter your Email">
+
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Reset Password"
+                                class="btn btn-primary btn-block">
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="card p-4 justify-content-center" style="background: #363C43">
+                    <h2 class="text-center text-white forn-mweght-blod">Welcome back</h2>
+                    <hr class="my-3">
+                    <p class="text-center text-light lead">Please login in useing your email and pssword.if you have not
+                        register yet.you can register free</p>
+                    <button class="btn btn-outline-light btn-lg align-self-center mt-4" id="showSignForm">Back</button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--Admin Forgot password End-->
+
+</div>
+
+@include('layout.front.footer')
+
+
 @endsection

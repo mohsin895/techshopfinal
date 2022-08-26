@@ -84,6 +84,7 @@ class LoginController extends Controller
             $data = $request->all();
             $gs = GeneralSetting::first();
         //   echo "<pre>";print_r($data);die;
+         if($gs->email_verify =='yes'){
              $userCount = User::where('email',$data['email'])->count();
              if ($userCount>0) {
                return redirect()->back()->with('flash_message_error','Email already exists!');
@@ -117,6 +118,32 @@ class LoginController extends Controller
        
             
            }
+        }else{
+
+            $userCount = User::where('email',$data['email'])->count();
+            if ($userCount>0) {
+              return redirect()->back()->with('flash_message_error','Email already exists!');
+            }else {
+            $user = new User;
+            $user->name = $data['name'];
+            $user->slug = rand(11,99).$data['name'];
+            $user->commision = $gs['commission'];
+            $user->email = $data['email'];
+            $user->phone = $data['phone'];
+            $user->status = 1;
+            $user->password = bcrypt($data['password']);
+            $user->save();
+            $notification = new Notification;
+            $notification->user_id = $user->id;
+            $notification->save();
+        
+      
+        return redirect('/blog/login')->with('flash_message_success','Your account is create successfully.Please login now !! ');
+      
+           
+          }
+
+        }
         }
         return view('blog.user.register');
     }

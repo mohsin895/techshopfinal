@@ -44,7 +44,7 @@ class GeneralSettingController extends Controller
             $str = 'Tables_in_' . env('DB_DATABASE');
             //  dd($str);
             foreach ($tables as $table) {
-                if($table->$str != 'accounts' && $table->$str != 'general_settings' && $table->$str != 'migrations' && $table->$str != 'teams' && $table->$str != 'team_invitations' && $table->$str != 'users' && $table->$str != 'model_has_permissions' && $table->$str != 'model_has_roles' && $table->$str != 'permissions' && $table->$str != 'roles' && $table->$str != 'role_has_permissions' && $table->$str !='shipping_charges') {
+                if($table->$str !='shipping_charges' && $table->$str != 'general_settings' && $table->$str != 'migrations' && $table->$str != 'teams' && $table->$str != 'team_invitations' && $table->$str != 'users' && $table->$str != 'model_has_permissions' && $table->$str != 'model_has_roles' && $table->$str != 'permissions' && $table->$str != 'roles' && $table->$str != 'role_has_permissions') {
                     DB::table($table->$str)->truncate();    
                 }
             }
@@ -88,6 +88,7 @@ class GeneralSettingController extends Controller
             $setting->site_title = $data['site_title'];
             $setting->shop_title = $data['shop_title'];
             $setting->blog_title = $data['blog_title'];
+            $setting->email_verify = $data['email_verify'];
             $setting->flash_slider = $data['flash_slider'];
             $setting->facebook_page = $data['facebook_page'];
             $setting->facebook_group = $data['facebook_group'];

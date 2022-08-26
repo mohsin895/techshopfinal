@@ -102,6 +102,13 @@ Route::get('/delete-product/{id}',[App\Http\Controllers\Admin\ProductController:
 Route::get('/get_subcategory',[App\Http\Controllers\Admin\ProductController::class,'get_subcat'])->name('get_subcategory');
 Route::get('/product/view-details/{id}',[App\Http\Controllers\Admin\ProductController::class,'view_deatils'])->name('product.view_details');
 Route::post('/product/update/qty/{id}',[App\Http\Controllers\Admin\ProductController::class,'update_qty'])->name('product.update.qty');
+Route::post('/product/insert/qty/{id}',[App\Http\Controllers\Admin\ProductController::class,'insert_qty'])->name('product.insert.qty');
+Route::get('/delete-productQty/{id}',[App\Http\Controllers\Admin\ProductController::class,'delete_qty']);
+
+Route::match(['get','post'],'/product/insert/gallery/{id}',[App\Http\Controllers\Admin\ProductController::class,'insert_gallery'])->name('product.insert.gallery');
+Route::match(['get','post'],'/product/update/gallery/{id}',[App\Http\Controllers\Admin\ProductController::class,'update_gallery'])->name('product.update.gallery');
+Route::get('/delete-productGalleryDelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'gallery_delete']);
+
 
 
 Route::get('/product/update-status/{id}/{status}',[App\Http\Controllers\Admin\ProductController::class,'status']);
